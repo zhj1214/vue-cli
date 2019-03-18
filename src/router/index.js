@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import routers from './backRouter'
+import routes from './backRouter'
 Vue.use(Router)
 
 const router =new Router({
-    routers,
+    routes,
     mode:'history'
 })
 router.beforeEach((to,from,next)=>{

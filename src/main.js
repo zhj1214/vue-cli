@@ -10,11 +10,10 @@
 import Vue from 'vue';
 import iView from 'iview';
 import axios from 'axios';
-import i18n from './assets/i18n'
 import {format} from 'date-fns'
 import App from './App.vue';
 import router from './router';
-import store from './store/index';
+// import store from './store/index';
 import 'iview/dist/styles/iview.css';
 import {Notice} from 'iview';
 import md5 from 'js-md5'
@@ -68,16 +67,11 @@ Vue.prototype.$ajaxPost = (url, data={}, msg = '接口异常', headers) => {
 
 Vue.prototype.$format =format;
 Vue.prototype.$thisYear= new Date().getFullYear();
-Vue.use(iView,{
-	i18n(path, options) {
-		let value = i18n.t(path, options);
-		if (value !== null && value !== undefined) return value;
-		return '';
-	}
-});
+Vue.use(iView);
+console.log(router)
 new Vue({
-	i18n,
+	// i18n,
 	router,
-	store,
+	// store,
 	render: h => h(App)
 }).$mount('#app');
