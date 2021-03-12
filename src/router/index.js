@@ -1,21 +1,15 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import routes from './backRouter'
+import HelloWorld from '@/components/HelloWorld'
+
 Vue.use(Router)
 
-const router =new Router({
-    routes,
-    mode:'history'
-})
-router.beforeEach((to,from,next)=>{
-    if(sessionStorage.getItem('uid')){
-        next()
-    }else{
-        if(to.meta.secret){
-            next('/login')
-        }else{
-            next()
-        }
+export default new Router({
+  routes: [
+    {
+      path: '/',
+      name: 'HelloWorld',
+      component: HelloWorld
     }
+  ]
 })
-export default router
