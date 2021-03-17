@@ -1,0 +1,33 @@
+.status-icon {
+    display: inline-block;
+    margin-right: 6px;
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+}
+
+.disable {
+    background: rgba(154, 168, 184, 1);
+}
+
+.available {
+    background: rgba(109, 210, 48, 1);
+
+}
+
+.selected-item {
+    color: #756CEA;
+}
+
+.icon-space {
+    margin-left: 6px;
+}
+
+.color-text {
+    color: #756CEA;
+    cursor: pointer;
+}
+.action-icon {
+    visibility: hidden;
+}

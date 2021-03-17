@@ -1,77 +1,102 @@
 {
-  "name": "sl_pc_cli",
-  "version": "1.0.0",
-  "description": "vue 2.5.2 PC端项目框架",
-  "author": "zhj1214 <zhj1214@hotmail.com>",
+  "name": "vue-cli",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
-    "start": "npm run dev",
-    "build": "node build/build.js"
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "axios": "0.18.1",
+    "babel-polyfill": "6.26.0",
+    "clipboard": "^2.0.6",
+    "crypto-js": "^3.3.0",
+    "date-fns": "1.30.1",
+    "iview-area": "1.6.0",
+    "js-md5": "0.7.3",
+    "lodash": "^4.17.20",
     "node-sass": "4.14.1",
+    "qrcode.vue": "^1.7.0",
+    "qs": "6.9.4",
     "sass-loader": "8.0.2",
+    "uuid": "^8.3.1",
+    "v-viewer": "^1.5.1",
+    "swiper": "5.4.0",
+    "view-design": "4.2.0",
+    "@shopify/draggable": "^1.0.0-beta.8",
     "vue": "2.6.11",
+    "vue-awesome-swiper": "4.1.1",
+    "vue-color": "2.7.1",
+    "vue-img-cutter": "^2.1.10",
     "vue-router": "3.1.6",
-    "vuex": "3.4.0"
+    "vue-virtual-scroll-list": "2.2.3",
+    "vue-wordcloud": "^1.1.1",
+    "vuex": "3.4.0",
+    "wangeditor": "4.6.3"
   },
   "devDependencies": {
+    "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "@vue/cli-plugin-babel": "^3.10.0",
     "@vue/cli-plugin-eslint": "^3.10.0",
     "@vue/cli-service": "^4.5.8",
     "babel-core": "^6.26.3",
     "babel-eslint": "^10.0.1",
+    "babel-loader": "^7.1.5",
     "babel-plugin-transform-remove-console": "^6.9.4",
     "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.0.0",
+    "husky": "^3.1.0",
     "less": "^3.11.1",
     "less-loader": "^5.0.0",
-    "vue-template-compiler": "2.6.11",
-    "autoprefixer": "^7.1.2",
-    "@babel/core": "^7.5.5",
-    "babel-helper-vue-jsx-merge-props": "^2.0.3",
-    "babel-loader": "^7.1.5",
-    "babel-plugin-syntax-jsx": "^6.18.0",
-    "babel-plugin-transform-runtime": "^6.22.0",
-    "babel-plugin-transform-vue-jsx": "^3.5.0",
-    "babel-preset-env": "^1.3.2",
-    "babel-preset-stage-2": "^6.22.0",
-    "chalk": "^2.0.1",
-    "copy-webpack-plugin": "^4.0.1",
-    "css-loader": "^0.28.0",
-    "extract-text-webpack-plugin": "^3.0.0",
-    "file-loader": "^1.1.4",
-    "friendly-errors-webpack-plugin": "^1.6.1",
-    "html-webpack-plugin": "^2.30.1",
-    "node-notifier": "^5.1.2",
-    "optimize-css-assets-webpack-plugin": "^3.2.0",
-    "ora": "^1.2.0",
-    "portfinder": "^1.0.13",
-    "postcss-import": "^11.0.0",
-    "postcss-loader": "^2.0.8",
-    "postcss-url": "^7.2.1",
-    "rimraf": "^2.6.0",
-    "semver": "^5.3.0",
-    "shelljs": "^0.7.6",
-    "uglifyjs-webpack-plugin": "^1.1.1",
-    "url-loader": "^0.5.8",
-    "vue-loader": "^13.3.0",
-    "vue-style-loader": "^3.0.1",
-    "webpack": "^3.6.0",
-    "webpack-bundle-analyzer": "^2.9.0",
-    "webpack-dev-server": "^2.9.1",
-    "webpack-merge": "^4.1.0"
+    "vue-template-compiler": "2.6.11"
   },
-  "engines": {
-    "node": ">= 6.0.0",
-    "npm": ">= 3.0.0"
+  "husky": {
+    "hooks": {
+      "pre-push": "npm run lint"
+    }
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "rules": {
+      "no-debugger": "off",
+      "no-console": "off",
+      "no-mixed-spaces-and-tabs": "off",
+      "vue/no-parsing-error": [
+        2,
+        {
+          "x-invalid-end-tag": false
+        }
+      ]
+    },
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
   },
   "browserslist": [
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
-  ]
+  ],
+  "description": "```txt\r +-- dist/                                   ---打包之后的dist目录\r +-- public/                                 ---静态目录,/xx 直接饮用，不需要public\r |   --- index.html                          ---首页入口html文件\r |   --- favicon.ico                         ---网页图标\r +-- src/\r +   ---/components/                         ---组件目录\r +   ---/base/                               ---基本组件\r +   ---/commons/                            ---公共组件包\r +   ---/layout/                             ---布局方案\r +   ---/mixins/                             ---mixins\r +   ---/view/                               ---复杂页面请单独起一个组件页面\r +   ---assets/                              --- 资源文件\r |   ---main.js                              ---入口文件\r |   ---App.vue                              ---总vue-route入口\r --- babel.config.js                         ---babel配置文件\r --- README.md                               ---Readme\r --- package-lock.json                            ---依赖包\r --- package.json                            ---依赖包\r --- vue.config.js                           ---配置vue脚手架的文件，包含本地跨域、base url更改等\r ```\r ##  技术栈\r - vue\r - axios\r - vuex\r - iview\r - vue-router\r ## i18n",
+  "main": "babel.config.js",
+  "repository": {
+    "type": "git",
+    "url": "https://code.data4truth.com/pi/mos.git"
+  },
+  "author": "",
+  "license": "ISC"
 }

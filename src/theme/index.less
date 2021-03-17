@@ -1,0 +1,33 @@
+@import '~view-design/src/styles/index.less';
+
+@primary-color: rgba(136, 126, 247, 1);
+@btn-primary-bg: rgba(136, 126, 247, 1);
+@link-color: rgba(136, 126, 247, 1);
+@btn-padding-base-icon: 5px 24px 6px;
+@btn-border-radius: 8px;
+@btn-border-color: rgba(136, 126, 247, 1);
+@table-td-hover-bg: #FAFAFB;
+@table-td-highlight-bg: #ebf7ff;
+.ivu-radio-checked .ivu-radio-inner {
+  background: #fff;
+}
+
+/*改写iView 默认的图标*/
+.fix-iview-icon{
+  .ivu-icon-ios-arrow-forward:before {
+    font-family: "iconfont" !important;
+    content: "\e6f5";
+    font-size: 24px;
+  }
+  /**/
+  .ivu-icon-ios-arrow-down:before {
+    font-family: "iconfont" !important;
+    content: "\e6cd";
+    font-size: 24px;
+  }
+  .ivu-icon-ios-search:before {
+    font-family: "iconfont" !important;
+    content: "\e6ec";
+    font-size: 24px;
+  }
+}

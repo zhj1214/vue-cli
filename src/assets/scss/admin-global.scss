@@ -1,0 +1,610 @@
+@charset "UTF-8";
+@import "../font/iconfont.css";
+
+/*
+@desc 这个文件的语法需要css 方式，否则写成scss风格不会生效
+*/
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  scroll-behavior: smooth;
+}
+
+*{
+ font-family: -apple-system, BlinkMacSystemFont,'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+ul li{list-style: none;}
+.iconfont {
+  font-size: 24px;
+  vertical-align: middle;
+}
+
+#app {
+  overflow: auto;
+}
+
+/* 弹窗文字为数字时不换行问题*/
+.ivu-modal-wrap * {
+  word-break: break-word;
+}
+
+
+.content-body {
+  overflow-x: auto;
+}
+
+.ivu-menu-submenu
+.ivu-menu-item {
+  text-align: left;
+  font-size: 12px;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(103, 103, 143, 1);
+}
+
+.ivu-layout {
+  height: 100%;
+  min-width: 1090px;
+}
+
+#app {
+  height: 100%;
+}
+
+
+.iconBack::before {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: url(../images/backIcon.png) no-repeat;
+  background-size: cover;
+  vertical-align: text-bottom;
+}
+
+textarea.ivu-input {
+  resize: none;
+}
+
+/*fix iview*/
+.ivu-poptip-confirm .ivu-poptip-body .ivu-icon {
+  left: 20px;
+}
+
+.ivu-poptip-confirm .ivu-poptip-body-message {
+  text-align: center;
+}
+
+.ivu-divider-vertical {
+  min-height: 24px;
+  background: #E6EBF0
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 16px;
+}
+
+/*span标签，伪造a标签样式*/
+.span-a {
+  cursor: pointer !important;
+  color: #756CEA !important;
+}
+
+.pointer {
+  cursor: pointer !important;
+}
+
+.block {
+  display: block !important;
+}
+
+/*ui 稿子的表格样式结构*/
+/*副标题*/
+.h2 {
+  margin-bottom: 28px;
+  font-family: SFUIDisplay-Semibold;
+  font-weight: 600;
+  text-align: left;
+  color: rgba(62, 69, 82, 1);
+  font-size: 24px;
+}
+
+.h2 span {
+  cursor: pointer;
+  display: inline-block;
+  font-size: 24px;
+}
+
+.h2 img {
+  cursor: pointer;
+  display: block;
+  float: left;
+  width: 20px !important;
+  height: 20px !important;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.h2 :after {
+  display: block;
+  content: '';
+  clear: both;
+}
+
+
+/*表格公共样式*/
+div.ivu-table-wrapper {
+  border: none;
+}
+
+.ivu-table th, .ivu-table td {
+  padding: 10px 0;
+}
+tr td.ivu-table-expanded-cell{padding:20px 50px;}
+
+label.ivu-checkbox-wrapper {
+  font-size: 14px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ddd;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 8px;
+}
+
+.red-color {
+  color: #FF4C4C !important;
+}
+
+.block {
+  display: block !important;
+}
+
+
+.bg-blue:before {
+  background: #3D71FF;
+}
+
+.bg-gray:before {
+  background: #9AA8B8;
+}
+
+.bg-yellow:before {
+  background: #FFBB00;
+}
+
+.bg-green:before {
+  background: #6DD230;
+}
+
+.bg-violet:before {
+  background: #8548E0;
+}
+
+
+/*overflow*/
+.overflow {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+
+/*fix iView 颜色选择器的错误*/
+.color-block .ivu-color-picker-confirm-color {
+  width: 140px;
+}
+
+/*描述语，灰色的*/
+.desc-text {
+  color: #9AA8B8;
+  font-size: 12px;
+}
+
+/*game*/
+.prize-coupon-box .coupon-col-box {
+  min-width: 340px !important;
+}
+
+.prize-coupon-box .cardCont .ivu-card-body {
+  min-height: 270px;
+}
+
+.disabled-row {
+  cursor: not-allowed;
+}
+
+.no-data {
+  margin: 20px auto;
+  width: 100%;
+  border-radius: 4px;
+  height: 118px;
+  text-align: center;
+  line-height: 118px;
+  border: 1px solid rgba(225, 231, 235, 1);
+  color: #67678F
+}
+
+/*两行*/
+.clamp-2 {
+  display: -webkit-box;
+  line-height: 30px;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/*错误 input 框样式*/
+.error-input input {
+  background: rgba(255, 76, 76, 0.08);
+  border-radius: 4px;
+  border: 1px solid rgba(255, 76, 76, 1);
+}
+
+/*upload*/
+.upload-class {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  line-height: 72px;
+  background: rgba(23, 23, 37, 0.8);
+}
+
+.avatar-item {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+  border: 4px solid #fff;
+  border-radius: 50%;
+  overflow: hidden;
+
+  .image-position {
+    position: relative;
+    width: 72px;
+    height: 72px;
+    text-align: center;
+    border: 1px solid #E1E7EB;
+    cursor: pointer;
+    background: rgba(0, 0, 0, .2);
+    line-height: 72px;
+
+    img {
+      height: 72px;
+      width: 72px;
+      border-radius: 50%;
+    }
+
+    &:hover .demo-upload-list-cover {
+      position: absolute;
+      background: rgba(0, 0, 0, 0.18);
+      color: #fff;
+      left: 0;
+      top: 0;
+      width: 80px;
+      height: 80px;
+    }
+  }
+}
+
+.decorateTitle span::before{
+  content:""; display: inline-block;
+  width:4px; height: 24px; background: rgba(136, 126, 247, 1);
+  left:-20px; position: absolute; top:2px;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.clear:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.is-active {
+  color: #756CEA;
+}
+.inline-block{
+  display: inline-block;
+}
+/*移除默认背景*/
+.base-tree .ivu-tree-title-selected {
+  background: transparent;
+}
+
+.base-tree .ivu-tree-title:hover {
+  background: transparent;
+}
+
+.p-text {
+  color: #92929D;
+}
+
+/*platform 左边树*/
+.ivu-tree-children .ivu-tree-children li {
+  border-left: 1px solid #E2E2EA;
+}
+.ivu-tree-children{
+  margin-bottom: 8px !important;
+}
+.ivu-tree ul li {
+  margin: 2px 0 !important;
+  line-height: 40px;
+}
+/*todo*/
+/*.ivu-tree-title:hover{
+  background: red;
+}*/
+/*platform render tree icon*/
+.tree-icon-render {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+}
+
+.title-is-selected {
+  cursor: pointer;
+  background: rgba(255, 140, 8, 0.1);
+  color: #756CEA !important;
+}
+
+.left-tree .tree-span-selected {
+  display: inline-block;
+  color: #44444F;
+  margin: 0;
+  width: 210px;
+  border-radius: 3px;
+  cursor: pointer;
+  vertical-align: middle;
+  transition: all .2s ease-in-out;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.delete-alert {
+  height: 48px;
+  padding: 0 16px;
+  line-height: 48px;
+  margin-bottom: 24px;
+  border-radius: 4px;
+  
+  border: 1px solid #756CEA;
+  background: #E9E8FF;
+}
+
+.ivu-tree-children .ivu-tree-children li:before {
+  display: inline-block;
+  content: "";
+  width: 5px;
+  height: 1px;
+  background: #E2E2EA;
+  vertical-align: middle;
+  border-radius: 4px;
+}
+
+.span-title {
+  display: inline-block;
+  width: 100%;
+}
+
+/*有效无效*/
+.is-enable:before {
+  position: relative;
+  display: inline-block;
+  content: "";
+  width: 6px;
+  height: 6px;
+  margin-right: 5px;
+  vertical-align: middle;
+  background: #50B5FF;
+  border-radius: 50%;
+}
+
+.is-disabled:before {
+  position: relative;
+  display: inline-block;
+  content: "";
+  width: 6px;
+  height: 6px;
+  margin-right: 5px;
+  vertical-align: middle;
+  background: #B5B5BE;
+  border-radius: 50%;
+}
+
+/*让iView支持勾选背景变色*/
+.is-table-checked td {
+  background: #E9E8FF !important;
+}
+
+/*不要title poptip */
+
+.contact-button .ivu-poptip-title {
+  display: none;
+}
+/*分页组件*/
+.pagebox {
+  text-align: right;
+  padding: 15px 2px;
+}
+
+.pagebox .ivu-page-total {
+  float: left;
+}
+/*统一的白底盒子样式*/
+.padding-box{
+  background:#fff; padding:24px;
+  box-shadow: 0 2px 12px 0 rgba(0,0,0,.04);
+  border-radius: 16px;
+}
+
+/*数字 InputNumber 后的单位*/
+.style-input {
+  float: right;
+}
+.style-input span,.style-input .ivu-input-number{float: left;}
+.style-input label{
+  float: left;
+  padding: 8px 7px;
+  font-size: inherit;
+  font-weight: 400;
+  line-height: 1;
+  color: #515a6e;
+  text-align: center;
+  background-color: #f8f8f9;
+  border: 1px solid #dcdee2;
+  border-radius: 4px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-left: 0;
+}
+.style-input   .pre-span {
+  display: inline-block;
+  font-size: 12px;
+  line-height: 1;
+  color: #515a6e;
+  text-align: center;
+  background: #f8f8f9;
+  padding: 8px 8px 10px;
+  border: 1px solid #e1e6eb;border-right:none;
+  border-radius: 4px 0 0 4px;
+  +div.ivu-input-number{border-top-left-radius:0; border-bottom-left-radius:0}
+}
+
+.img-view-box{
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  line-height: 60px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #fff;
+  position: relative;
+  box-shadow: 0 1px 1px rgba(0,0,0,.2);
+  margin-right: 4px;
+}
+.img-view-box img{
+  width: 100%;
+  height: 100%;
+}
+.img-view-box-cover{
+display: none;
+position: absolute;
+top: 0;
+bottom: 0;
+left: 0;
+right: 0;
+background: rgba(0,0,0,.6);
+}
+.img-view-box:hover .img-view-box-cover{
+display: flex; align-items:center; justify-content:center;
+}
+.img-view-box-cover i{
+color: #fff;
+font-size: 20px;
+cursor: pointer;
+margin: 0 2px;
+}
+/*上传图片展示版块*/
+.upload-list {
+  display: inline-block;
+  width: 200px;
+  height: 200px;
+  text-align: center;
+  line-height: 80px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #fff;
+  position: relative;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+  margin-right: 4px;
+}
+
+.upload-list img {
+  width: 100%;
+  height: 100%;
+}
+
+.upload-list-cover {
+  display: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, .6);
+}
+
+.upload-list:hover .upload-list-cover {
+  display: flex; align-items: center; justify-content: center;
+}
+
+.upload-list-cover i {
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  margin: 0 2px;
+}
+
+.main-body{
+  background: #fff;
+  border-radius: 16px;
+  padding-bottom: 40px;
+}
+.float-right{
+  float: right;
+}
+
+div.number-input{
+  position: relative;
+}
+.number-input::after{
+  content:'';display: inline-block; right:18px; top:0;
+  height: 20px; width:20px;position: absolute; z-index: 20;
+}
+.price-num-input::after{content:'元'}
+.weight-num-input::after{content:'Kg'}
+.store-num-input::after{content:'件'}
+
+.self-upload-box{
+  text-align:center;width:100px; line-height:100px; height:100px; border:solid 1px rgba(225,231,235,1); cursor:pointer;
+}
+
+.self-upload-box .ivu-upload{width:100%;}
+
+/*table-select限制高度，来自日志管理. 0628 修改 max-height设置最大高度即可*/
+.ivu-table-filter-list-single{
+  max-height: 500px;
+}
+/*disabled 优惠券勾选*/
+.disabled-selected {
+  position: relative;
+  background: #F7F9FA !important;
+  cursor: not-allowed;
+}
+
+
+/*针对前置有颜色的小圆点*/
+.before-radius:before {
+  position: relative;
+  display: inline-block;
+  content: '';
+  width: 8px;
+  height: 8px;
+  margin-right: 5px;
+  border-radius: 50%;
+}
+
+.bg-blue:before {
+  background: #6BB3F9;
+}
