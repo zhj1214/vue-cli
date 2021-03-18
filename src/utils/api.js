@@ -1,56 +1,36 @@
-import local from "./localStorage";
+import http from "./axios";
 import { request, cloud } from "./http";
 const api = {
   /**************首页*************/
   getAdvs: "/operation-server/api/remote/ad/get",
-
   /**************搜索好物*************/
-  // searchGoods: "POST::/mos-mall-server/api/market/searchGoods",
   __v2__searchGoods: "POST::/mall-plus-server/api/market/ht/searchFine",
-
-  // addSearchLog: "POST::/mos-mall-server/api/market/addSearchLog",
   __v2__addSearchLog: "POST::/mall-plus-server/api/market/log/addSearchLog",
-  // fetchSearchLog: "POST::/mos-mall-server/api/market/getSearchLogList",
   __v2__fetchSearchLog:
     "POST::/mall-plus-server/api/market/log/getSearchLogList",
   __v2__removeSearchLog:
     "POST::/mall-plus-server/api/market/log/deleteSearchLog",
-  // fetchOrgInfo: "POST::/mos-mall-server/api/market/orgInfo",
-
   /**************店铺*************/
-  // fetchStoreHomeData: "POST::/mos-mall-server/api/market/storeHomePage",
   __v2__fetchStoreGroups: "POST::/goods-plus-server/v2/api/goods/group/listSpu", // __v2__标识第二版本
   __v2__fetchStoreGroupDetail:
     "POST::/goods-plus-server/v2/api/goods/group/detail", // __v2__标识第二版本
-
-  // fetchStoreGoodsList: "POST::/mos-mall-server/api/market/storeGoodsList",
-  // fetchStoreGoodsCategory:
-  //   "POST::/mos-mall-server/api/market/storeGoodsCategory",
-  // fetchCategoryGoodsList: "POST::/mos-mall-server/api/market/categoryGoodsList",
-  // fetchStoreCoupon: "POST::/mos-mall-server/api/market/storeCoupon",
   __v2__fetchStoreCoupon: "POST::/mall-plus-server/api/market/ht/storeCoupon",
-  // fetchStoreBrandList: "POST::/mos-mall-server/api/market/storeBrandList",
   __v2__fetchStoreBaseInfo: "POST::/mall-plus-server/api/market/org/detail",
   __v2__fetchStoreBrandList: "POST::/goods-plus-server/v2/api/goods/brand/list",
-  // fetchStoreBrandDetail: "POST::/mos-mall-server/api/market/storeBrandDetail",
   __v2__fetchStoreBrandDetail:
     "POST::/goods-plus-server/v2/api/goods/brand/detail",
-
-  // fetchStoreGoodsDetail: "POST::/mos-mall-server/api/market/goodsDetail",
   __v2__fetchStoreGoodsDetail:
     "POST::/goods-plus-server/v2/api/goods/sale/detail",
   __v2__fetchStoreGoodsSkus:
     "POST::/goods-plus-server/v2/api/goods/sale/skuList",
   __v2__fetchStoreGoodsList: "POST::/goods-plus-server/v2/api/goods/sale/list",
-  // fetchStoreGroupDetail: "POST::/mos-mall-server/api/market/groupDetail",
-  fetchDepartmentList: "POST::/user-server/internal/organization/searchDepartment", // 查询商场下直营店铺数据
-
+  fetchDepartmentList:
+    "POST::/user-server/internal/organization/searchDepartment", // 查询商场下直营店铺数据
   /********* 分享商品的二维码 ********/
   addGoodsSharePram: "/mos-webchatmall-server/api/goods/share/add",
   __v2__addGoodsSharePram: "/goods-plus-server/v2/api/goods/share/add",
   getGoodsSharePram: "/mos-webchatmall-server/api/goods/share/get",
   __v2__getGoodsSharePram: "/goods-plus-server/v2/api/goods/share/detail",
-
   /**************会员模块*************/
   getUserQrcodeStr: "POST::/mos-webchatmall-server/api/member/memberIdEncode", // 获取二维码加密信息
   getMallInfo: "/mos-webchatmall-server/api/member/getSubInfo", // 获取 商场信息
@@ -68,7 +48,6 @@ const api = {
     "POST::/mos-webchatmall-server/api/platform/tryGetMemberWechatPhone", //授权获取手机号
   userRegistKey: "/mos-webchatmall-server/api/member/getMemberCenterDetail", // 完善信息
   saveUserInfo: "POST::/mos-webchatmall-server/api/member/modify", // 会员字段完善
-  // changeCityMall: "POST::/mos-mall-server/api/market/change", // 切换城市
   __v2__changeCityMall: "POST::/mall-plus-server/api/market/ht/change", // 切换城市
   getMemberGradeLiist: "/mos-webchatmall-server/api/wechat/grade/list", // 会员等级列表
   getCardFaceInfo: "/mos-webchatmall-server/api/member/custom/cardFace/info", // 自定义会员卡面详情
@@ -79,23 +58,17 @@ const api = {
   getCouponNums: "/mos-webchatmall-server/api/member/getDiscountCouponNum", // 获取会员优惠券 数量
   benefitDetails: "/mos-webchatmall-server/api/wechat/grade/getGradeEquityInfo", // 会员权益详情
   getProblemId: "/operation-server/api/landing/getPageIdByMallId", // 查询当前商场问题反馈ID
-  
   /***************  商城接口 *********************/
-
-  // goodsToMallGoods: "/mos-mall-server/api/internal/mall/goods/getIdBySkuIdAndGoodsId", // 仓库商品转商城商品
   goodsErClassification: "/mos-webchatmall-server/api/sort/details", // 商品分类 二级列表
-  // goodsClassification: "POST::/mos-mall-server/api/market/allGoodsCategory", // 商品分类
   __v2__goodsClassification:
     "POST::/goods-plus-server/v2/api/goods/category/list", // 商城分类接口
   __v2__goodsReconmendList:
-  "POST::/goods-plus-server/v2/api/goods/category/recommend/list", // 分类推荐
+    "POST::/goods-plus-server/v2/api/goods/category/recommend/list", // 分类推荐
   carGoodsNum: "POST::/mos-webchatmall-server/api/shopcart/hengtai/adjust", // 购物车 商品数量调整 除了商品详情页面其他地方加入购物车都调用这个接口
   shipping:
     "POST::/mos-webchatmall-server/api/shopcart/hengtai/calculateExpressFee", // 计算运费接口
-
   commitOrder: "POST::/mos-order-server/api/order/hengtaiCServer/submitOrder", // 订单可用优惠券
   orderCouponList: "POST::/coupon-server/internal/coupon/order/aviableHTCoupon", // 订单可用优惠券
-
   /***************  注册渠道 *********************/
   channelApi: "/mos-webchatmall-server/api/member/getChannelInfoByUuid", // 从二维码中获取参数
   channelUpdate: "POST::/mos-webchatmall-server/api/auth/modifyMemberOrgId", // 修改注册渠道
@@ -131,21 +104,19 @@ const api = {
   tabNums: "/mos-order-server/api/order/cserver/getOrderCountToSort", // tab 上徽标数量
   getorderDetail: "/mos-order-server/api/order/cserver/getOrderDetailByOrderNo", // 订单详情
   getConsumerHotline: "/mos-webchatmall-server/api/goods/getCustomerSetting", // 联系客服电话
-  // getShopHotline: "POST::/mos-mall-server/api/market/orgTel", // 联系客服电话
   orderDetailOperating: "POST::/mos-order-server/api/order/cserver/operOrder", // 确认收货
   getNegotiationInfos: "/mos-order-server/api/refund/cserver/getRefundHis", // 获取协商历史信息
   getPayInfoForPay: "/mos-order-server/api/order/cserver/payOrder", // 获取支付用支付信息
-
   /************** 物流 *************/
   getOrderLogisticsInformation: "/logistics-server/api/logistics/track", // 查看具体物流信息
-	/************** 电子小票 *************/
+  /************** 电子小票 *************/
   getReceiptList: "POST::/ht-offline-order-server/api/order/cServer/list", // 电子小票列表
   getReceiptDetail: "/ht-offline-order-server/api/order/getOrderDetailInfo", // 电子小票详情
-	/************** 签到 *************/
-	getCheckInfo: "POST::/operation-server/api/userSign/sign", // 签到
-	getCheckRuleInfo: "/operation-server/api/userSign/getRule", // 获取签到规则
-	getCheckRecord: "/operation-server/api/userSign/getSignRecord", // 获取签到记录
-	getCheckRewardInfo: "/operation-server/api/userSign/getUserRuleBaseInfo", // 获取签到奖励信息
+  /************** 签到 *************/
+  getCheckInfo: "POST::/operation-server/api/userSign/sign", // 签到
+  getCheckRuleInfo: "/operation-server/api/userSign/getRule", // 获取签到规则
+  getCheckRecord: "/operation-server/api/userSign/getSignRecord", // 获取签到记录
+  getCheckRewardInfo: "/operation-server/api/userSign/getUserRuleBaseInfo", // 获取签到奖励信息
   /************** 退单接口 *************/
   getReturnsRequestInfo: "/mos-order-server/api/refund/cserver/queryRefundInfo", // 退款申请页面数据
   returnsRequest: "POST::/mos-order-server/api/refund/cserver/refMoney", // 提交退货申请
@@ -161,7 +132,6 @@ const api = {
   /************** 优惠券模块 *************/
   countAvailable: "POST::/coupon-server/internal/coupon/member/countAvailable", // 优惠券数量
   ticketCount: "POST::/marketing-server/api/remote/activityTicket/count", // 门票数量
-
   pageList: "POST::/coupon-server/internal/coupon/member/pageList", // 优惠券列表
   couponDetail: "POST::/coupon-server/internal/coupon/member/detail", // 优惠券详情
   couponIdDetail: "POST::/coupon-server/internal/coupon/center/detail", // 优惠券详情
@@ -175,12 +145,10 @@ const api = {
   getWriteOffInfo: "POST::/coupon-server/internal/coupon/getWriteOffInfo", // 获取核销信息
   writeOffCouponC: "POST::/coupon-server/internal/coupon/writeOffCouponC", // 扫码核销
   codeSign: "POST::/coupon-server/internal/coupon/member/codeSign", // 获取codeSign
-
   ticketInfo: "/marketing-server/api/remote/writer/writeoff/ticket/detail", // 获取门票核销信息
   writeoff: "POST::/marketing-server/api/remote/writer/writeoff", // 扫码门票核销
   getSignData: "/marketing-server/api/remote/writer/getSignData", // 获取门票codeSign
-
-  // 券码核销
+  /************** 券码核销 *************/
   queryData: "/mos-order-server/api/exchange/cServer/query", // 根据核销码查询商品
   submitWriteOff: "mos-order-server/api/exchange/cServer/submitWriteOff", // 确认核销
   /***************  活动中心 *********************/
@@ -192,22 +160,20 @@ const api = {
   getOrderDetail: "POST::/marketing-server/api/remote/pay/getOrderDetail", // 活动下单结果
   queryData: "/mos-order-server/api/exchange/cServer/query", // 根据核销码查询商品
   submitWriteOff: "POST::/mos-order-server/api/exchange/cServer/submitWriteOff", // 确认核销
-
   /**************游戏模块*************/
-  goodsSettlementApply: "POST::/mos-webchatmall-server/api/shopcart/goodsSettlementApply", // 发起结算申请
-  game_commitorder: 'POST::/mos-order-server/api/order/cserver/submitGameOrder', // 游戏实物礼品下单
-  game_info: '/game-server/api/internal/game/detail', // 获取游戏信息
-  game_member_qualification: '/game-server/api/internal/game/memberGameQualification', // 用户游戏资格信息
-  game_my_award: 'POST::/game-server/api/internal/game/memberGameAwardList', // 我的奖品列表
-  game_draw_result: '/game-server/api/internal/game/getGameAward', // 游戏结果（转盘小游戏）
-  game_award_block: 'POST::/game-server/api/internal/game/presentOrderNotify', // 下单通知回调
-
-   /************** 落地页 *************/
-   landPage: "/operation-server/api/landing/getByPageId",
-   /************** 错误日志上报 *************/
- 
+  goodsSettlementApply:
+    "POST::/mos-webchatmall-server/api/shopcart/goodsSettlementApply", // 发起结算申请
+  game_commitorder: "POST::/mos-order-server/api/order/cserver/submitGameOrder", // 游戏实物礼品下单
+  game_info: "/game-server/api/internal/game/detail", // 获取游戏信息
+  game_member_qualification:
+    "/game-server/api/internal/game/memberGameQualification", // 用户游戏资格信息
+  game_my_award: "POST::/game-server/api/internal/game/memberGameAwardList", // 我的奖品列表
+  game_draw_result: "/game-server/api/internal/game/getGameAward", // 游戏结果（转盘小游戏）
+  game_award_block: "POST::/game-server/api/internal/game/presentOrderNotify", // 下单通知回调
+  /************** 落地页 *************/
+  landPage: "/operation-server/api/landing/getByPageId",
+  /************** 错误日志上报 *************/
   cctvApi: "cctv-errLog/errlogUpload", // 意见收集
-
   /************** 物流 begin *************/
   getwlCompanyList: "/mos-order-server/api/order/bserver/expressCompanyList", // 获取物流公司列表
   commitOrderWLinfo: "POST::/mos-order-server/api/refund/cserver/sendExpress", // 填写物流信息
@@ -218,15 +184,10 @@ const api = {
   parkBindPlate: "POST::/park-server/api/park/pay/bindCar", // 绑定车牌
   parkPay: "POST::/park-server/api/park/pay/fee", // 缴费数据
   parkPayResult: "/park-server/api/park/pay/result", // 支付结果
-  chargingRules: '/park-server/api/park/rule/content', // 收费规则
-  parkingRecord: 'POST::/park-server/api/park/record/list', // 停车记录
+  chargingRules: "/park-server/api/park/rule/content", // 收费规则
+  parkingRecord: "POST::/park-server/api/park/record/list", // 停车记录
   /************** 停车 end *************/
-  /**
-   * 当前请求域名
-   * */
-  getApiHost() {
-    return host;
-  },
+
   /**
    * api析构
    * */
@@ -244,16 +205,10 @@ const api = {
    * @param {*} options  入参
    * */
   apiRequest(key, options) {
-    // console.log(key);
     let { url, method } = this.destructorApi(key);
     return new Promise((resolve, reject) => {
-      // if(new Date().getTime() < 1611585900000 && (url.indexOf('mall-plus-server') != -1 || url.indexOf("goods-plus-server") != -1 || url.indexOf('api/shopcart/hengtai/adjust') != -1)){
-      //   // console.log(url,"1111111111111111111111")
-      //   request("https://crmuat.cntpy.com" + url, resolve, reject, options, method, true);  
-      // } else {
-        // console.log(url,"2222222222222222222222222222")
-        request(host + url, resolve, reject, options, method, true);
-      // }
+      http.request(url, resolve, reject, options, method, true);
+      // request(host + url, resolve, reject, options, method, true);
     });
   },
   /**
@@ -266,45 +221,14 @@ const api = {
     let apis = this[key].split("/");
     data.createTime = new Date().getTime();
     data.createTimeStr = new Date().Format("YYYY-MM-DD HH:mm:ss");
-    return cloud(apis, data, loadingText);
-  },
-  /* *
-   * 环境切换
-   * 通过扫不同的环境变量 二维码达到切换环境的目的
-   * 1.type 存在，则按照tyep的值进行选择
-   * 2.type 不存在， env 存在，则按照 env 的值进行选择
-   * 3.type env 都不存在 使用默认环境
-   * */
-  changeENV(type, url, callBack) {
-    let envList = {
-      dev: "https://htmosdev.data4truth.com", // 开发环境
-      test: "https://htmostest.data4truth.com", // 测试环境
-      pord: "https://crmuat.cntpy.com", // 预发布
-      release: "https://crm.cntpy.com", // 正式环境
-    };
-    /******************打包环境******************/
-    var env = "release";
-    /******************打包环境******************/
-    if (env) {
-      host = envList[env];
-      if (!host && url) {
-        host = url;
-      }
-    } else {
-      host = "https://htmosdev.data4truth.com";
-    }
-    // 清楚控制台 日志
-    this.closeLog(env);
-    // #ifdef MP-WEIXIN
-    return host;
-    // #endif
+    return http.cloud(apis, data, loadingText);
   },
 
   /**
    * 关闭 线上 所有log日志
    * */
   closeLog(env) {
-    if (env == "release") console.log = () => { };
+    if (env == "release") console.log = () => {};
   },
 
   /**
@@ -315,9 +239,9 @@ const api = {
    */
   getWXQrcodeData() {
     return (
-      host + "/mos-webchatmall-server/api/platform/component/miniQrCodeGenerate"
+      http.baseURL +
+      "/mos-webchatmall-server/api/platform/component/miniQrCodeGenerate"
     );
   },
 };
-export var host = api.changeENV();
 export default api;

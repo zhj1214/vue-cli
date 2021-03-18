@@ -4,30 +4,26 @@
  * @Autor: zhj1214
  * @Date: 2021-03-04 15:53:53
  * @LastEditors: zhj1214
- * @LastEditTime: 2021-03-09 16:49:09
+ * @LastEditTime: 2021-03-18 21:24:35
 -->
 
 #  ht-applet
-用于开发恒太项目 模板小程序开发
-
-
+uni-app 项目框架
 ## 分支状态
 1.master 正式环境版本
-合并：feature_x_pord + feature_x_bug
-2.dev 测试分支
-合并：feature_x_pord + feature_x_bug + feature_x_feature
-3.feature_x_pord 预发布环境
-合并：dev + feature_x_bug
-4.feature_x
-合并：feature_x_pord 切出来开发
-5.feature_x_bug
-feature_x_pord(new)
+合并：release-2021xxxx
+2.feature-x.0 测试分支
+来源：release-20210318 -> feature-x.0 合并：feature-x.0-share-zhj -> feature-x.0
+3.release-x.0 预发布环境
+来源：release-20210318 -> release-x.0 合并：release-x.0-share-zhj -> release-x.0
+4.release-2021xxxx 上线版本分支
+来源：release-20210318 -> release-20210328 合并：release-20210328 + feature-x.0-share-zhj
 
 ###  当前基础库版本 2.6.0 (建议使用一年前版本，逐年递增)
 app.js 中有版本校验   管理后台也设置 2.6.0
 
-## 图片资源超过50kb统一使用 obs云存储获取链接使用
-图片资源超过50kb统一使用 obs云存储获取链接使用
+## 图片资源超过25kb统一使用 obs云存储获取链接使用
+图片资源超过25kb统一使用 obs云存储获取链接使用
 
 ## 小程序场景二维码规则
 小程序码传参规则：105_17503880_1
@@ -37,8 +33,7 @@ app.js 中有版本校验   管理后台也设置 2.6.0
 
 ###场景穷举
 1.兑换券逻辑
-2.渠道拉新 
-pages: /pages/index/index
+2.渠道拉新 pages: /pages/index/index
 3.大转盘游戏抽奖
 4.大转盘游戏抽奖 预览模式
 5.核销员绑定
@@ -62,7 +57,6 @@ param： 参数
 
 ### 小程序审核发布
 提供的测试账号: 账号：17521091214   密码：885566
-
 
 
 ### 环境

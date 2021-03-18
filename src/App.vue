@@ -15,7 +15,6 @@ import scene from "./utils/sceneManage";
 
 export default {
   globalData: {
-    isCurrentClockin: false // 默认没有点亮（多调用一次接口也没事）
   },
   onShow: function(options) {
     console.log(options, "____onShow");
@@ -33,8 +32,7 @@ export default {
   onLaunch: function(options) {
     console.log(options, "____onLaunch"); // 获取本地当前环境变量value
     this.globalData.onLaunchOptions = options;
-    this.globalData.pointName = "积分";
-    //手动初始化 uniCloud
+    // 手动初始化 uniCloud
     // const myCloud = uniCloud.init({
     // 	provider: 'tencent',
     // 	spaceId: 'zhj1214-525887',
@@ -83,8 +81,12 @@ export default {
       });
     }
   },
+  /**
+   * @description: 小程序进入后台
+   * @author: zhj1214
+   */
   onHide: function() {
-    // console.log('App Hide')
+    console.log('App Hide')
   },
   methods: {
     /**
@@ -104,7 +106,9 @@ export default {
         if (iphoneInfo.model.search("iPhone X") != -1) {
           this.isIPX = true;
         }
-        this.dynamicNetWorking();
+        this.dynamicNetWorking().then(()=>{
+          uni.$alert.showModal("网络异常", "请检查当前网络是否可用");
+        });
         this.userLogin();
         this.appIsUptate();
       } else {
@@ -124,7 +128,6 @@ export default {
     userLogin() {
       uni.login({
         success: (res) => {
-          // console.log(res, '微信login成功')
           if (!uni.$localStorage.getItem("userOpenId"))
             uni.$api
               .apiRequest("getOpenId", {
@@ -145,17 +148,15 @@ export default {
      * 动态监听 网络
      * */
     dynamicNetWorking: function() {
-      var promise = new Promise((resolve, reject) => {
+      return new Promise((resolve, reject) => {
         uni.onNetworkStatusChange(function(res) {
           if (res.networkType == "none" || res.networkType == "unknown") {
-            uni.$alert.showModal("网络异常", "请检查当前网络是否可用");
             reject(false);
           } else {
             resolve(true);
           }
         });
       });
-      return promise;
     },
     /**
      * 小程序更新操作
@@ -163,8 +164,7 @@ export default {
     appIsUptate: function() {
       const updateManager = uni.getUpdateManager();
       updateManager.onCheckForUpdate(function(res) {
-        // 请求完新版本信息的回调
-        // console.log("版本信息 是否需要更新 ：" + res.hasUpdate);
+        console.log("版本信息 是否需要更新 ：" + res.hasUpdate);// 请求完新版本信息的回调
       });
       updateManager.onUpdateReady(function() {
         uni.showModal({
@@ -173,15 +173,13 @@ export default {
           showCancel: false,
           success: function(res) {
             if (res.confirm) {
-              // 新的版本已经下载好，调用 applyUpdate 应用新版本并重启
-              updateManager.applyUpdate();
+              updateManager.applyUpdate(); // 新的版本已经下载好，调用 applyUpdate 应用新版本并重启
             }
           },
         });
       });
       updateManager.onUpdateFailed(function() {
-        // 新的版本下载失败
-        uni.$alert.showModal("更新提示", "新版本下载失败");
+        uni.$alert.showModal("更新提示", "新版本下载失败");// 新的版本下载失败
       });
     },
     // #endif

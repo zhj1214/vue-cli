@@ -10,103 +10,6 @@
     {
       "path": "pages/health/health"
     },
-    
-    
-    {
-      "path": "pages/landingPage/index"
-    },
-    {
-      "path": "pages/login/registered/registerednew"
-    },
-    {
-      "path": "pages/myCardCoupon/myCard/myCard"
-    },
-    {
-      "path": "pages/myCardCoupon/couponCenter/couponCenter",
-      "style": {
-        "navigationBarTitleText": "",
-        "enablePullDownRefresh": false
-      }
-    },
-    {
-      "path": "pages/myCardCoupon/myCoupon/myCoupon"
-    },
-    {
-      "path": "pages/verifier/codeVerifier"
-    },
-    {
-      "path": "pages/my/Logistics/updateLogistics/updateLogistics"
-    },
-    {
-      "path": "pages/verifier/codeVerifierFail"
-    },
-    {
-      "path": "pages/verifier/bindFail"
-    },
-    {
-      "path": "pages/login/registered/registered"
-    },
-    {
-      "path": "pages/settlement/settlement"
-    },
-    {
-      "path": "pages/index/switchMall/switchMall"
-    },
-    {
-      "path": "pages/myCardCoupon/myCard/myCardDetail"
-    },
-    {
-      "path": "pages/myCardCoupon/myCoupon/couponDetail"
-    },
-    {
-      "path": "pages/settlement/settlementSuccess"
-    },
-    {
-      "path": "pages/my/receiptAdress/receiptAdress"
-    },
-    {
-      "path": "pages/my/receiptAdress/receiptAdressAdd"
-    },
-    {
-      "path": "pages/my/myPage"
-    },
-    {
-      "path": "pages/commLottery/lotteryList"
-    },
-    {
-      "path": "pages/commLottery/circlenew"
-    },
-    {
-      "path": "pages/commLottery/my-prize"
-    },
-    {
-      "path": "pages/my/Logistics/openLogistics"
-    },
-    {
-      "path": "pages/my/integral/integralAll"
-    },
-    {
-      "path": "pages/my/growthList/growthList"
-    },
-    {
-      "path": "pages/my/integral/integral"
-    },
-    {
-      "path": "pages/login/login"
-    },
-    {
-      "path": "pages/login/protocol/index"
-    },
-    {
-      "path": "pages/login/updatePhone/updatePhone"
-    },
-    {
-      "path": "pages/login/phone/phone"
-    },
-    {
-      "path": "pages/cart/cart",
-      "enablePullDownRefresh": true
-    },
     {
       "path": "pages/all-goods/all-goods",
       "style": {
@@ -114,99 +17,11 @@
       }
     },
     {
-      "path": "pages/my/userQrcode/userQrcode"
+      "path": "pages/cart/cart",
+      "enablePullDownRefresh": true
     },
     {
-      "path": "pages/index/goods-search/goods-search",
-      "style": {
-        "navigationBarTitleText": "搜索好物",
-        "enablePullDownRefresh": false
-      }
-    },
-    {
-      "path": "pages/index/goods-search/goods-search-result",
-      "style": {
-        "navigationBarTitleText": "搜索好物",
-        "enablePullDownRefresh": true
-      }
-    },
-    {
-      "path": "pages/index/group/detail-list",
-      "style": {
-        "navigationBarTitleText": "分组详情",
-        "enablePullDownRefresh": true
-      }
-    },
-    {
-      "path": "pages/index/store/exchange",
-      "style": {
-        "navigationBarTitleText": "切换商场"
-      }
-    },
-    {
-      "path": "pages/goods/detail",
-      "style": {
-        "navigationBarTitleText": "商品详情"
-      }
-    },
-    {
-      "path": "pages/group/list",
-      "style": {
-        "navigationBarTitleText": "分组列表"
-      }
-    },
-    {
-      "path": "pages/cart/cartItem",
-      "style": {
-        "navigationBarTitleText": "",
-        "enablePullDownRefresh": false
-      }
-    },
-    {
-      "path": "pageComponents/priceAndPoint/priceAndPoint",
-      "style": {
-        "navigationBarTitleText": "",
-        "enablePullDownRefresh": false
-      }
-    },
-    {
-      "path": "pages/verifier/isVerifier"
-    },
-    {
-      "path": "pages/verifier/bindSuccess"
-    },
-    {
-      "path": "pages/verifier/verifier",
-      "style": {
-        "navigationBarTitleText": "",
-        "enablePullDownRefresh": false
-      }
-    },
-    {
-      "path": "pages/verifier/voucherVerification"
-    },
-    {
-      "path": "pages/myCardCoupon/myCardCoupon"
-    },
-    {
-      "path": "pages/myCardCoupon/couponCenter/couponCenterDetail",
-      "style": {
-        "navigationBarTitleText": "",
-        "enablePullDownRefresh": false
-      }
-    },
-    {
-      "path": "pageComponents/deliveryMethod/deliveryMethod",
-      "style": {
-        "navigationBarTitleText": "",
-        "enablePullDownRefresh": false
-      }
-    },
-    {
-      "path": "pages/my/memberLevel/personnalInfo"
-    },
-    {
-      "path": "pages/my/memberLevel/customizeCard"
+      "path": "pages/my/myPage"
     }
   ],
   "subPackages": [
@@ -214,190 +29,13 @@
       "root": "pagesA",
       "pages": [
         {
-          "path": "order/order"
-        },
-        {
-          "path": "scanReciiveCoupons/index"
-        },
-        {
-          "path": "order/cell/order_cell"
-        },
-        {
-          "path": "order/Chargeback/chargeback"
-        },
-        {
-          "path": "order/orderRefund/orderRefund"
-        },
-        {
-          "path": "order/Chargeback/chargebackApplication"
-        },
-        {
-          "path": "order/negotiationHistory/negotiationHistory"
-        },
-        {
           "path": "out/out"
-        },
-        {
-          "path": "out/parsePage"
-        },
-        {
-          "path": "order/order-detail/order-detail"
-        },
-        {
-          "path": "loading/loading",
-          "style": {
-            "navigationBarTitleText": "跳转中..."
-          }
-        },
-        {
-          "path": "loading/updating",
-          "style": {
-            "navigationBarTitleText": "维护建设中..."
-          }
-        },
-        {
-          "path": "shop/home",
-          "style": {
-            "navigationBarTitleText": "店铺首页"
-          }
-        },
-        {
-          "path": "shop/all-goods",
-          "style": {
-            "navigationBarTitleText": "全部商品",
-            "onReachBottomDistance": 20
-          }
-        },
-        {
-          "path": "shop/categories",
-          "style": {
-            "navigationBarTitleText": "商品分类",
-            "enablePullDownRefresh": true,
-            "onReachBottomDistance": 20
-          }
-        },
-        {
-          "path": "shop/category-detail"
-        },
-        {
-          "path": "shop/coupons-activities",
-          "style": {
-            "navigationBarTitleText": "活动优惠"
-          }
-        },
-        {
-          "path": "shop/brand",
-          "style": {
-            "navigationBarTitleText": "店铺品牌"
-          }
-        },
-        {
-          "path": "shop/brand-detail",
-          "style": {
-            "navigationBarTitleText": "品牌下全部商品",
-            "enablePullDownRefresh": true
-          }
-        },
-        {
-          "path": "self-integral/entry",
-          "style": {
-            "navigationBarTitleText": "自助积分"
-          }
-        },
-        {
-          "path": "self-integral/list",
-          "style": {
-            "navigationBarTitleText": "自助积分记录"
-          }
-        },
-        {
-          "path": "self-integral/detail",
-          "style": {
-            "navigationBarTitleText": "自助积分记录"
-          }
-        },
-        {
-          "path": "self-integral/success",
-          "style": {
-            "navigationBarTitleText": "拍照积分"
-          }
-        },
-        {
-          "path": "activity/activityList",
-          "style": {
-            "enablePullDownRefresh": true
-          }
-        },
-        {
-          "path": "activity/activityDetail"
-        },
-        {
-          "path": "activity/signOk"
-        },
-        {
-          "path": "activity/signFail"
-        },
-        {
-          "path": "myCenter/myReceipt/index"
-        },
-        {
-          "path": "myCenter/myReceipt/receiptDetail"
-        },
-        {
-          "path": "myCenter/checkIn/index"
-        }
-      ]
-    },
-    {
-      "root": "pagesParking",
-      "pages": [
-        {
-          "path": "home/index"
-        },
-        {
-          "path": "payPark/index"
-        },
-        {
-          "path": "licensePlateManagement/index"
-        },
-        {
-          "path": "parkingRecord/index"
-        },
-        {
-          "path": "paymentResult/index"
-        },
-        {
-          "path": "bindLicensePlate/index"
         }
       ]
     }
   ],
   "preloadRule": {
-    "pagesA/activity/activityList": {
-      "network": "all",
-      "packages": [
-        "__APP__"
-      ]
-    },
-    "pagesA/activity/activityDetail": {
-      "network": "all",
-      "packages": [
-        "__APP__"
-      ]
-    },
-    "pagesA/order/order": {
-      "network": "all",
-      "packages": [
-        "__APP__"
-      ]
-    },
-    "pagesA/order/order-detail/order-detail": {
-      "network": "all",
-      "packages": [
-        "__APP__"
-      ]
-    },
-    "pagesA/self-integral/entry": {
+    "pagesA/out/out": {
       "network": "all",
       "packages": [
         "__APP__"
@@ -407,7 +45,7 @@
   "globalStyle": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "恒太荟",
+    "navigationBarTitleText": "xx小程序",
     "navigationBarTextStyle": "black",
     "navigationStyle": "custom",
     "backgroundColor": "#F8F8F8",
