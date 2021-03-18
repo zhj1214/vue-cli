@@ -1,0 +1,104 @@
+/* miniprogram/pages/my/Logistics/updateLogistics/updateLogistics.wxss */
+
+.updateLogistics {
+  height: 100vh;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0rpx 28rpx;
+  height: 88rpx;
+  margin: 32rpx;
+  border: 1rpx solid #BFBFBF;
+}
+
+.item-title {
+  font-size: 28rpx;
+  font-family: PingFangSC-Light, PingFang SC;
+  font-weight: 300;
+  color: rgba(69, 69, 69, 1);
+}
+
+.xh {
+  font-size: 28rpx;
+  font-family: SFUIDisplay-Light, SFUIDisplay;
+  font-weight: 300;
+  color: rgba(255, 87, 91, 1);
+  margin-right:6rpx;
+}
+
+.item-r {
+  display: flex;
+  align-items: center;
+}
+
+.item-r-title {
+  font-size: 28rpx;
+  font-family: PingFangSC-Light, PingFang SC;
+  font-weight: 300;
+  color: rgba(191, 191, 191, 1);
+  text-align: right;
+}
+/* 弹框 */
+
+.pop-toolBar {
+  padding: 32rpx 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pop-toolBar-title {
+  font-size: 32rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+}
+
+.pop-field {
+  height: 60rpx;
+  margin: 32rpx 60rpx 0px 60rpx;
+  border-bottom: 1rpx solid #c8c8c8;
+}
+.van-picker__toolbar {
+  display: none !important;
+}
+
+/* 提交 */
+
+.btnView {
+  position: fixed;
+  width: 100vw;
+  bottom: 0rpx;
+  height: 168rpx;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0rpx 20rpx 60rpx 0rpx rgba(0, 0, 0, 0.15);
+}
+
+.btnView-Title {
+  margin: 0px 32rpx;
+  height: 80rpx;
+  background: rgba(219, 182, 120, 1);
+  border-radius: 8rpx;
+  font-size: 28rpx;
+  font-family: SFUIDisplay-Medium, SFUIDisplay;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  line-height: 80rpx;
+  text-align: center;
+  margin-top: 20rpx;
+}
+.btnView-Title-no {
+  margin: 0px 32rpx;
+  height: 80rpx;
+  background: #BFBFBF;
+  border-radius: 8rpx;
+  font-size: 28rpx;
+  font-family: SFUIDisplay-Medium, SFUIDisplay;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  line-height: 80rpx;
+  text-align: center;
+  margin-top: 20rpx;
+}

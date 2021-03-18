@@ -1,0 +1,131 @@
+/* miniprogram/pages/my/my-order/negotiationHistory/negotiationHistory.wxss */
+
+.view {
+  background-color: white;
+  min-height: 100vh;
+}
+
+/* 退款商品 */
+
+.refundGoods {
+  padding: 0rpx 32rpx;
+  border-bottom: 20rpx solid #fafafa;
+}
+
+.refundGoods-header {
+  height: 100rpx;
+  font-size: 28rpx;
+  font-family: SFUIDisplay-Medium, SFUIDisplay;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 1);
+  line-height: 100rpx;
+  border-bottom: 1rpx solid #e5e5e5;
+}
+
+.refundGoods-item {
+  display: flex;
+  margin: 40rpx 0;
+}
+
+.refundGoods-item-img {
+  width: 148rpx;
+  height: 148rpx;
+  background: #f8faf9;
+}
+
+.refundGoods-item-info {
+  flex: 1;
+  margin-left: 24rpx;
+  justify-content: space-between;
+  flex-direction: column;
+  display: flex;
+}
+
+.refundGoods-item-info-content {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.refundGoods-item-title {
+  margin-bottom: 10rpx;
+  font-size: 26rpx;
+  font-weight: 500;
+  color: #475774;
+  line-height: 32rpx;
+}
+
+.refundGoods-item-desc {
+  font-size: 22rpx;
+  color: #808794;
+  line-height: 30rpx;
+}
+
+.refundGoods-item-r {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* 协商历史 */
+
+.negotiationHistory {
+  padding: 0rpx 32rpx;
+  border-bottom: 20rpx solid #fafafa;
+}
+
+/* 时间轴 */
+
+.timeLine {
+  padding: 20rpx 0rpx;
+  overflow: hidden;
+}
+
+.timeLine-time {
+  min-width: 165rpx;
+  height: 44rpx;
+  margin-left: 20rpx;
+  font-size: 20rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: rgba(94, 94, 94, 1);
+}
+
+.timeLine-content {
+  min-width: 330rpx;
+  margin-left: 20rpx;
+  padding: 32rpx;
+  background: #f6f6f6;
+  box-shadow: 12rpx 24rpx 15rpx 0rpx rgba(148, 171, 196, 0.06);
+  border-radius: 6rpx;
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: #a4a4a4;
+}
+
+.timeLine-content-t {
+  color: #393939;
+  margin-bottom: 10rpx;
+}
+
+.xsimgViewbg {
+  display: flex;
+  align-items: flex-start;
+}
+
+.xsimgView {
+  display: flex;
+  align-items: center;
+}
+
+.xsImg {
+  width: 83rpx;
+  height: 83rpx;
+}
+
+.linsSpace-top {
+  padding: 7rpx 0rpx;
+}
+.linsSpace-right {
+  margin-right: 10rpx;
+}

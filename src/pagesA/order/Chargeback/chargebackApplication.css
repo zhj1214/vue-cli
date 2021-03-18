@@ -1,0 +1,332 @@
+/* miniprogram/pages/my/my-order/Chargeback/chargebackApplication.wxss */
+
+/* <!-- 是否退货 --> */
+
+.view {
+  height: 86vh;
+  overflow: hidden;
+  overflow-y: scroll;
+  background-color: white;
+}
+
+.returnsView {
+  padding: 0rpx 32rpx;
+  border-bottom: 20rpx solid #fafafa;
+}
+
+.returnsView-title {
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 28rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 1);
+  border-bottom: 1rpx solid #e5e5e5;
+}
+
+.returnsView-tool {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 40rpx 0rpx;
+}
+
+.returnsView-btn {
+  width: 306rpx;
+  height: 100rpx;
+  border-radius: 18rpx;
+  text-align: center;
+  line-height: 100rpx;
+  border: 1rpx solid #d2d2d2;
+}
+
+.returnsView-btn-select {
+  border: 1rpx solid rgba(255, 89, 95, 1);
+}
+
+.returnsView-btn-img {
+  width: 34rpx;
+  height: 34rpx;
+}
+
+/* 退款商品 */
+
+.refundGoods {
+  padding: 0rpx 32rpx;
+  border-bottom: 20rpx solid #fafafa;
+}
+
+.refundGoods-header {
+  height: 100rpx;
+  font-size: 28rpx;
+  font-family: SFUIDisplay-Medium, SFUIDisplay;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 1);
+  line-height: 100rpx;
+  border-bottom: 1rpx solid #e5e5e5;
+}
+
+.refundGoods-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 40rpx 0rpx;
+}
+
+.refundGoods-item-l {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.refundGoods-item-img {
+  width: 148rpx;
+  height: 148rpx;
+}
+
+.refundGoods-item-info {
+  flex: 1;
+  margin-left: 20rpx;
+}
+
+.refundGoods-item-title {
+  font-size: 26rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: #475774;
+  
+}
+
+.refundGoods-item-desc {
+font-size: 24rpx;
+font-family: DINAlternate-Bold, DINAlternate;
+font-weight: bold;
+color: #475774;
+}
+.refundGoods-item-value {
+  font-size: 36rpx;
+  font-family: DINAlternate-Bold, DINAlternate;
+  font-weight: bold;
+  color: #1e273f;
+}
+/* 申请退款 */
+
+.requestRefund {
+  padding: 0rpx 32rpx 32rpx 32rpx;
+  border-bottom: 20rpx solid #fafafa;
+}
+
+.requestRefund-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0rpx 28rpx;
+  height: 88rpx;
+  margin-top: 30rpx;
+  border-bottom: 1rpx solid #D8D8D8;
+  border-radius: 8rpx;
+}
+
+.requestRefund-item-title {
+  font-size: 28rpx;
+  font-family: PingFangSC-Light, PingFang SC;
+  font-weight: 300;
+  color: rgba(69, 69, 69, 1);
+  display: flex;
+  align-items: center;
+}
+
+.xh {
+  font-size: 28rpx;
+  font-family: SFUIDisplay-Light, SFUIDisplay;
+  font-weight: 300;
+  color: rgba(255, 87, 91, 1);
+  margin-right: 6rpx;
+}
+
+.requestRefund-item-r {
+  display: flex;
+  align-items: center;
+}
+
+.requestRefund-item-r-title {
+  font-size: 28rpx;
+  font-family: PingFangSC-Light, PingFang SC;
+  font-weight: 300;
+  color: rgba(191, 191, 191, 1);
+  text-align: right;
+}
+
+/* 弹框 */
+
+.pop-toolBar {
+  padding: 32rpx 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pop-toolBar-title {
+  font-size: 32rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+}
+
+.pop-field {
+  height: 60rpx;
+  margin: 32rpx 60rpx 0px 60rpx;
+  border-bottom: 1rpx solid #c8c8c8;
+}
+
+.van-picker__toolbar {
+  display: none !important;
+}
+
+/* 提交 */
+
+.btnView {
+  position: fixed;
+  width: 100vw;
+  bottom: 0rpx;
+  height: 168rpx;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0rpx 20rpx 60rpx 0rpx rgba(0, 0, 0, 0.15);
+}
+
+.btnView-Title {
+  margin: 0px 32rpx;
+  height: 80rpx;
+  background:#FE5D4D;
+  border-radius: 8rpx;
+  font-size: 28rpx;
+  font-family: SFUIDisplay-Medium, SFUIDisplay;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  line-height: 80rpx;
+  text-align: center;
+  margin-top: 20rpx;
+}
+
+.btnView-Title-no {
+  margin: 0px 32rpx;
+  height: 80rpx;
+  background: #bfbfbf;
+  border-radius: 8rpx;
+  font-size: 28rpx;
+  font-family: SFUIDisplay-Medium, SFUIDisplay;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  line-height: 80rpx;
+  text-align: center;
+  margin-top: 20rpx;
+}
+
+/* 建议 */
+
+.suggestView {
+  text-align: right;
+  margin-top: 12rpx;
+  height: 33rpx;
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: rgba(202, 202, 202, 1);
+  line-height: 33rpx;
+}
+
+/* textareaView */
+.textareaTextView {
+  width: 100%;
+  padding: 22rpx 28rpx;
+  height: 176rpx;
+  border-radius: 8rpx;
+  margin-top: 20rpx;
+  border: 1rpx solid rgba(191, 191, 191, 1);
+  overflow-y: auto;
+  word-break: break-all;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+.textareaTextView-text {
+  font-size: 28rpx;
+  font-family: PingFangSC-Light, PingFang SC;
+  font-weight: 300;
+  color: rgba(191, 191, 191, 1);
+}
+
+.textareaView {
+  width: 622rpx;
+  padding: 22rpx 28rpx;
+  height: 176rpx;
+  border-radius: 8rpx;
+  margin-top: 20rpx;
+  border: 1rpx solid rgba(191, 191, 191, 1);
+}
+
+.refundDescription {
+  font-size: 28rpx;
+  font-family: PingFangSC-Light, PingFang SC;
+  font-weight: 300;
+  color: rgba(191, 191, 191, 1);
+}
+
+/* 上传凭证 */
+
+.certificate {
+  padding: 0rpx 32rpx 60rpx 32rpx;
+  border-bottom: 20rpx solid #fafafa;
+}
+
+.certificateList {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.certificate-item {
+  width: 110rpx;
+  height: 110rpx;
+  margin: 34rpx -5rpx 0rpx 0rpx;
+}
+
+.certificate-item-delete {
+  width: 32rpx;
+  height: 32rpx;
+  position: relative;
+  top: -90rpx;
+  right: 17rpx;
+}
+
+.van-uploader__preview {
+  display: flex;
+  align-items: flex-end;
+  margin: 0 8px 4px 0 !important;
+}
+
+.van-uploader__preview-delete {
+  top: 20rpx !important;
+  right: -8rpx !important;
+}
+
+/* 提示信息 */
+.contentView {
+  padding: 40rpx;
+}
+
+.contentView-text0 {
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: rgba(49, 49, 49, 1);
+}
+
+.contentView-text1 {
+  margin-top: 40rpx;
+  font-size: 24rpx;
+  font-family: PingFangSC-Light, PingFang SC;
+  font-weight: 300;
+  color: rgba(127, 127, 127, 1);
+  line-height: 44rpx;
+}

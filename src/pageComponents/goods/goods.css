@@ -1,0 +1,116 @@
+/* components/goods/goods.wxss */
+@import "/style/style.css";
+
+.selled-out {
+	border-radius: 24rpx;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.62);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 6;
+}
+
+.selled-out-text {
+	display: block;
+	border-radius: 50%;
+	width: 120rpx;
+	height: 120rpx;
+	background: rgba(0, 0, 0, 0.5);
+	font-size: 32rpx;
+	font-family: PingFangSC-Light;
+	font-weight: 300;
+	color: rgba(255, 255, 255, 1);
+	line-height: 120rpx;
+	text-align: center;
+}
+
+/* 商品新样式 */
+.goodsItemView {
+	margin-bottom: -20rpx;
+}
+
+.goodsItem-imgbg {
+	border-radius: 24rpx;
+	background: rgba(249, 244, 239, 1);
+	position: relative;
+}
+
+.goodsItem-img {
+	width: 328rpx;
+	height: 388rpx;
+}
+
+.goodsItem-img-jg {
+	width: 40rpx;
+	height: 40rpx;
+	position: absolute;
+	background-color: white;
+	top: 24rpx;
+	right: 24rpx;
+}
+
+.goodsItem-infoView {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	top: -60rpx;
+	z-index: 99;
+}
+
+.goodsItem-info {
+	/* width: 301rpx; */
+	height: 158rpx;
+	background: rgba(255, 255, 255, 1);
+	box-shadow: 0rpx 12rpx 24rpx 0rpx rgba(89, 89, 89, 0.07);
+	border-radius: 28rpx;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: center;
+	padding: 0rpx 20rpx;
+	max-width: 261rpx;
+}
+
+.goodsItem-info-title {
+	font-size: 24rpx;
+	font-family: PingFangSC-Medium, PingFang SC;
+	font-weight: 500;
+	color: rgba(51, 66, 94, 1);
+}
+
+.goodsItem-info-desc {
+	margin-top: 8rpx;
+	font-size: 20rpx;
+	font-family: PingFangSC-Light, PingFang SC;
+	font-weight: 300;
+	color: rgba(188, 192, 200, 1);
+}
+
+.goodsItem-info-price {
+	margin-top: 16rpx;
+	font-size: 36rpx;
+	font-family: PingFangSC-Semibold, PingFang SC;
+	font-weight: 600;
+	color: rgba(255, 68, 41, 1);
+}
+
+.goodsItem-info-jg {
+	position: relative;
+	width: 64rpx;
+	height: 56rpx;
+	background: rgba(243, 195, 146, 1);
+	box-shadow: 0rpx 12rpx 24rpx 0rpx rgba(243, 195, 146, 0.23);
+	border-radius: 18rpx;
+	top: -85rpx;
+	left: 260rpx;
+}
+
+.goodsItem-info-jg-img {
+	width: 56rpx;
+	height: 56rpx;
+}

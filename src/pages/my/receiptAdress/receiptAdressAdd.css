@@ -1,0 +1,95 @@
+/* pages/my/receiptAdress/receiptAdressAdd.wxss */
+
+.view {}
+
+.item {
+	display: flex;
+	align-items: center;
+	margin: 0px 20px;
+	min-height: 104rpx;
+	border-bottom: 1rpx solid #EDEDED;
+}
+
+.item-title {
+	width: 190rpx;
+	text-align: left;
+	font-size: 14px;
+	font-family: PingFangSC-Regular, PingFang SC;
+	font-weight: 400;
+	color: #404040;
+}
+
+.item-required {
+	font-size: 28rpx;
+	font-family: PingFangSC-Medium, PingFang SC;
+	font-weight: 500;
+	color: rgba(255, 71, 88, 1);
+}
+
+.item-input {
+	margin-left: 38rpx;
+	font-size: 28rpx;
+
+}
+
+.item-img {
+	width: 40rpx;
+	height: 40rpx;
+	margin-left: 38rpx;
+}
+
+.van-picker__toolbar {
+	display: none !important;
+}
+
+.pop-toolBar {
+	padding: 32rpx 40rpx;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.pop-toolBar-title {
+	font-size: 32rpx;
+	font-family: PingFangSC-Medium, PingFang SC;
+	font-weight: 500;
+}
+
+/* 保存 */
+
+.btnView {
+	position: fixed;
+	width: 100vw;
+	bottom: 0rpx;
+	height: 168rpx;
+	background: rgba(255, 255, 255, 1);
+	box-shadow: 0rpx 20rpx 60rpx 0rpx rgba(0, 0, 0, 0.15);
+}
+
+.btnView-Title {
+	margin: 0px 32rpx;
+	height: 80rpx;
+	background: #FE5D4D;
+	border-radius: 8rpx;
+	font-size: 28rpx;
+	font-family: SFUIDisplay-Medium, SFUIDisplay;
+	font-weight: 500;
+	color: rgba(255, 255, 255, 1);
+	line-height: 80rpx;
+	text-align: center;
+	margin-top: 20rpx;
+}
+
+.btnView-Title-no {
+	margin: 0px 32rpx;
+	height: 80rpx;
+	background: #BFBFBF;
+	border-radius: 8rpx;
+	font-size: 28rpx;
+	font-family: SFUIDisplay-Medium, SFUIDisplay;
+	font-weight: 500;
+	color: rgba(255, 255, 255, 1);
+	line-height: 80rpx;
+	text-align: center;
+	margin-top: 20rpx;
+}

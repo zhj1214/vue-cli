@@ -1,0 +1,152 @@
+/* miniprogram/pages/my/my-order/Evaluation/evaluation.wxss */
+@import "/style/style.css";
+
+.view {
+  background-color: #FAFAFA;
+  overflow-y: scroll;
+  padding-bottom: 180rpx;
+}
+
+.evaluationView {
+  padding-bottom: 20rpx;
+  background-color: white;
+}
+
+.goods {
+  display: flex;
+  align-items: center;
+  padding: 0px 32rpx;
+  border-bottom: 20rpx solid #FAFAFA;
+}
+
+.goods-img {
+  width: 148rpx;
+  height: 148rpx;
+}
+
+.goodsInfo {
+  display: flex;
+  flex-direction: column;
+  margin-left: 24rpx;
+}
+
+.goodsInfo-title {
+  font-size: 28rpx;
+  font-family: PingFangSC-Light, PingFang SC;
+  font-weight: 300;
+  color: rgba(0, 0, 0, 1);
+}
+
+.goodsInfo-desc {
+  margin-top: 12rpx;
+  font-size: 24rpx;
+  font-family: PingFangSC-Light, PingFang SC;
+  font-weight: 300;
+  color: rgba(64, 64, 64, 1);
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.description-text {
+  margin-top: 16rpx;
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: rgba(254, 199, 33, 1);
+}
+
+
+/* 上传凭证 */
+
+.certificate {
+  padding: 0rpx 32rpx;
+}
+
+.certificateList {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.certificate-item {
+  width: 150rpx;
+  height: 150rpx;
+  margin: 34rpx -5rpx 0rpx 0rpx;
+}
+
+.certificate-item-delete {
+  width: 32rpx;
+  height: 32rpx;
+  position: relative;
+  top: -90rpx;
+  right: 17rpx;
+}
+
+.van-uploader__preview {
+  display: flex;
+  align-items: flex-end;
+  margin: 0 8px 4px 0 !important;
+}
+
+.van-uploader__preview-delete {
+  top: 20rpx !important;
+  right: -8rpx !important;
+}
+
+/* 匿名 */
+.anonymousView {
+  margin-top: 10rpx;
+  display: flex;
+  align-items: center;
+}
+
+.anonymous {
+  width: 32rpx;
+  height: 32rpx;
+  border-radius: 4rpx;
+  border: 1rpx solid rgba(191, 191, 191, 1);
+}
+
+.anonymous-text {
+  margin-left: 10rpx;
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: rgba(49, 49, 49, 1);
+}
+
+.bottomPjView {
+  border-top: 20rpx solid #FAFAFA;
+  background-color: white;
+}
+
+/* 提交 */
+
+.btnView {
+  position: fixed;
+  width: 100vw;
+  bottom: 0rpx;
+  height: 168rpx;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0rpx 20rpx 60rpx 0rpx rgba(0, 0, 0, 0.15);
+}
+
+.btnView-Title {
+  margin: 0px 32rpx;
+  height: 80rpx;
+  background: #FEC721;
+  border-radius: 8rpx;
+  font-size: 28rpx;
+  font-family: SFUIDisplay-Medium, SFUIDisplay;
+  font-weight: 500;
+  color: #313131;
+  line-height: 80rpx;
+  text-align: center;
+  margin-top: 20rpx;
+}

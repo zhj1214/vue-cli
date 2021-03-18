@@ -1,0 +1,94 @@
+.parking-record {
+  background: #f6f6f6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  .content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    .banner {
+      height: 90px;
+      width: 100%;
+    }
+    .no-data {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    /* 记录数据 begin */
+    .record-list {
+      margin: 0 15px 10px;
+      @include parking-block();
+      .title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 10px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        > view {
+          font: 500 20px/28px "PingFangSC-Medium, PingFang SC";
+          color: #262626;
+        }
+        image {
+          width: 10px;
+          height: 12px;
+          margin-right: 6px;
+          vertical-align: middle;
+        }
+        text {
+          font: 400 12px/28px "PingFangSC-Regular, PingFang SC";
+          color: #444444;
+        }
+      }
+      .info {
+        .info-content {
+          display: flex;
+          justify-content: space-between;
+          margin: 12px 0;
+          view:first-child {
+            font: 13px/18px "PingFangSC-Regular, PingFang SC";
+            color: #a2a2a2;
+            width: 80px;
+            margin-right: 20px;
+          }
+          view:last-child {
+            font-size: 500 13px/18px "PingFangSC-Medium, PingFang SC";
+            color: #444444;
+            width: 230px;
+            text-align: right;
+            word-wrap: break-word;
+          }
+        }
+      }
+      .money {
+        padding-top: 12px;
+        border-top: 1px solid rgba(0, 0, 0, 0.05);
+        view {
+          display: flex;
+          justify-content: flex-end;
+        }
+        .actual-payment {
+          text:nth-of-type(1) {
+            font: 500 14px/20px "PingFangSC-Medium, PingFang SC";
+            color: #444444;
+            margin-right: 8px;
+          }
+          text:nth-of-type(2) {
+            font: 500 14px/20px "PingFangSC-Medium, PingFang SC";
+            color: #fe5d4d;
+          }
+        }
+        view:nth-of-type(2) {
+          font: 10px/14px "PingFangSC-Regular, PingFang SC";
+          color: #919191;
+          text:nth-of-type(1) {
+            margin-right: 10px;
+          }
+        }
+      }
+    }
+    /* 记录数据 end */
+  }
+}

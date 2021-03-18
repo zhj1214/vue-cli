@@ -1,0 +1,180 @@
+/* pages/my/receiptAdress/receiptAdress.wxss */
+page {
+  background-color: #fafafa;
+}
+
+.view {
+  background-color: #fafafa;
+}
+
+.adressViewbg {
+  overflow-y: scroll;
+  height: calc(100vh - 300rpx);
+}
+
+.adressView {
+  padding: 48rpx 58rpx;
+  border-bottom: 1rpx solid #ededed;
+}
+
+.adressView-info {
+  padding-bottom: 40rpx;
+  border-bottom: 1rpx solid #ededed;
+}
+
+.adressView-info-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 28rpx;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+  color: rgba(31, 31, 31, 1);
+}
+
+.adressView-info-adress {
+  margin-top: 16rpx;
+  display: flex;
+  align-items: center;
+  font-size: 22rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: rgba(31, 31, 31, 1);
+}
+
+.adressView-info-adress-img-select {
+  width: 30rpx;
+  height: 30rpx;
+  padding: 8rpx;
+  border-radius: 50%;
+  background-color: #fe5d4d;
+}
+
+.adressView-info-adress-img-noram {
+  width: 30rpx;
+  height: 30rpx;
+  border-radius: 50%;
+  border: 1rpx solid #bfbfbf;
+}
+
+.adressView-info-adress-img {
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.aderss-tool {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 18rpx;
+}
+
+.aderss-tool-select {
+  display: flex;
+  align-items: center;
+}
+
+.adressView-info-adress-default {
+  width: 76rpx;
+  height: 38rpx;
+  background: rgba(243, 195, 146, 1);
+  border-radius: 4rpx;
+  font-size: 22rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
+  text-align: center;
+}
+
+.adressView-info-adress-title {
+  margin-left: 18rpx;
+  font-size: 22rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: rgba(102, 102, 102, 1);
+}
+
+/* 新增 */
+
+.btnView {
+  position: fixed;
+  width: 100vw;
+  bottom: 0rpx;
+  height: 168rpx;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0rpx 20rpx 60rpx 0rpx rgba(0, 0, 0, 0.15);
+}
+
+.btnView-Title {
+  margin: 0px 32rpx;
+  height: 80rpx;
+  background: #fe5d4d;
+  border-radius: 8rpx;
+  font-size: 28rpx;
+  font-family: SFUIDisplay-Medium, SFUIDisplay;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  line-height: 80rpx;
+  text-align: center;
+  margin-top: 20rpx;
+}
+
+/* 弹框 */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1rpx solid #ededed;
+}
+
+.headerPadding {
+  padding: 28rpx 39rpx;
+}
+
+.header-title {
+  font-size: 28rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: rgba(46, 46, 46, 1);
+}
+
+.content {
+  margin: 48rpx 39rpx;
+  font-size: 28rpx;
+  font-family: PingFangSC-Light, PingFang SC;
+  font-weight: 300;
+  color: rgba(127, 127, 127, 1);
+}
+
+.bottomView {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bottomView-title {
+  font-size: 32rpx;
+  font-family: SFUIDisplay-Light, SFUIDisplay;
+  font-weight: 300;
+  margin: 0px 10rpx;
+}
+
+.canle {
+  line-height: 84rpx;
+  width: 227rpx;
+  height: 84rpx;
+  border-radius: 8rpx;
+  border: 1rpx solid rgba(127, 127, 127, 1);
+  background: rgba(255, 255, 255, 1);
+  text-align: center;
+}
+
+.ok {
+  line-height: 84rpx;
+  text-align: center;
+  width: 227rpx;
+  height: 84rpx;
+  background: #fe5d4d;
+  border-radius: 8rpx;
+}

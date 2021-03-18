@@ -1,0 +1,121 @@
+/* pages/my/Logistics/Logistics.wxss */
+
+.view {
+  background-color: white;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 130rpx;
+  padding: 0px 40rpx;
+}
+
+.header-title {
+  font-size: 38rpx;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+  color: rgba(55, 55, 55, 1);
+}
+
+.header-status {
+  padding: 0rpx 20rpx;
+  height: 44rpx;
+  background: rgba(159, 227, 110, 0.38);
+  border-radius: 8rpx;
+  font-size: 20rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: rgba(84, 156, 32, 1);
+  line-height: 44rpx;
+  text-align: center;
+}
+
+/* 时间轴 */
+
+.timeLine {
+  padding: 0rpx 40rpx;
+}
+
+.timeLine-timebg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timeLine-time {
+  min-width: 125rpx;
+  margin-right: 12rpx;
+  font-size: 20rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: rgba(94, 94, 94, 1);
+  text-align: right;
+}
+
+.timeLine-content {
+  min-width: 330rpx;
+  margin-left: 20rpx;
+  padding: 32rpx;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 12rpx 24rpx 15rpx 0rpx rgba(148, 171, 196, 0.06);
+  border-radius: 6rpx;
+  border: 1rpx solid rgba(213, 230, 238, 1);
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: rgba(104, 114, 136, 1);
+}
+
+/* 展示更多 */
+
+.timeLineMore {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60rpx;
+  padding-bottom: 40rpx;
+  border-bottom: 20rpx solid #f7f7f7;
+}
+
+.timeLineMore-text {
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: rgba(104, 114, 136, 1);
+}
+
+/* 物流信息 */
+
+.timeLineBottom {
+  padding: 40rpx;
+}
+
+.timeLineBottom-header {
+  font-size: 38rpx;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+  color: rgba(55, 55, 55, 1);
+  margin-bottom: 15rpx;
+}
+
+.timeLineBottom  .item {
+  display: flex;
+  align-items: center;
+  margin-top: 12rpx;
+}
+
+.timeLineBottom  .item .text {
+  font-size: 28rpx;
+  font-family: SFUIDisplay-Light, SFUIDisplay;
+  font-weight: 300;
+  color: rgba(127, 127, 127, 1);
+}
+
+.timeLineBottom  .item .value {
+  font-size: 28rpx;
+  font-family: SFUIDisplay-Light, SFUIDisplay;
+  font-weight: 300;
+  color: rgba(0, 0, 0, 1);
+}

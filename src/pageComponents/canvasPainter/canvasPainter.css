@@ -1,0 +1,86 @@
+/* components/canvasPainter/canvasPainter.wxss */
+
+.share-back {
+  position:fixed;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 5000;
+}
+
+.share-wrap {
+  width: 100vw;
+  height: 100vh;
+  overflow-y: scroll;
+
+}
+
+
+.share-container {
+  padding: 180rpx 0px 40rpx 0px;
+  height: 100%;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.share-image {
+  width: 668rpx;
+  display: block;
+  border-radius: 8rpx;
+}
+
+.close {
+  width: 30rpx;
+  height: 30rpx;
+  overflow: hidden;
+  position: absolute;
+  right: 64rpx;
+  top: 64rpx;
+}
+
+.close::after {
+  transform: rotate(-45deg);
+}
+
+.close::before {
+  transform: rotate(45deg);
+}
+
+.close::before,
+.close::after {
+  content: '';
+  position: absolute;
+  height: 3rpx;
+  width: 100%;
+  top: 50%;
+  left: 0;
+  margin-top: -2rpx;
+  background: #9C9C9C;
+}
+
+.save-btn {
+  margin-top: 24rpx;
+  width: 670rpx;
+  height: 80rpx;
+  background: rgba(219, 182, 120, 1);
+  border-radius: 8rpx;
+  text-align: center;
+  line-height: 80rpx;
+
+  font-size: 24rpx;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+}
+
+.share-tips {
+  width: 100%;
+  text-align: center;
+  color: #3C3C3C;
+  font-size: 28rpx;
+  margin: 32rpx 0;
+}
