@@ -1,5 +1,28 @@
+/*
+ * @Description: 字符串扩转函数
+ * @Version: 0.0.1
+ * @Autor: zhj1214
+ * @Date: 2020-12-22 03:55:53
+ * @LastEditors: zhj1214
+ * @LastEditTime: 2021-03-19 11:51:51
+ */
+
+/**
+ * @description: 时间格式字符串 为适配iOS 替换 * => /
+ * @param {*} str
+ * @return {*} 2021/03/18
+ * @example: '2021-03-21 05:34:42'.dateFormat('YYYY.DD.MM')
+ * @author: zhj1214
+ */
+String.prototype.dateFormat = function(format) {
+  if (!this.toString().includes("-")) return this.toString();
+  let timeStr = this.toString().replace(/-/g, "/");
+  if (format) return new Date(timeStr).Format(format);
+  else return timeStr;
+};
+
 /** 删除指定索引位置的字符，索引无效将不删除任何字符 **/
-String.prototype.deleteCharAt = function (index) {
+String.prototype.deleteCharAt = function(index) {
   if (index < 0 || index >= this.length) {
     return this.valueOf();
   } else if (index == 0) {
@@ -11,12 +34,11 @@ String.prototype.deleteCharAt = function (index) {
   }
 };
 /**
- *  删除指定 索引 区间的字符串 
+ *  删除指定 索引 区间的字符串
  * var tt = '2019-07-31 11:07:22'；console.log(tt.deleteString(1, 2))
  * */
 
-
-String.prototype.deleteString = function (start, end) {
+String.prototype.deleteString = function(start, end) {
   if (start == end) {
     return this.deleteCharAt(start);
   } else {
@@ -37,61 +59,3 @@ String.prototype.deleteString = function (start, end) {
     return this.substring(0, start) + this.substring(end + 1, this.length);
   }
 };
-
-/**
- * 时间转换
- * 例子： var rr = new Date(1561914309000)
- *  console.log(rr.Format('YYYY-MM-DD HH:mm:ss'))
- */
-
-
-// Date.prototype.Format = function (format) {
-//   function add0(m) {
-//     return m < 10 ? "0" + m : m;
-//   }
-
-//   var o = {
-//     "Y+": this.getFullYear(),
-//     "M+": add0(this.getMonth() + 1),
-//     //月份           
-//     "D+": add0(this.getDate()),
-//     //日           
-//     "h+": this.getHours() % 12 == 0 ? 12 : this.getHours() % 12,
-//     //小时           
-//     "H+": this.getHours(),
-//     //小时           
-//     "m+": this.getMinutes(),
-//     //分           
-//     "s+": this.getSeconds(),
-//     //秒           
-//     "q+": Math.floor((this.getMonth() + 3) / 3),
-//     //季度           
-//     "S": this.getMilliseconds() //毫秒           
-
-//   };
-//   var week = {
-//     "0": "\u65e5",
-//     "1": "\u4e00",
-//     "2": "\u4e8c",
-//     "3": "\u4e09",
-//     "4": "\u56db",
-//     "5": "\u4e94",
-//     "6": "\u516d"
-//   };
-
-//   if (/(y+)/.test(format)) {
-//     format = format.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
-//   }
-
-//   if (/(E+)/.test(format)) {
-//     format = format.replace(RegExp.$1, (RegExp.$1.length > 1 ? RegExp.$1.length > 2 ? "\u661f\u671f" : "\u5468" : "") + week[this.getDay() + ""]);
-//   }
-
-//   for (var k in o) {
-//     if (new RegExp("(" + k + ")").test(format)) {
-//       format = format.replace(RegExp.$1, RegExp.$1.length == 1 ? o[k] : ("00" + o[k]).substr(("" + o[k]).length));
-//     }
-//   }
-
-//   return format;
-// };

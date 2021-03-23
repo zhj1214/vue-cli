@@ -12,6 +12,7 @@ import eventEmitter from "./utils/base/EventEmitter.js";
 import canvas from "./utils/canvas";
 import scene from "./utils/sceneManage";
 // import pageR from './utils/base/routePage';
+import navigation from './utils/base/navrefactor';
 
 export default {
   globalData: {
@@ -50,9 +51,20 @@ export default {
     uni.$localStorage = local;
     uni.$eventEmitter = eventEmitter;
     uni.$scene = scene;
+    
     // 初始化 观察者
     eventEmitter.constructor();
     uni.$canvas = canvas;
+
+    // 重写
+    // uni.navigateTo = (param,block)=>{
+    //     if(block){
+    //     console.log('进来了')
+    //     return
+    //   }
+    //   wx.navigateTo(param)
+    // }
+
 
     // 第三方平台，自定义配置
     if (uni.getExtConfig) {

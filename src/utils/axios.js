@@ -4,7 +4,7 @@
  * @Autor: zhj1214
  * @Date: 2021-03-18 21:51:18
  * @LastEditors: zhj1214
- * @LastEditTime: 2021-03-19 00:01:18
+ * @LastEditTime: 2021-03-23 13:50:28
  */
 
 // import md5 from "md5";
@@ -12,8 +12,8 @@
 
 const getBaseUrl = (env) => {
   let base = {
-    production: "https://crm.cntpy.com",
-    development: "https://htmostest.data4truth.com",
+    production: "https://crm.cntpy.com", // 测试环境
+    development: "https://htmostest.data4truth.com", // 正式环境
     pord: "https://crmuat.cntpy.com", // 预发布
   }[env];
 
@@ -32,6 +32,7 @@ class NewAxios {
   constructor() {
     console.log("process.env.NODE_ENV___________", process.env.NODE_ENV);
     this.baseURL = getBaseUrl(process.env.NODE_ENV);
+    this.requestCount = 0; // 请求连接数
     this.timeout = 60000;
     this.one_t = getApp();
   }
@@ -58,6 +59,11 @@ class NewAxios {
    * @description api请求封装
    * */
   request = (url, resolve, reject, data = {}, method, loading) => {
+    if (loading) {
+      uni.$alert.showLoading("请稍等");
+      this.requestCount += 1;
+    }
+
     if (!this.one_t) this.one_t = getApp();
     uni.request({
       url: this.baseURL + url,
@@ -93,6 +99,12 @@ class NewAxios {
         reject(err);
       },
       complete: (res) => {
+        if (loading) {
+          this.requestCount -= 1;
+          if (this.requestCount == 0) {
+            uni.hideLoading();
+          }
+        }
         if (res.statusCode != 200) {
           console.error(res, "____error");
           this.show_error("当前页面访问人数过多，请稍后再试");
@@ -161,9 +173,29 @@ class NewAxios {
           },
         });
       },
-      requestCount != 0 ? 300 : 0
+      this.requestCount != 0 ? 300 : 0
     );
   };
+
+  /**
+   * 返回当前请求状态
+   * */
+
+  currentRequestStatus(block) {
+      var requestCount = this.requestCount;
+      Object.defineProperty(this, "requestCount", {
+        get: function() {
+          return requestCount;
+        },
+        set: function(newVal) {
+          // console.log(newVal, "---------设置新值——————", requestCount);
+          requestCount = newVal;
+          if (newVal != undefined && newVal == 0 && this.onect_key){
+            block(this.onect_key);
+          } 
+        },
+      });
+  }
 }
 
 export default new NewAxios();

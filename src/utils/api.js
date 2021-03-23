@@ -1,5 +1,5 @@
 import http from "./axios";
-import { request, cloud } from "./http";
+// import { request, cloud } from "./http";
 const api = {
   /**************首页*************/
   getAdvs: "/operation-server/api/remote/ad/get",
@@ -223,7 +223,12 @@ const api = {
     data.createTimeStr = new Date().Format("YYYY-MM-DD HH:mm:ss");
     return http.cloud(apis, data, loadingText);
   },
-
+  /**
+   * @description 返回当前请求实例
+   * */
+  getRequestManage() {
+    return http;
+  },
   /**
    * 关闭 线上 所有log日志
    * */

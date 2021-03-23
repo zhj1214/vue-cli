@@ -8,6 +8,11 @@
       "enablePullDownRefresh": true
     },
     {
+      "path": "pages/index/switchMall/switchMall",
+      "enablePullDownRefresh": true
+    },
+    
+    {
       "path": "pages/health/health"
     },
     {
@@ -22,6 +27,18 @@
     },
     {
       "path": "pages/my/myPage"
+    },
+    {
+      "path": "pages/login/login"
+    },
+    {
+      "path": "pages/login/protocol/index"
+    },
+    {
+      "path": "pages/login/updatePhone/updatePhone"
+    },
+    {
+      "path": "pages/login/phone/phone"
     }
   ],
   "subPackages": [
@@ -30,6 +47,9 @@
       "pages": [
         {
           "path": "out/out"
+        },
+        {
+          "path": "scanReciiveCoupons/index"
         }
       ]
     }

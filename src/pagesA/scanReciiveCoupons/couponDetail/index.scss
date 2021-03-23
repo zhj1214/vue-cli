@@ -1,0 +1,41 @@
+$text-color: #444444;
+.coupondetail-view {
+  background-color: #f9f9f9;
+  .detail_top {
+    padding: 20px;
+  }
+  .detail_bottom {
+    padding: 40rpx;
+    background: #ffffff;
+    border-radius: 25px 25px 0px 0px;
+  }
+  .bottom_top {
+    flex-direction: column;
+    .title {
+      font-size: 14px;
+      font-weight: 300;
+      color: $text-color;
+    }
+    .line {
+      margin: 8px 0 15px;
+      width: 69rpx;
+      height: 6rpx;
+      background-color: $text-color;
+    }
+  }
+  .listItem {
+    margin-bottom: 20rpx;
+  }
+  .amount_style {
+    color: $text-color;
+    font-weight: bold;
+    font-size: 12px;
+    text-align: center;
+  }
+  .detail_desc {
+    line-height: 32px;
+  }
+  .detail_button {
+    margin-top: 60rpx;
+  }
+}
