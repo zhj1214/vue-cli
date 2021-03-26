@@ -4,9 +4,9 @@
  * @Autor: zhj1214
  * @Date: 2021-03-19 17:40:13
  * @LastEditors: zhj1214
- * @LastEditTime: 2021-03-23 15:17:00
+ * @LastEditTime: 2021-03-24 10:40:35
  */
-import sence from "../sceneManageNew";
+import sence from "../sceneManage";
 
 const SCENE_PARSE_KEY = "$_scene_parsed"; // 场景析构
 const SCENE_DONE_KEY = "$_scene_done"; // 场景模式所有逻辑执行完成

@@ -4,7 +4,7 @@
  * @Autor: zhj1214
  * @Date: 2021-03-04 15:53:53
  * @LastEditors: zhj1214
- * @LastEditTime: 2021-03-18 21:24:35
+ * @LastEditTime: 2021-03-26 09:25:03
 -->
 
 #  ht-applet
@@ -60,26 +60,18 @@ param： 参数
 
 
 ### 环境
-1.开发环境		http://htmosdev.data4truth.com
 
-2.测试环境
-模板： wxa1102f983873e46d       授权： wxc91325214d05e6e1 （恒太荟01）   商户： 12226364
-
-3.预发布环境
-模板： wx2cbaea50336c05a3(吴汕)      授权： wx61469e9df5790784 （恒太荟02）   商户： 77949820
-
-4.正式环境
-模板： wxac0ab75d3686b684(继于)      授权： wx3c3abcdafb46f828 （恒太荟03）   商户： 77949820
-
-![Image text](https://eos-wuxi-1.cmecloud.cn/crmoss/19d3ef09-7ab5-4008-840d-2a00cf257eff.png)
+开发模式运行：
+npm run dev-test:mp-weixin
+npm run dev-prod:mp-weixin
+npm run dev-release:mp-weixin
+打包模式运行：
+npm run build-test:mp-weixin
+npm run build-prod:mp-weixin
+npm run build-release:mp-weixin
 
 ### 上线备注
-1.上线记得切换域名地址
-2.ext.json文件  配置、激活、测试
+
+1.使用打包命令注意验证环境是否正确
+2.验证测试 
 3.隐藏清楚缓存 按钮
-
-
-
-
-
-

@@ -1,10 +1,10 @@
 /*
- * @Description:
+ * @Description: 请求类封装
  * @Version: 0.0.1
  * @Autor: zhj1214
  * @Date: 2021-03-18 21:51:18
  * @LastEditors: zhj1214
- * @LastEditTime: 2021-03-23 13:50:28
+ * @LastEditTime: 2021-03-25 19:32:59
  */
 
 // import md5 from "md5";
@@ -12,9 +12,9 @@
 
 const getBaseUrl = (env) => {
   let base = {
-    production: "https://crm.cntpy.com", // 测试环境
+    release: "https://crm.cntpy.com", // 测试环境
     development: "https://htmostest.data4truth.com", // 正式环境
-    pord: "https://crmuat.cntpy.com", // 预发布
+    prod: "https://crmuat.cntpy.com", // 预发布
   }[env];
 
   if (!base) {
@@ -30,7 +30,6 @@ class NewAxios {
    */
 
   constructor() {
-    console.log("process.env.NODE_ENV___________", process.env.NODE_ENV);
     this.baseURL = getBaseUrl(process.env.NODE_ENV);
     this.requestCount = 0; // 请求连接数
     this.timeout = 60000;
@@ -182,19 +181,19 @@ class NewAxios {
    * */
 
   currentRequestStatus(block) {
-      var requestCount = this.requestCount;
-      Object.defineProperty(this, "requestCount", {
-        get: function() {
-          return requestCount;
-        },
-        set: function(newVal) {
-          // console.log(newVal, "---------设置新值——————", requestCount);
-          requestCount = newVal;
-          if (newVal != undefined && newVal == 0 && this.onect_key){
-            block(this.onect_key);
-          } 
-        },
-      });
+    var requestCount = this.requestCount;
+    Object.defineProperty(this, "requestCount", {
+      get: function() {
+        return requestCount;
+      },
+      set: function(newVal) {
+        // console.log(newVal, "---------设置新值——————", requestCount);
+        requestCount = newVal;
+        if (newVal != undefined && newVal == 0 && this.onect_key) {
+          block(this.onect_key);
+        }
+      },
+    });
   }
 }
 

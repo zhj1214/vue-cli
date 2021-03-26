@@ -5,6 +5,21 @@
   "scripts": {
     "serve": "npm run dev:h5",
     "build": "npm run build:h5",
+    "predev-test:mp-weixin": "node envmentconfig.js --NODE_ENV=development",
+    "predev-prod:mp-weixin": "node envmentconfig.js --NODE_ENV=prod",
+    "predev-release:mp-weixin": "node envmentconfig.js --NODE_ENV=release",
+    "prebuild-test:mp-weixin": "node envmentconfig.js --NODE_ENV=development",
+    "prebuild-prod:mp-weixin": "node envmentconfig.js --NODE_ENV=prod",
+    "prebuild-release:mp-weixin": "node envmentconfig.js --NODE_ENV=release",
+
+    "dev-test:mp-weixin": "cross-env NODE_ENV=development UNI_PLATFORM=mp-weixin vue-cli-service uni-build --watch --minimize",
+    "dev-prod:mp-weixin": "cross-env NODE_ENV=prod UNI_PLATFORM=mp-weixin vue-cli-service uni-build --watch --minimize",
+    "dev-release:mp-weixin": "cross-env NODE_ENV=release UNI_PLATFORM=mp-weixin vue-cli-service uni-build --watch --minimize",
+
+    "build-test:mp-weixin": "cross-env NODE_ENV=development UNI_PLATFORM=mp-weixin vue-cli-service uni-build --minimize",
+    "build-prod:mp-weixin": "cross-env NODE_ENV=prod UNI_PLATFORM=mp-weixin vue-cli-service uni-build --minimize",
+    "build-release:mp-weixin": "cross-env NODE_ENV=production UNI_PLATFORM=mp-weixin vue-cli-service uni-build --minimize",
+
     "build:app-plus": "cross-env NODE_ENV=production UNI_PLATFORM=app-plus vue-cli-service uni-build",
     "build:custom": "cross-env NODE_ENV=production uniapp-cli custom",
     "build:h5": "cross-env NODE_ENV=production UNI_PLATFORM=h5 vue-cli-service uni-build",
@@ -14,9 +29,7 @@
     "build:mp-kuaishou": "cross-env NODE_ENV=production UNI_PLATFORM=mp-kuaishou vue-cli-service uni-build",
     "build:mp-qq": "cross-env NODE_ENV=production UNI_PLATFORM=mp-qq vue-cli-service uni-build",
     "build:mp-toutiao": "cross-env NODE_ENV=production UNI_PLATFORM=mp-toutiao vue-cli-service uni-build",
-    "build-test:mp-weixin": "cross-env NODE_ENV=production UNI_PLATFORM=mp-weixin vue-cli-service uni-build --minimize",
-    "build-prod:mp-weixin": "cross-env NODE_ENV=production UNI_PLATFORM=mp-weixin vue-cli-service uni-build --minimize",
-    "build:mp-weixin": "cross-env NODE_ENV=production UNI_PLATFORM=mp-weixin vue-cli-service uni-build --minimize",
+    
     "build:quickapp-native": "cross-env NODE_ENV=production UNI_PLATFORM=quickapp-native vue-cli-service uni-build",
     "build:quickapp-webview": "cross-env NODE_ENV=production UNI_PLATFORM=quickapp-webview vue-cli-service uni-build",
     "build:quickapp-webview-huawei": "cross-env NODE_ENV=production UNI_PLATFORM=quickapp-webview-huawei vue-cli-service uni-build",
@@ -30,9 +43,7 @@
     "dev:mp-kuaishou": "cross-env NODE_ENV=development UNI_PLATFORM=mp-kuaishou vue-cli-service uni-build --watch",
     "dev:mp-qq": "cross-env NODE_ENV=development UNI_PLATFORM=mp-qq vue-cli-service uni-build --watch",
     "dev:mp-toutiao": "cross-env NODE_ENV=development UNI_PLATFORM=mp-toutiao vue-cli-service uni-build --watch",
-    "dev-test:mp-weixin": "cross-env NODE_ENV=development UNI_PLATFORM=mp-weixin vue-cli-service uni-build --watch --minimize",
-    "dev-prod:mp-weixin": "cross-env NODE_ENV=prod UNI_PLATFORM=mp-weixin vue-cli-service uni-build --watch --minimize",
-    "dev:mp-weixin": "cross-env NODE_ENV=production UNI_PLATFORM=mp-weixin vue-cli-service uni-build --watch --minimize",
+    
     "dev:quickapp-native": "cross-env NODE_ENV=development UNI_PLATFORM=quickapp-native vue-cli-service uni-build --watch",
     "dev:quickapp-webview": "cross-env NODE_ENV=development UNI_PLATFORM=quickapp-webview vue-cli-service uni-build --watch",
     "dev:quickapp-webview-huawei": "cross-env NODE_ENV=development UNI_PLATFORM=quickapp-webview-huawei vue-cli-service uni-build --watch",
