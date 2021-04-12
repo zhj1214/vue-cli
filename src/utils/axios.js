@@ -4,11 +4,12 @@
  * @Autor: zhj1214
  * @Date: 2021-03-18 21:51:18
  * @LastEditors: zhj1214
- * @LastEditTime: 2021-03-25 19:32:59
+ * @LastEditTime: 2021-04-12 15:53:38
  */
 
 // import md5 from "md5";
 // import { Notice, Message } from "view-design";
+const tpls = require('../ext.json')
 
 const getBaseUrl = (env) => {
   let base = {
@@ -30,7 +31,7 @@ class NewAxios {
    */
 
   constructor() {
-    this.baseURL = getBaseUrl(process.env.NODE_ENV);
+    this.baseURL = getBaseUrl(tpls.applet_env);
     this.requestCount = 0; // 请求连接数
     this.timeout = 60000;
     this.one_t = getApp();
@@ -106,6 +107,17 @@ class NewAxios {
         }
         if (res.statusCode != 200) {
           console.error(res, "____error");
+
+          this.one_t.globalData.fundebug.notifyHttpError(
+            {
+              method: method,
+              url: this.baseURL + url,
+            },
+            {
+              statusCode: res.statusCode,
+            }
+          );
+
           this.show_error("当前页面访问人数过多，请稍后再试");
         }
       },

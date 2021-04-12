@@ -4,77 +4,73 @@
  * @Autor: zhj1214
  * @Date: 2021-03-25 15:17:49
  * @LastEditors: zhj1214
- * @LastEditTime: 2021-03-26 09:25:57
+ * @LastEditTime: 2021-04-12 15:48:09
  */
-const fileManager = require("fs");
-const mainifest = require("./src/manifest.json");
-const tpls = require("./src/ext.json");
-const TARGET = process.env.npm_lifecycle_script;
+const fileManager = require('fs')
+const mainifest = require('./src/manifest.json')
+const tpls = require('./src/ext.json')
+const TARGET = process.env.npm_lifecycle_script
 const ENVCONFIGURATION = {
   dev: {
-    rootAppId: "wxa1102f983873e46d",
-    appletAppId: "wxc91325214d05e6e1",
-    rootOgrId: "12226364",
+    rootAppId: 'wxa1102f983873e46d',
+    appletAppId: 'wxc91325214d05e6e1',
+    rootOgrId: '12226364',
   },
   prod: {
-    rootAppId: "wx2cbaea50336c05a3",
-    appletAppId: "wx61469e9df5790784",
-    rootOgrId: "77949820",
+    rootAppId: 'wx2cbaea50336c05a3',
+    appletAppId: 'wx61469e9df5790784',
+    rootOgrId: '77949820',
   },
   release: {
-    rootAppId: "wxac0ab75d3686b684",
-    appletAppId: "wx3c3abcdafb46f828",
-    rootOgrId: "77949820",
+    rootAppId: 'wxac0ab75d3686b684',
+    appletAppId: 'wx3c3abcdafb46f828',
+    rootOgrId: '77949820',
   },
-};
+}
 
 class envmentFile {
   constructor() {
-    this.writeFile();
+    this.writeFile()
   }
   /**
    * @description: 写入两个配置内容
    * @author: zhj1214
    */
   writeFile() {
-    let current_ENV = TARGET.split("NODE_ENV=");
-    let configExt;
-    if (current_ENV[1] == "release") {
-      configExt = ENVCONFIGURATION.release;
-      mainifest["mp-weixin"].appid = ENVCONFIGURATION.release.rootAppId;
-    } else if (current_ENV[1] == "development") {
-      configExt = ENVCONFIGURATION.dev;
-      mainifest["mp-weixin"].appid = ENVCONFIGURATION.dev.rootAppId;
-    } else if (current_ENV[1] == "prod") {
-      configExt = ENVCONFIGURATION.prod;
-      mainifest["mp-weixin"].appid = ENVCONFIGURATION.prod.rootAppId;
+    const current_ENV = TARGET.split('APPLET_ENV=')
+    let configExt
+    if (current_ENV[1] == 'release') {
+      configExt = ENVCONFIGURATION.release
+      mainifest['mp-weixin'].appid = ENVCONFIGURATION.release.rootAppId
+    } else if (current_ENV[1] == 'development') {
+      configExt = ENVCONFIGURATION.dev
+      mainifest['mp-weixin'].appid = ENVCONFIGURATION.dev.rootAppId
+    } else if (current_ENV[1] == 'prod') {
+      configExt = ENVCONFIGURATION.prod
+      mainifest['mp-weixin'].appid = ENVCONFIGURATION.prod.rootAppId
     } else {
-      configExt = ENVCONFIGURATION.release;
-      mainifest["mp-weixin"].appid = ENVCONFIGURATION.release.rootAppId;
+      configExt = ENVCONFIGURATION.release
+      mainifest['mp-weixin'].appid = ENVCONFIGURATION.release.rootAppId
     }
-    tpls.extAppid = configExt.appletAppId;
-    tpls.ext.appId = configExt.appletAppId;
-    tpls.ext.orgId = configExt.rootOgrId;
+    tpls.extAppid = configExt.appletAppId
+    tpls.ext.appId = configExt.appletAppId
+    tpls.ext.orgId = configExt.rootOgrId
+    tpls.applet_env = current_ENV[1]
 
     // 把模板信息写入templates.json
-    fileManager.writeFile(
-      "./src/ext.json",
-      JSON.stringify(tpls),
-      "utf-8",
-      function(err) {
-        if (err) console.error(err);
-      }
-    );
+    fileManager.writeFile('./src/ext.json', JSON.stringify(tpls), 'utf-8', function (err) {
+      if (err) console.error(err)
+    })
 
     fileManager.writeFile(
-      "./src/manifest.json",
+      './src/manifest.json',
       JSON.stringify(mainifest),
-      "utf-8",
-      function(err) {
-        if (err) console.error(err);
+      'utf-8',
+      function (err) {
+        if (err) console.error(err)
       }
-    );
+    )
   }
 }
 
-new envmentFile();
+new envmentFile()

@@ -1,22 +1,22 @@
+<!--
+ * @Description: 
+ * @Version: 0.0.1
+ * @Autor: zhj1214
+ * @Date: 2021-03-26 18:29:28
+ * @LastEditors: zhj1214
+ * @LastEditTime: 2021-04-12 15:56:59
+-->
 <template>
 	<view>
 		<view class="wxParse">
-			<!-- #ifndef MP-WEIXIN -->
 			<jyf-parser :html="dkcontent"></jyf-parser>
-			<!-- #endif -->
-			<!-- #ifdef MP-WEIXIN -->
-			<template is="wxParse" :wxParseData="dkcontent.nodes" />
-			<!-- #endif -->
 		</view>
 	</view>
 </template>
+
 <script>
-	// #ifdef MP-WEIXIN
-	import wxParse from '@/components/wxParse/wxParse';
-	// #endif
-	// #ifndef MP-WEIXIN
+// https://github.com/jin-yufeng/mp-html 后续使用mp-html来代替wxParse 能有效减少包的体积
 	import jyfParser from "@/components/jyf-parser/jyf-parser";
-	// #endif
 
 	export default {
 		data() {
@@ -25,9 +25,7 @@
 			};
 		},
 		components: {
-			// #ifndef MP-WEIXIN
 			jyfParser
-			// #endif
 		},
 		props: {
 			content: {
@@ -48,12 +46,6 @@
 			this.setData({
 				dkcontent: filter
 			});
-			// #ifdef MP-WEIXIN
-			// 延迟 处理一下
-			setTimeout(() => {
-				wxparse.wxParse('dkcontent', 'html', this.dkcontent, this, 5);
-			}, 300);
-			// #endif
 		},
 		// 组件所在页面的生命周期函数
 		onPageShow: function() {},

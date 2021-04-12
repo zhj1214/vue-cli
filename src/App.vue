@@ -12,10 +12,13 @@ import eventEmitter from "./utils/base/EventEmitter.js";
 import canvas from "./utils/canvas";
 import scene from "./utils/sceneManage";
 // import pageR from './utils/base/routePage';
-import navigation from './utils/base/navrefactor';
+import navigation from "./utils/base/navrefactor";
+
+var fundebug = require("fundebug-wxjs");
 
 export default {
   globalData: {
+    fundebug: fundebug,
   },
   onShow: function(options) {
     console.log(options, "____onShow");
@@ -32,6 +35,20 @@ export default {
    * */
   onLaunch: function(options) {
     console.log(options, "____onLaunch"); // 获取本地当前环境变量value
+    if (process.env.NODE_ENV != "production") {
+      fundebug.init({
+        apikey:
+          "bc54da06260628ce66655e75364fbc0085580b61ef0fc0d0a764555126d06bb2",
+        httpTimeout: 6000,
+      });
+    }
+
+    // setTimeout(() => {
+    //   fundebug.test("Hello", "This is a Test1111111111111122111111133333");
+
+    //   fundebug.notify("Test", "Hello, Fundebug!22222222223");
+    // }, 2000);
+
     this.globalData.onLaunchOptions = options;
     // 手动初始化 uniCloud
     // const myCloud = uniCloud.init({
@@ -51,7 +68,7 @@ export default {
     uni.$localStorage = local;
     uni.$eventEmitter = eventEmitter;
     uni.$scene = scene;
-    
+
     // 初始化 观察者
     eventEmitter.constructor();
     uni.$canvas = canvas;
@@ -64,7 +81,6 @@ export default {
     //   }
     //   wx.navigateTo(param)
     // }
-
 
     // 第三方平台，自定义配置
     if (uni.getExtConfig) {
@@ -98,7 +114,7 @@ export default {
    * @author: zhj1214
    */
   onHide: function() {
-    console.log('App Hide')
+    console.log("App Hide");
   },
   methods: {
     /**
@@ -107,7 +123,7 @@ export default {
     getCurrentIphoneInfo() {
       let iphoneInfo = uni.getSystemInfoSync();
       let accountInfo = uni.getAccountInfoSync();
-      iphoneInfo = {...iphoneInfo,...accountInfo}
+      iphoneInfo = { ...iphoneInfo, ...accountInfo };
       this.globalData.iphoneInfo = iphoneInfo;
       // #ifdef MP-WEIXIN
       //导航高度
@@ -118,7 +134,7 @@ export default {
         if (iphoneInfo.model.search("iPhone X") != -1) {
           this.isIPX = true;
         }
-        this.dynamicNetWorking().then(()=>{
+        this.dynamicNetWorking().then(() => {
           uni.$alert.showModal("网络异常", "请检查当前网络是否可用");
         });
         this.userLogin();
@@ -176,7 +192,7 @@ export default {
     appIsUptate: function() {
       const updateManager = uni.getUpdateManager();
       updateManager.onCheckForUpdate(function(res) {
-        console.log("版本信息 是否需要更新 ：" + res.hasUpdate);// 请求完新版本信息的回调
+        console.log("版本信息 是否需要更新 ：" + res.hasUpdate); // 请求完新版本信息的回调
       });
       updateManager.onUpdateReady(function() {
         uni.showModal({
@@ -191,7 +207,7 @@ export default {
         });
       });
       updateManager.onUpdateFailed(function() {
-        uni.$alert.showModal("更新提示", "新版本下载失败");// 新的版本下载失败
+        uni.$alert.showModal("更新提示", "新版本下载失败"); // 新的版本下载失败
       });
     },
     // #endif
