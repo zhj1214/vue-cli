@@ -109,7 +109,7 @@
 
 <script>
 import md5 from "js-md5";
-import { isPassword } from "../../utils/tools";
+import { isPassword } from "../../../utils/tools";
 
 export default {
   name: "Password",
@@ -202,10 +202,10 @@ export default {
   margin: 0 auto;
 }
 .close-password {
-  background: url("../../assets/images/login/icon-eye-close.png");
+  background: url("../../../assets/images/login/icon-eye-close.png");
 }
 .show-password {
-  background: url("../../assets/images/login/icon-eye.png");
+  background: url("../../../assets/images/login/icon-eye.png");
 }
 
 .show-password,

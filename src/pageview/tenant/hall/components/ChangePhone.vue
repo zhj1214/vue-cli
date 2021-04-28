@@ -118,8 +118,8 @@
 
 <script>
 	import md5 from 'js-md5';
-	import {isPassword} from "../../../utils/tools";
-	import LoginHallMixins from "../../../mixins/mixinsLoginHall";
+	import {isPassword} from "../../../../utils/tools";
+	import LoginHallMixins from "../../../../mixins/mixinsLoginHall";
 	
 	export default {
 		name: "ChangePhone",
@@ -304,7 +304,7 @@
 		}
 		
 		.change-phone-mark{
-			background: url("../../../assets/images/login/icon-valid.png");
+			background: url("../../../../assets/images/login/icon-valid.png");
 		}
 		.change-phone-mark{
 			display: inline-block;

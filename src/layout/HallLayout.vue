@@ -146,7 +146,7 @@
 		}
 
 		.avatar-bg {
-				background: url(../assets/images/default-avatar.png) no-repeat center;
+				background: url('../assets/images/default-avatar.png') no-repeat center;
 				background-size: contain;
 		}
 

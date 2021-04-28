@@ -1,15 +1,7 @@
-# MOS 商用平台
-
-> 基于 [vue cli3.0](https://cli.vuejs.org/zh/) 构建的通用 vue 技术栈方案
-
-## 命名规范
-
-- [x] 文件夹需要小写开头，小写驼峰
-- [x] vue 组件名称，需要大写开头，大写驼峰形式
-
+# vue V2版本 项目
 ## 项目结构
 
-```txt
+```
 +-- dist/                                   ---打包之后的dist目录
 +-- public/                                 ---静态目录,/xx 直接饮用，不需要public
 |   --- index.html                          ---首页入口html文件
@@ -21,23 +13,26 @@
 +   | +---/scss                             --- 公共样式
 +   ---/components/                         ---组件目录
 +   | +---/base/                            ---基本组件
-+   | +---/commons/                         ---公共组件包
-+   | +---/layout/                          ---布局方案
-+   | +---/mixins/                          ---mixins
 +   | +---/**/**                            ---其他业务组件
++-- mixins/                                 ---mixins
++-- layout/                                 ---布局方案
 +-- router/                                 ---路由文件
-|   ---allRouter.js                        ---组件配置路由文件
+|   ---backRouter.js                        ---组件配置路由文件
 |   ---fn.js                                ---根据权限动态生成路由的方法
 |   ---index.js                             ---总路由配置入口
 +-- store/                                  ---vuex 总 store 信息
 |   +---module                              ---根据业务组件划分的状态
-|   ---commAction.js                        ---通用方法
 |   ---index.js                             ---总vuex状态配置信息
 +-- utils/                                  ---vuex 总 store 信息
-|   ---addressLinkage.js                    ---城市级联信息
 |   ---axios.js                             ---通用axios方法
 |   ---tools.js                             ---通用工具方法
-+-- view/                                   ---多页面配置信息
++-- pageview/                               ---业务模块开发
+|   ---base                                 ---页面基础组件
+|   ---tenant                               ---账户
+|   ---platform                             ---平台
+|   ---channel                              ---渠道
+|   ---member                               ---会员
++-- view/                                   ---网站页面
 |   ---Error.vue                            ---404页面
 |   ---Login.vue                            ---登录页面
 |   ---Welcome.vue                          ---欢迎页面
@@ -57,22 +52,13 @@
 - [vuex3.1.0](https://vuex.vuejs.org/zh/)
 - UI 库 [iViewUI](https://www.iviewui.com/)
 - [vue-router](https://router.vuejs.org/zh/)
-
-## 本地开发说明
-
 ### 启动项目
 
-0. 拉取项目文件 `git clone git@code.data4truth.com:pi/pi-web.git -b dev`
-1. 安装 `npm install`
-1. 运行 `npm run serve`
+0. 拉取项目文件 `git clone git@code.data4truth.com:FrontEnd/vue-cli.git -b cli_v2_pc`
+1. 安装 `yarn`
+1. 运行 `yarn serve`
 1. 部署
 
-```
-a.`git pull`部署之前需确保代码为最新，具体为同步 feature 和 dev 分支内容；
-b.提交本地信息 `git add .`，`git commit -m msg`,`git push`。提交时会自动执行`npm lint`校验，故请保证代码语法正确
-c. `npm run build` 打包部署
-
-```
 
 ### 开发新页面流程
 
@@ -95,7 +81,7 @@ c. `npm run build` 打包部署
    a. 基本逻辑：有权限就显示，没有就隐藏。  
    b. 按钮权限依托于页面权限，配置了页面权限，才能有按钮权限。  
    c. 真实业务权限：只有对应的组织才能操作，根据接口来判断。  
-   d. 项目的所有权限：https://shimo.im/sheets/PTVJyKpV9c93tj3c/JWJz0。
+   d. 项目的所有权限：https://***。
 2. 每一个用户都对应一个角色，修改用户权限需要修改角色权限。
 3. 配置角色权限步骤  
    a. 进入页面：平台管理：组织管理 -> 角色管理  
@@ -132,14 +118,14 @@ c. `npm run build` 打包部署
 #### 规范
 
 - 分支规范
-
-由于该项目涉及板块较多，请务必遵循[分支规范](https://code.data4truth.com/FrontEnd/pub-material/blob/master/%E9%A1%B9%E7%9B%AE%E5%88%86%E6%94%AF%E7%AE%A1%E6%8E%A7%E8%AF%B4%E6%98%8E%EF%BC%88%E8%A7%A3%E7%99%BE%E9%9B%86%E5%9B%A2%E4%B8%BA%E4%BE%8B%EF%BC%89.md)进行开发
-
-- [上线规范](https://code.data4truth.com/FrontEnd/pub-material/blob/master/%E5%89%8D%E7%AB%AF%E4%B8%8A%E7%BA%BF%E8%A7%84%E8%8C%83%EF%BC%88%E8%A7%A3%E7%99%BE%E4%B8%BA%E4%BE%8B%EF%BC%89.md)
-
+1.寻找当前项目上一个上线版本分支。  例子：release—20210401
+2.切分支。
+无论是新需求还是bug修复都要切分支修改。
+命名规范：feature-0401-module-zhj
+3.冲突解决。找到相应开发人员沟通后解决。
 #### 环境信息
 
-- 13 环境
+- 测试 环境
 
 ```
     服务器地址：-
@@ -149,7 +135,17 @@ c. `npm run build` 打包部署
     域名地址：-
 ```
 
-- 154 环境
+- 预发布 环境
+
+```
+    服务器地址：-
+
+    代码路径：-
+
+    域名地址：-
+```
+
+- 正式 环境
 
 ```
     服务器地址：-

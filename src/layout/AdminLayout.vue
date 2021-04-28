@@ -299,7 +299,7 @@
 import { mapActions, mapGetters, mapState } from "vuex";
 import SelfSubMenu from "./SubMenu";
 import Copyright from "./Copyright";
-import defaultAvatar from "../assets/images/default-avatar.png";
+import defaultAvatar from "@/assets/images/default-avatar.png";
 import { throttle } from "lodash";
 export default {
   name: "AdminLayout",

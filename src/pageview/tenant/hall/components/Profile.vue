@@ -120,7 +120,7 @@
 </template>
 
 <script>
-	import defaultAvatar from '../../../assets/images/default-avatar.png';
+	import defaultAvatar from '@/assets/images/default-avatar.png';
 	
 	export default {
 		name: "Profile",
@@ -223,7 +223,7 @@
 				padding-bottom: 48px;
 				border-radius: inherit;
 		}
-		.avatar-item{background:url('../../../assets/images/default-avatar.png') no-repeat center ;}
+		.avatar-item{background:url('../../../../assets/images/default-avatar.png') no-repeat center ;}
 		.upload-class {
 				width: 100%;
 				height: 100%;

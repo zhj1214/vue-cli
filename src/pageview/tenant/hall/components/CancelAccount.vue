@@ -79,7 +79,7 @@
 </template>
 
 <script>
-	import LoginHallMixins from "../../../mixins/mixinsLoginHall";
+	import LoginHallMixins from "../../../../mixins/mixinsLoginHall";
 	
 	export default {
 		name: "CancelAccount",

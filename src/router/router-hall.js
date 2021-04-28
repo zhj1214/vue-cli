@@ -4,7 +4,7 @@
  * @Autor: zhj1214
  * @Date: 2020-10-16 09:41:27
  * @LastEditors: zhj1214
- * @LastEditTime: 2021-03-15 18:01:03
+ * @LastEditTime: 2021-04-28 14:03:24
  */
 /***********************
  * @desc 大厅路由
@@ -16,7 +16,7 @@ export default [
 	{
 		path: '/hall',
 		name: "hall",
-		redirect: '/hall/account',
+		redirect: '/tenant/hall/account',
 		component: () => import('../layout/HallLayout'),
 		meta: {
 			title: '账号管理',
@@ -29,7 +29,7 @@ export default [
 				meta: {
 					title: '账号信息',
 				},
-				component: () => import('../pageview/hall/Account')
+				component: () => import('../pageview/tenant/hall/Account')
 			},
 			{
 				path: 'password',
@@ -37,7 +37,7 @@ export default [
 				meta: {
 					title: '修改密码'
 				},
-				component: () => import('../pageview/hall/Password')
+				component: () => import('../pageview/tenant/hall/Password')
 			},
 			{
 				path: 'changephone',
@@ -45,7 +45,7 @@ export default [
 				meta: {
 					title: '更换手机号'
 				},
-				component: () => import('../pageview/hall/components/ChangePhone')
+				component: () => import('../pageview/tenant/hall/components/ChangePhone')
 			},
 			{
 				path: 'cancelaccount',
@@ -53,7 +53,7 @@ export default [
 				meta: {
 					title: '注销账号'
 				},
-				component: () => import('../pageview/hall/components/CancelAccount')
+				component: () => import('../pageview/tenant/hall/components/CancelAccount')
 			}
 		]
 	},
