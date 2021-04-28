@@ -4,7 +4,7 @@
  * @Autor: zhj1214
  * @Date: 2021-03-25 15:17:49
  * @LastEditors: zhj1214
- * @LastEditTime: 2021-04-12 15:48:09
+ * @LastEditTime: 2021-04-26 15:11:12
  */
 const fileManager = require('fs')
 const mainifest = require('./src/manifest.json')
@@ -12,7 +12,7 @@ const tpls = require('./src/ext.json')
 const TARGET = process.env.npm_lifecycle_script
 const ENVCONFIGURATION = {
   dev: {
-    rootAppId: 'wxa1102f983873e46d',
+    rootAppId: 'wxb3eec682fbe094c5',
     appletAppId: 'wxc91325214d05e6e1',
     rootOgrId: '12226364',
   },

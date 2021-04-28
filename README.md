@@ -4,7 +4,7 @@
  * @Autor: zhj1214
  * @Date: 2021-03-04 15:53:53
  * @LastEditors: zhj1214
- * @LastEditTime: 2021-03-26 09:25:03
+ * @LastEditTime: 2021-04-28 15:50:24
 -->
 
 #  ht-applet
@@ -62,13 +62,13 @@ param： 参数
 ### 环境
 
 开发模式运行：
-npm run dev-test:mp-weixin
-npm run dev-prod:mp-weixin
-npm run dev-release:mp-weixin
+yarn dev-test:mp-weixin
+yarn dev-prod:mp-weixin
+yarn dev-release:mp-weixin
 打包模式运行：
-npm run build-test:mp-weixin
-npm run build-prod:mp-weixin
-npm run build-release:mp-weixin
+yarn build-test:mp-weixin
+yarn build-prod:mp-weixin
+yarn build-release:mp-weixin
 
 ### 上线备注
 
