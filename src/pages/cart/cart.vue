@@ -12,7 +12,7 @@
             width="20px"
             active-color="#FF4C4C"
             class="flex-row"
-            shape="circle"
+            shape="circle" 
           >
             <view class="flex-row" @click.stop="jumpShop(item1)">
               <view class="checkbox flex-row">
