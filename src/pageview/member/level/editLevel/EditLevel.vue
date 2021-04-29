@@ -11,7 +11,7 @@
 </template>
 
 <script>
-export default {
-  name: "EditLevel"
-};
+  export default {
+    name: 'EditLevel',
+  }
 </script>

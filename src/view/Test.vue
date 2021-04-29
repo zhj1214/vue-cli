@@ -27,7 +27,7 @@
     <i class="icon iconfont iconBack">iconBack</i>
     <i class="icon iconfont iconPhone">iconPhone</i>
     <i class="icon iconfont iconMos">iconMos</i>
-				
+
     <i class="icon iconfont iconhuiyuanzhongxin">iconhuiyuanzhongxin</i>
     <i class="icon iconfont iconpingtaiguanli">iconpingtaiguanli</i>
     <i class="icon iconfont iconshangchengzhongxin">iconshangchengzhongxin</i>
@@ -57,23 +57,23 @@
   </div>
 </template>
 <script>
-	export default {
-		name: 'Test',
-		components: {},
-		data() {
-			return {
-				msg: 'Hello world Test VueJS'
-			};
-		},
-		methods: {}
-	};
+  export default {
+    name: 'Test',
+    components: {},
+    data() {
+      return {
+        msg: 'Hello world Test VueJS',
+      }
+    },
+    methods: {},
+  }
 </script>
 <style lang="scss" scoped>
-		.Test i {
-				display: inline-block;
-				width: 25%;
-				border-right: 1px solid #ddd;
-				border-bottom: 1px solid #ddd;
-				float: left;
-		}
+  .Test i {
+    display: inline-block;
+    float: left;
+    width: 25%;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+  }
 </style>

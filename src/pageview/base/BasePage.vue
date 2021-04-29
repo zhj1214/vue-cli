@@ -18,44 +18,44 @@
         class="pagebox"
         :total="pageData.count"
         :current="pageData.page"
-        :page-size="pageData.pageSize||pageData.size||10"
+        :page-size="pageData.pageSize || pageData.size || 10"
         show-elevator
         show-sizer
         show-total
-        :page-size-opts="pageList||[10,20,30,40]"
+        :page-size-opts="pageList || [10, 20, 30, 40]"
         :placement="placement"
-        @on-change="(page)=>$emit('on-pageChange',page)"
-        @on-page-size-change="(size)=>$emit('on-pageSize',size)"
+        @on-change="(page) => $emit('on-pageChange', page)"
+        @on-page-size-change="(size) => $emit('on-pageSize', size)"
       />
     </div>
   </div>
 </template>
 
 <script>
-	export default {
-		name: "BaseTable",
-		props:{
-			noPage:{
-				type:Boolean,
-				default:false
-			},
-			placement:{
-				type:String,
-				default:'bottom'
-			},
-			pageData:{
-				type:Object,
-				default:()=>{
-					return {}
-				}
-			},
-			pageList:Array
-		}
-	};
+  export default {
+    name: 'BaseTable',
+    props: {
+      noPage: {
+        type: Boolean,
+        default: false,
+      },
+      placement: {
+        type: String,
+        default: 'bottom',
+      },
+      pageData: {
+        type: Object,
+        default: () => {
+          return {}
+        },
+      },
+      pageList: Array,
+    },
+  }
 </script>
 
 <style scoped lang="scss">
-.page-row{
-		text-align: right;
-}
+  .page-row {
+    text-align: right;
+  }
 </style>

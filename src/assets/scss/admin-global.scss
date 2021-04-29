@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@import "../font/iconfont.css";
+@import '../font/iconfont.css';
 
 /*
 @desc 这个文件的语法需要css 方式，否则写成scss风格不会生效
@@ -12,10 +12,16 @@ body {
   scroll-behavior: smooth;
 }
 
-*{
- font-family: -apple-system, BlinkMacSystemFont,'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+* {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Noto Color Emoji';
 }
-ul li{list-style: none;}
+
+ul li {
+  list-style: none;
+}
+
 .iconfont {
   font-size: 24px;
   vertical-align: middle;
@@ -25,23 +31,21 @@ ul li{list-style: none;}
   overflow: auto;
 }
 
-/* 弹窗文字为数字时不换行问题*/
+/* 弹窗文字为数字时不换行问题 */
 .ivu-modal-wrap * {
   word-break: break-word;
 }
-
 
 .content-body {
   overflow-x: auto;
 }
 
-.ivu-menu-submenu
-.ivu-menu-item {
-  text-align: left;
-  font-size: 12px;
+.ivu-menu-submenu .ivu-menu-item {
   font-family: PingFangSC-Regular;
+  font-size: 12px;
   font-weight: 400;
   color: rgba(103, 103, 143, 1);
+  text-align: left;
 }
 
 .ivu-layout {
@@ -53,22 +57,21 @@ ul li{list-style: none;}
   height: 100%;
 }
 
-
 .iconBack::before {
-  content: '';
   display: inline-block;
   width: 20px;
   height: 20px;
+  vertical-align: text-bottom;
   background: url(../images/backIcon.png) no-repeat;
   background-size: cover;
-  vertical-align: text-bottom;
+  content: '';
 }
 
 textarea.ivu-input {
   resize: none;
 }
 
-/*fix iview*/
+/* fix iview */
 .ivu-poptip-confirm .ivu-poptip-body .ivu-icon {
   left: 20px;
 }
@@ -79,7 +82,7 @@ textarea.ivu-input {
 
 .ivu-divider-vertical {
   min-height: 24px;
-  background: #E6EBF0
+  background: #e6ebf0;
 }
 
 ::-webkit-scrollbar {
@@ -87,10 +90,10 @@ textarea.ivu-input {
   height: 16px;
 }
 
-/*span标签，伪造a标签样式*/
+/* span标签，伪造a标签样式 */
 .span-a {
+  color: #756cea !important;
   cursor: pointer !important;
-  color: #756CEA !important;
 }
 
 .pointer {
@@ -101,49 +104,53 @@ textarea.ivu-input {
   display: block !important;
 }
 
-/*ui 稿子的表格样式结构*/
-/*副标题*/
+/* ui 稿子的表格样式结构 */
+
+/* 副标题 */
 .h2 {
   margin-bottom: 28px;
   font-family: SFUIDisplay-Semibold;
-  font-weight: 600;
-  text-align: left;
-  color: rgba(62, 69, 82, 1);
   font-size: 24px;
+  font-weight: 600;
+  color: rgba(62, 69, 82, 1);
+  text-align: left;
 }
 
 .h2 span {
-  cursor: pointer;
   display: inline-block;
   font-size: 24px;
+  cursor: pointer;
 }
 
 .h2 img {
-  cursor: pointer;
   display: block;
   float: left;
   width: 20px !important;
   height: 20px !important;
   margin-top: 10px;
   margin-right: 10px;
+  cursor: pointer;
 }
 
-.h2 :after {
+.h2 ::after {
   display: block;
-  content: '';
   clear: both;
+  content: '';
 }
 
-
-/*表格公共样式*/
+/* 表格公共样式 */
 div.ivu-table-wrapper {
   border: none;
 }
 
-.ivu-table th, .ivu-table td {
+.ivu-table th,
+.ivu-table td {
   padding: 10px 0;
 }
-tr td.ivu-table-expanded-cell{padding:20px 50px;}
+
+tr td.ivu-table-expanded-cell {
+  padding: 20px 50px;
+}
 
 label.ivu-checkbox-wrapper {
   font-size: 14px;
@@ -159,55 +166,52 @@ label.ivu-checkbox-wrapper {
 }
 
 .red-color {
-  color: #FF4C4C !important;
+  color: #ff4c4c !important;
 }
 
 .block {
   display: block !important;
 }
 
-
-.bg-blue:before {
-  background: #3D71FF;
+.bg-blue::before {
+  background: #3d71ff;
 }
 
-.bg-gray:before {
-  background: #9AA8B8;
+.bg-gray::before {
+  background: #9aa8b8;
 }
 
-.bg-yellow:before {
-  background: #FFBB00;
+.bg-yellow::before {
+  background: #fb0;
 }
 
-.bg-green:before {
-  background: #6DD230;
+.bg-green::before {
+  background: #6dd230;
 }
 
-.bg-violet:before {
-  background: #8548E0;
+.bg-violet::before {
+  background: #8548e0;
 }
 
-
-/*overflow*/
+/* overflow */
 .overflow {
-  white-space: nowrap;
-  text-overflow: ellipsis;
   overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-
-/*fix iView 颜色选择器的错误*/
+/* fix iView 颜色选择器的错误 */
 .color-block .ivu-color-picker-confirm-color {
   width: 140px;
 }
 
-/*描述语，灰色的*/
+/* 描述语，灰色的 */
 .desc-text {
-  color: #9AA8B8;
   font-size: 12px;
+  color: #9aa8b8;
 }
 
-/*game*/
+/* game */
 .prize-coupon-box .coupon-col-box {
   min-width: 340px !important;
 }
@@ -221,39 +225,39 @@ label.ivu-checkbox-wrapper {
 }
 
 .no-data {
-  margin: 20px auto;
   width: 100%;
-  border-radius: 4px;
   height: 118px;
-  text-align: center;
+  margin: 20px auto;
   line-height: 118px;
+  color: #67678f;
+  text-align: center;
   border: 1px solid rgba(225, 231, 235, 1);
-  color: #67678F
+  border-radius: 4px;
 }
 
-/*两行*/
+/* 两行 */
 .clamp-2 {
   display: -webkit-box;
-  line-height: 30px;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
   overflow: hidden;
+  line-height: 30px;
   text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
-/*错误 input 框样式*/
+/* 错误 input 框样式 */
 .error-input input {
   background: rgba(255, 76, 76, 0.08);
-  border-radius: 4px;
   border: 1px solid rgba(255, 76, 76, 1);
+  border-radius: 4px;
 }
 
-/*upload*/
+/* upload */
 .upload-class {
   width: 100%;
   height: 100%;
-  text-align: center;
   line-height: 72px;
+  text-align: center;
   background: rgba(23, 23, 37, 0.8);
 }
 
@@ -261,59 +265,66 @@ label.ivu-checkbox-wrapper {
   width: 80px;
   height: 80px;
   margin: 0 auto;
+  overflow: hidden;
   border: 4px solid #fff;
   border-radius: 50%;
-  overflow: hidden;
 
   .image-position {
     position: relative;
     width: 72px;
     height: 72px;
-    text-align: center;
-    border: 1px solid #E1E7EB;
-    cursor: pointer;
-    background: rgba(0, 0, 0, .2);
     line-height: 72px;
+    text-align: center;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid #e1e7eb;
 
     img {
-      height: 72px;
       width: 72px;
+      height: 72px;
       border-radius: 50%;
     }
 
     &:hover .demo-upload-list-cover {
       position: absolute;
-      background: rgba(0, 0, 0, 0.18);
-      color: #fff;
-      left: 0;
       top: 0;
+      left: 0;
       width: 80px;
       height: 80px;
+      color: #fff;
+      background: rgba(0, 0, 0, 0.18);
     }
   }
 }
 
-.decorateTitle span::before{
-  content:""; display: inline-block;
-  width:4px; height: 24px; background: rgba(136, 126, 247, 1);
-  left:-20px; position: absolute; top:2px;
+.decorateTitle span::before {
+  position: absolute;
+  top: 2px;
+  left: -20px;
+  display: inline-block;
+  width: 4px;
+  height: 24px;
+  background: rgba(136, 126, 247, 1);
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
+  content: '';
 }
 
-.clear:after {
-  content: '';
+.clear::after {
   display: block;
   clear: both;
+  content: '';
 }
 
 .is-active {
-  color: #756CEA;
+  color: #756cea;
 }
-.inline-block{
+
+.inline-block {
   display: inline-block;
 }
-/*移除默认背景*/
+
+/* 移除默认背景 */
 .base-tree .ivu-tree-title-selected {
   background: transparent;
 }
@@ -323,25 +334,30 @@ label.ivu-checkbox-wrapper {
 }
 
 .p-text {
-  color: #92929D;
+  color: #92929d;
 }
 
-/*platform 左边树*/
+/* platform 左边树 */
 .ivu-tree-children .ivu-tree-children li {
-  border-left: 1px solid #E2E2EA;
+  border-left: 1px solid #e2e2ea;
 }
-.ivu-tree-children{
+
+.ivu-tree-children {
   margin-bottom: 8px !important;
 }
+
 .ivu-tree ul li {
   margin: 2px 0 !important;
   line-height: 40px;
 }
-/*todo*/
-/*.ivu-tree-title:hover{
+
+/* todo */
+
+/* .ivu-tree-title:hover{
   background: red;
-}*/
-/*platform render tree icon*/
+} */
+
+/* platform render tree icon */
 .tree-icon-render {
   width: 24px;
   height: 24px;
@@ -349,44 +365,43 @@ label.ivu-checkbox-wrapper {
 }
 
 .title-is-selected {
+  color: #756cea !important;
   cursor: pointer;
   background: rgba(255, 140, 8, 0.1);
-  color: #756CEA !important;
 }
 
 .left-tree .tree-span-selected {
   display: inline-block;
-  color: #44444F;
-  margin: 0;
   width: 210px;
-  border-radius: 3px;
-  cursor: pointer;
-  vertical-align: middle;
-  transition: all .2s ease-in-out;
+  margin: 0;
   overflow: hidden;
+  color: #44444f;
   text-overflow: ellipsis;
   white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: all 0.2s ease-in-out;
 }
 
 .delete-alert {
   height: 48px;
   padding: 0 16px;
-  line-height: 48px;
   margin-bottom: 24px;
+  line-height: 48px;
+  background: #e9e8ff;
+  border: 1px solid #756cea;
   border-radius: 4px;
-  
-  border: 1px solid #756CEA;
-  background: #E9E8FF;
 }
 
-.ivu-tree-children .ivu-tree-children li:before {
+.ivu-tree-children .ivu-tree-children li::before {
   display: inline-block;
-  content: "";
   width: 5px;
   height: 1px;
-  background: #E2E2EA;
   vertical-align: middle;
+  background: #e2e2ea;
   border-radius: 4px;
+  content: '';
 }
 
 .span-title {
@@ -394,63 +409,71 @@ label.ivu-checkbox-wrapper {
   width: 100%;
 }
 
-/*有效无效*/
-.is-enable:before {
+/* 有效无效 */
+.is-enable::before {
   position: relative;
   display: inline-block;
-  content: "";
   width: 6px;
   height: 6px;
   margin-right: 5px;
   vertical-align: middle;
-  background: #50B5FF;
+  background: #50b5ff;
   border-radius: 50%;
+  content: '';
 }
 
-.is-disabled:before {
+.is-disabled::before {
   position: relative;
   display: inline-block;
-  content: "";
   width: 6px;
   height: 6px;
   margin-right: 5px;
   vertical-align: middle;
-  background: #B5B5BE;
+  background: #b5b5be;
   border-radius: 50%;
+  content: '';
 }
 
-/*让iView支持勾选背景变色*/
+/* 让iView支持勾选背景变色 */
 .is-table-checked td {
-  background: #E9E8FF !important;
+  background: #e9e8ff !important;
 }
 
-/*不要title poptip */
+/* 不要title poptip */
 
 .contact-button .ivu-poptip-title {
   display: none;
 }
-/*分页组件*/
+
+/* 分页组件 */
 .pagebox {
-  text-align: right;
   padding: 15px 2px;
+  text-align: right;
 }
 
 .pagebox .ivu-page-total {
   float: left;
 }
-/*统一的白底盒子样式*/
-.padding-box{
-  background:#fff; padding:24px;
-  box-shadow: 0 2px 12px 0 rgba(0,0,0,.04);
+
+/* 统一的白底盒子样式 */
+.padding-box {
+  padding: 24px;
+  background: #fff;
   border-radius: 16px;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.04);
 }
 
-/*数字 InputNumber 后的单位*/
+/* 数字 InputNumber 后的单位 */
 .style-input {
   float: right;
 }
-.style-input span,.style-input .ivu-input-number{float: left;}
-.style-input label{
+
+.style-input span,
+.style-input .ivu-input-number {
+  float: left;
+}
+
+.style-input label {
   float: left;
   padding: 8px 7px;
   font-size: inherit;
@@ -460,74 +483,87 @@ label.ivu-checkbox-wrapper {
   text-align: center;
   background-color: #f8f8f9;
   border: 1px solid #dcdee2;
-  border-radius: 4px;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
   border-left: 0;
+  border-radius: 4px;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
 }
-.style-input   .pre-span {
+
+.style-input .pre-span {
   display: inline-block;
+  padding: 8px 8px 10px;
   font-size: 12px;
   line-height: 1;
   color: #515a6e;
   text-align: center;
   background: #f8f8f9;
-  padding: 8px 8px 10px;
-  border: 1px solid #e1e6eb;border-right:none;
+  border: 1px solid #e1e6eb;
+  border-right: none;
   border-radius: 4px 0 0 4px;
-  +div.ivu-input-number{border-top-left-radius:0; border-bottom-left-radius:0}
+
+  + div.ivu-input-number {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+  }
 }
 
-.img-view-box{
+.img-view-box {
+  position: relative;
   display: inline-block;
   width: 100px;
   height: 100px;
-  text-align: center;
+  margin-right: 4px;
+  overflow: hidden;
   line-height: 60px;
+  text-align: center;
+  background: #fff;
   border: 1px solid transparent;
   border-radius: 4px;
-  overflow: hidden;
-  background: #fff;
-  position: relative;
-  box-shadow: 0 1px 1px rgba(0,0,0,.2);
-  margin-right: 4px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
 }
-.img-view-box img{
+
+.img-view-box img {
   width: 100%;
   height: 100%;
 }
-.img-view-box-cover{
-display: none;
-position: absolute;
-top: 0;
-bottom: 0;
-left: 0;
-right: 0;
-background: rgba(0,0,0,.6);
+
+.img-view-box-cover {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: none;
+  background: rgba(0, 0, 0, 0.6);
 }
-.img-view-box:hover .img-view-box-cover{
-display: flex; align-items:center; justify-content:center;
+
+.img-view-box:hover .img-view-box-cover {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.img-view-box-cover i{
-color: #fff;
-font-size: 20px;
-cursor: pointer;
-margin: 0 2px;
+
+.img-view-box-cover i {
+  margin: 0 2px;
+  font-size: 20px;
+  color: #fff;
+  cursor: pointer;
 }
-/*上传图片展示版块*/
+
+/* 上传图片展示版块 */
 .upload-list {
+  position: relative;
   display: inline-block;
   width: 200px;
   height: 200px;
-  text-align: center;
+  margin-right: 4px;
+  overflow: hidden;
   line-height: 80px;
+  text-align: center;
+  background: #fff;
   border: 1px solid transparent;
   border-radius: 4px;
-  overflow: hidden;
-  background: #fff;
-  position: relative;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, .2);
-  margin-right: 4px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
 }
 
 .upload-list img {
@@ -536,75 +572,101 @@ margin: 0 2px;
 }
 
 .upload-list-cover {
-  display: none;
   position: absolute;
   top: 0;
+  right: 0;
   bottom: 0;
   left: 0;
-  right: 0;
-  background: rgba(0, 0, 0, .6);
+  display: none;
+  background: rgba(0, 0, 0, 0.6);
 }
 
 .upload-list:hover .upload-list-cover {
-  display: flex; align-items: center; justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .upload-list-cover i {
-  color: #fff;
-  font-size: 20px;
-  cursor: pointer;
   margin: 0 2px;
+  font-size: 20px;
+  color: #fff;
+  cursor: pointer;
 }
 
-.main-body{
+.main-body {
+  padding-bottom: 40px;
   background: #fff;
   border-radius: 16px;
-  padding-bottom: 40px;
 }
-.float-right{
+
+.float-right {
   float: right;
 }
 
-div.number-input{
+div.number-input {
   position: relative;
 }
-.number-input::after{
-  content:'';display: inline-block; right:18px; top:0;
-  height: 20px; width:20px;position: absolute; z-index: 20;
+
+.number-input::after {
+  position: absolute;
+  top: 0;
+  right: 18px;
+  z-index: 20;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  content: '';
 }
-.price-num-input::after{content:'元'}
-.weight-num-input::after{content:'Kg'}
-.store-num-input::after{content:'件'}
 
-.self-upload-box{
-  text-align:center;width:100px; line-height:100px; height:100px; border:solid 1px rgba(225,231,235,1); cursor:pointer;
+.price-num-input::after {
+  content: '元';
 }
 
-.self-upload-box .ivu-upload{width:100%;}
+.weight-num-input::after {
+  content: 'Kg';
+}
 
-/*table-select限制高度，来自日志管理. 0628 修改 max-height设置最大高度即可*/
-.ivu-table-filter-list-single{
+.store-num-input::after {
+  content: '件';
+}
+
+.self-upload-box {
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+  cursor: pointer;
+  border: solid 1px rgba(225, 231, 235, 1);
+}
+
+.self-upload-box .ivu-upload {
+  width: 100%;
+}
+
+/* table-select限制高度，来自日志管理. 0628 修改 max-height设置最大高度即可 */
+.ivu-table-filter-list-single {
   max-height: 500px;
 }
-/*disabled 优惠券勾选*/
+
+/* disabled 优惠券勾选 */
 .disabled-selected {
   position: relative;
-  background: #F7F9FA !important;
   cursor: not-allowed;
+  background: #f7f9fa !important;
 }
 
-
-/*针对前置有颜色的小圆点*/
-.before-radius:before {
+/* 针对前置有颜色的小圆点 */
+.before-radius::before {
   position: relative;
   display: inline-block;
-  content: '';
   width: 8px;
   height: 8px;
   margin-right: 5px;
   border-radius: 50%;
+  content: '';
 }
 
-.bg-blue:before {
-  background: #6BB3F9;
+.bg-blue::before {
+  background: #6bb3f9;
 }

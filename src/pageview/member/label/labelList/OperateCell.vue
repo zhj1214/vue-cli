@@ -1,24 +1,13 @@
 <template>
   <div>
-    <span
-      v-if="showDelete"
-      :class="settingStyle()"
-      class="span-a"
-      @click="showPop"
-    >删除</span>
+    <span v-if="showDelete" :class="settingStyle()" class="span-a" @click="showPop">删除</span>
 
-    <Dropdown
-      trigger="click"
-      transfer
-    >
-      <span class="text-gap action-text">更多<i
-        class="icon iconfont iconTreeFold"
-        title=""
+    <Dropdown trigger="click" transfer>
+      <span class="text-gap action-text"
+        >更多<i class="icon iconfont iconTreeFold" title=""
       /></span>
       <DropdownMenu slot="list">
-        <DropdownItem @click="showImport">
-          导入会员
-        </DropdownItem>
+        <DropdownItem @click="showImport"> 导入会员 </DropdownItem>
         <DropdownItem>进程查看</DropdownItem>
       </DropdownMenu>
     </Dropdown>
@@ -26,84 +15,79 @@
 </template>
 
 <script>
-import { log } from "@/utils/tools";
+  import { log } from '@/utils/tools'
 
-import mixinsGlobal from "@/mixins/mixinsGlobal";
+  import mixinsGlobal from '@/mixins/mixinsGlobal'
 
-export default {
-    name: "OperateCell",
+  export default {
+    name: 'OperateCell',
     components: {},
     mixins: [mixinsGlobal],
     props: {
-        rowData: Object,
+      rowData: Object,
     },
     data() {
-        return {};
+      return {}
     },
     computed: {
-        showDelete() {
-            let { canBeOperator } = this.rowData
-            let right = true || this.__hasPower('delete')
-            log('right', right)
-            return canBeOperator && right
-        }
+      showDelete() {
+        let { canBeOperator } = this.rowData
+        let right = true || this.__hasPower('delete')
+        log('right', right)
+        return canBeOperator && right
+      },
     },
     watch: {},
-    created() {
-    },
-    mounted() {
-
-    },
+    created() {},
+    mounted() {},
     methods: {
-        showPop() {
-            this.$Modal.confirm({
-                title: '删除标签？',
-                content: '<p><span style="color: red">删除标签后无法恢复</span>，调用该标签的功能将均失效，你还要继续吗？</p>',
-                onOk: () => {
-                    this.onCancelRegister(this.rowData)
-                }
-            });
-        },
-        settingStyle() {
-            // return this.__hasPower('editCard') ? 'border-btn' : ''
-            return 'border-btn'
-        },
-        showImport() {
-            this.$emit('showImport')
-        },
+      showPop() {
+        this.$Modal.confirm({
+          title: '删除标签？',
+          content:
+            '<p><span style="color: red">删除标签后无法恢复</span>，调用该标签的功能将均失效，你还要继续吗？</p>',
+          onOk: () => {
+            this.onCancelRegister(this.rowData)
+          },
+        })
+      },
+      settingStyle() {
+        // return this.__hasPower('editCard') ? 'border-btn' : ''
+        return 'border-btn'
+      },
+      showImport() {
+        this.$emit('showImport')
+      },
     },
-}
+  }
 </script>
 
 <style lang="scss" scoped>
-.border-btn {
+  .border-btn {
     position: relative;
-    cursor: pointer;
     padding-right: 8px;
     line-height: 24px;
+    cursor: pointer;
 
-    &:after {
-        content: '';
-        position: absolute;
-        right: 0;
-        top: 0px;
-
-        bottom: 0px;
-        width: 1px;
-        background-color: #e2e2ea;
+    &::after {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 1px;
+      background-color: #e2e2ea;
+      content: '';
     }
-}
+  }
 
-
-.single-btn {
+  .single-btn {
     position: relative;
-    cursor: pointer;
     padding-right: 8px;
     line-height: 24px;
-}
+    cursor: pointer;
+  }
 
-
-.text-gap {
+  .text-gap {
     padding-left: 8px;
-}
+  }
 </style>

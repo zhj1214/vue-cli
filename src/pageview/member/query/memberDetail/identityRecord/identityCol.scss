@@ -1,33 +1,32 @@
 .status-icon {
-    display: inline-block;
-    margin-right: 6px;
-    width: 8px;
-    height: 8px;
-
-    border-radius: 50%;
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 6px;
+  border-radius: 50%;
 }
 
 .disable {
-    background: rgba(154, 168, 184, 1);
+  background: rgba(154, 168, 184, 1);
 }
 
 .available {
-    background: rgba(109, 210, 48, 1);
-
+  background: rgba(109, 210, 48, 1);
 }
 
 .selected-item {
-    color: #756CEA;
+  color: #756cea;
 }
 
 .icon-space {
-    margin-left: 6px;
+  margin-left: 6px;
 }
 
 .color-text {
-    color: #756CEA;
-    cursor: pointer;
+  color: #756cea;
+  cursor: pointer;
 }
+
 .action-icon {
-    visibility: hidden;
+  visibility: hidden;
 }

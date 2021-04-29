@@ -6,7 +6,7 @@
 </template>
 
 <script>
-	export default {
-		name: "ComponentsLayout"
-	};
+  export default {
+    name: 'ComponentsLayout',
+  }
 </script>

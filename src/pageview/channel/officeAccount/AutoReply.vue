@@ -4,7 +4,7 @@
  * @Date: 2020-06-18 11:11:56
  * @LastEditTime: 2020-06-18 11:13:52
  * @LastEditors: sam.xutao
---> 
+-->
 <template>
   <div>
     <h2>自动回复</h2>
@@ -12,11 +12,7 @@
 </template>
 
 <script>
-export default {
-
-}
+  export default {}
 </script>
 
-<style>
-
-</style>
+<style></style>

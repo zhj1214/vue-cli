@@ -10,43 +10,40 @@
 </template>
 
 <script>
-// import { log } from "@/utils/tools";
+  // import { log } from "@/utils/tools";
 
-export default {
-    name: "BelongOrgCell",
+  export default {
+    name: 'BelongOrgCell',
     components: {},
     props: {
-        currentOrg: String,
-        higherOrg: String,
+      currentOrg: String,
+      higherOrg: String,
     },
     data() {
-        return {};
+      return {}
     },
     computed: {},
     watch: {},
-    created() {
-    },
-    mounted() {
-
-    },
+    created() {},
+    mounted() {},
     methods: {},
-}
+  }
 </script>
 
 <style lang="scss" scoped>
-    .current {
-        font-size: 14px;
-        font-family: SFUIDisplay-Light, SFUIDisplay;
-        font-weight: 300;
-        color: #171725;
-        line-height: 24px;
-    }
+  .current {
+    font-family: SFUIDisplay-Light, SFUIDisplay;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 24px;
+    color: #171725;
+  }
 
-    .higher {
-        font-size: 12px;
-        font-family: SFUIDisplay-Light, SFUIDisplay;
-        font-weight: 300;
-        color: #92929D;
-        line-height: 22px;
-    }
+  .higher {
+    font-family: SFUIDisplay-Light, SFUIDisplay;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 22px;
+    color: #92929d;
+  }
 </style>

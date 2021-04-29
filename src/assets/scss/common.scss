@@ -1,32 +1,36 @@
 @charset "UTF-8";
-/*!*********************
+
+/* !*********************
  *@name style
  *@author Jo.gel
  *@date 2019/3/19 0019
  ***********************/
-/*width*/
-.w40{
+
+/* width */
+.w40 {
   width: 40px !important;
 }
 
-.w60{
+.w60 {
   width: 60px !important;
 }
 
-.w80{
+.w80 {
   width: 80px !important;
 }
 
-.w90{
+.w90 {
   width: 90px !important;
 }
 
-.w96{
+.w96 {
   width: 96px !important;
 }
+
 .w100 {
   width: 100px !important;
 }
+
 .w110 {
   width: 110px !important;
 }
@@ -50,6 +54,7 @@
 .w240 {
   width: 240px !important;
 }
+
 .w250 {
   width: 250px !important;
 }
@@ -78,8 +83,7 @@
   text-align: center;
 }
 
-
-/*margin*/
+/* margin */
 .mt-10 {
   margin-top: 10px !important;
 }
@@ -100,37 +104,38 @@
   margin-left: 10px !important;
 }
 
-/*padding*/
+/* padding */
 .pr-10 {
   padding-right: 10px;
 }
 
 .tree-wrap {
+  max-height: 320px;
+  overflow-x: hidden;
+  overflow-y: auto !important;
   border: 1px solid #ddd;
   border-radius: 4px;
-  max-height: 320px;
-  overflow-y: auto !important;
-  overflow-x: hidden;
 }
 
 .member-table-span {
   font-size: 12px;
-  color: #9AA8B8;
+  color: #9aa8b8;
 }
 
 .member-table-strong {
-  color: #3E4552;
   font-size: 14px;
   font-weight: 400;
+  color: #3e4552;
 }
 
 .member-table-span + .member-table-span {
   margin-left: 10px;
 }
+
 .clearfix::after {
-  content: '';
   display: block;
   clear: both;
+  content: '';
 }
 
 .mini-block-narrow {
@@ -150,12 +155,12 @@
 }
 
 .action-text {
+  color: #756cea !important;
   cursor: pointer;
-  color: #756CEA!important;
 }
 
 .color-text {
-  color: #756CEA!important;
+  color: #756cea !important;
 }
 
 .button-gap {
@@ -164,13 +169,13 @@
 
 .view-footer {
   display: flex;
+  padding: 16px 16px 0;
+  margin-right: -16px;
+  margin-left: -16px;
+  border-top: 1px solid #e8eaec;
   -webkit-box-pack: end;
   -ms-flex-pack: end;
   justify-content: flex-end;
-  border-top: 1px solid #e8eaec;
-  padding: 16px 16px 0;
-  margin-left: -16px;
-  margin-right: -16px;
 
   .text-narrow {
     margin-right: 16px;

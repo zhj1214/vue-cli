@@ -1,92 +1,76 @@
 <template>
   <div class="level-right">
-    <div
-      v-for="(t, index) in list"
-      :key="index"
-      class="tag-container"
-    >
+    <div v-for="(t, index) in list" :key="index" class="tag-container">
       <span>{{ t.equityName }}</span>
-      <i
-        class="icon iconfont iconClose"
-        title=""
-        @click="deleteRight(t)"
-      />
+      <i class="icon iconfont iconClose" title="" @click="deleteRight(t)" />
     </div>
   </div>
 </template>
 
 <script>
-// import { log } from "@/utils/tools";
+  // import { log } from "@/utils/tools";
 
-export default {
-    name: "ShowLevelRight",
+  export default {
+    name: 'ShowLevelRight',
     components: {},
     props: {
-        list: Array,
+      list: Array,
     },
     data() {
-        return {};
+      return {}
     },
     computed: {},
     watch: {
-        // list(updateList) {
-        //     log('重新渲染')
-        //     this.$set(this.list, updateList)
-        //     // this.list = updateList
-        // }
+      // list(updateList) {
+      //     log('重新渲染')
+      //     this.$set(this.list, updateList)
+      //     // this.list = updateList
+      // }
     },
-    created() {
-    },
-    mounted() {
-
-    },
+    created() {},
+    mounted() {},
     methods: {
-        deleteRight(i) {
-            let id = i.equityId
-            this.$emit('delete', id)
-        },
+      deleteRight(i) {
+        let id = i.equityId
+        this.$emit('delete', id)
+      },
     },
-}
+  }
 </script>
 
 <style lang="scss" scoped>
-.level-right {
+  .level-right {
     display: flex;
+    width: 380px;
+    height: 92px;
+    //padding-right: 16px;
+    padding-bottom: 16px;
+    padding-left: 16px;
+    overflow: hidden auto;
+    background: #fff;
+    border: 1px solid #e2e2e9;
+    border-radius: 8px;
     justify-content: flex-start;
     flex-wrap: wrap;
 
-    width: 380px;
-    height: 92px;
-    background: #FFFFFF;
-    border-radius: 8px;
-    border: 1px solid #E2E2E9;
-    overflow: hidden auto;
-
-    padding-left: 16px;
-    //padding-right: 16px;
-    padding-bottom: 16px;
-
     .iconfont {
-        cursor: pointer;
+      cursor: pointer;
     }
-}
+  }
 
-.tag-container {
-    margin-top: 16px;
+  .tag-container {
     height: 22px;
-    background: #F6F6F7;
-    border-radius: 11px;
-    border: 1px solid #D5D5DB;
     padding-left: 12px;
+    margin-top: 16px;
     margin-right: 16px;
-
-    font-size: 12px;
     font-family: SFUIDisplay-Light, SFUIDisplay;
+    font-size: 12px;
     font-weight: 300;
-    color: #696974;
     line-height: 22px;
-
+    color: #696974;
     vertical-align: middle;
-
-}
+    background: #f6f6f7;
+    border: 1px solid #d5d5db;
+    border-radius: 11px;
+  }
 </style>

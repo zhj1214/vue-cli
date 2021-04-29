@@ -1,5 +1,5 @@
-import { renderTime } from '@/utils/tools';
-import { ENUM_TYPE } from './common';
+import { renderTime } from '@/utils/tools'
+import { ENUM_TYPE } from './common'
 
 export function baseTableCol() {
   return [
@@ -18,7 +18,7 @@ export function baseTableCol() {
             },
             on: {
               click: () => {
-                this.showDetailModal(params.row);
+                this.showDetailModal(params.row)
               },
             },
           }),
@@ -28,7 +28,7 @@ export function baseTableCol() {
               innerHTML: params.row.orgId || '--',
             },
           }),
-        ]);
+        ])
       },
     },
     {
@@ -41,7 +41,7 @@ export function baseTableCol() {
               innerHTML: params.row.type ? ENUM_TYPE[params.row.type] : '--',
             },
           }),
-        ]);
+        ])
       },
     },
     { title: '注册二维码(个)', key: 'number' },
@@ -66,7 +66,7 @@ export function baseTableCol() {
                 },
                 on: {
                   click: () => {
-                    this.showUpdateModal(params.row);
+                    this.showUpdateModal(params.row)
                   },
                 },
               })
@@ -81,13 +81,13 @@ export function baseTableCol() {
                 },
                 on: {
                   click: () => {
-                    this.showDeleteModal(params.row);
+                    this.showDeleteModal(params.row)
                   },
                 },
               })
             : '',
-        ]);
+        ])
       },
     },
-  ];
+  ]
 }

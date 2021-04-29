@@ -10,39 +10,36 @@
 </template>
 
 <script>
-    export default {
-        name: "NameIdCell",
-        props: {
-            item: Object,
-        },
-        data() {
-            return {
-
-            }
-        },
-        created() {
-        }
-    }
+  export default {
+    name: 'NameIdCell',
+    props: {
+      item: Object,
+    },
+    data() {
+      return {}
+    },
+    created() {},
+  }
 </script>
 
 <style lang="scss" scoped>
-    .name {
-        height:24px;
-        font-size:14px;
-        font-family:SFUIDisplay-Light,SFUIDisplay;
-        font-weight:300;
-        color:rgba(23,23,37,1);
-        line-height:24px;
-    }
+  .name {
+    height: 24px;
+    font-family: SFUIDisplay-Light, SFUIDisplay;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 24px;
+    color: rgba(23, 23, 37, 1);
+  }
 
-    .display-id {
-        margin-top: 4px;
-        height:22px;
-        font-size:12px;
-        font-family:SFUIDisplay-Light,SFUIDisplay;
-        font-weight:300;
-        color:rgba(146,146,157,1);
-        line-height:22px;
-        vertical-align: middle;
-    }
+  .display-id {
+    height: 22px;
+    margin-top: 4px;
+    font-family: SFUIDisplay-Light, SFUIDisplay;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 22px;
+    color: rgba(146, 146, 157, 1);
+    vertical-align: middle;
+  }
 </style>

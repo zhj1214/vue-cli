@@ -55,8 +55,7 @@ export default {
           meta: {
             title: '公众号设置',
           },
-          component: () =>
-            import('../pageview/channel/officeAccount/Account'),
+          component: () => import('../pageview/channel/officeAccount/Account'),
         },
         {
           path: 'menu',
@@ -64,8 +63,7 @@ export default {
           meta: {
             title: '自定义菜单',
           },
-          component: () =>
-            import('../pageview/channel/officeAccount/Account'),
+          component: () => import('../pageview/channel/officeAccount/Account'),
         },
       ],
     },
@@ -80,15 +78,14 @@ export default {
       component: () => import('../layout/ComponentsLayout'),
       children: [
         {
-          path: 'base', 
+          path: 'base',
           name: 'channel-register-mng-base',
           meta: {
             title: '注册渠道管理',
           },
-          component: () =>
-            import('../pageview/channel/registerChannelMng/Base'),
+          component: () => import('../pageview/channel/registerChannelMng/Base'),
         },
       ],
     },
   ],
-};
+}

@@ -26,30 +26,37 @@
   <div>
     <slot name="cond-tool" />
     <slot name="cond-tabs" />
-    <div style="margin-top:24px;">
+    <div style="margin-top: 24px;">
       <Table
         :columns="columns"
         :data="tabData"
         :loading="loading"
-        @on-selection-change="selection=>$emit('selectionChange',selection)"
-      />      
+        @on-selection-change="(selection) => $emit('selectionChange', selection)"
+      />
     </div>
   </div>
 </template>
 <script>
-export default {
-  name:'CommManage',
-  props:{
-    columns:{required:true,type:Array},
-    tabData:{required:true,type:Array},
-    loading:{required:true,type:Boolean},
+  export default {
+    name: 'CommManage',
+    props: {
+      columns: { required: true, type: Array },
+      tabData: { required: true, type: Array },
+      loading: { required: true, type: Boolean },
+    },
   }
-}
 </script>
 <style lang="scss">
-.comm-tool-box{
-  display: flex; justify-content: space-between;
-  .btn-group{margin-left:24px; button{margin-right: 12px;}}
-}
-</style>
+  .comm-tool-box {
+    display: flex;
+    justify-content: space-between;
 
+    .btn-group {
+      margin-left: 24px;
+
+      button {
+        margin-right: 12px;
+      }
+    }
+  }
+</style>

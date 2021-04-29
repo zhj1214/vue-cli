@@ -16,14 +16,14 @@
       :show-header="showHeader"
       :highlight-row="highlightRow"
       :row-class-name="rowClassName"
-      @on-select-cancel="(selection,row)=>$emit('on-selectCancel',selection,row)"
-      @on-select="(selection,row)=>$emit('on-select',selection,row)"
-      @on-selection-change="(selection)=>$emit('on-selectTable',selection)"
-      @on-select-all="(selection)=>$emit('on-selectAll',selection)"
-      @on-select-all-cancel="(selection)=>$emit('on-selectAllCancel',selection)"
-      @on-row-click="(row,index)=>$emit('on-rowClick',row,index)"
-      @on-expand="(row,status)=>$emit('on-expandTable',row,status)"
-      @on-sort-change="(column,key,order)=>$emit('on-sortChange',column,key,order)"
+      @on-select-cancel="(selection, row) => $emit('on-selectCancel', selection, row)"
+      @on-select="(selection, row) => $emit('on-select', selection, row)"
+      @on-selection-change="(selection) => $emit('on-selectTable', selection)"
+      @on-select-all="(selection) => $emit('on-selectAll', selection)"
+      @on-select-all-cancel="(selection) => $emit('on-selectAllCancel', selection)"
+      @on-row-click="(row, index) => $emit('on-rowClick', row, index)"
+      @on-expand="(row, status) => $emit('on-expandTable', row, status)"
+      @on-sort-change="(column, key, order) => $emit('on-sortChange', column, key, order)"
     />
 
     <div class="page-row mt-10">
@@ -37,63 +37,63 @@
         class="pagebox"
         :total="pageData.count"
         :current="pageData.page"
-        :page-size="pageData.pageSize||pageData.size||10"
+        :page-size="pageData.pageSize || pageData.size || 10"
         show-elevator
         show-sizer
         show-total
-        :page-size-opts="[10,20,30,40]"
-        @on-change="(page)=>$emit('on-pageChange',page)"
-        @on-page-size-change="(size)=>$emit('on-pageSize',size)"
+        :page-size-opts="[10, 20, 30, 40]"
+        @on-change="(page) => $emit('on-pageChange', page)"
+        @on-page-size-change="(size) => $emit('on-pageSize', size)"
       />
     </div>
   </div>
 </template>
 
 <script>
-export default {
-    name: "BaseTable",
+  export default {
+    name: 'BaseTable',
     props: {
-        highlightRow: {
-            type: Boolean,
-            default: false
+      highlightRow: {
+        type: Boolean,
+        default: false,
+      },
+      showHeader: {
+        type: Boolean,
+        default: true,
+      },
+      rowClassName: {
+        type: [String, Function],
+      },
+      loading: {
+        type: Boolean,
+      },
+      noPage: {
+        type: Boolean,
+        default: false,
+      },
+      col: {
+        required: true,
+        type: [Array, Function],
+      },
+      list: {
+        required: true,
+        type: [Array, Function],
+        default: () => {
+          return []
         },
-        showHeader: {
-            type: Boolean,
-            default: true
+      },
+      pageData: {
+        type: Object,
+        default: () => {
+          return {}
         },
-        rowClassName: {
-            type: [String, Function]
-        },
-        loading: {
-            type: Boolean
-        },
-        noPage: {
-            type: Boolean,
-            default: false
-        },
-        col: {
-            required: true,
-            type: [Array, Function]
-        },
-        list: {
-            required: true,
-            type: [Array, Function],
-            default: () => {
-                return [];
-            }
-        },
-        pageData: {
-            type: Object,
-            default: () => {
-                return {};
-            }
-        }
-    }
-};
+      },
+    },
+  }
 </script>
 
 <style scoped lang="scss">
-.page-row {
+  .page-row {
     text-align: right;
-}
+  }
 </style>

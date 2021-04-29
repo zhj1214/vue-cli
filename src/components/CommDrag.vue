@@ -19,34 +19,50 @@
     </template>
   </CommDrag>
  -->
- <style lang="scss">
-  .draggable-box{
-    // display: flex; justify-content: space-evenly; 
+<style lang="scss">
+  .draggable-box {
+    // display: flex; justify-content: space-evenly;
     outline: none;
-    li{
-      height: 40px; line-height: 40px; background:#fff; margin: 0 10px;flex:1; text-align: center; 
-      a{font-size:20px;}
-      &:hover{outline:dashed 2px #2d8cf0;cursor:move;}
+
+    li {
+      height: 40px;
+      margin: 0 10px;
+      line-height: 40px;
+      text-align: center;
+      background: #fff;
+      flex: 1;
+
+      a {
+        font-size: 20px;
+      }
+
+      &:hover {
+        cursor: move;
+        outline: dashed 2px #2d8cf0;
+      }
     }
-    .draggable-source--is-dragging{
+
+    .draggable-source--is-dragging {
+      color: #2d8cf0;
       // border:solid 1px #f00;
-      background:transparent; color:#2d8cf0;
+      background: transparent;
     }
-    .draggable-mirror{background: #daebfd; color:#fff;}
-    .draggable-original{border:solid 1px #999;}
+
+    .draggable-mirror {
+      color: #fff;
+      background: #daebfd;
+    }
+
+    .draggable-original {
+      border: solid 1px #999;
+    }
   }
- </style>
+</style>
 <template>
   <div>
-    <ul
-      :id="boxId"
-      class="draggable-box"
-    >
+    <ul :id="boxId" class="draggable-box">
       <slot name="drag-items">
-        <li
-          v-for="(item,index) in 2"
-          :key="index+Math.random()"
-        >
+        <li v-for="(item, index) in 2" :key="index + Math.random()">
           {{ item }}
         </li>
       </slot>
@@ -54,41 +70,41 @@
   </div>
 </template>
 <script>
-import {Sortable} from '@shopify/draggable';
-export default {
-  name:'CommDragbox',
-  props:{
-    childClsname:{type:String},
-    boxId:{type:String,required:true},
-    xAxisDirection:{type:Boolean,default:true},
-    yAxisDirection:{type:Boolean,default:false},
-  },
-  data(){
-    return {
-      draggObj:null
-    }
-  },
-  mounted(){
-    const draggable = new Sortable(document.querySelectorAll('#'+this.boxId), {
-      draggable: this.childClsname||'li',
-      mirror: {
-        constrainDimensions: true,
-        cursorOffsetX: 10,
-        cursorOffsetY: 10,
-        yAxis: this.yAxisDirection,
-        xAxis: this.xAxisDirection
+  import { Sortable } from '@shopify/draggable'
+  export default {
+    name: 'CommDragbox',
+    props: {
+      childClsname: { type: String },
+      boxId: { type: String, required: true },
+      xAxisDirection: { type: Boolean, default: true },
+      yAxisDirection: { type: Boolean, default: false },
+    },
+    data() {
+      return {
+        draggObj: null,
       }
-    });
-    this.draggObj = draggable;
-    this.$nextTick(()=>{
-      // this.draggObj.on('drag:start', (e) => this.$emit('dragStart',e) );
-      // this.draggObj.on('drag:move', (e) => this.$emit('dragMove',e));
-      this.draggObj.on('drag:stop', () =>{
-        setTimeout(()=>{
-          this.$emit('dragStop',this.boxId)
+    },
+    mounted() {
+      const draggable = new Sortable(document.querySelectorAll('#' + this.boxId), {
+        draggable: this.childClsname || 'li',
+        mirror: {
+          constrainDimensions: true,
+          cursorOffsetX: 10,
+          cursorOffsetY: 10,
+          yAxis: this.yAxisDirection,
+          xAxis: this.xAxisDirection,
+        },
+      })
+      this.draggObj = draggable
+      this.$nextTick(() => {
+        // this.draggObj.on('drag:start', (e) => this.$emit('dragStart',e) );
+        // this.draggObj.on('drag:move', (e) => this.$emit('dragMove',e));
+        this.draggObj.on('drag:stop', () => {
+          setTimeout(() => {
+            this.$emit('dragStop', this.boxId)
+          })
         })
-      });
-    })
+      })
+    },
   }
-}
 </script>

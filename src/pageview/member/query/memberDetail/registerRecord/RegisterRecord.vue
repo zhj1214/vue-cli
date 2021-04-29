@@ -13,11 +13,7 @@
             @on-clear="getList"
             @on-change="getList"
           >
-            <Option
-              v-for="item in registerOrgList"
-              :key="item.value"
-              :value="item.value"
-            >
+            <Option v-for="item in registerOrgList" :key="item.value" :value="item.value">
               {{ item.label }}
             </Option>
           </Select>
@@ -34,11 +30,7 @@
             @on-clear="getList"
             @on-change="getList"
           >
-            <Option
-              v-for="item in existOrgList"
-              :key="item.value"
-              :value="item.value"
-            >
+            <Option v-for="item in existOrgList" :key="item.value" :value="item.value">
               {{ item.label }}
             </Option>
           </Select>
@@ -83,599 +75,588 @@
 </template>
 
 <script>
-    import { log, createRangeTime } from "@/utils/tools";
-    import {registerRecordCol} from "./registerRecordCol";
+  import { log, createRangeTime } from '@/utils/tools'
+  import { registerRecordCol } from './registerRecordCol'
 
-    export default {
-        name: "PointRecord",
-        props: {
-            memberId: String,
+  export default {
+    name: 'PointRecord',
+    props: {
+      memberId: String,
+    },
+    data() {
+      return {
+        timeOption: {
+          disabledDate(date) {
+            // 禁用过去的时间
+            return date && date.valueOf() > Date.now() - 86400000
+          },
         },
-        data() {
-            return {
-                timeOption:{
-                    disabledDate (date) {
-                        // 禁用过去的时间
-                        return date && date.valueOf() > Date.now() - 86400000;
-                    }
-                },
 
-                orgId: '',
-                orgName: '',
-                searchData: {
-                    startTime: '',
-                    endTime: '',
-                    orgId: [],
-                    actualRegistrationOrgId: '',
-                },
-
-                pageData: {
-                    page: 1,
-                    size: 10,
-                    count: 0,
-                },
-                list: [],
-
-                storeList: [
-                    {
-                        value: '',
-                        label: '',
-                    },
-                ],
-                columns: registerRecordCol.call(this),
-                tableLoading: false,
-
-                registerOrgList: [],
-                existOrgList: [],
-                changeTypeList: [],
-            }
+        orgId: '',
+        orgName: '',
+        searchData: {
+          startTime: '',
+          endTime: '',
+          orgId: [],
+          actualRegistrationOrgId: '',
         },
-        computed: {
+
+        pageData: {
+          page: 1,
+          size: 10,
+          count: 0,
         },
-        created() {
-            this.initData()
-            this.getActualOrg()
-            this.getRegisteredOrg()
-        },
-        mounted() {
-            this.getList()
-        },
-        methods: {
-            initData() {
-                let orgId = localStorage.orgId || '777777'
-                let orgName = localStorage.orgName
+        list: [],
 
-                this.orgName = orgName
-                this.orgId = orgId
-            },
-            formatData() {
-                let { page, size} = this.pageData
+        storeList: [
+          {
+            value: '',
+            label: '',
+          },
+        ],
+        columns: registerRecordCol.call(this),
+        tableLoading: false,
 
-                let data = {
-                    page,
-                    size,
-                    ...this.searchData,
-                    memberId: this.memberId,
-                }
+        registerOrgList: [],
+        existOrgList: [],
+        changeTypeList: [],
+      }
+    },
+    computed: {},
+    created() {
+      this.initData()
+      this.getActualOrg()
+      this.getRegisteredOrg()
+    },
+    mounted() {
+      this.getList()
+    },
+    methods: {
+      initData() {
+        let orgId = localStorage.orgId || '777777'
+        let orgName = localStorage.orgName
 
-                return data
-            },
-            getList() {
-                let server = '/member-server'
-                let url = server + '/member/info/registration/list'
-                let data = this.formatData()
-                this.list = []
+        this.orgName = orgName
+        this.orgId = orgId
+      },
+      formatData() {
+        let { page, size } = this.pageData
 
-                this.tableLoading = true
-                this.$ajaxGet(url, data)
-                    .then(res => {
-                        if (res && res.code === 10000) {
-                            let resData = res.data
-                            this.list = resData.list || [];
-                            this.pageData.count = resData.total || 0;
-                        }
-                        this.tableLoading = false
-                    })
-                    .catch(err => {
-                        log(err);
-                    });
-            },
-            getActualOrg(query) {
-                let server = '/member-server'
-                let url = server + '/member/info/getActualOrg'
-                let data = {
-                    memberId: this.memberId,
-                    content: query,
-                }
-
-                this.$ajaxGet(url, data)
-                    .then(res => {
-                        if (res && res.code === 10000) {
-                            let resData = res.data
-                            log('getActualOrg, resData', resData)
-                            let format = resData.map(item => {
-                                return {
-                                    label: item.orgName,
-                                    value: item.orgId,
-                                }
-                            })
-                            this.registerOrgList = this.registerOrgList.concat(format)
-                        }
-                    })
-                    .catch(err => {
-                        log(err);
-                    });
-            },
-            getRegisteredOrg(query) {
-                let server = '/member-server'
-                let url = server + '/member/info/getAlreadyOrg'
-                let data = {
-                    memberId: this.memberId,
-                    content: query,
-                }
-
-                this.$ajaxGet(url, data)
-                    .then(res => {
-                        if (res && res.code === 10000) {
-                            let resData = res.data
-                            let format = resData.map(item => {
-                                return {
-                                    label: item.orgName,
-                                    value: item.orgId,
-                                }
-                            })
-                            this.existOrgList = this.existOrgList.concat(format)
-                            log('getRegisteredOrg, resData', resData)
-                        }
-                    })
-                    .catch(err => {
-                        log(err);
-                    });
-            },
-            onPageChange(page) {
-                this.pageData.page = page
-                this.$nextTick(() => {
-                    this.getList();
-                });
-            },
-            onPageSize(size) {
-                this.pageData.size = size;
-                this.getList();
-            },
-            handleTimePiker(val){
-                let startDate = val[0]
-                let endDate = val[1]
-                if (startDate) {
-                    startDate = startDate + " 00:00:00"
-                    endDate = endDate + " 23:59:59"
-                }
-
-                Object.assign( this.searchData, {
-                    startTime: startDate,
-                    endTime: endDate,
-                })
-                this.getList()
-            },
-            // 根据选择时间间隔，设置 DatePicker
-            chooseTimeRange(val) {
-                let pack = createRangeTime(val)
-                let [startTime, endTime] = pack
-                if (val === 'custom') {
-                    startTime = ''
-                    endTime = ''
-                }
-
-                Object.assign(this.searchData, {
-                    startTime,
-                    endTime,
-                })
-            },
-            selectActions(value) {
-                let emptyValue = value.length === 0
-                if (emptyValue) {
-                    value = ['', '']
-                }
-                let [parentType, subType] = value
-                Object.assign(this.searchData, {
-                    isAdd: parentType,
-                    changeReason: subType,
-                })
-                this.getList()
-            },
+        let data = {
+          page,
+          size,
+          ...this.searchData,
+          memberId: this.memberId,
         }
-    }
+
+        return data
+      },
+      getList() {
+        let server = '/member-server'
+        let url = server + '/member/info/registration/list'
+        let data = this.formatData()
+        this.list = []
+
+        this.tableLoading = true
+        this.$ajaxGet(url, data)
+          .then((res) => {
+            if (res && res.code === 10000) {
+              let resData = res.data
+              this.list = resData.list || []
+              this.pageData.count = resData.total || 0
+            }
+            this.tableLoading = false
+          })
+          .catch((err) => {
+            log(err)
+          })
+      },
+      getActualOrg(query) {
+        let server = '/member-server'
+        let url = server + '/member/info/getActualOrg'
+        let data = {
+          memberId: this.memberId,
+          content: query,
+        }
+
+        this.$ajaxGet(url, data)
+          .then((res) => {
+            if (res && res.code === 10000) {
+              let resData = res.data
+              log('getActualOrg, resData', resData)
+              let format = resData.map((item) => {
+                return {
+                  label: item.orgName,
+                  value: item.orgId,
+                }
+              })
+              this.registerOrgList = this.registerOrgList.concat(format)
+            }
+          })
+          .catch((err) => {
+            log(err)
+          })
+      },
+      getRegisteredOrg(query) {
+        let server = '/member-server'
+        let url = server + '/member/info/getAlreadyOrg'
+        let data = {
+          memberId: this.memberId,
+          content: query,
+        }
+
+        this.$ajaxGet(url, data)
+          .then((res) => {
+            if (res && res.code === 10000) {
+              let resData = res.data
+              let format = resData.map((item) => {
+                return {
+                  label: item.orgName,
+                  value: item.orgId,
+                }
+              })
+              this.existOrgList = this.existOrgList.concat(format)
+              log('getRegisteredOrg, resData', resData)
+            }
+          })
+          .catch((err) => {
+            log(err)
+          })
+      },
+      onPageChange(page) {
+        this.pageData.page = page
+        this.$nextTick(() => {
+          this.getList()
+        })
+      },
+      onPageSize(size) {
+        this.pageData.size = size
+        this.getList()
+      },
+      handleTimePiker(val) {
+        let startDate = val[0]
+        let endDate = val[1]
+        if (startDate) {
+          startDate = startDate + ' 00:00:00'
+          endDate = endDate + ' 23:59:59'
+        }
+
+        Object.assign(this.searchData, {
+          startTime: startDate,
+          endTime: endDate,
+        })
+        this.getList()
+      },
+      // 根据选择时间间隔，设置 DatePicker
+      chooseTimeRange(val) {
+        let pack = createRangeTime(val)
+        let [startTime, endTime] = pack
+        if (val === 'custom') {
+          startTime = ''
+          endTime = ''
+        }
+
+        Object.assign(this.searchData, {
+          startTime,
+          endTime,
+        })
+      },
+      selectActions(value) {
+        let emptyValue = value.length === 0
+        if (emptyValue) {
+          value = ['', '']
+        }
+        let [parentType, subType] = value
+        Object.assign(this.searchData, {
+          isAdd: parentType,
+          changeReason: subType,
+        })
+        this.getList()
+      },
+    },
+  }
 </script>
 
-<style lang="scss"  scoped>
+<style lang="scss" scoped>
+  .row-narrow {
+    margin-top: 20px;
+  }
 
-    .row-narrow {
-        margin-top: 20px;
+  .search-block {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .search-title {
+    display: inline-block;
+    width: 100px;
+    line-height: 32px;
+    text-align: right;
+  }
+
+  .change-type {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .action-block {
+    position: relative;
+    display: inline-block;
+
+    .iconfont {
+      font-size: 24px;
+      vertical-align: middle;
+    }
+  }
+
+  .mark-btn {
+    display: inline-block;
+    height: 32px;
+    padding: 0 4px 0 16px;
+    line-height: 32px;
+    vertical-align: middle;
+    cursor: pointer;
+    background: white;
+    border: 1px solid #dcdee2;
+    border-radius: 4px;
+
+    &:hover {
+      color: #756cea;
+      border: 1px solid #756cea;
     }
 
-    .search-block {
-        display: flex;
-        justify-content: space-between;
+    &:hover > .iconTreeFold {
+      color: #756cea;
+      cursor: pointer;
+    }
+  }
+
+  .search-separate-line {
+    display: inline-block;
+    height: 20px;
+    margin: -6px 8px;
+    border-right: 1px solid rgba(226, 226, 234, 1);
+  }
+
+  .button-gap {
+    margin-right: 8px;
+  }
+
+  .action-text {
+    color: #756cea;
+    cursor: pointer;
+  }
+
+  .search-label {
+    display: inline-block;
+    width: 70px;
+    text-align: right;
+  }
+
+  .filter-btn {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .identity-search {
+    position: relative;
+    z-index: 4;
+
+    .iconSearch {
+      font-size: 24px;
+      color: #bbb8bb;
+    }
+  }
+
+  .fold-block-normal {
+    display: inline-block;
+    width: 56px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    background: rgba(250, 250, 251, 1);
+    border: 1px solid rgba(226, 226, 234, 1);
+    border-radius: 8px;
+
+    .iconfont {
+      color: #929496;
+      vertical-align: middle;
+    }
+  }
+
+  .fold-block-active {
+    position: relative;
+    z-index: 2;
+    display: inline-block;
+    width: 56px;
+    height: 41px;
+    padding-bottom: 10px;
+    margin-bottom: -22px;
+    cursor: pointer;
+    background: #fafafb;
+    border: 1px solid #e2e2ea;
+    border-bottom: none;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+
+    .iconfont {
+      color: #756cea;
+      vertical-align: middle;
     }
 
-    .search-title {
-        display: inline-block;
-        width: 100px;
-        text-align: right;
-        line-height: 32px;
+    &::before {
+      position: absolute;
+      bottom: 0;
+      left: -20px;
+      z-index: 2;
+      display: inline-block;
+      width: 20px;
+      height: 22px;
+      background: white;
+      border-right: 1px solid #e2e2ea;
+      border-bottom: 1px solid #e2e2ea;
+      border-bottom-right-radius: 12px 12px;
+      content: '';
     }
 
-    .change-type {
-        display: flex;
-        justify-content: flex-start;
+    &::after {
+      position: absolute;
+      bottom: 0;
+      left: -10px;
+
+      /* border-radius:         10px; */
+      z-index: 1;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background: #fafafb;
+      content: '';
     }
-    .action-block {
-        position: relative;
-        display: inline-block;
+  }
 
+  .filter-container {
+    position: absolute;
+    top: -8px;
+    display: inline-block;
+    padding: 7px 4px;
+    line-height: 32px;
+    vertical-align: middle;
+  }
 
-        .iconfont {
-            font-size: 24px;
-            vertical-align: middle;
-        }
-    }
+  .advanced-block {
+    padding: 0 24px;
+    margin-top: 8px;
+    background: #fafafb;
+    border: 1px solid rgba(226, 226, 234, 1);
+    border-radius: 8px;
+    border-top-right-radius: unset;
+  }
 
-    .mark-btn {
-        display: inline-block;
-        vertical-align: middle;
-        background: white;
-        border-radius: 4px;
+  .filter-row {
+    padding: 20px 0;
+    border-bottom: dashed 1px #e2e2ea;
+  }
 
-        border: 1px solid #dcdee2;
-        height: 32px;
-        line-height: 32px;
-        padding: 0 4px 0 16px;
-        cursor: pointer;
+  .last-row {
+    display: flex;
+    width: 100%;
+    margin: 20px 0;
+    justify-content: flex-end;
+  }
 
-        &:hover {
-            border:1px solid #756CEA;
-            color: #756CEA;
-        }
-        &:hover > .iconTreeFold {
-            cursor: pointer;
-            color: #756CEA;
-        }
-    }
+  .keep-one-line {
+    display: flex;
+    line-height: 32px;
+  }
 
-    .search-separate-line {
-        display: inline-block;
-        height: 20px;
-        border-right: 1px solid rgba(226,226,234,1);
-        margin: -6px 8px;
-    }
+  .big-row-narrow {
+    margin-right: 40px;
+  }
 
-    .button-gap {
-        margin-right: 8px;
-    }
+  .displayFilterList {
+    display: flex;
+    padding: 20px 24px;
+    margin-top: 8px;
+    background: #fafafb;
+    border: 1px solid rgba(226, 226, 234, 1);
+    border-radius: 8px;
+    justify-content: space-between;
+  }
 
-    .action-text {
-        cursor: pointer;
-        color: #756CEA;
-    }
+  .displayListEach {
+    display: inline-block;
+    padding-left: 12px;
+    line-height: 24px;
+    background: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(226, 226, 234, 1);
+    border-radius: 11px;
 
-    .search-label {
-        display: inline-block;
-        width: 70px;
-        text-align: right;
-    }
+    /* height: 26px; */
 
-    .filter-btn {
-        display: flex;
-        justify-content: flex-end;
-    }
-
-    .identity-search {
-        position: relative;
-        z-index: 4;
-        .iconSearch {
-            color: #BBB8BB;
-            font-size: 24px;
-        }
-    }
-
-    .fold-block-normal {
-        display: inline-block;
-        cursor: pointer;
-        line-height: 32px;
-        width: 56px;
-        height: 32px;
-
-        text-align: center;
-        vertical-align: middle;
-
-        background:rgba(250,250,251,1);
-        border-radius:8px;
-        border:1px solid rgba(226,226,234,1);
-
-        .iconfont {
-            vertical-align: middle;
-
-            color: #929496;
-        }
+    & > span {
+      font-size: 12px;
+      font-weight: 300;
+      line-height: 24px;
+      color: #979497;
+      vertical-align: middle;
     }
 
-    .fold-block-active {
-        display: inline-block;
-        z-index: 2;
-        position: relative;
-        cursor: pointer;
-        background: #FAFAFB;
-        border-top-left-radius: 8px;
-        border-top-right-radius: 8px;
-        border: 1px solid #e2e2ea;
-        border-bottom: none;
-        width: 56px;
-        height: 41px;
-        margin-bottom: -22px;
-        padding-bottom: 10px;
+    .iconfont {
+      color: #979497;
+      vertical-align: middle;
+      cursor: pointer;
+    }
+  }
 
-        .iconfont {
-            vertical-align: middle;
-            color: #756CEA;
-        }
+  .reset-btn {
+    display: inline-block;
+    font-family: SFUIDisplay-Light, SFUIDisplay;
+    font-size: 14px;
+    line-height: 26px;
+    color: rgba(117, 108, 234, 1);
+  }
 
-        &:before {
-            position: absolute;
-            bottom: 0px;
-            content: '';
-            display: inline-block;
-            width: 20px;
-            left: -20px;
-            background: white;
-            height: 22px;
-            border-right: 1px solid #e2e2ea;
-            border-bottom: 1px solid #e2e2ea;
-            border-bottom-right-radius: 12px 12px;
-            z-index: 2;
-        }
-        &:after {
-            position: absolute;
-            bottom: 0;
-            content: '';
-            display: inline-block;
-            width: 20px;
-            left: -10px;
-            background: #FAFAFB;
-            height: 20px;
-            /*border-radius:         10px;*/
-            z-index: 1;
-        }
+  .action-list {
+    position: absolute;
+    top: 50px;
+    left: 176px;
+    z-index: 2;
+    display: flex;
+    width: 296px;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 8px;
+    box-shadow: 0 0 8px 0 rgba(181, 181, 190, 0.24);
+  }
+
+  .parent-action-container {
+    width: 148px;
+    border-right: 1px solid rgba(226, 226, 234, 1);
+  }
+
+  .parent-action {
+    display: flex;
+    padding: 6px 6px 6px 16px;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 24px;
+    color: rgba(68, 68, 79, 1);
+    cursor: pointer;
+    justify-content: space-between;
+
+    &:hover {
+      background: rgba(250, 250, 251, 1);
+    }
+  }
+
+  .select-parent-action {
+    color: #756cea;
+    background: #e9e8ff;
+  }
+
+  .sub-action {
+    width: 148px;
+    padding: 6px 16px;
+    cursor: pointer;
+
+    &:hover {
+      background: rgba(250, 250, 251, 1);
+    }
+  }
+
+  .not-select-member {
+    color: rgba(213, 213, 220, 1);
+  }
+
+  .more-action {
+    display: inline-block;
+    height: 32px;
+    padding: 0 4px 0 16px;
+    line-height: 32px;
+    vertical-align: middle;
+    cursor: pointer;
+    background: white;
+    border: 1px solid #dcdee2;
+    border-radius: 4px;
+
+    &:hover {
+      color: #756cea;
+      border: 1px solid #756cea;
     }
 
-
-    .filter-container {
-        display: inline-block;
-        position: absolute;
-        line-height: 32px;
-        vertical-align: middle;
-        padding: 7px 4px;
-        top: -8px;
+    &:hover > .iconTreeFold {
+      color: #756cea;
+      cursor: pointer;
     }
+  }
 
+  .action-background {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    overflow: auto;
+    background: rgba(79, 48, 14, 0.01);
+  }
 
-    .advanced-block {
-        margin-top: 8px;
-        border-radius:8px;
-        border-top-right-radius: unset;
-        border:1px solid rgba(226,226,234,1);
-        background: #FAFAFB;
-        padding: 0 24px;
+  .card-container {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+
+    & > div {
+      margin-right: 2.5%;
     }
+  }
 
-    .filter-row {
-        padding: 20px 0;
-        border-bottom: dashed 1px #E2E2EA;
+  .big-block-narrow {
+    margin-top: 24px;
+  }
+
+  .middle-block-narrow {
+    margin-top: 20px;
+  }
+
+  .input-separator {
+    padding: 0 12px;
+  }
+
+  .frozen-desc {
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 22px;
+    color: rgba(146, 146, 157, 1);
+    word-break: break-all;
+  }
+
+  .select-info-block {
+    display: flex;
+    padding: 12px 16px;
+    margin-top: 20px;
+    line-height: 24px;
+    color: rgba(23, 23, 37, 1);
+    vertical-align: middle;
+    background: #e9e8ff;
+    border: 1px solid rgba(117, 108, 234, 1);
+    border-radius: 4px;
+    justify-content: space-between;
+
+    .iconInfo {
+      margin-right: 4px;
+      vertical-align: middle;
     }
+  }
 
-    .last-row {
-        margin: 20px 0;
-        width: 100%;
-        display: flex;
-        justify-content: flex-end;
-    }
+  .color-text {
+    color: rgba(117, 108, 234, 1);
+  }
 
-    .keep-one-line {
-        display: flex;
-        line-height: 32px;
-    }
-
-    .big-row-narrow {
-        margin-right: 40px;
-    }
-
-    .displayFilterList {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 8px;
-        background: #FAFAFB;
-
-        border-radius:8px;
-
-        border:1px solid rgba(226,226,234,1);
-        padding: 20px 24px;
-    }
-
-    .displayListEach {
-        display: inline-block;
-        background:rgba(255,255,255,1);
-        border-radius:11px;
-        border:1px solid rgba(226,226,234,1);
-
-        padding-left: 12px;
-        line-height: 24px;
-        /*height: 26px;*/
-
-        & > span {
-            vertical-align: middle;
-            font-size:12px;
-            font-weight:300;
-            color: #979497;
-            line-height:24px;
-        }
-
-        .iconfont {
-            cursor: pointer;
-            color: #979497;
-            vertical-align: middle;
-        }
-    }
-
-    .reset-btn {
-        display: inline-block;
-        font-size:14px;
-        font-family:SFUIDisplay-Light,SFUIDisplay;
-        color:rgba(117, 108, 234, 1);
-        line-height:26px;
-    }
-
-    .action-list {
-        display: flex;
-        position: absolute;
-        z-index: 2;
-        width:296px;
-        left: 176px;
-
-        top: 50px;
-        background:rgba(255,255,255,1);
-        box-shadow:0px 0px 8px 0px rgba(181,181,190,0.24);
-        border-radius:8px;
-    }
-
-    .parent-action-container {
-        width:148px;
-        border-right: 1px solid rgba(226,226,234,1);
-    }
-
-    .parent-action {
-        cursor: pointer;
-        font-size:14px;
-        font-weight:300;
-        color:rgba(68,68,79,1);
-
-        line-height:24px;
-        padding: 6px 6px 6px 16px;
-        display: flex;
-        justify-content: space-between;
-
-        &:hover {
-            background:rgba(250,250,251,1);
-        }
-    }
-
-    .select-parent-action {
-        color: #756CEA;
-        background:#E9E8FF;
-    }
-
-    .sub-action {
-        width: 148px;
-        padding: 6px 16px;
-        cursor: pointer;
-
-        &:hover {
-            background:rgba(250,250,251,1);
-        }
-    }
-
-    .not-select-member {
-        color:rgba(213,213,220,1);
-    }
-
-    .more-action {
-        display: inline-block;
-        vertical-align: middle;
-        background: white;
-        border-radius: 4px;
-
-        border: 1px solid #dcdee2;
-        height: 32px;
-        line-height: 32px;
-        padding: 0 4px 0 16px;
-        cursor: pointer;
-
-        &:hover {
-            border:1px solid #756CEA;
-            color: #756CEA;
-        }
-        &:hover > .iconTreeFold {
-            cursor: pointer;
-            color: #756CEA;
-        }
-    }
-
-    .action-background {
-        position: fixed;
-        overflow: auto;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        z-index: 1;
-        background: rgba(79, 48, 14, 0.01);
-    }
-
-    .card-container {
-        width: 100%;
-        display: flex;
-        justify-content: flex-start;
-        flex-wrap: wrap;
-
-        & > div {
-            margin-right: 2.5%;
-        }
-    }
-
-    .big-block-narrow {
-        margin-top: 24px;
-    }
-
-    .middle-block-narrow {
-        margin-top: 20px;
-    }
-
-    .input-separator {
-        padding: 0 12px;
-    }
-
-    .frozen-desc {
-        font-size:12px;
-        font-weight:300;
-        color:rgba(146,146,157,1);
-        line-height:22px;
-        word-break: break-all
-    }
-
-    .select-info-block {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 20px;
-        background:#E9E8FF;
-
-        border-radius:4px;
-        border:1px solid rgba(117, 108, 234, 1);
-
-        padding: 12px 16px;
-        color:rgba(23,23,37,1);
-        line-height:24px;
-        vertical-align: middle;
-
-        .iconInfo {
-            vertical-align: middle;
-            margin-right: 4px;
-        }
-    }
-
-    .color-text {
-        color:rgba(117, 108, 234, 1);
-    }
-    .select-count {
-        color:rgba(117, 108, 234, 1);
-        padding: 4px;
-    }
-
-
+  .select-count {
+    padding: 4px;
+    color: rgba(117, 108, 234, 1);
+  }
 </style>

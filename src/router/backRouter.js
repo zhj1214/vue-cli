@@ -11,78 +11,76 @@
  * hidden：true ，则不在menu显示这个路由，说明是隐藏的页面
  * fullTitle，用于设置展开菜单全称
  * */
-import platformRouter from './router-platform';		// 平台管理菜单
-import memberRouter from './router-member';		// 会员中心菜单
-import channel from './router-channel';		// 渠道
-
+import platformRouter from './router-platform' // 平台管理菜单
+import memberRouter from './router-member' // 会员中心菜单
+import channel from './router-channel' // 渠道
 
 const routes = [
-	{
-		path: '/',
-		name: 'admin',
-		meta: {
-			title: '管理后台'
-		},
-		redirect: '/welcome',
-		component: () => import('../layout/AdminLayout'),
-		children: [
-
-			{
-				path: 'welcome',
-				name: 'welcome',
-				component: () => import('../view/Welcome'),
-				meta: {
-					title: '欢迎页面',
-					hidden: true,
-					public: true,
-					h2: true
-				}
-			},
-			platformRouter,
-			memberRouter,
-			channel,
-		]
-	},
-];
+  {
+    path: '/',
+    name: 'admin',
+    meta: {
+      title: '管理后台',
+    },
+    redirect: '/welcome',
+    component: () => import('../layout/AdminLayout'),
+    children: [
+      {
+        path: 'welcome',
+        name: 'welcome',
+        component: () => import('../view/Welcome'),
+        meta: {
+          title: '欢迎页面',
+          hidden: true,
+          public: true,
+          h2: true,
+        },
+      },
+      platformRouter,
+      memberRouter,
+      channel,
+    ],
+  },
+]
 
 export const loginRouter = [
-	{
-		path: '/login',
-		name: 'login',
-		component: () => import('../view/Login'),
-		meta: {
-			title: '登录',
-			hidden: true,
-			public: true,
-		}
-	}
-];
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import('../view/Login'),
+    meta: {
+      title: '登录',
+      hidden: true,
+      public: true,
+    },
+  },
+]
 
 // 超时
 export const timeoutRouter = [
-	{
-		path: '/timeout',
-		name: 'timeout',
-		component: () => import('../view/Timeout'),
-		meta: {
-			title: 'timeout',
-			hidden: true,
-			public: true,
-		}
-	}
-];
+  {
+    path: '/timeout',
+    name: 'timeout',
+    component: () => import('../view/Timeout'),
+    meta: {
+      title: 'timeout',
+      hidden: true,
+      public: true,
+    },
+  },
+]
 // 无权限
 export const permissionRouter = [
-	{
-		path: "*",
-		name: "permission",
-		component: () => import('../view/Permission'),
-		meta: {
-			title: 'permission',
-			hidden: true,
-			public: true,
-		}
-	}
-];
+  {
+    path: '*',
+    name: 'permission',
+    component: () => import('../view/Permission'),
+    meta: {
+      title: 'permission',
+      hidden: true,
+      public: true,
+    },
+  },
+]
 
-export default routes;
+export default routes

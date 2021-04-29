@@ -9,11 +9,9 @@
       @on-ok="deleteFunc"
       @on-cancel="() => {}"
     >
-      <span
-        v-if="isShowDeleteBtn"
-        class="button-gap action-text"
-        :class="settingStyle()"
-      >删除</span>
+      <span v-if="isShowDeleteBtn" class="button-gap action-text" :class="settingStyle()"
+        >删除</span
+      >
     </Poptip>
     <!--        <Divider-->
     <!--            type="vertical"-->
@@ -27,163 +25,141 @@
       transfer
       @on-click="clickDropDown"
     >
-      <a
-        class=""
-        href="javascript:void(0)"
-      >
+      <a class="" href="javascript:void(0)">
         更多
         <Icon type="md-arrow-dropdown" />
       </a>
       <DropdownMenu slot="list">
-        <DropdownItem
-          v-if="isShowImportDataBtn"
-          name="1"
-        >
-          导入会员
-        </DropdownItem>
-        <DropdownItem
-          v-if="isShowImportDataBtn"
-          name="2"
-        >
-          进程查看
-        </DropdownItem>
+        <DropdownItem v-if="isShowImportDataBtn" name="1"> 导入会员 </DropdownItem>
+        <DropdownItem v-if="isShowImportDataBtn" name="2"> 进程查看 </DropdownItem>
       </DropdownMenu>
     </Dropdown>
   </div>
 </template>
 
 <script>
-// import {log} from "@/utils/tools";
-import mixinsGlobal from "@/mixins/mixinsGlobal";
+  // import {log} from "@/utils/tools";
+  import mixinsGlobal from '@/mixins/mixinsGlobal'
 
-export default {
+  export default {
     name: 'TagsListBtnBox',
     components: {},
     mixins: [mixinsGlobal],
     props: {
-        detailFunc: {
-            type: Function,
-            default: () => {
-            }
-        },
-        deleteFunc: {
-            type: Function,
-            default: () => {
-            }
-        },
-        importDataFunc: {
-            type: Function,
-            default: () => {
-            }
-        },
-        watchImportFunc: {
-            type: Function,
-            default: () => {
-            }
-        },
-        rowData: Object,
+      detailFunc: {
+        type: Function,
+        default: () => {},
+      },
+      deleteFunc: {
+        type: Function,
+        default: () => {},
+      },
+      importDataFunc: {
+        type: Function,
+        default: () => {},
+      },
+      watchImportFunc: {
+        type: Function,
+        default: () => {},
+      },
+      rowData: Object,
     },
     data() {
-        return {}
+      return {}
     },
     computed: {
-        isShowDeleteBtn() {
-            let { canBeOperator } = this.rowData
-            let right = this.__hasPower('batchDelete')
-            // 有操作权限的
-            return canBeOperator && right
-        },
-        isShowImportDataBtn() {
-            let { canBeOperator, isHand  } = this.rowData
-            let right = this.__hasPower('importCheck')
-            return canBeOperator && right && isHand
-        },
+      isShowDeleteBtn() {
+        let { canBeOperator } = this.rowData
+        let right = this.__hasPower('batchDelete')
+        // 有操作权限的
+        return canBeOperator && right
+      },
+      isShowImportDataBtn() {
+        let { canBeOperator, isHand } = this.rowData
+        let right = this.__hasPower('importCheck')
+        return canBeOperator && right && isHand
+      },
     },
     watch: {},
-    created() {
-
-    },
+    created() {},
     methods: {
-        clickDropDown(name) {
-            if (name === '1') {
-                this.importDataFunc();
-            } else if (name === '2') {
-                this.watchImportFunc();
-            }
-        },
-        settingStyle() {
-            return this.isShowImportDataBtn ? 'border-btn' : ''
-        },
-    }
-}
+      clickDropDown(name) {
+        if (name === '1') {
+          this.importDataFunc()
+        } else if (name === '2') {
+          this.watchImportFunc()
+        }
+      },
+      settingStyle() {
+        return this.isShowImportDataBtn ? 'border-btn' : ''
+      },
+    },
+  }
 </script>
 
 <style lang="scss" scoped>
-.tagsListBtnBox {
+  .tagsListBtnBox {
+    display: flex;
     width: 100%;
     height: auto;
-    display: flex;
     justify-content: flex-start;
     align-items: center;
-}
+  }
 
-.tagsListBtnBox__btn {
+  .tagsListBtnBox__btn {
     width: auto;
     height: auto;
     font-size: 14px;
-    color: #2d8cf0;
     font-weight: 500;
+    color: #2d8cf0;
     cursor: pointer;
-}
+  }
 
-.border-btn {
+  .border-btn {
     position: relative;
-    cursor: pointer;
     padding-right: 8px;
     line-height: 24px;
+    cursor: pointer;
 
-    &:after {
-        content: '';
-        position: absolute;
-        right: 0;
-        top: 0px;
-
-        bottom: 0px;
-        width: 1px;
-        background-color: #e2e2ea;
+    &::after {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 1px;
+      background-color: #e2e2ea;
+      content: '';
     }
-}
+  }
 
-
-.single-btn {
+  .single-btn {
     position: relative;
-    cursor: pointer;
     padding-right: 8px;
     line-height: 24px;
-}
+    cursor: pointer;
+  }
 </style>
 
 <style lang="scss">
-.tagsListBtnBox {
-
+  .tagsListBtnBox {
     .ivu-dropdown-rel {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+      display: flex;
+      width: 100%;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
     }
 
     .ivu-select-dropdown {
-        border-radius: 8px;
+      border-radius: 8px;
     }
 
     .ivu-poptip-content {
-        width: 220px;
+      width: 220px;
     }
 
     .ivu-poptip-body-message {
-        text-align: left;
+      text-align: left;
     }
-}
+  }
 </style>

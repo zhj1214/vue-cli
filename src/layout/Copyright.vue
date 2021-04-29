@@ -20,33 +20,33 @@
   </div>
 </template>
 <script>
-	import ICP from '../assets/images/icon_icp.png';
-	
-	export default {
-		name: 'Copyright',
-		components: {},
-		data() {
-			return {
-				ICP: ICP
-			};
-		},
-		methods: {}
-	};
+  import ICP from '../assets/images/icon_icp.png'
+
+  export default {
+    name: 'Copyright',
+    components: {},
+    data() {
+      return {
+        ICP: ICP,
+      }
+    },
+    methods: {},
+  }
 </script>
 <style lang="scss" scoped>
-		.footer-copy {
-				clear: both;
-				font-size: 14px;
-				margin-top: 35px;
-				color: #9AA8B8;
-				text-align: center;
-				
-				p {
-						line-height: 22px;
-				}
-				
-				img {
-						vertical-align: middle;
-				}
-		}
+  .footer-copy {
+    margin-top: 35px;
+    clear: both;
+    font-size: 14px;
+    color: #9aa8b8;
+    text-align: center;
+
+    p {
+      line-height: 22px;
+    }
+
+    img {
+      vertical-align: middle;
+    }
+  }
 </style>

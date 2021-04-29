@@ -9,7 +9,7 @@
 export default {
   computed: {
     pageAction() {
-      return this.$store.getters.pageActions[this.$route.name] || [];
+      return this.$store.getters.pageActions[this.$route.name] || []
     },
   },
   methods: {
@@ -20,8 +20,8 @@ export default {
      * @returns {boolean}
      */
     __hasPower(...list) {
-      let hasRight = list.some((element) => this.pageAction.includes(element));
-      return hasRight;
+      const hasRight = list.some((element) => this.pageAction.includes(element))
+      return hasRight
     },
   },
-};
+}

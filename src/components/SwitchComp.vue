@@ -15,23 +15,23 @@
     <i-switch
       :value="visible"
       :disabled="isDisabled"
-      :size="size||'default'"
-      @on-change="(value)=>$emit('switchChange',value)"
+      :size="size || 'default'"
+      @on-change="(value) => $emit('switchChange', value)"
     >
-      <span slot="open">{{ openText||"显示" }}</span>
-      <span slot="close">{{ closeText||"隐藏" }}</span>
+      <span slot="open">{{ openText || '显示' }}</span>
+      <span slot="close">{{ closeText || '隐藏' }}</span>
     </i-switch>
   </div>
 </template>
 <script>
-export default {
-  name:"SwitchComp",
-  props:{
-    visible:{type:Boolean,required:true},
-    openText:{type:String},
-    closeText:{type:String},
-    size:{type:String},
-    isDisabled:{type:Boolean,default: false,}
+  export default {
+    name: 'SwitchComp',
+    props: {
+      visible: { type: Boolean, required: true },
+      openText: { type: String },
+      closeText: { type: String },
+      size: { type: String },
+      isDisabled: { type: Boolean, default: false },
+    },
   }
-}
 </script>

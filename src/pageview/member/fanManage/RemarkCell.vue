@@ -1,47 +1,37 @@
 <template>
   <div>
-    <Poptip
-      word-wrap
-      width="200"
-      trigger="hover"
-      transfer
-      placement="top-start"
-      :content="remark"
-    >
+    <Poptip word-wrap width="200" trigger="hover" transfer placement="top-start" :content="remark">
       <span class="show-ellipsis">{{ remark }}</span>
     </Poptip>
   </div>
 </template>
 
 <script>
-// import { log } from "@/utils/tools";
+  // import { log } from "@/utils/tools";
 
-export default {
-    name: "RemarkCell",
+  export default {
+    name: 'RemarkCell',
     components: {},
     props: {
-        remark: String,
+      remark: String,
     },
     data() {
-        return {};
+      return {}
     },
     computed: {},
     watch: {},
-    created() {
-    },
-    mounted() {
-
-    },
+    created() {},
+    mounted() {},
     methods: {},
-}
+  }
 </script>
 
 <style lang="scss" scoped>
-    .show-ellipsis {
-        display: inline-block;
-        width: 100px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-    }
+  .show-ellipsis {
+    display: inline-block;
+    width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 </style>

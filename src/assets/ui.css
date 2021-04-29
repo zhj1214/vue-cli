@@ -1,392 +1,537 @@
-
 a,
 button {
-	text-decoration: none;
-	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-	-webkit-tap-highlight-color: transparent;
-}
-.logo{
-	background-color: #00284d;
-	height: 64px;
-}
-.lay-grid{
-	padding: 20px;
-	background-color: #FFFFFF;
-	min-height: 120px;
+  text-decoration: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
 }
 
-.ivu-breadcrumb>span:last-child{
-	font-weight: normal;
-}
-.lay-box-title{
-    font-size: 20px;
+.logo {
+  height: 64px;
+  background-color: #00284d;
 }
 
-.ivu-table-header thead tr th{
-	font-weight: normal;
-}
-.action-link .ivu-btn-text{
-    color: #756CEA;
-}
-.card-filter{margin-bottom: 15px;height: 32px;}
-.col-left{float: left;}
-.col-right{float: right;}
-.wrap .ivu-card{
-	margin-bottom: 20px;
-}
-.serv-card-grid h4{
-	font-size: 16px;
-	margin-bottom: 10px;
-}
-.serv-card-grid p{
-	margin-bottom: 10px;
-	color: #666;
-}
-.normal-card .ivu-card-body{
-	padding: 0;
-}
-.normal-card .ivu-tabs-bar{
-	padding: 0 20px;
-	margin-bottom: 0;
-}
-.tab-body{
-	padding: 16px;
-}
-.v-card{
-	padding: 15px;
-	border-width: 1px;
-	border-style: solid;
-	border-color: rgb(217, 217, 217);
-	border-radius: 4px;
-}
-.info-row{
-	display: flex;
-	padding: 10px 20px;
-}
-.info-label{
-	width: 100px;
-}
-.v-title{
-	font-size: 16px;
-	margin-bottom: 10px;
-}
-.v-item{
-	color: #999;
-	font-size: 13px;
-	margin-bottom: 10px;
-}
-.v-text{
-	margin-bottom: 10px;
-}
-.v-item:last-child{
-	margin-bottom: 0;
-}
-.v-item span{
-	display: inline-block;
-	margin-right: 15px;
+.lay-grid {
+  min-height: 120px;
+  padding: 20px;
+  background-color: #fff;
 }
 
-.eq-logo{
-	width: 40px;
-	height: 40px;
-	border-radius: 5px;
-	display: inline-block;
-	vertical-align: middle;
-}
-.page-cell{
-	text-align: right;
-	overflow: hidden;
-	padding: 20px 0 10px 0;
-}
-.page-cell .ivu-page-total{
-	float: left;
-	display: inline-block;
-}
-.order-up{
-	display: inline-block;
-	vertical-align: middle;
-	background-repeat: no-repeat;
-	width: 30px;
-	height: 30px;
-	background-position: center;
-	background-size: contain;
-	background-image: url(up.png);
-	cursor: pointer;
-	opacity: .6;
-}
-.grey_up_icon{
-	background-image: url(up_grey.png) !important;
-}
-.grey_down_icon{
-	background-image: url(down_grey.png) !important;
-}
-.order-down{
-	opacity: .6;
-	display: inline-block;
-	vertical-align: middle;
-	background-repeat: no-repeat;
-	width: 30px;
-	height: 30px;
-	background-position: center;
-	background-size: contain;
-	background-image: url(down.png);
-	cursor: pointer;
-}
-.site-grid{
-	overflow: hidden;
-}
-.site-grid .site-avatar{
-	margin-right: 15px;
-	float: left;
-}
-.site-avatar img{
-	width: 60px;
-	height: 60px;
-	border-radius: 50px;
-}
-.site-grid .col{
-	overflow: hidden;
-}
-.site-grid .uc-intro{
-	font-size: 20px;
-	padding: 5px 0;
-	margin-bottom: 10px;
-}
-.uc-meta{
-	color: #999999;
-	font-size: 14px;
+.ivu-breadcrumb > span:last-child {
+  font-weight: normal;
 }
 
-.card-ft{
-	border-top: 1px solid #eee;
-	padding-top: 10px;
-	color: #999;
-}
-.card-bd{
-	position: relative;
-	margin-bottom: 10px;
-}
-.card-bd .icon-rt{
-	position: absolute;
-	right: 0;
-	top: 0;
-}
-.card-bd .icon-rt .ivu-icon{font-size: 20px;}
-.card-box{height: 150px;border: 1px solid #ded9d9;margin: 20px 0;border-radius: 10px;}
-.card-box .title{height: 40%;width: 100%;border-bottom: 1px solid #eee;font-size: 14px;display: block;padding: 0 20px;}
-.card-box .title li,.card-box .con li{list-style: none;}
-.card-box .con{display: block;padding: 0 20px; height: 60%;font-size: 16px;}
-.data-box .txt{color: #999;margin-bottom: 10px;}
-.data-box .val{font-size: 32px;margin-bottom: 10px;}
-.data-updown{display: flex;color: #999999;margin: 0 -10px;}
-.data-updown .item{padding: 0 10px;}
-.data-updown .ivu-icon-md-arrow-dropup{color: #8fd96b;}
-.data-updown .ivu-icon-md-arrow-dropdown{color: #ff0000;}
-.site-Row .ivu-card{height: 184px;}
-.site-Row .ivu-card-head{padding: 18px 16px;}
-.quk-list{
-	margin: 0 -10px;
-	overflow: hidden;
-}
-.quk-list li{
-	list-style: none;
-	float: left;
-	padding: 5px 10px;
-	min-width: 80px;
-	border: 1px solid #eee;
-    margin: 5px 5px;
-    text-align: center;
+.lay-box-title {
+  font-size: 20px;
 }
 
-.bar-left{
-	float: left;
-	height: 50px;
-}
-.ivu-tabs-ink-bar{
-	height: 3px;
-	bottom:unset;
-}
-.bar-right{
-	float: right;
-	height: 50px;
-	box-sizing: border-box;
-	padding:8px 15px;
-}
-.index-card-bar{
-	height: 50px;
-	border-bottom: 1px solid #EEEEEE;
-}
-.index-card-bar .ivu-date-picker{float:right;	}
-.payUser-title{
-	margin-left: -15px;
-    border-left: 5px solid #f28508;
-    padding-left: 19px;
-    font-size: 16px;
-    font-weight: bold;
-}
-.index-card-bar-radio .date-radio .ivu-radio-wrapper-checked span{
-	background: #f28508;
-	color:#fff;
-	border:0;
-}
-.index-card-bar-radio .date-radio span{
-	margin-left: 2px;
-    margin-right: 2px;
-    border: 1px solid #d6d4d4;
-    padding: 5px 10px;
-    font-size: 13px;
-    color: #999;
-    border-radius: 5px;
-}
-.date-radio .ivu-radio{
-	display: none;
-}
-.date-radio .ivu-radio-wrapper-checked{
-	color: #756CEA;
-}
-.ivu-tabs-nav .ivu-tabs-tab{
-	font-size: 16px;
-	padding: 10px 16px;
-	line-height: 30px;
-}
-.index-card .ivu-card-body{
-	padding: 10px 15px;
-}
-.bar-left .ivu-tabs-bar{
-	border-bottom: 0;
-}
-.index-card-bd{
-	padding: 20px;
-}
-.bar-flex{
-	padding:8px 15px;
-	box-sizing: border-box;
-	display: flex;
-	align-items: center;
-	height: 50px;
-}
-.bar-flex .bar-left-tit{
-	font-size: 16px;
-	margin-right: 20px;
+.ivu-table-header thead tr th {
+  font-weight: normal;
 }
 
-#myChart2{
-	width: 100%;
+.action-link .ivu-btn-text {
+  color: #756cea;
 }
-#myChart{
-	width: 100%;
+
+.card-filter {
+  height: 32px;
+  margin-bottom: 15px;
 }
-.layout-header-bar .menu-icon{
-	float: left;
-	margin: 20px!important;
+
+.col-left {
+  float: left;
 }
-.card-form{
-	max-width: 560px;
+
+.col-right {
+  float: right;
 }
-.card-form .ver-ht{
-	height: auto;
-	margin-bottom: 15px;
+
+.wrap .ivu-card {
+  margin-bottom: 20px;
 }
-.card-form .ver-flex{
-	margin-left: 10px;
-	display: inline-block;
+
+.serv-card-grid h4 {
+  margin-bottom: 10px;
+  font-size: 16px;
 }
-.ver-flex .flex-t{
-	display: inline-block;
-	margin-right: 10px;
+
+.serv-card-grid p {
+  margin-bottom: 10px;
+  color: #666;
 }
-.card-form .tips{
-	color: #999999;
-	font-size: 12px;
+
+.normal-card .ivu-card-body {
+  padding: 0;
 }
-.card-form .v-card{
-	position: relative;
-	line-height: 1;
-	width: 360px;
+
+.normal-card .ivu-tabs-bar {
+  padding: 0 20px;
+  margin-bottom: 0;
 }
-.card-form-hd{
-	margin-bottom: 20px;
-	font-size: 16px;
+
+.tab-body {
+  padding: 16px;
 }
-.card-form-btns{
-	text-align: center;
+
+.v-card {
+  padding: 15px;
+  border-color: rgb(217, 217, 217);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 4px;
 }
-.card-form-btns .ivu-btn{
-	margin: 0 10px;
+
+.info-row {
+  display: flex;
+  padding: 10px 20px;
 }
-.form-card-vbody{
-	display: flex;
+
+.info-label {
+  width: 100px;
 }
-.v-card .ex-link{
-	position: absolute;
-	right: -5px;
-	top: -5px;
-	background-color: #FFFFFF;
-	color: #1890FF;
-	cursor: pointer;
+
+.v-title {
+  margin-bottom: 10px;
+  font-size: 16px;
 }
-.gray{
-	color: #999999!important
+
+.v-item {
+  margin-bottom: 10px;
+  font-size: 13px;
+  color: #999;
 }
-.myModal .ivu-modal-footer{
-	border-top: 0;
+
+.v-text {
+  margin-bottom: 10px;
 }
-.upload-cell{
-	display: flex;
-	align-items: flex-end;
+
+.v-item:last-child {
+  margin-bottom: 0;
 }
-.upload-cell .upload-photo{
-	width: 72px;
-	margin-right: 10px;
-	border: 1px solid #eee;
-	height: 72px;
+
+.v-item span {
+  display: inline-block;
+  margin-right: 15px;
 }
-.upload-cell .upload-photo img{
-	width: 72px;
-	height: 72px;
+
+.eq-logo {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  vertical-align: middle;
+  border-radius: 5px;
 }
-.upload-tip{
-	color: #999999;
-	font-size: 12px;
+
+.page-cell {
+  padding: 20px 0 10px 0;
+  overflow: hidden;
+  text-align: right;
 }
-.ivu-input-number .ivu-input-number-handler-wrap{
-	opacity: 1;
+
+.page-cell .ivu-page-total {
+  display: inline-block;
+  float: left;
 }
-.lg-space-form{
-	padding:30px 50px;
+
+.order-up {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: url(up.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.6;
 }
-.v-icon{
-	cursor: pointer;
+
+.grey_up_icon {
+  background-image: url(up_grey.png) !important;
 }
-.col-tip{
-	color: #999999;
-	font-size: 12px;
+
+.grey_down_icon {
+  background-image: url(down_grey.png) !important;
 }
-.col-txt{
-	font-size: 18px;
+
+.order-down {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: url(down.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.6;
 }
-.btn-back{
-	color: #1890FF;
+
+.site-grid {
+  overflow: hidden;
 }
-.v-card-table{
-	border: 1px solid #d2d2d2;
-    padding: 25px;
+
+.site-grid .site-avatar {
+  float: left;
+  margin-right: 15px;
 }
-.v-card-table th{
-	padding: 0px 100px 20px 0;
-    text-align: left;
+
+.site-avatar img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50px;
 }
-.v-card-table td{
-	font-weight: 500;
-	vertical-align: baseline;
+
+.site-grid .col {
+  overflow: hidden;
 }
-.ivu-tabs.ivu-tabs-card > .ivu-tabs-bar .ivu-tabs-tab-active{
-	border-top: 3px solid;
+
+.site-grid .uc-intro {
+  padding: 5px 0;
+  margin-bottom: 10px;
+  font-size: 20px;
 }
-.base-table-list{
-    background: #fff;
-    -webkit-box-shadow: 0px 2px 12px 0px rgba(0,0,0,0.04);
-    box-shadow: 0px 2px 12px 0px rgba(0,0,0,0.04);
-    border-radius: 16px;
-    padding: 24px;
+
+.uc-meta {
+  font-size: 14px;
+  color: #999;
+}
+
+.card-ft {
+  padding-top: 10px;
+  color: #999;
+  border-top: 1px solid #eee;
+}
+
+.card-bd {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.card-bd .icon-rt {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.card-bd .icon-rt .ivu-icon {
+  font-size: 20px;
+}
+
+.card-box {
+  height: 150px;
+  margin: 20px 0;
+  border: 1px solid #ded9d9;
+  border-radius: 10px;
+}
+
+.card-box .title {
+  display: block;
+  width: 100%;
+  height: 40%;
+  padding: 0 20px;
+  font-size: 14px;
+  border-bottom: 1px solid #eee;
+}
+
+.card-box .title li,
+.card-box .con li {
+  list-style: none;
+}
+
+.card-box .con {
+  display: block;
+  height: 60%;
+  padding: 0 20px;
+  font-size: 16px;
+}
+
+.data-box .txt {
+  margin-bottom: 10px;
+  color: #999;
+}
+
+.data-box .val {
+  margin-bottom: 10px;
+  font-size: 32px;
+}
+
+.data-updown {
+  display: flex;
+  margin: 0 -10px;
+  color: #999;
+}
+
+.data-updown .item {
+  padding: 0 10px;
+}
+
+.data-updown .ivu-icon-md-arrow-dropup {
+  color: #8fd96b;
+}
+
+.data-updown .ivu-icon-md-arrow-dropdown {
+  color: #f00;
+}
+
+.site-Row .ivu-card {
+  height: 184px;
+}
+
+.site-Row .ivu-card-head {
+  padding: 18px 16px;
+}
+
+.quk-list {
+  margin: 0 -10px;
+  overflow: hidden;
+}
+
+.quk-list li {
+  float: left;
+  min-width: 80px;
+  padding: 5px 10px;
+  margin: 5px 5px;
+  text-align: center;
+  list-style: none;
+  border: 1px solid #eee;
+}
+
+.bar-left {
+  float: left;
+  height: 50px;
+}
+
+.ivu-tabs-ink-bar {
+  bottom: unset;
+  height: 3px;
+}
+
+.bar-right {
+  float: right;
+  height: 50px;
+  padding: 8px 15px;
+  box-sizing: border-box;
+}
+
+.index-card-bar {
+  height: 50px;
+  border-bottom: 1px solid #eee;
+}
+
+.index-card-bar .ivu-date-picker {
+  float: right;
+}
+
+.payUser-title {
+  padding-left: 19px;
+  margin-left: -15px;
+  font-size: 16px;
+  font-weight: bold;
+  border-left: 5px solid #f28508;
+}
+
+.index-card-bar-radio .date-radio .ivu-radio-wrapper-checked span {
+  color: #fff;
+  background: #f28508;
+  border: 0;
+}
+
+.index-card-bar-radio .date-radio span {
+  padding: 5px 10px;
+  margin-right: 2px;
+  margin-left: 2px;
+  font-size: 13px;
+  color: #999;
+  border: 1px solid #d6d4d4;
+  border-radius: 5px;
+}
+
+.date-radio .ivu-radio {
+  display: none;
+}
+
+.date-radio .ivu-radio-wrapper-checked {
+  color: #756cea;
+}
+
+.ivu-tabs-nav .ivu-tabs-tab {
+  padding: 10px 16px;
+  font-size: 16px;
+  line-height: 30px;
+}
+
+.index-card .ivu-card-body {
+  padding: 10px 15px;
+}
+
+.bar-left .ivu-tabs-bar {
+  border-bottom: 0;
+}
+
+.index-card-bd {
+  padding: 20px;
+}
+
+.bar-flex {
+  display: flex;
+  height: 50px;
+  padding: 8px 15px;
+  box-sizing: border-box;
+  align-items: center;
+}
+
+.bar-flex .bar-left-tit {
+  margin-right: 20px;
+  font-size: 16px;
+}
+
+#myChart2 {
+  width: 100%;
+}
+
+#myChart {
+  width: 100%;
+}
+
+.layout-header-bar .menu-icon {
+  float: left;
+  margin: 20px !important;
+}
+
+.card-form {
+  max-width: 560px;
+}
+
+.card-form .ver-ht {
+  height: auto;
+  margin-bottom: 15px;
+}
+
+.card-form .ver-flex {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.ver-flex .flex-t {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.card-form .tips {
+  font-size: 12px;
+  color: #999;
+}
+
+.card-form .v-card {
+  position: relative;
+  width: 360px;
+  line-height: 1;
+}
+
+.card-form-hd {
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.card-form-btns {
+  text-align: center;
+}
+
+.card-form-btns .ivu-btn {
+  margin: 0 10px;
+}
+
+.form-card-vbody {
+  display: flex;
+}
+
+.v-card .ex-link {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  color: #1890ff;
+  cursor: pointer;
+  background-color: #fff;
+}
+
+.gray {
+  color: #999 !important;
+}
+
+.myModal .ivu-modal-footer {
+  border-top: 0;
+}
+
+.upload-cell {
+  display: flex;
+  align-items: flex-end;
+}
+
+.upload-cell .upload-photo {
+  width: 72px;
+  height: 72px;
+  margin-right: 10px;
+  border: 1px solid #eee;
+}
+
+.upload-cell .upload-photo img {
+  width: 72px;
+  height: 72px;
+}
+
+.upload-tip {
+  font-size: 12px;
+  color: #999;
+}
+
+.ivu-input-number .ivu-input-number-handler-wrap {
+  opacity: 1;
+}
+
+.lg-space-form {
+  padding: 30px 50px;
+}
+
+.v-icon {
+  cursor: pointer;
+}
+
+.col-tip {
+  font-size: 12px;
+  color: #999;
+}
+
+.col-txt {
+  font-size: 18px;
+}
+
+.btn-back {
+  color: #1890ff;
+}
+
+.v-card-table {
+  padding: 25px;
+  border: 1px solid #d2d2d2;
+}
+
+.v-card-table th {
+  padding: 0 100px 20px 0;
+  text-align: left;
+}
+
+.v-card-table td {
+  font-weight: 500;
+  vertical-align: baseline;
+}
+
+.ivu-tabs.ivu-tabs-card > .ivu-tabs-bar .ivu-tabs-tab-active {
+  border-top: 3px solid;
+}
+
+.base-table-list {
+  padding: 24px;
+  background: #fff;
+  border-radius: 16px;
+  -webkit-box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.04);
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.04);
 }

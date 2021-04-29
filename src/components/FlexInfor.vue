@@ -20,35 +20,31 @@
  *@date 2020/02/20
  -->
 <style lang="scss" scoped>
-  .flexbox-infor{
+  .flexbox-infor {
     display: flex;
-    img{margin-right: 8px;}
-    >section{
-      display: flex; flex-direction: column; justify-content: space-between;
+
+    img {
+      margin-right: 8px;
+    }
+
+    > section {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
   }
 </style>
 <template>
   <div class="flexbox-infor">
-    <ViewModalPic
-      v-if="isViewPic"
-      :src="url"
-      :width="imgW||40"
-      :height="imgH||40"
-    />
-    <img
-      v-else
-      :src="url"
-      :width="imgW||40"
-      :height="imgH||40"
-    >
+    <ViewModalPic v-if="isViewPic" :src="url" :width="imgW || 40" :height="imgH || 40" />
+    <img v-else :src="url" :width="imgW || 40" :height="imgH || 40" />
     <section>
       <slot name="base-info">
         <p :style="nameStyle">
           {{ name }}
         </p>
-        <p style="color:#9aa8b8">
-          {{ noLabel?nameLabel:'' }}{{ noSemi?'':':' }}{{ id }}
+        <p style="color: #9aa8b8;">
+          {{ noLabel ? nameLabel : '' }}{{ noSemi ? '' : ':' }}{{ id }}
         </p>
       </slot>
       <slot name="more-info" />
@@ -56,21 +52,21 @@
   </div>
 </template>
 <script>
-import ViewModalPic from '@/components/ViewPicModal'
-export default {
-  name:'FlexInfor',
-  components:{ViewModalPic},
-  props:{
-    url:{type:String},
-    name:{type:String},
-    id:{type:[String,Number]},
-    imgW:{type:Number},
-    imgH:{type:Number},
-    nameStyle:{type:Object},
-    noLabel: {type:Boolean,default:true},
-    nameLabel:{type:String,default:'id'},   // 货号或id前缀描述
-    isViewPic:Boolean,    //是否查看大图
-    noSemi:Boolean,    //是否显示冒号
+  import ViewModalPic from '@/components/ViewPicModal'
+  export default {
+    name: 'FlexInfor',
+    components: { ViewModalPic },
+    props: {
+      url: { type: String },
+      name: { type: String },
+      id: { type: [String, Number] },
+      imgW: { type: Number },
+      imgH: { type: Number },
+      nameStyle: { type: Object },
+      noLabel: { type: Boolean, default: true },
+      nameLabel: { type: String, default: 'id' }, // 货号或id前缀描述
+      isViewPic: Boolean, //是否查看大图
+      noSemi: Boolean, //是否显示冒号
+    },
   }
-}
 </script>

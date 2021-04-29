@@ -1,5 +1,6 @@
 @charset "UTF-8";
-/*!*********************
+
+/* !*********************
  *@name login+hall全局性
  *@author Jo.gel
  *@date 2020/3/3 0003
@@ -12,27 +13,28 @@
 .form-body {
   .ivu-input {
     border: none;
-    border-bottom: 1px solid #E2E2EA;
+    border-bottom: 1px solid #e2e2ea;
     border-radius: 0;
 
     &:focus {
       border: none;
+      border-bottom: 1px solid #e2e2ea;
       box-shadow: none;
-      border-bottom: 1px solid #E2E2EA;
     }
   }
 
-  .password-input, .valid-input {
+  .password-input,
+  .valid-input {
     .ivu-input {
       padding-left: 36px;
     }
   }
 
   .ivu-form-item-content {
-    &:after {
+    &::after {
       display: block;
-      content: "";
       clear: both;
+      content: '';
     }
   }
 }
@@ -41,7 +43,7 @@
   cursor: pointer !important;
 }
 
-/*fix dropdown*/
+/* fix dropdown */
 .form-body {
   .ivu-dropdown {
     float: right;
@@ -52,7 +54,7 @@
   }
 }
 
-/*error 样式*/
+/* error 样式 */
 .ivu-form-item-error {
   .ivu-input {
     border: none !important;
@@ -60,49 +62,48 @@
     border-radius: 0;
 
     &:hover {
-      border-color: #fff;
       border-bottom: 1px solid #ed4014 !important;
+      border-color: #fff;
     }
 
     &:focus {
       border: none;
-      box-shadow: none !important;
       border-bottom: 1px solid #ed4014 !important;
+      box-shadow: none !important;
     }
   }
 }
 
 .left-phoneArea {
-  float: left;
   position: relative;
   top: -1px;
+  float: left;
   width: 120px;
-  border-bottom: 1px solid #E2E2EA;
+  border-bottom: 1px solid #e2e2ea;
 }
 
 .is-active {
-  color: #756CEA;
+  color: #756cea;
 }
 
-/*顶部返回按钮*/
+/* 顶部返回按钮 */
 .h2 span {
-  cursor: pointer;
   display: inline-block;
   font-size: 24px;
+  cursor: pointer;
 }
 
-
 .h2 img {
-  cursor: pointer;
   display: block;
   float: left;
   width: 20px !important;
   height: 20px !important;
   margin-top: 8px;
   margin-right: 5px;
+  cursor: pointer;
 }
 
-.hall-layout .ivu-menu-light:after {
+.hall-layout .ivu-menu-light::after {
   background: white;
 }
 // .ivu-icon-ios-arrow-down:before

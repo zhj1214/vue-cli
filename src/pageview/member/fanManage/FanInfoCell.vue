@@ -1,9 +1,6 @@
 <template>
   <div class="info-cell">
-    <img
-      class="photo"
-      :src="data.headImg"
-    >
+    <img class="photo" :src="data.headImg" />
     <div>
       <div class="name-sex">
         <span>{{ data.nickName }}</span>
@@ -20,56 +17,53 @@
 </template>
 
 <script>
-// import { log } from "@/utils/tools";
+  // import { log } from "@/utils/tools";
 
-export default {
-    name: "FanInfoCell",
+  export default {
+    name: 'FanInfoCell',
     components: {},
     props: {
-        data: Object,
+      data: Object,
     },
     data() {
-        return {};
+      return {}
     },
     computed: {},
     watch: {},
-    created() {
-    },
-    mounted() {
-
-    },
+    created() {},
+    mounted() {},
     methods: {
-        hasSex() {
-            let sex = this.data.sex === "F" || this.data.sex === "M"
-            return sex
-        },
-        infoStyle() {
-            return  {
-                fontSize: "12px",
-                marginLeft: "4px",
-                background: this.data.sex === "F" ? "#FFDBDB" : "#E7EEFF",
-                borderRadius: "50%",
-                padding: "4px"
-            }
-        },
+      hasSex() {
+        let sex = this.data.sex === 'F' || this.data.sex === 'M'
+        return sex
+      },
+      infoStyle() {
+        return {
+          fontSize: '12px',
+          marginLeft: '4px',
+          background: this.data.sex === 'F' ? '#FFDBDB' : '#E7EEFF',
+          borderRadius: '50%',
+          padding: '4px',
+        }
+      },
     },
-}
+  }
 </script>
 
 <style lang="scss" scoped>
-.info-cell {
+  .info-cell {
     display: flex;
     justify-content: flex-start;
-}
+  }
 
-.photo {
-    width:40px;
-    height:40px;
+  .photo {
+    width: 40px;
+    height: 40px;
     margin-right: 10px;
-}
+  }
 
-.name-sex {
+  .name-sex {
     //display: flex;
     //justify-content: space-between;
-}
+  }
 </style>

@@ -24,31 +24,30 @@
 </template>
 
 <script>
-import Fupload from "./index.vue";
-export default {
-  components: {
-    Fupload,
-  },
-  methods: {
-    handleChange(fileList) {
-      /**
-       * @response
-       * @type Array
-       * @item {
-       *    name: string      文件名
-       *    size: number      文件大小，单位为B
-       *    url: string       文件服务器地址
-       *    uid: string       由upload或者uuid生成的唯一id
-       *    extName: string   文件后缀名
-       *    type: string      文件类型  image/*
-       *    ...               其余不需要的属性
-       * }
-       */
-      console.log("fileList:", fileList);
+  import Fupload from './index.vue'
+  export default {
+    components: {
+      Fupload,
     },
-  },
-};
+    methods: {
+      handleChange(fileList) {
+        /**
+         * @response
+         * @type Array
+         * @item {
+         *    name: string      文件名
+         *    size: number      文件大小，单位为B
+         *    url: string       文件服务器地址
+         *    uid: string       由upload或者uuid生成的唯一id
+         *    extName: string   文件后缀名
+         *    type: string      文件类型  image/*
+         *    ...               其余不需要的属性
+         * }
+         */
+        console.log('fileList:', fileList)
+      },
+    },
+  }
 </script>
 
-<style>
-</style>
+<style></style>

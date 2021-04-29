@@ -1,3 +1,11 @@
+<!--
+ * @Description: 
+ * @Version: 0.0.1
+ * @Autor: zhj1214
+ * @Date: 2021-04-28 17:35:35
+ * @LastEditors: zhj1214
+ * @LastEditTime: 2021-04-29 14:49:38
+-->
 <!------------------------
  *@name Vue.js
  *@author Jo.gel
@@ -5,67 +13,61 @@
  -------------------------->
 <template>
   <div class="layers">
-    <component
-      :is="currentComponent"
-      :com-data="comData"
-      @whatComponent="whatComponent"
-    />
+    <component :is="currentComponent" :com-data="comData" @whatComponent="whatComponent" />
   </div>
 </template>
 <script>
-import LayerList from "./LayerList";
-import LayerCreate from "./LayerCreate";
-import LayerDetail from "./LayerDetail";
+  import LayerList from './LayerList'
+  import LayerCreate from './LayerCreate'
+  import LayerDetail from './LayerDetail'
 
-export default {
+  export default {
     name: 'Layers',
     components: {
-        LayerList, LayerCreate, LayerDetail
+      LayerList,
+      LayerCreate,
+      LayerDetail,
     },
     data() {
-        return {
-            comData: {
-                pageType: "LayerList"
-            }
-        };
+      return {
+        comData: {
+          pageType: 'LayerList',
+        },
+      }
     },
     computed: {
-        currentComponent() {
-            return this.comData.pageType || "LayerList";
-        }
+      currentComponent() {
+        return this.comData.pageType || 'LayerList'
+      },
     },
     watch: {
-        $route(to) {
-            const {id, edit} = to.query;
-            if (id && !edit) this.comData.pageType = "LayerDetail";
-            else if (edit) this.comData.pageType = "LayerCreate";
-        }
+      $route(to) {
+        const { id, edit } = to.query
+        if (id && !edit) this.comData.pageType = 'LayerDetail'
+        else if (edit) this.comData.pageType = 'LayerCreate'
+      },
     },
     created() {
-        const {id, edit} = this.$route.query;
-        if (id && !edit) this.comData.pageType = "LayerDetail";
-        else if (edit) this.comData.pageType = "LayerCreate";
+      const { id, edit } = this.$route.query
+      if (id && !edit) this.comData.pageType = 'LayerDetail'
+      else if (edit) this.comData.pageType = 'LayerCreate'
 
-        // this.debugCreateLayer()
+      // this.debugCreateLayer()
     },
     methods: {
-        whatComponent(label) {
-            const {type, edit, state, id} = label;
-            this.comData.pageType = type;
-            this.comData.edit = edit;
-            this.comData.state = state;
-            this.comData.id = id || this.$route.query.id || "";
-            if (type === 'LayerList') {
-                this.$router.push("/member/labelLayer/layers");
-            }
-        },
-        debugCreateLayer() {
-            this.comData.pageType = 'LayerCreate'
+      whatComponent(label) {
+        const { type, edit, state, id } = label
+        this.comData.pageType = type
+        this.comData.edit = edit
+        this.comData.state = state
+        this.comData.id = id || this.$route.query.id || ''
+        if (type === 'LayerList') {
+          this.$router.push('/member/labelLayer/layers')
         }
-    }
-};
+      },
+      debugCreateLayer() {
+        this.comData.pageType = 'LayerCreate'
+      },
+    },
+  }
 </script>
-<style lang="scss" scoped>
-.layers {
-}
-</style>

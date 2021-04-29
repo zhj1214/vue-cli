@@ -14,46 +14,46 @@
 </template>
 
 <script>
-	export default {
-		name: "CardLayout",
-		props:{
-			header:{
-				type:String
-			}
-		}
-	};
+  export default {
+    name: 'CardLayout',
+    props: {
+      header: {
+        type: String,
+      },
+    },
+  }
 </script>
 
 <style scoped lang="scss">
-		.CardLayout{
-				background-color: #fff;
-				padding-bottom: 24px;
-				margin-top: 24px;
-		}
-		
-		.card-layout-header {
-				position: relative;
-				line-height: 64px;
-				border-bottom: 1px solid #E6EBF0;
-				color: #3E4552;
-				font-size: 16px;
-				padding-left: 20px;
-				font-weight: bold;
-		
-		&:before {
-				 position: absolute;
-				 display: block;
-				 content: '';
-				 left: 0;
-				 top: 20px;
-				 width: 4px;
-				 height: 20px;
-				 background: #3D71FF;
-		 }
-		}
-		.card-layout-body {
-				margin-top: 30px;
-				padding-left: 20px;
-				
-		}
+  .CardLayout {
+    padding-bottom: 24px;
+    margin-top: 24px;
+    background-color: #fff;
+  }
+
+  .card-layout-header {
+    position: relative;
+    padding-left: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 64px;
+    color: #3e4552;
+    border-bottom: 1px solid #e6ebf0;
+
+    &::before {
+      position: absolute;
+      top: 20px;
+      left: 0;
+      display: block;
+      width: 4px;
+      height: 20px;
+      background: #3d71ff;
+      content: '';
+    }
+  }
+
+  .card-layout-body {
+    padding-left: 20px;
+    margin-top: 30px;
+  }
 </style>

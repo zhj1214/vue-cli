@@ -12,25 +12,24 @@
 </template>
 
 <script>
-
-export default {
-  name: 'App',
-  created(){
-    this.$store.dispatch("getAreaCityInfor"); 	// 获取城市数据信息
+  export default {
+    name: 'App',
+    created() {
+      this.$store.dispatch('getAreaCityInfor') // 获取城市数据信息
+    },
   }
-}
 </script>
 <style lang="scss">
   @import url('./assets/scss/common.scss');
 </style>
 <style lang="scss">
-  @import url("./assets/scss/admin-global.scss");
+  @import url('./assets/scss/admin-global.scss');
 </style>
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-}
+  #app {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #2c3e50;
+  }
 </style>
