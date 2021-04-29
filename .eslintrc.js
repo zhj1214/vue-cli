@@ -4,7 +4,7 @@
  * @Autor: zhj1214
  * @Date: 2021-04-28 14:24:23
  * @LastEditors: zhj1214
- * @LastEditTime: 2021-04-28 15:03:44
+ * @LastEditTime: 2021-04-29 14:56:37
  */
 module.exports = {
   root: true,
@@ -19,9 +19,8 @@ module.exports = {
   plugins: ['prettier'],
   rules: {
     'prettier/prettier': 'error',
-    'comma-dangle': ['error', 'never'], // 要求或禁止末尾逗号：不允许逗号
-    indent: ['error', 2], // JavaScript代码强制使用一致的缩进：2格缩进
-    'arrow-parens': ['error', 'as-needed'], // 箭头函数的参数可以不使用圆括号
+
+    'arrow-parens': 'off', // 箭头函数的参数可以不使用圆括号
     'linebreak-style': 'off', // 取消换行符\n或\r\n的验证
     'object-curly-newline': ['error', { consistent: true }], // 花括号内的换行符不一定要格式一致
     'function-paren-newline': 'off', // 不验证函数括号内的换行
