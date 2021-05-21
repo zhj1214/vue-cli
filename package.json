@@ -72,6 +72,7 @@
     "@vue/shared": "^3.0.0",
     "core-js": "3.6.5",
     "flyio": "0.6.2",
+    "fundebug-wxjs": "^1.4.1",
     "less-loader": "6.2.0",
     "node-sass": "4.14.1",
     "regenerator-runtime": "^0.12.1",

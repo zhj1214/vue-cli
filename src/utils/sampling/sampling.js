@@ -1,3 +1,11 @@
+/*
+ * @Description: 埋点，后续使用minxin重构
+ * @Version: 0.0.1
+ * @Autor: zhj1214
+ * @Date: 2021-05-21 14:52:02
+ * @LastEditors: zhj1214
+ * @LastEditTime: 2021-05-21 15:52:17
+ */
 const sampling = {
   browseCommodity: {
     goodId: '',
@@ -54,7 +62,7 @@ const sampling = {
       orgId: uni.$localStorage.getItem('userOrgId') || '',
       memberId: userObj.memberId || '',
       inTime: startTime.Format('YYYY-MM-DD HH:mm:ss'),
-      // openId: uni.$localStorage.getItem('userOpenId') || '',
+      // openId: uni.$localStorage.getItem('userOpenId') || '', 
       phone: userObj.phone || '',
       type: type
     };

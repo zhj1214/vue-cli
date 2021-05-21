@@ -1,5 +1,4 @@
 <script>
-  import Vue from 'vue'
   import api from './utils/api'
   import local from './utils/localStorage'
   import toast from './utils/toast'
@@ -11,7 +10,6 @@
   import eventEmitter from './utils/base/EventEmitter.js'
   import canvas from './utils/canvas'
   import scene from './utils/sceneManage'
-  // import pageR from './utils/base/routePage';
   import navigation from './utils/base/navrefactor'
 
   var fundebug = require('fundebug-wxjs')
@@ -35,7 +33,7 @@
      * */
     onLaunch: function (options) {
       console.log(options, '____onLaunch') // 获取本地当前环境变量value
-      this.initFundebug() // 初始化 fundebug
+      // this.initFundebug() // 初始化 fundebug
 
       // this.initCloud(); // 手动初始化 uniCloud
 

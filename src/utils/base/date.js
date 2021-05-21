@@ -1,11 +1,3 @@
-/*
- * @Description:
- * @Version: 0.0.1
- * @Autor: zhj1214
- * @Date: 2021-05-21 14:52:02
- * @LastEditors: zhj1214
- * @LastEditTime: 2021-05-21 14:54:02
- */
 /**
  * @author zhj
  * @description 公共工具方法
@@ -18,27 +10,30 @@
 // (new Date()).Format("YYYY-MM-dd hh:mm:ss.ms") ==> 2006-07-02 08:09:04.423
 // (new Date()).Format("YYYY-M-d h:m:s.ms")      ==> 2006-7-2 8:9:4.18
 /*eslint no-extend-native: ["error", { "exceptions": ["Array,Date"] }]*/
-Date.prototype.Format = function (fmt) {
-  const m = this.getMonth()
-  var o = {
-    'M+': m + 1, // 月份
-    'D+': this.getDate(), // 日
-    'H+': this.getHours(), // 小时
-    'm+': this.getMinutes(), // 分
-    's+': this.getSeconds(), // 秒
-    'Q+': Math.floor((m + 3) / 3), // 季度
-    S: this.getMilliseconds(), // 毫秒
-  }
-  if (/(Y+)/.test(fmt)) {
-    fmt = fmt.replace(RegExp.$1, (this.getFullYear() + '').substr(4 - RegExp.$1.length))
-  }
-  for (var k in o) {
-    if (new RegExp('(' + k + ')').test(fmt)) {
-      fmt = fmt.replace(
-        RegExp.$1,
-        RegExp.$1.length == 1 ? o[k] : ('00' + o[k]).substr(('' + o[k]).length)
-      )
-    }
-  }
-  return fmt
-}
+Date.prototype.Format = function(fmt) {
+	let m = this.getMonth()
+	var o = {
+		"M+": (m + 1), // 月份
+		"D+": this.getDate(), // 日
+		"H+": this.getHours(), // 小时
+		"m+": this.getMinutes(), // 分
+		"s+": this.getSeconds(), // 秒
+		"Q+": Math.floor((m + 3) / 3), // 季度
+		'S': this.getMilliseconds() // 毫秒
+	};
+	if (/(Y+)/.test(fmt)) {
+		fmt = fmt.replace(
+			RegExp.$1,
+			(this.getFullYear() + "").substr(4 - RegExp.$1.length)
+		);
+	}
+	for (var k in o) {
+		if (new RegExp("(" + k + ")").test(fmt)) {
+			fmt = fmt.replace(
+				RegExp.$1,
+				RegExp.$1.length == 1 ? o[k] : ("00" + o[k]).substr(("" + o[k]).length)
+			);
+		}
+	}
+	return fmt;
+};
