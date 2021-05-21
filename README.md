@@ -4,11 +4,37 @@
  * @Autor: zhj1214
  * @Date: 2021-03-04 15:53:53
  * @LastEditors: zhj1214
- * @LastEditTime: 2021-04-28 15:50:24
+ * @LastEditTime: 2021-05-21 17:00:08
 -->
 
 #  ht-applet
 uni-app 项目框架
+## 目录结构
+```
++-- dist/                                   ---打包之后的dist目录
++-- public/                                 ---静态目录,/xx 直接饮用，不需要public
+|   --- index.html                          ---首页入口html文件
++-- src/
++   ---static/                              --- 主包静态资源文件
++   | +---/images                           --- 图片资源
++   ---/components/                         --- 插件市场组件目录
++   ---/pageComponents/                     --- 项目通用封装组件
++   ---/store/                              ---vuex 总 store 信息
++   | +---/module                           ---根据业务组件划分的状态
+|   | ---index.js                           ---总vuex状态配置信息
++   ---/utils/                              ---通用工具方法
+|   | +---/apis/                            ---接口模块
+|   | ---api.js                             ---接口调用
++--- main.js                                ---入口文件
++--- App.vue                                ---应用入口
++--- ext.json                               ---第三方授权开发配置
++--- manifest.json                          ---uni-app配置文件
++--- pages.json                             ---小程序页面列表
++--- uni.scss                               ---uni-app全局样式
+--- README.md                               ---Readme
+--- package.json                            ---依赖包
+等等
+```
 ## 分支状态
 1.master 正式环境版本
 合并：release-2021xxxx
