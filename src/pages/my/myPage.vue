@@ -115,7 +115,7 @@
           >
           <image
             style="width: 5px; height: 7.5px; margin-left: 3px"
-            src="../../static/images/left.png"
+            src="../../static/images/car/left.png"
             mode=""
           ></image>
         </view>
@@ -175,7 +175,7 @@
         </view>
         <image
           style="width: 9px; height: 9px"
-          src="../../static/images/left1.png"
+          src="../../static/images/car/left1.png"
           mode=""
         ></image>
       </view>
@@ -202,7 +202,7 @@
         </view>
         <image
           style="width: 9px; height: 9px"
-          src="../../static/images/left1.png"
+          src="../../static/images/car/left1.png"
           mode=""
         ></image>
       </view>
@@ -229,7 +229,7 @@
         </view>
         <image
           style="width: 9px; height: 9px"
-          src="../../static/images/left1.png"
+          src="../../static/images/car/left1.png"
           mode=""
         ></image>
       </view>
@@ -256,7 +256,7 @@
         </view>
         <image
           style="width: 9px; height: 9px"
-          src="../../static/images/left1.png"
+          src="../../static/images/car/left1.png"
           mode=""
         ></image>
       </view>
@@ -279,42 +279,17 @@
         </view>
         <image
           style="width: 9px; height: 9px"
-          src="../../static/images/left1.png"
+          src="../../static/images/car/left1.png"
           mode=""
         ></image>
       </view>
-      <!-- <view class="funtionsItem flex-between" @click="goParking">
-        <view class="flex-row">
-          <image
-            style="width: 17px; height: 17px"
-            src="../../static/images/my/wtfk.png"
-            mode=""
-          ></image>
-          <view
-            style="
-              font-size: 14px;
-              font-weight: 400;
-              color: #444444;
-              margin-left: 11px;
-            "
-            >停车管理</view
-          >
-        </view>
-        <image
-          style="width: 9px; height: 9px"
-          src="../../static/images/left1.png"
-          mode=""
-        ></image>
-      </view> -->
+
     </view>
   </view>
 </template>
 
 <script>
-// #ifdef H5
-// import Vconsole from "vconsole";
-// #endif
-const app = getApp();
+
 export default {
   data() {
     return {
@@ -334,13 +309,9 @@ export default {
         {
           img: "/static/images/my/dsh.png",
           title: "待收货",
-        },
-        // {
-        //   img: "/static/images/my/dpj.png",
-        //   title: "待评价",
-        // },
+        }
       ],
-      ponitName: app.globalData.pointName,
+      ponitName: '',
       userInfo: {},
       couponNums: 0,
       levelCardName: "", // 当前等级卡名称

@@ -7,10 +7,7 @@
       "path": "pages/index/index",
       "enablePullDownRefresh": true
     },
-    {
-      "path": "pages/index/switchMall/switchMall",
-      "enablePullDownRefresh": true
-    },
+ 
     
     {
       "path": "pages/health/health"
@@ -47,9 +44,6 @@
       "pages": [
         {
           "path": "out/out"
-        },
-        {
-          "path": "scanReciiveCoupons/index"
         }
       ]
     }

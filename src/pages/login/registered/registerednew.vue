@@ -36,7 +36,7 @@
             <view class="itemRightText">点击授权获取头像信息</view>
             <image
               style="width: 9px;height: 9px;margin-left: 4px;"
-              src="../../../static/images/left1.png"
+              src="../../../static/images/car/left1.png"
               mode=""
             ></image>
           </view>

@@ -4,7 +4,7 @@
  * @Autor: zhj1214
  * @Date: 2021-03-01 11:44:49
  * @LastEditors: zhj1214
- * @LastEditTime: 2021-03-26 18:32:17
+ * @LastEditTime: 2021-05-21 16:25:17
  */
 import Vue from "vue";
 import App from "./App";
@@ -70,6 +70,7 @@ Vue.mixin({
     },
   },
 });
+
 
 App.mpType = "app";
 

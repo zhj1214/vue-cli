@@ -25,7 +25,7 @@
               </view>
               <image
                 style="width: 9px;height: 12px;margin-left: 4px;"
-                src="../../static/images/left.png"
+                src="../../static/images/car/left.png"
                 mode=""
               ></image>
             </view>
@@ -199,7 +199,7 @@ import pandp from "../../pageComponents/priceAndPoint/priceAndPoint";
 const app = getApp();
 import cartItem from "./cartItem.vue";
 
-import { adaptGoodsList } from "@/utils/adaptors/shop.js";
+// import { adaptGoodsList } from "@/utils/adaptors/shop.js";
 
 export default {
   components: {
@@ -286,15 +286,15 @@ export default {
       if (res.code !== 10000 && !res.data) return;
       this.goodsTotal = res.data.goodsInfo.goodsInfoPageData.count; // 保存总条数
       // 保存列表数据
-      if (this.goodsPage === 1) {
-        this.goodsListArr = adaptGoodsList(
-          res.data.goodsInfo.goodsInfoPageData.list || []
-        );
-      } else {
-        this.goodsListArr = this.goodsListArr.concat(
-          adaptGoodsList(res.data.goodsInfo.goodsInfoPageData.list || [])
-        );
-      }
+      // if (this.goodsPage === 1) {
+      //   this.goodsListArr = adaptGoodsList(
+      //     res.data.goodsInfo.goodsInfoPageData.list || []
+      //   );
+      // } else {
+      //   this.goodsListArr = this.goodsListArr.concat(
+      //     adaptGoodsList(res.data.goodsInfo.goodsInfoPageData.list || [])
+      //   );
+      // }
       console.log("goodsListArr:", this.goodsListArr);
     },
     onGoodsCardTap(item) {

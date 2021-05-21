@@ -311,9 +311,9 @@
 
       mallAlertShowOk() {
         this.mallAlertShow = false
-        uni.navigateTo({
-          url: '/pages/index/switchMall/switchMall',
-        })
+        // uni.navigateTo({
+        //   url: '/pages/index/switchMall/switchMall',
+        // })
       },
     },
   }

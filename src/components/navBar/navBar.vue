@@ -140,7 +140,6 @@
 		},
 		onPageShow: function() {
 			// console.log('_________________________onPageShow_________________________')
-
 			if (getApp().globalSystemInfo.ios) {
 				this.getSystemInfo();
 				this.setStyle(); //设置样式1
@@ -335,7 +334,7 @@
 
 					return systemInfo;
 				}
-			}
+			},
 			// #endif
 			// #ifndef MP-WEIXIN
 			/**
