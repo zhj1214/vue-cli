@@ -49,7 +49,7 @@ export const orderCol = function () {
                           this.orderSourceList[i].isSelect = false
                         }
                         item.isSelect = true
-                        const orderStatus = item.value
+                        let orderStatus = item.value
                         this.orderFlag = Boolean(orderStatus)
 
                         this.pageData.page = 1
@@ -128,7 +128,7 @@ export const orderCol = function () {
                           this.orderStatusList[i].isSelect = false
                         }
                         item.isSelect = true
-                        const orderStatus = item.value
+                        let orderStatus = item.value
                         this.statusFlag = Boolean(orderStatus)
 
                         this.pageData.page = 1
@@ -148,7 +148,7 @@ export const orderCol = function () {
         ])
       },
       render: (h, params) => {
-        const { orderStatus } = params.row
+        let { orderStatus } = params.row
         return h(OrderStatusCell, {
           props: {
             list: this.orderStatusList,

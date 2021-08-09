@@ -2,8 +2,8 @@
  * @Description: 自扩展列和自定义表头的表格组件
  * @Author: sam.xutao
  * @Date: 2020-03-17 19:33:54
- * @LastEditTime: 2021-04-29 14:51:27
- * @LastEditors: zhj1214
+ * @LastEditTime: 2020-04-13 13:40:30
+ * @LastEditors: sam.xutao
  -->
 <template>
   <div class="power-table">
@@ -60,7 +60,9 @@
             :key="item.key"
             :style="{ flex: '0 0 ' + item.width + 'px' }"
           >
-            <label><i v-if="item.isRequired" style="color: #f05;">* </i>{{ item.title }}</label>
+            <label style="line-height: 1;"
+              ><i v-if="item.isRequired" style="color: #f05;">* </i>{{ item.title }}</label
+            >
             <div v-if="!item.dMkey">
               <Input
                 v-if="item.isEdit && item.type == 'text'"
@@ -194,7 +196,7 @@
         this.columns = []
         this.dimension = []
         // 1. 根据度量值构造表格行数，n*m
-        const iList = this.propertyList.slice()
+        let iList = this.propertyList.slice()
         // 根据维度数据构建表头
         iList.map((item, index) => {
           this.dimension.push(item.specContents.length)
@@ -214,9 +216,9 @@
       },
       // 表头可编辑状态下，将编辑值和对应表头返回
       titleChange(val, key, onlyNum) {
-        const iList = this.datas.slice()
+        let iList = this.datas.slice()
         if (onlyNum) {
-          const actVal = val.match(/[0-9]+/g)
+          let actVal = val.match(/[0-9]+/g)
           val = actVal ? actVal.join('') : ''
         }
         // console.time("title change")
@@ -233,11 +235,11 @@
         if (this.dimension[columnIndex]) {
           if (columnIndex == 0) {
             // 根据列号获取跨行数据
-            const data1 = this.divideDimension(columnIndex)
-            const number1 = data1.number
-            const divide1 = data1.divide
+            let data1 = this.divideDimension(columnIndex)
+            let number1 = data1.number,
+              divide1 = data1.divide
             // 跨行渲染条件封装成字符串后通过eval执行
-            const cond1 = this.evalDimension(number1, 'divide1')
+            let cond1 = this.evalDimension(number1, 'divide1')
             // console.log(columnIndex,'divide:',divide1)
             if (eval(cond1) && columnIndex === 0) {
               return [divide1, 1]
@@ -245,10 +247,10 @@
               return [0, 0]
             }
           } else if (columnIndex == 1) {
-            const data2 = this.divideDimension(columnIndex)
-            const number2 = data2.number
-            const divide2 = data2.divide
-            const cond2 = this.evalDimension(number2, 'divide2')
+            let data2 = this.divideDimension(columnIndex)
+            let number2 = data2.number,
+              divide2 = data2.divide
+            let cond2 = this.evalDimension(number2, 'divide2')
             // console.log(columnIndex,'divide:',divide2)
             if (eval(cond2) && columnIndex === 1) {
               return [divide2, 1]
@@ -328,7 +330,7 @@
                     for (var i = flag + 1; i < list.length; i++) {
                       aItem = { ...aItem, ...list[i], cname: list[i].specName }
                       if (list.length == 3) {
-                        const curIds = aItem.id // 用于记录前三级id值
+                        let curIds = aItem.id // 用于记录前三级id值
                         list[i].specContents.map((pitem) => {
                           aItem = {
                             ...aItem,
@@ -369,11 +371,11 @@
         //   return curItem;
         // });
         // 根据前面封装好的数据标记的id数组，去sku 里匹配具体的条目
-        const arr = []
+        let arr = []
         curList.forEach((item) => {
-          const cId = item.id.sort().join(',')
-          let curItem = JSON.parse(JSON.stringify(item))
-          const cSku = skus.filter(
+          let cId = item.id.sort().join(','),
+            curItem = JSON.parse(JSON.stringify(item))
+          let cSku = skus.filter(
             (sitem) => sitem.specContentIds && sitem.specContentIds.sort().join(',') === cId
           )
 

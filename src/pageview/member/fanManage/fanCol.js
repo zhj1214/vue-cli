@@ -128,7 +128,7 @@ const fanCol = function () {
         ])
       },
       render: (h, params) => {
-        const { orgName, parentOrgName } = params.row
+        let { orgName, parentOrgName } = params.row
         return h(BelongOrgCell, {
           props: {
             currentOrg: orgName,

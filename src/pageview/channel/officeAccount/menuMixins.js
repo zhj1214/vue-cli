@@ -25,7 +25,7 @@ export default {
       return this.baseMenu.map((item) => {
         item.buttonId = item.buttonId || Math.random() + ''
         if (item['subButton']) {
-          const subBtn = item['subButton'].map((subitem) => {
+          let subBtn = item['subButton'].map((subitem) => {
             return { ...subitem, buttonId: subitem.buttonId || item.buttonId + '-' + Math.random() }
           })
           item['subButton'] = subBtn
@@ -44,7 +44,7 @@ export default {
         // }
         // return this.curMenu['buttonId']
       } else if (this.baseMenu.length) {
-        const menuFirst = this.menus[0] // this.menus[0].subButton.length?this.menus[0].subButton[0]:this.menus[0];
+        let menuFirst = this.menus[0] // this.menus[0].subButton.length?this.menus[0].subButton[0]:this.menus[0];
         this.curMenu = this.menus[0]
         return menuFirst['buttonId']
       }
@@ -55,7 +55,7 @@ export default {
     async loadMenuList() {
       const { data } = await this.$ajaxGet(this.api.LOAD_MENU_LIST)
       if (data) {
-        const iMenus = data['button'] || []
+        let iMenus = data['button'] || []
         this.baseMenu = iMenus.map((menu) => {
           return { ...menu, subButton: menu.subButton || [] }
         })
@@ -64,17 +64,17 @@ export default {
 
     // 校验所有菜单是否能提交
     checkAllMenu() {
-      const iMenus = this.baseMenu.slice()
+      let iMenus = this.baseMenu.slice()
       let allRight = true
       for (let i = 0; i < iMenus.length; i++) {
-        const iType = iMenus[i].type
+        let iType = iMenus[i].type
         console.log('==校验==', iMenus[i].name)
 
         if (iMenus[i].subButton && iMenus[i].subButton.length) {
-          const cMenu = iMenus[i].subButton
+          let cMenu = iMenus[i].subButton
           for (var j = 0; j < cMenu.length; j++) {
-            const cType = cMenu[j].type
-            const validUrl = this.$checkUrl(cMenu[j].url || '')
+            let cType = cMenu[j].type
+            let validUrl = this.$checkUrl(cMenu[j].url || '')
             if (cType == 'view') {
               if (!cMenu[j].urlId || !cMenu[j].url || !validUrl) {
                 console.log('==校验失败子菜单==', cMenu[j])
@@ -83,7 +83,7 @@ export default {
                 break
               }
             } else if (cType == 'miniprogram') {
-              const uniType = cMenu[j].weappType
+              let uniType = cMenu[j].weappType
               if (
                 !uniType ||
                 (uniType == 1 && !cMenu[j].appId) ||
@@ -99,7 +99,7 @@ export default {
             }
           }
         } else {
-          const validUrl = this.$checkUrl(iMenus[i].url || '')
+          let validUrl = this.$checkUrl(iMenus[i].url || '')
           // 如果是跳转网页，校验网页地址
           if (iType == 'view') {
             if (!iMenus[i].urlId || !iMenus[i].url || !validUrl) {

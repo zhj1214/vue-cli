@@ -1,5 +1,5 @@
 const displayBelongOrg = (belong, parent) => {
-  const o = [belong, parent]
+  let o = [belong, parent]
   let s = o.join('/')
   if (!parent) {
     s = belong

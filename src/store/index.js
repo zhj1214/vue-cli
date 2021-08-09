@@ -2,7 +2,7 @@
  * @Description: vuex store
  * @Author: sam.xutao
  * @Date: 2020-02-20 11:00:58
- * @LastEditTime: 2021-04-29 14:34:20
+ * @LastEditTime: 2021-03-16 09:09:12
  * @LastEditors: zhj1214
  */
 import Vue from 'vue'
@@ -32,13 +32,13 @@ export default new Vuex.Store({
   getters: {
     // 级联城市信息
     cascadeCitys: (state) => {
-      const arr = []
-      const iArea = {
-        provinceList: state.areaCity['provinceList'] || {},
-        cityList: state.areaCity['cityList'] || {},
-        countyList: state.areaCity['countyList'] || {},
-      }
-      for (const item in iArea) {
+      let arr = [],
+        iArea = {
+          provinceList: state.areaCity['provinceList'] || {},
+          cityList: state.areaCity['cityList'] || {},
+          countyList: state.areaCity['countyList'] || {},
+        }
+      for (let item in iArea) {
         // 省份，过滤了海外地区
         if (item.includes('province')) {
           Object.keys(iArea[item]).forEach((key) => {

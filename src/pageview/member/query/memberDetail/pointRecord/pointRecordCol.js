@@ -73,7 +73,7 @@ const pointRecordCol = function () {
                           this.growthFilter[i].isSelect = false
                         }
                         item.isSelect = true
-                        const isAdd = item.id
+                        let isAdd = item.id
                         this.growthFilterFlag = Boolean(isAdd)
 
                         this.pageData.page = 1

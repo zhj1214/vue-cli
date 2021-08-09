@@ -73,14 +73,14 @@ export const getRouter = (local) => {
   }
   return axios_get('/user-server/auth/user/powers').then((res) => {
     if (res && res.code === 10000) {
-      const menuData = [...res.data, ...CmpServerMenu]
-      const iMenu = matchMenu(menuData, 'MENU', {}) //返回 {路由名:id}
+      let menuData = [...res.data, ...CmpServerMenu]
+      let iMenu = matchMenu(menuData, 'MENU', {}) //返回 {路由名:id}
       let copyData = Object.create(null)
 
       copyData = deepCopy(routes, copyData)
 
       const allRoutes = [copyData[0]]
-      const iRouter = matchTree(allRoutes, iMenu, -1) //真实路由
+      let iRouter = matchTree(allRoutes, iMenu, -1) //真实路由
       sessionStorage.setItem('operTree', JSON.stringify(iMenu))
       sessionStorage.setItem('roleTree', JSON.stringify(menuData)) //powers
       if (local) {

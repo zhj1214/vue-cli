@@ -65,7 +65,7 @@ export const identityRecordCol = function () {
                           this.filterLevelList[i].isSelect = false
                         }
                         item.isSelect = true
-                        const level = item.value
+                        let level = item.value
                         this.levelFilterFlag = Boolean(level)
 
                         this.pageData.page = 1
@@ -134,7 +134,7 @@ export const identityRecordCol = function () {
                           this.reasonList[i].isSelect = false
                         }
                         item.isSelect = true
-                        const levelChangeReasons = item.value
+                        let levelChangeReasons = item.value
                         this.changeReasonFlag = Boolean(levelChangeReasons)
 
                         this.pageData.page = 1
@@ -154,8 +154,8 @@ export const identityRecordCol = function () {
         ])
       },
       render: (h, params) => {
-        const { levelChangeReason } = params.row
-        const reason = findListLabel(reasonList, levelChangeReason)
+        let { levelChangeReason } = params.row
+        let reason = findListLabel(reasonList, levelChangeReason)
         return h('div', reason)
       },
     },

@@ -26,7 +26,7 @@ export function labelListCol() {
               style: { display: 'block' },
               on: {
                 click: () => {
-                  const right = this.__hasPower('viewLabel')
+                  let right = this.__hasPower('viewLabel')
                   if (!right) {
                     return
                   }
@@ -80,7 +80,7 @@ export function labelListCol() {
       filterMultiple: false,
       filterRemote: this.filterPublic,
       render: (h, params) => {
-        const { isOpen, id, canBeOperator } = params.row
+        let { isOpen, id, canBeOperator } = params.row
         return h(PublicCell, {
           props: {
             status: isOpen,
@@ -107,7 +107,7 @@ export function labelListCol() {
       title: '所属组织',
       minWidth: 180,
       render: (h, params) => {
-        const { belongOrg, belongOrgStr } = params.row
+        let { belongOrg, belongOrgStr } = params.row
         return h(BelongOrgCell, {
           props: {
             currentOrg: belongOrg,
@@ -121,7 +121,7 @@ export function labelListCol() {
       minWidth: 140,
       key: 'calculateTime',
       render: (h, params) => {
-        const { modifyTime } = params.row
+        let { modifyTime } = params.row
         return h(UpdateTimeCell, {
           props: {
             time: modifyTime,
@@ -153,9 +153,8 @@ export function labelListCol() {
       width: 140,
       fixed: 'right',
       render: (h, params) => {
-        const w = this
-        const deleteLabel =
-          params.row.canOperate && (this.pageActions || []).includes('batchDelete')
+        let w = this
+        let deleteLabel = params.row.canOperate && (this.pageActions || []).includes('batchDelete')
         return h(TagsListBtnBox, {
           props: {
             rowData: params.row,

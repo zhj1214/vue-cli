@@ -143,6 +143,9 @@ export function memberTableCol() {
                       [
                         h('i', {
                           class: 'hover-view icon iconfont iconView',
+                          on: {
+                            click: () => {},
+                          },
                         }),
                         h(
                           'div',

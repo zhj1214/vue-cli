@@ -220,7 +220,7 @@
             {
               required: true,
               message: () => {
-                const noLimit = this.limitType === '1'
+                let noLimit = this.limitType === '1'
                 let m = '请输入获取上限'
 
                 if (noLimit) {
@@ -231,8 +231,8 @@
               trigger: 'blur',
               type: 'string',
               asyncValidator: (rule, value) => {
-                const hasLimit = this.limitType === '2'
-                const emptyInput = this.$_.isEmpty(value)
+                let hasLimit = this.limitType === '2'
+                let emptyInput = this.$_.isEmpty(value)
 
                 return new Promise((resolve, reject) => {
                   if (hasLimit && emptyInput) {
@@ -249,7 +249,7 @@
     },
     computed: {
       displayNegative() {
-        const showText = this.growthForm.isNegative === '0'
+        let showText = this.growthForm.isNegative === '0'
         return showText
       },
     },
@@ -260,20 +260,20 @@
     mounted() {},
     methods: {
       initData() {
-        const orgId = localStorage.orgId || '777777'
-        const orgName = localStorage.orgName
+        let orgId = localStorage.orgId || '777777'
+        let orgName = localStorage.orgName
         this.orgId = orgId
         this.orgName = orgName
       },
       getGrowthInfo() {
-        const server = '/points-server'
-        const url = server + '/api/growth/info'
-        const data = { orgId: this.orgId }
+        let server = '/points-server'
+        let url = server + '/api/growth/info'
+        let data = { orgId: this.orgId }
 
         this.$ajaxGet(url, data)
           .then((res) => {
             if (res && res.code === 10000) {
-              const resData = res.data
+              let resData = res.data
               if (resData === undefined) {
                 this.firstEdit = true
               } else {
@@ -286,8 +286,8 @@
           })
       },
       isConfigLevel() {
-        const { id } = this.growthForm
-        const isConfig = id === '-'
+        let { id } = this.growthForm
+        let isConfig = id === '-'
         return isConfig
       },
       renderPage(data) {
@@ -304,8 +304,8 @@
           maxLimit: data.maxLimit,
         })
 
-        const maxLimit = data.maxLimit
-        const isEmpty = maxLimit === '' || maxLimit === undefined
+        let maxLimit = data.maxLimit
+        let isEmpty = maxLimit === '' || maxLimit === undefined
         if (isEmpty) {
           this.limitType = '1'
         }
@@ -340,7 +340,7 @@
         this.backListPage()
       },
       formatGrowthForm() {
-        const data = {
+        let data = {
           ...this.growthForm,
           orgId: this.orgId,
         }
@@ -357,7 +357,7 @@
         return data
       },
       validateForm() {
-        const { growthExpirationYear, consumeMoney, open, maxLimit } = this.growthForm
+        let { growthExpirationYear, consumeMoney, open, maxLimit } = this.growthForm
 
         if (growthExpirationYear === '') {
           this.$Message.error('保存失败，您还未填写成长值有效期！')
@@ -374,8 +374,8 @@
           return true
         }
 
-        const hasLimit = this.limitType === '2'
-        const emptyInput = maxLimit === '' || maxLimit === undefined
+        let hasLimit = this.limitType === '2'
+        let emptyInput = maxLimit === '' || maxLimit === undefined
         if (open && hasLimit && emptyInput) {
           this.$Message.error('保存失败，获取上限不能为空！')
           return true
@@ -384,13 +384,13 @@
         return false
       },
       sendGrowth() {
-        const server = '/points-server'
-        const url = server + '/api/growth/edit'
-        const notPass = this.validateForm()
+        let server = '/points-server'
+        let url = server + '/api/growth/edit'
+        let notPass = this.validateForm()
         if (notPass) {
           return
         }
-        const data = this.formatGrowthForm()
+        let data = this.formatGrowthForm()
 
         this.$ajaxPost(url, data)
           .then((res) => {
@@ -426,7 +426,7 @@
         this.sendGrowth()
       },
       allowInt(key, limit) {
-        const currentValue = this.growthForm[key]
+        let currentValue = this.growthForm[key]
         let temp
         if (currentValue.length === 1) {
           temp = currentValue.replace(/[^1-9]/g, '')
@@ -437,7 +437,7 @@
         if (limit === 'max') {
           limit = Math.pow(10, 7) - 1
         }
-        const big = Number(temp) > limit
+        let big = Number(temp) > limit
         if (big) {
           temp = String(limit)
         }
@@ -445,14 +445,14 @@
         this.growthForm[key] = temp
       },
       allowFloatTwo(key) {
-        const currentValue = this.growthForm[key]
-        const ex = /^\d+\.?\d{0,2}$/
+        let currentValue = this.growthForm[key]
+        let ex = /^\d+\.?\d{0,2}$/
         let temp = currentValue
         if (!ex.test(currentValue)) {
           temp = currentValue.substring(0, currentValue.length - 1)
         }
 
-        const big = Number(temp) >= Math.pow(10, 7)
+        let big = Number(temp) >= Math.pow(10, 7)
         if (big) {
           temp = Math.pow(10, 7) - 1
         }

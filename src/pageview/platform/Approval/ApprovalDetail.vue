@@ -5,15 +5,6 @@
       <span @click="backListPage">审批详情</span>
     </h2>
     <div class="detail-content">
-      <!-- <h3 v-if="mesObj.approveTradeType == 3"
-				style="
-				font-size: 16px;
-				font-weight: 500;
-				color: #92929D;
-				"
-			>
-				{{ mesObj.tradeName }}
-			</h3> -->
       <h3
         style="font-size: 16px; font-weight: 500; color: #756cea; cursor: pointer;"
         @click="enterContent(mesObj)"
@@ -304,35 +295,35 @@
       enterContent(mesObj) {
         //活动市场详情页
         if (mesObj.approveTradeType == 1) {
-          const url = '/activity/list?marketingId' + mesObj.tradeId
+          let url = '/activity/list?marketingId' + mesObj.tradeId
           window.open(url, '_blank')
           //活动管理详情页
         } else if (mesObj.approveTradeType == 2) {
-          const url = '/activity/offline?activityId=' + mesObj.tradeId
+          let url = '/activity/offline?activityId=' + mesObj.tradeId
           window.open(url, '_blank')
           //领券详情页
         } else if (mesObj.approveTradeType == 3) {
-          const url =
+          let url =
             '/activity/coupon/detail?type=' + 'couponCenter' + '&couponContactId=' + mesObj.tradeId
           window.open(url, '_blank')
           //商品详情页
         } else if (mesObj.approveTradeType == 4) {
           //    let url = "/onlinemall/mall/malldetail/"+mesObj.tradeId;
           //     window.open(url, "_blank");
-          const routeData = this.$router.resolve({
+          let routeData = this.$router.resolve({
             path: '/onlinemall/mall/malldetail/' + mesObj.tradeId,
             query: { routerType: 'approvalDetail' },
           })
           window.open(routeData.href, '_blank')
           //消息详情页
         } else if (mesObj.approveTradeType == 5) {
-          const url = '/message/templateMessage?isView=' + 1 + '&id=' + mesObj.tradeId
+          let url = '/message/templateMessage?isView=' + 1 + '&id=' + mesObj.tradeId
           window.open(url, '_blank')
         }
       },
       //获取审批详情数据
       getApprovalDetail() {
-        const tradeId = this.$route.query.tradeId
+        let tradeId = this.$route.query.tradeId
         let approveTradeType = this.$route.query.approveTradeType
         if (approveTradeType === undefined) {
           approveTradeType = ''

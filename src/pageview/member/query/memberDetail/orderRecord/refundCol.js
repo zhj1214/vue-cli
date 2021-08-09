@@ -52,7 +52,7 @@ export const refundCol = function () {
                           this.orderSourceList[i].isSelect = false
                         }
                         item.isSelect = true
-                        const orderStatus = item.value
+                        let orderStatus = item.value
                         this.orderFlag = Boolean(orderStatus)
 
                         this.pageData.page = 1
@@ -131,7 +131,7 @@ export const refundCol = function () {
                           this.refundStatusList[i].isSelect = false
                         }
                         item.isSelect = true
-                        const refundStatus = item.value
+                        let refundStatus = item.value
                         this.refundStatusFlag = Boolean(refundStatus)
 
                         this.pageData.page = 1
@@ -151,7 +151,7 @@ export const refundCol = function () {
         ])
       },
       render: (h, params) => {
-        const { productInfo } = params.row
+        let { productInfo } = params.row
         return h(RefundStatusCell, {
           props: {
             item: productInfo,

@@ -20,7 +20,7 @@ const originalPush = Router.prototype.push
 Router.prototype.push = function push(location) {
   return originalPush.call(this, location).catch((err) => err)
 }
-const router = new Router({
+let router = new Router({
   // routes: routes.concat(loginRouter),
   routes: loginRouter,
   mode: 'history',
@@ -29,7 +29,7 @@ const router = new Router({
 getRouter().then((res) => {
   if (res && res[0] && res[0].children) {
     const routerNameArray = []
-    for (const item of res[0].children || []) {
+    for (let item of res[0].children || []) {
       routerNameArray.push(item.name)
     }
     if (!routerNameArray.includes('welcome')) {

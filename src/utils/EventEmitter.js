@@ -28,7 +28,7 @@ export default {
 
   off(event, offCb) {
     if (this.subs[event]) {
-      const index = this.subs[event].findIndex((cb) => cb === offCb)
+      let index = this.subs[event].findIndex((cb) => cb === offCb)
       this.subs[event].splice(index, 1)
       if (!this.subs[event].length) delete this.subs[event]
     }

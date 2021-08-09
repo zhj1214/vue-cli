@@ -11,8 +11,8 @@ export const settingLevelCol = function () {
       width: 180,
       align: 'center',
       render: (h, params) => {
-        const { levelId } = params.row
-        const text = this.createLevelName(levelId)
+        let { levelId } = params.row
+        let text = this.createLevelName(levelId)
 
         return h('div', text)
       },
@@ -46,7 +46,7 @@ export const settingLevelCol = function () {
       // width: 100,
       align: 'center',
       render: (h, params) => {
-        const { id, upGradeValue } = params.row
+        let { id, upGradeValue } = params.row
         let text = `≥ ${upGradeValue}`
         if (id === '-') {
           text = upGradeValue
@@ -60,7 +60,7 @@ export const settingLevelCol = function () {
       // width: 100,
       align: 'center',
       render: (h, params) => {
-        const { protectionGradeValue, id } = params.row
+        let { protectionGradeValue, id } = params.row
         let text = `≥ ${protectionGradeValue}`
         if (id === '-') {
           text = protectionGradeValue
@@ -73,7 +73,7 @@ export const settingLevelCol = function () {
       title: '操作',
       align: 'center',
       render: (h, params) => {
-        const isLast = this.isLastLevel(params.row.id)
+        let isLast = this.isLastLevel(params.row.id)
         return h(ConfirmCellBubble, {
           props: {
             item: params.row,

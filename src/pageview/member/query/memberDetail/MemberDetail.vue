@@ -625,8 +625,8 @@
             trigger: 'blur',
             asyncValidator: (rule, value) => {
               return new Promise((resolve, reject) => {
-                const reg = /^[1-8][0-9]{5}(19|20)\d{2}((01|03|05|07|08|10|12)(0[1-9]|[1-2][0-9]|3[0-1])|(04|06|09|11)(0[1-9]|[1-2][0-9]|30)|02(0[1-9]|[1-2][0-9]))[0-9]{3}[0-9Xx]$/
-                const identity = this.basicInfoForm.papersTypeInt === 1
+                let reg = /^[1-8][0-9]{5}(19|20)\d{2}((01|03|05|07|08|10|12)(0[1-9]|[1-2][0-9]|3[0-1])|(04|06|09|11)(0[1-9]|[1-2][0-9]|30)|02(0[1-9]|[1-2][0-9]))[0-9]{3}[0-9Xx]$/
+                let identity = this.basicInfoForm.papersTypeInt === 1
                 if (identity && !reg.test(value)) {
                   reject('证件号')
                 } else {
@@ -703,7 +703,7 @@
               trigger: 'blur',
               asyncValidator: (rule, value) => {
                 return new Promise((resolve, reject) => {
-                  const reg = this.phoneReg
+                  let reg = this.phoneReg
                   if (!reg.test(value)) {
                     reject('证件号')
                   } else {
@@ -820,7 +820,7 @@
         return this.userInfo.payMember !== '-1'
       },
       currentTabComponent() {
-        const tabList = {
+        let tabList = {
           userTravel: 'UserTravel',
           order: 'OrderRecord',
           identity: 'IdentityRecord',
@@ -850,14 +850,14 @@
         this.orgId = localStorage.getItem('orgId')
       },
       createGenderText(type) {
-        const item = this.$_.find(this.simpleGenderList, { value: type })
+        let item = this.$_.find(this.simpleGenderList, { value: type })
         if (item === undefined) {
           return '-'
         }
         return item.label
       },
       createMarriageText(type) {
-        const item = this.$_.find(this.maritalStatusList, { value: type })
+        let item = this.$_.find(this.maritalStatusList, { value: type })
         if (item === undefined) {
           return '-'
         }
@@ -865,25 +865,25 @@
       },
       // 证件类型
       createPaperText(type) {
-        const item = this.$_.find(this.paperTypeList, { value: type })
+        let item = this.$_.find(this.paperTypeList, { value: type })
         if (item === undefined) {
           return '-'
         }
         return item.label
       },
       getMemberDetail() {
-        const data = {
+        let data = {
           memberId: this.memberId,
         }
 
-        const server = '/member-server'
-        const url = server + '/member/info/detail'
+        let server = '/member-server'
+        let url = server + '/member/info/detail'
 
         this.$ajaxGet(url, data)
           .then((res) => {
             if (res && res.code === 10000) {
-              const resData = res.data
-              const { birthday } = resData
+              let resData = res.data
+              let { birthday } = resData
 
               Object.assign(this.userInfo, resData)
               this.userInfo.birthday =
@@ -899,8 +899,8 @@
           })
       },
       chooseProvinceCity(value, selectedData) {
-        const [provinceName, cityName, countyName] = value
-        const [provinceItem, cityItem, countyItem] = selectedData
+        let [provinceName, cityName, countyName] = value
+        let [provinceItem, cityItem, countyItem] = selectedData
 
         if (value.length > 0) {
           Object.assign(this.addressForm, {
@@ -923,14 +923,14 @@
         }
       },
       createAddressPage() {
-        const filterPage = 3
-        const length = this.addressList.length
-        const pageLength = Math.ceil(length / filterPage)
+        let filterPage = 3
+        let length = this.addressList.length
+        let pageLength = Math.ceil(length / filterPage)
 
-        const tempList = []
+        let tempList = []
         for (let i = 0; i < pageLength; i++) {
-          const page = i * 3
-          const item = {
+          let page = i * 3
+          let item = {
             page: page,
             active: i === 0,
           }
@@ -945,8 +945,8 @@
       },
       orderAddressData() {
         let defaultAddress = ''
-        const tempList = []
-        const hasDefaultAddress = this.$_.find(this.addressList, { isDefault: true })
+        let tempList = []
+        let hasDefaultAddress = this.$_.find(this.addressList, { isDefault: true })
 
         let order = hasDefaultAddress ? 2 : 1
         this.addressList.forEach((item) => {
@@ -956,7 +956,7 @@
               order: 0,
             }
           } else {
-            const name = {
+            let name = {
               ...item,
               order: order,
             }
@@ -973,7 +973,7 @@
         this.displayAddressList = this.orderAddressList.slice(0, 3)
       },
       addressRemainText() {
-        const length = this.addressList.length
+        let length = this.addressList.length
         let text = ''
         text = `还可添加 ${this.addressLimit - this.addressList.length} 条地址信息`
         if (length >= this.addressLimit) {
@@ -987,9 +987,9 @@
         this.sendDeleteRequest()
       },
       sendDeleteRequest() {
-        const server = '/member-server'
-        const url = server + '/member/address/delete'
-        const data = {
+        let server = '/member-server'
+        let url = server + '/member/address/delete'
+        let data = {
           id: this.deleteAddressId,
         }
         this.$ajaxPost(url, data)
@@ -1004,7 +1004,7 @@
           })
       },
       openAddressPop(type, currentAddress) {
-        const length = this.addressList.length
+        let length = this.addressList.length
         this.currentAddressInfo = currentAddress
         if (length >= this.addressLimit) {
           this.$Message.error('收货地址添加已达上限')
@@ -1021,12 +1021,12 @@
       },
       fillAddressPop() {
         Object.assign(this.addressForm, this.currentAddressInfo)
-        const { province, city, county, isDefault } = this.currentAddressInfo
+        let { province, city, county, isDefault } = this.currentAddressInfo
         this.addressForm.districtList = [province, city, county]
         this.defaultAddress = isDefault ? '1' : '2'
       },
       formatAddressData() {
-        const data = {
+        let data = {
           ...this.addressForm,
           memberId: this.memberId,
           isDefault: this.defaultAddress === '1',
@@ -1036,8 +1036,8 @@
         return data
       },
       validateAddress() {
-        const { districtList, detailed, receiver, receiverPhone } = this.addressForm
-        const emptyAddress = districtList.length === 0
+        let { districtList, detailed, receiver, receiverPhone } = this.addressForm
+        let emptyAddress = districtList.length === 0
         if (emptyAddress) {
           this.$Message.error('保存失败，您还未填写区域信息！')
           return true
@@ -1062,7 +1062,7 @@
         return false
       },
       confirmAddress() {
-        const type = this.addressPopType
+        let type = this.addressPopType
         if (type === 'add') {
           this.addAddress()
         } else if (type === 'edit') {
@@ -1070,15 +1070,15 @@
         }
       },
       editAddress() {
-        const server = '/member-server'
-        const url = server + '/member/address/modify'
+        let server = '/member-server'
+        let url = server + '/member/address/modify'
 
-        const notPass = this.validateAddress('memberInfo')
+        let notPass = this.validateAddress('memberInfo')
         if (notPass) {
           this.showAddressPop = true
           return
         }
-        const data = this.formatAddressData()
+        let data = this.formatAddressData()
         data.id = this.currentAddressInfo.id
 
         this.$ajaxPost(url, data)
@@ -1094,17 +1094,17 @@
           })
       },
       addAddress() {
-        const server = '/member-server'
-        const url = server + '/member/address/add'
+        let server = '/member-server'
+        let url = server + '/member/address/add'
 
-        const notPass = this.validateAddress('memberInfo')
+        let notPass = this.validateAddress('memberInfo')
         if (notPass) {
           this.showAddressPop = true
           return
         }
         this.showAddressPop = false
 
-        const data = this.formatAddressData()
+        let data = this.formatAddressData()
 
         this.$ajaxPost(url, data)
           .then((res) => {
@@ -1136,8 +1136,8 @@
         this.districtList = []
       },
       createAddressPopTitle() {
-        const text = this.addressPopType === 'add' ? '新增' : '编辑'
-        const complete = text + '收货地址'
+        let text = this.addressPopType === 'add' ? '新增' : '编辑'
+        let complete = text + '收货地址'
         return complete
       },
       handleTimePicker(val) {
@@ -1145,7 +1145,7 @@
       },
       openBasicInfoPop() {
         this.showBasicInfoPop = true
-        const {
+        let {
           id,
           memberName,
           sex,
@@ -1173,7 +1173,7 @@
         // this.basicInfoForm = maritalStatus === 1
       },
       validateBasicInfo() {
-        const { phone } = this.basicInfoForm
+        let { phone } = this.basicInfoForm
 
         if (phone === '') {
           this.$Message.error('保存失败，您还未填写手机号！')
@@ -1187,10 +1187,10 @@
         this.$refs['basicInfo'].resetFields()
       },
       formatBasicInfo() {
-        const data = {
+        let data = {
           ...this.basicInfoForm,
         }
-        const { phone } = this.basicInfoForm
+        let { phone } = this.basicInfoForm
         if (phone.includes('*')) {
           delete data.phone
         }
@@ -1198,16 +1198,16 @@
         return data
       },
       addBasicInfo() {
-        const server = '/member-server'
-        const url = server + '/member/info/modify'
+        let server = '/member-server'
+        let url = server + '/member/info/modify'
 
-        const notPass = this.validateBasicInfo()
+        let notPass = this.validateBasicInfo()
         if (notPass) {
           return
         }
         this.showBasicInfoPop = false
 
-        const data = this.formatBasicInfo()
+        let data = this.formatBasicInfo()
 
         this.$ajaxPost(url, data)
           .then((res) => {
@@ -1224,12 +1224,12 @@
         this.$router.push('/member/manage/query')
       },
       createLevelName() {
-        const { levelId, levelName } = this.userInfo
-        const text = `${levelId.slice(0, 2).toUpperCase()} ${levelId.slice(2)}-${levelName}`
+        let { levelId, levelName } = this.userInfo
+        let text = `${levelId.slice(0, 2).toUpperCase()} ${levelId.slice(2)}-${levelName}`
         return text
       },
       openGrowthPage() {
-        const phone = this.userInfo.phone
+        let phone = this.userInfo.phone
         this.$router.push({
           path: '/right/growthManage/growthDetail',
           query: {
@@ -1238,7 +1238,7 @@
         })
       },
       openPointPage() {
-        const phone = this.userInfo.phone
+        let phone = this.userInfo.phone
         this.$router.push({
           path: '/right/pointManage/pointDetail',
           query: {
@@ -1247,9 +1247,9 @@
         })
       },
       autoFillInfo(cardId) {
-        const birthday = getIdentityInfo(cardId, 1)
-        const sex = getIdentityInfo(cardId, 2)
-        const age = getIdentityInfo(cardId, 3)
+        let birthday = getIdentityInfo(cardId, 1)
+        let sex = getIdentityInfo(cardId, 2)
+        let age = getIdentityInfo(cardId, 3)
         Object.assign(this.basicInfoForm, {
           birthday: birthday,
           sex: sex,
@@ -1323,22 +1323,22 @@
           })
       },
       getSourceOrg(query = '') {
-        const server = '/user-server'
-        const url = server + '/platform/department/pageDepartment'
+        let server = '/user-server'
+        let url = server + '/platform/department/pageDepartment'
 
-        const { page, size } = this.labelPageData
+        let { page, size } = this.labelPageData
         // 已加载完所有的组织数据
         if (this.maxLabelOrg) {
           return
         }
-        const data = {
+        let data = {
           searchType: 'name',
           searchContent: query,
           page: page,
           size: size,
         }
 
-        const p = new Promise((resolve, reject) => {
+        let p = new Promise((resolve, reject) => {
           this.$ajaxPost(url, data)
             .then((res) => {
               if (res.code === 10000) {
@@ -1355,18 +1355,18 @@
         return p
       },
       renderLabelOrg(resData) {
-        const list = resData !== undefined ? resData.list : []
+        let list = resData !== undefined ? resData.list : []
         this.sourceList = this.sourceList.concat(list)
-        const { page } = this.labelPageData
+        let { page } = this.labelPageData
 
-        const isMax = resData.count === this.sourceList.length
+        let isMax = resData.count === this.sourceList.length
         this.maxLabelOrg = isMax
         if (!isMax) {
           this.labelPageData.page = page + 1
         }
       },
       debugImage() {
-        const tempData = [
+        let tempData = [
           {
             labelTypeName: '会员信息',
             labels: [
@@ -1499,22 +1499,22 @@
           orgId: this.labelOrg || this.orgId,
         }).then((res) => {
           if (res && res.code === 10000) {
-            const resData = res.data || []
+            let resData = res.data || []
             this.labelPortrait = this.createMemberImage(resData)
           }
         })
         // this.debugImage()
       },
       createMemberImage(resList) {
-        const container = []
+        let container = []
         for (let i = 0; i < resList.length; i++) {
-          const labelGroup = resList[i]
-          const dataList = labelGroup.labels
-          const size = Math.ceil(dataList.length / this.showTotalLabel)
+          let labelGroup = resList[i]
+          let dataList = labelGroup.labels
+          let size = Math.ceil(dataList.length / this.showTotalLabel)
 
-          const labels = dataList.slice(0, this.showTotalLabel)
+          let labels = dataList.slice(0, this.showTotalLabel)
 
-          const modal = {
+          let modal = {
             labelTypeId: labelGroup.labelTypeId,
             labelTypeName: labelGroup.labelTypeName,
             page: 1,
@@ -1527,7 +1527,7 @@
         return container
       },
       changeLabelPage(groupIndex, action) {
-        const group = _.cloneDeep(this.labelPortrait[groupIndex])
+        let group = _.cloneDeep(this.labelPortrait[groupIndex])
         let newPage = group.page + action
         if (newPage > group.size) {
           newPage = 1
@@ -1535,9 +1535,9 @@
           newPage = group.size
         }
 
-        const start = this.showTotalLabel * (newPage - 1)
-        const end = this.showTotalLabel + start
-        const labels = group.dataList.slice(start, end)
+        let start = this.showTotalLabel * (newPage - 1)
+        let end = this.showTotalLabel + start
+        let labels = group.dataList.slice(start, end)
 
         this.labelPortrait[groupIndex].page = newPage
         this.labelPortrait[groupIndex].labels = labels

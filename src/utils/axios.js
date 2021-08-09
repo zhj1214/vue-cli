@@ -64,7 +64,7 @@ export const axios_get = async (url, data = {}, msg = '接口异常', headers = 
   return axiosIns
     .get(url, { params: data, headers: { ...headers } })
     .then((res) => {
-      const iRes = res && res.config ? res.data : res
+      let iRes = res && res.config ? res.data : res
       if ((iRes && iRes.code === 10000) || iRes.code === '10000') {
         return Promise.resolve(iRes || {})
       } else if (iRes.code === 20004) {
@@ -86,7 +86,7 @@ export const axios_post = async (url, data = {}, msg = '接口异常', headers =
   return axiosIns
     .post(url, data, { headers })
     .then((res) => {
-      const iRes = res && res.config ? res.data : res
+      let iRes = res && res.config ? res.data : res
       if ((iRes && iRes.code === 10000) || iRes.code === '10000') {
         return Promise.resolve(iRes)
       } else if (iRes.code === 20004) {

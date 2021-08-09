@@ -9,7 +9,7 @@ export function labelTypesCol() {
     {
       title: '创建组织',
       render: (h, params) => {
-        const { belongOrg, belongOrgStr } = params.row
+        let { belongOrg, belongOrgStr } = params.row
         return h(BelongOrgCell, {
           props: {
             currentOrg: belongOrg,
@@ -22,9 +22,9 @@ export function labelTypesCol() {
     {
       title: '操作',
       render: (h, params) => {
-        const { canBeOperator } = params.row
-        const edit = canBeOperator && this.__hasPower('editGroup')
-        const deleteGroup = canBeOperator && this.__hasPower('deleteGroup')
+        let { canBeOperator } = params.row
+        let edit = canBeOperator && this.__hasPower('editGroup')
+        let deleteGroup = canBeOperator && this.__hasPower('deleteGroup')
 
         return h('div', [
           edit

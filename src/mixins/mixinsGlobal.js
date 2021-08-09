@@ -20,7 +20,7 @@ export default {
      * @returns {boolean}
      */
     __hasPower(...list) {
-      const hasRight = list.some((element) => this.pageAction.includes(element))
+      let hasRight = list.some((element) => this.pageAction.includes(element))
       return hasRight
     },
   },

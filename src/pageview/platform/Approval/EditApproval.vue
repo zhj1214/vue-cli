@@ -183,8 +183,8 @@
                   7: '七',
                   8: '八',
                 }
-                const list = res.data.list.map((item) => {
-                  const arr = item.roles.map((e, index) => {
+                let list = res.data.list.map((item) => {
+                  let arr = item.roles.map((e, index) => {
                     return {
                       grade: item.grade,
                       approverNum: index == 0 ? item.approverNum : 0,
@@ -219,7 +219,7 @@
           return
         }
         this.approvalNode.map((item) => {
-          const transNum = {
+          let transNum = {
             一: 1,
             二: 2,
             三: 3,
@@ -277,7 +277,7 @@
       //提交时候的判断数据来自于接口返回还是新添加的
       isResponseOrAdd(item) {
         if (Array.isArray(item)) {
-          const flag = item[0].hasOwnProperty('list')
+          let flag = item[0].hasOwnProperty('list')
           return flag
         } else {
           return false
@@ -346,7 +346,7 @@
         if (idx != undefined) {
           list.splice(idx, 1)
         }
-        const allNodes = list.map((arr, index) => {
+        let allNodes = list.map((arr, index) => {
           var num = 0 //关联审批人
           arr.forEach((element) => {
             if (element instanceof Array) {

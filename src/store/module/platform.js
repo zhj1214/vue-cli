@@ -18,12 +18,12 @@ export default {
   actions: {
     // 获取新增空白权限树
     getBlankPowersTree({ commit }, obj) {
-      const ob = {}
+      let ob = {}
       if (obj.type === 'platform-department') ob['parentId'] = obj.id
       else ob['orgId'] = obj.orgId
       axios_get(obj.url, ob).then((res) => {
         if (res && res.code === 10000) {
-          const data = [
+          let data = [
             {
               title: '全部',
               expand: true,
@@ -42,9 +42,9 @@ export default {
       commit('POWERS_TREE_LIST', [])
       axios_get('/user-server/platform/role/update/powers', { roleId }).then((res) => {
         if (res && res.code === 10000) {
-          const ischecked = res.data && res.data.some((item) => item.hasPower)
+          let ischecked = res.data && res.data.some((item) => item.hasPower)
           console.log('ischecked', ischecked)
-          const data = [
+          let data = [
             {
               title: '全部',
               expand: true,

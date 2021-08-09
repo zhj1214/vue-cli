@@ -39,7 +39,7 @@ export default {
     loadCouponList({ state }, search) {
       search.excludeZero = search.isZero ? '' : 1
       const url = '/coupon-server/api/coupon/market/pageList'
-      const iSearch = JSON.parse(JSON.stringify({ ...search } || state.couponSearch))
+      let iSearch = JSON.parse(JSON.stringify({ ...search } || state.couponSearch))
       // this.commModal.spinShow = true;
       // iSearch.couponOrigin = !iSearch.couponOrigin?null:iSearch.couponOrigin;
       return axios_post(url, iSearch)

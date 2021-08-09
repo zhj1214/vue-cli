@@ -531,6 +531,7 @@
     background: #e9e8ff;
     border: 1px solid #756cea;
     border-radius: 4px;
+    // background: url(../../../assets/images/icon-info.png) no-repeat;
   }
 
   .ivu-btn {

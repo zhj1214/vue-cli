@@ -80,11 +80,11 @@ const commonObject = {
   isEmojiCharacter(substring) {
     for (var i = 0; i < substring.length; i++) {
       var hs = substring.charCodeAt(i)
-      if (hs >= 0xd800 && hs <= 0xdbff) {
+      if (0xd800 <= hs && hs <= 0xdbff) {
         if (substring.length > 1) {
           var ls = substring.charCodeAt(i + 1)
           var uc = (hs - 0xd800) * 0x400 + (ls - 0xdc00) + 0x10000
-          if (uc >= 0x1d000 && uc <= 0x1f77f) {
+          if (0x1d000 <= uc && uc <= 0x1f77f) {
             return true
           }
         }
@@ -94,13 +94,13 @@ const commonObject = {
           return true
         }
       } else {
-        if (hs >= 0x2100 && hs <= 0x27ff) {
+        if (0x2100 <= hs && hs <= 0x27ff) {
           return true
-        } else if (hs >= 0x2b05 && hs <= 0x2b07) {
+        } else if (0x2b05 <= hs && hs <= 0x2b07) {
           return true
-        } else if (hs >= 0x2934 && hs <= 0x2935) {
+        } else if (0x2934 <= hs && hs <= 0x2935) {
           return true
-        } else if (hs >= 0x3297 && hs <= 0x3299) {
+        } else if (0x3297 <= hs && hs <= 0x3299) {
           return true
         } else if (
           hs == 0xa9 ||
@@ -121,11 +121,11 @@ const commonObject = {
    * 数字转大写
    */
   toChinesNum(num) {
-    const changeNum = ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九']
-    const unit = ['', '十', '百', '千', '万']
+    let changeNum = ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九']
+    let unit = ['', '十', '百', '千', '万']
     num = parseInt(num)
-    const getWan = (temp) => {
-      const strArr = temp.toString().split('').reverse()
+    let getWan = (temp) => {
+      let strArr = temp.toString().split('').reverse()
       let newNum = ''
       for (var i = 0; i < strArr.length; i++) {
         newNum =
@@ -137,7 +137,7 @@ const commonObject = {
       }
       return newNum
     }
-    const overWan = Math.floor(num / 10000)
+    let overWan = Math.floor(num / 10000)
     let noWan = num % 10000
     if (noWan.toString().length < 4) {
       noWan = '0' + noWan

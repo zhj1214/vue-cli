@@ -57,8 +57,7 @@
     },
     methods: {
       showConfigBtn() {
-        const showDelete =
-          this.isLast && this.item.levelId !== 'Lv1' && !this.isActive && this.isTop
+        let showDelete = this.isLast && this.item.levelId !== 'Lv1' && !this.isActive && this.isTop
 
         if (this.item.id === '-') {
           this.toConfig = true

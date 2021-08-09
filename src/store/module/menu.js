@@ -15,12 +15,12 @@ const allRoutes = [objRouter[0]]
  * @desc router -> menu
  * */
 export const showAllBackRouters = (router) => {
-  const res = []
+  let res = []
   if (!router) return []
-  for (const item of router) {
+  for (let item of router) {
     // 不存在meta 或者 item存在且不存在hidden,hidden排除不需要显示
     if (!item.meta || (item.meta && !item.meta.hidden) || item.name) {
-      const obj = {
+      let obj = {
         icon: (item.meta && item.meta.icon) || '',
         name: item.name || item.parent, //重定向到第一个子级时，被在路由中，name会被parent字段替代
         meta: item.meta,
@@ -90,10 +90,10 @@ export default {
      * @return {Array}
      * */
     pageActions(state) {
-      const ob = {}
+      let ob = {}
       const pageActionParser = (routers) => {
         if (Array.isArray(routers)) {
-          for (const item of routers) {
+          for (let item of routers) {
             if (
               item.value &&
               item.value.match(/-/g) &&

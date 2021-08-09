@@ -16,11 +16,11 @@ export const userTravelCol = function () {
       // width: 100,
       align: 'center',
       render: (h, params) => {
-        const { operParentType } = params.row
+        let { operParentType } = params.row
         if (operParentType === undefined) {
           return h('div', '-')
         }
-        const parentList = [
+        let parentList = [
           {
             label: '会员信息',
             value: 1,
@@ -30,7 +30,7 @@ export const userTravelCol = function () {
             value: 2,
           },
         ]
-        const item = this.$_.find(parentList, { value: operParentType })
+        let item = this.$_.find(parentList, { value: operParentType })
         let text = ''
         if (item !== undefined) {
           text = item.label
@@ -45,7 +45,7 @@ export const userTravelCol = function () {
       align: 'left',
       minWidth: 320,
       render: (h, params) => {
-        const { operType, operTitle } = params.row
+        let { operType, operTitle } = params.row
         return h(ActionDetailCell, {
           props: {
             operationType: operType,

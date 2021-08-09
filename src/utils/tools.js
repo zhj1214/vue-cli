@@ -109,15 +109,15 @@ export const formatNumber = (number, decimals = 2, dec_point = '.', thousands_se
     return Number(number).toFixed(decimals)
   }
 
-  var n = !isFinite(+number) ? 0 : +number
-  var pre = !isFinite(+decimals) ? 0 : Math.abs(decimals)
-  var sep = typeof thousands_sep === 'undefined' ? ',' : thousands_sep
-  var dec = typeof dec_point === 'undefined' ? '.' : dec_point
-  var s = ''
-  var toFixedFix = function (n, prec) {
-    var k = Math.pow(10, prec)
-    return '' + Math.ceil(n * k) / k
-  }
+  var n = !isFinite(+number) ? 0 : +number,
+    pre = !isFinite(+decimals) ? 0 : Math.abs(decimals),
+    sep = typeof thousands_sep === 'undefined' ? ',' : thousands_sep,
+    dec = typeof dec_point === 'undefined' ? '.' : dec_point,
+    s = '',
+    toFixedFix = function (n, prec) {
+      var k = Math.pow(10, prec)
+      return '' + Math.ceil(n * k) / k
+    }
 
   s = (pre ? toFixedFix(n, pre) : '' + Math.round(n)).split('.')
   var re = /(-?\d+)(\d{3})/
@@ -201,7 +201,7 @@ export const checkIntOne = (NumberStr) => {
  * */
 export const timeToTimeStamp = (date, key) => {
   var timestamp = 0
-  if (typeof date !== 'object') {
+  if (typeof date != 'object') {
     if (date.length == 8) {
       date = '2019-07-24 ' + date
     }
@@ -300,17 +300,17 @@ export const diffDay = (timestamp) => {
  * @desc 规则检查
  * */
 export const isNoValueLevel = (arr) => {
-  const validate = {
+  let validate = {
     A: [],
     B: [],
     C: [],
   }
-  for (const eachRule of arr) {
+  for (let eachRule of arr) {
     log('items', eachRule)
     //A级检查
     if (!eachRule.subRules && !eachRule.subRules) {
       log('in if, items.subRules', eachRule.subRules)
-      const emptyValue = !eachRule.value && !eachRule.numberValue && !eachRule.valueA
+      let emptyValue = !eachRule.value && !eachRule.numberValue && !eachRule.valueA
       if (emptyValue) {
         validate.A.push('A_value')
       }
@@ -319,38 +319,34 @@ export const isNoValueLevel = (arr) => {
       if (eachRule.isThird && !eachRule.thirdValue) validate.A.push('A_thirdValue') // 支持第二级下校验第三级
       if (eachRule.isTimeRange && !eachRule.tempTime) validate.A.push('A_isTimeRange') // 是否支持时间域
       if (eachRule.isTimeRange && !eachRule.timeRange) validate.A.push('A_timeRang')
-      if (eachRule.isTimeRange && eachRule.timeRange && !eachRule.timeRange.value.trim()) {
+      if (eachRule.isTimeRange && eachRule.timeRange && !eachRule.timeRange.value.trim())
         validate.A.push('A_timeRange_value')
-      }
     }
     // B级检查
     if (eachRule.logic && eachRule.subRules && eachRule.subRules.length) {
       log('items.logic', eachRule.logic)
       log('items.subRules', eachRule.subRules)
 
-      for (const item of eachRule.subRules) {
+      for (let item of eachRule.subRules) {
         if (!item.value && !item.subRules) validate.B.push('B_value')
         if (item.isThird && !item.thirdValue) validate.B.push('B_thirdValue')
         if (!item.operator && !item.subRules) validate.B.push('B_operator')
         if (item.isTimeRange && !item.tempTime && !item.subRules) validate.B.push('B_isTimeRange')
-        if (item.isTimeRange && !item.tempTime && !item.subRules && item.timeRange) {
+        if (item.isTimeRange && !item.tempTime && !item.subRules && item.timeRange)
           validate.B.push('B_timeRange')
-        }
-        if (item.isTimeRange && !item.tempTime && !item.subRules && !item.timeRange.value.trim()) {
+        if (item.isTimeRange && !item.tempTime && !item.subRules && !item.timeRange.value.trim())
           validate.B.push('B_timeRange_value')
-        }
 
         // C级检查
         if (item.subRules) {
-          for (const ite of item.subRules) {
+          for (let ite of item.subRules) {
             if (!ite.value) validate.C.push('C_value')
             if (ite.isThird && ite.thirdValue) validate.C.push('C_thirdValue')
             if (!ite.operator) validate.C.push('C_operator')
             if (ite.isTimeRange && !ite.tempTime) validate.C.push('C_isTimeRange')
             if (ite.isTimeRange && !ite.tempTime && !ite.timeRange) validate.C.push('C_timeRange')
-            if (ite.isTimeRange && !ite.tempTime && ite.timeRange && !ite.timeRange.value.trim()) {
+            if (ite.isTimeRange && !ite.tempTime && ite.timeRange && !ite.timeRange.value.trim())
               validate.C.push('C_timeRange_value')
-            }
           }
         }
       }
@@ -370,7 +366,7 @@ export const isNoValueLevel = (arr) => {
 
 export const deepCopy = (src, obj) => {
   obj = obj || {}
-  for (const i in src) {
+  for (let i in src) {
     if (typeof src[i] === 'object') {
       obj[i] = src[i].constructor === Array ? [] : {}
       deepCopy(src[i], obj[i])
@@ -419,9 +415,9 @@ export const unitNumber = ({ number, unit, digit = 2 }) => {
  */
 export const checkImageWH = (file, width, height) => {
   return new Promise(function (resolve, reject) {
-    const filereader = new FileReader()
+    let filereader = new FileReader()
     filereader.onload = (e) => {
-      const src = e.target.result
+      let src = e.target.result
       const image = new Image()
       image.onload = function () {
         if (this.width != width || this.height != height) {
@@ -483,13 +479,13 @@ export const filterPhone = (no) => {
  */
 export const createRangeTime = (time = 'oneMonth', formatStr = 'YYYY-MM-DD HH:mm:ss') => {
   const nowTime = format(new Date(), formatStr)
-  const dateRange = {
+  let dateRange = {
     oneWeek: () => {
-      const weekAgo = format(subWeeks(new Date(), 1))
+      let weekAgo = format(subWeeks(new Date(), 1))
       return [weekAgo, nowTime]
     },
     oneMonth: () => {
-      const monthStart = startOfMonth(new Date())
+      let monthStart = startOfMonth(new Date())
       return [format(monthStart, formatStr), nowTime]
     },
     threeMonth: () => {
@@ -509,9 +505,9 @@ export const createRangeTime = (time = 'oneMonth', formatStr = 'YYYY-MM-DD HH:mm
     },
   }
 
-  const fn = dateRange[time]
+  let fn = dateRange[time]
   if (fn) {
-    const pack = fn()
+    let pack = fn()
     return pack
   } else {
     return ['', '']
@@ -525,7 +521,7 @@ export const createRangeTime = (time = 'oneMonth', formatStr = 'YYYY-MM-DD HH:mm
  * @returns {string}
  */
 export const findListLabel = (list, itemValue) => {
-  const item = _.find(list, { value: itemValue })
+  let item = _.find(list, { value: itemValue })
   let label = ''
   if (item !== undefined) {
     label = item.label
@@ -557,12 +553,12 @@ export const _isToday = (d) => {
  * @returns {[string, string]} 月份的开始和结束 [2020-06-01 00:00:00, 2020-06-30 23:59:59]
  */
 export const createTotalMonth = (yearMonthStr) => {
-  const yearMonth = yearMonthStr.split('-').map((item) => Number(item))
-  const date = new Date(yearMonth[0], yearMonth[1] - 1)
-  const endDate = endOfMonth(date)
+  let yearMonth = yearMonthStr.split('-').map((item) => Number(item))
+  let date = new Date(yearMonth[0], yearMonth[1] - 1)
+  let endDate = endOfMonth(date)
 
-  const start = format(date, 'YYYY-MM-DD HH:mm:ss')
-  const end = format(endDate, 'YYYY-MM-DD HH:mm:ss')
+  let start = format(date, 'YYYY-MM-DD HH:mm:ss')
+  let end = format(endDate, 'YYYY-MM-DD HH:mm:ss')
 
   return [start, end]
 }
@@ -571,7 +567,7 @@ export const createTotalMonth = (yearMonthStr) => {
  * 提取出数组的对应项
  */
 export const extractListValue = (list, key) => {
-  const tempList = []
+  let tempList = []
   list.forEach((item) => {
     tempList.push(item[key])
   })
@@ -592,7 +588,7 @@ export const toThousand = (num) => {
  * @desc 测试会要求数字加千分号
  */
 export const removeComma = (str) => {
-  const removeComma = str.split(',').join('')
+  let removeComma = str.split(',').join('')
   if (!removeComma) {
     return ''
   }
@@ -626,7 +622,7 @@ export const checkUrl = (url) => {
 export const getIdentityInfo = (cardId, type) => {
   if (type === 1) {
     //获取出生日期
-    const birth =
+    let birth =
       cardId.substring(6, 10) + '-' + cardId.substring(10, 12) + '-' + cardId.substring(12, 14)
     return birth
   }
@@ -644,9 +640,9 @@ export const getIdentityInfo = (cardId, type) => {
 
   if (type === 3) {
     //获取年龄
-    const myDate = new Date()
-    const month = myDate.getMonth() + 1
-    const day = myDate.getDate()
+    let myDate = new Date()
+    let month = myDate.getMonth() + 1
+    let day = myDate.getDate()
     let age = myDate.getFullYear() - cardId.substring(6, 10) - 1
     if (
       cardId.substring(10, 12) < month ||
@@ -687,10 +683,10 @@ export function formatFileSize(size) {
  * @return {[]}
  */
 export const createCascadeFormat = (list, labelKey, valueKey) => {
-  const base = []
+  let base = []
   for (let i = 0; i < list.length; i++) {
-    const node = list[i]
-    const format = {
+    let node = list[i]
+    let format = {
       label: node[labelKey],
       value: node[valueKey],
       children: [],
@@ -745,10 +741,10 @@ export const createOrgCascade = (list, labelKey, valueKey) => {
     return []
   }
 
-  const base = []
+  let base = []
   for (let i = 0; i < list.length; i++) {
-    const node = list[i]
-    const format = {
+    let node = list[i]
+    let format = {
       label: node[labelKey],
       value: node[valueKey],
       loading: false,

@@ -109,5 +109,18 @@
     border-bottom-right-radius: 8px;
     border-bottom-left-radius: 8px;
     border-top-left-radius: 8px;
+
+    &::after {
+      /*
+						display: block;
+						content: "";
+						position: absolute;
+						top: -20px;
+						width: 60px;
+						height: 20px;
+						right: 0;
+						background: red;
+						border-right: 1px solid #E2E2EA; */
+    }
   }
 </style>

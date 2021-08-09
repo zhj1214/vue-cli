@@ -13,7 +13,7 @@ export default {
     //根据搜索条件返回优惠券列表信息
     loadCouponList({ state }, search) {
       const url = '/coupon-server/api/coupon/market/pageList'
-      const iSearch = JSON.parse(
+      let iSearch = JSON.parse(
         JSON.stringify({ ...search, orgId: localStorage.orgId } || state.couponSearch)
       )
       // this.commModal.spinShow = true;
@@ -58,7 +58,7 @@ export default {
     //获取客群列表
     loadGroupList({ state }, search) {
       console.log(state)
-      const iSearch = JSON.parse(JSON.stringify({ ...search, state: 1 }))
+      let iSearch = JSON.parse(JSON.stringify({ ...search, state: 1 }))
       iSearch.beginTime = iSearch.startTime
       iSearch.size = iSearch.pageSize
       iSearch.name = iSearch.keyword
