@@ -3,41 +3,13 @@
  * @Version: 0.0.1
  * @Autor: zhj1214
  * @Date: 2021-04-15 14:34:58
- * @LastEditors: zhj1214
- * @LastEditTime: 2021-05-21 15:34:15
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-07-22 16:47:13
  */
-import http from './http'
-import activity from './apis/activity'
-import car from './apis/car'
-import coupons from './apis/coupons'
-import distribution from './apis/distribution' // 分销
-import game from './apis/game' // 游戏
-import goods from './apis/goods' // 商品详情
-import goodsCic from './apis/goodsCic' // 商品分类
-import home from './apis/home' // 首页
-import intergralGrowth from './apis/intergralGrowth' // 积分成长值、自助积分
-import order from './apis/order' // 订单、支付、物流相关
-import pagesGroupBuy from './apis/pagesGroupBuy' // 拼团
-import park from './apis/park' // 停车
-import shop from './apis/shop' // 店铺相关接口
-import sign from './apis/sign' // 签到
-import userCenter from './apis/userCenter' // 个人中心
+import http from '../utils/http'
+import userCenter from './user' // 个人中心
 
 const api = {
-  ...activity,
-  ...car,
-  ...coupons,
-  ...distribution,
-  ...game,
-  ...goods,
-  ...goodsCic,
-  ...home,
-  ...intergralGrowth,
-  ...order,
-  ...pagesGroupBuy,
-  ...park,
-  ...shop,
-  ...sign,
   ...userCenter,
   /************** 错误日志上报 *************/
   errApi: 'errLog/errlogUpload',
@@ -52,7 +24,13 @@ const api = {
    * api析构
    * */
   destructorApi(key) {
-    const apis = this[key].split('::')
+    let apis = ''
+    if (this[key] && typeof this[key] === 'string') {
+      apis = this[key].split('::')
+    } else if (this[key] && typeof this[key] === 'function') {
+      apis = this[key]().split('::')
+    }
+
     if (apis.length === 1) apis.unshift('GET')
     return {
       url: apis[1],
@@ -65,10 +43,36 @@ const api = {
    * @param {*} options  入参
    * */
   apiRequest(key, options) {
-    // console.log(key);
+    console.log(key);
     const { url, method } = this.destructorApi(key)
+    console.log('url :>> ', url);
     return new Promise((resolve, reject) => {
-      http.request(url, resolve, reject, options, method, true)
+      http.request(
+        url,
+        (data) =>
+          typeof this[key] === 'function' ? this[key](data, options, resolve) : resolve(data),
+        reject,
+        options,
+        method,
+        true
+      )
+    })
+  },
+  /**
+   * test
+   * @param {*} param0 
+   * @returns 
+   */
+  apiRequestFun({ url, options, method }) {
+    return new Promise((resolve, reject) => {
+      http.request(
+        url,
+        (data) => resolve(data),
+        reject,
+        options,
+        method,
+        true
+      )
     })
   },
   /**

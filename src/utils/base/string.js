@@ -1,12 +1,20 @@
+/*
+ * @Description:
+ * @Version: 0.0.1
+ * @Autor: zhj1214
+ * @Date: 2021-07-20 09:46:53
+ * @LastEditors: zhj1214
+ * @LastEditTime: 2021-08-10 11:38:46
+ */
 /**
  * @description: 时间格式字符串 为适配iOS 替换 * => /
  * @param {*} str
  * @return {*} 2021/03/18
- * @example: '2021-03-21 05:34:42'.dateFormat('YYYY.DD.MM')
+ * @example: '2021-03-21 05:34:42'.dateFormat('YYYY.DD.MM') ==> 2021.21.03
  * @author: zhj1214
  */
- String.prototype.dateFormat = function (format) {
-  if (!this.toString().includes('-')) return this.toString()
+import './date'
+String.prototype.dateFormat = function (format) {
   const timeStr = this.toString().replace(/-/g, '/')
   if (format) return new Date(timeStr).Format(format)
   else return timeStr
@@ -30,11 +38,11 @@ String.prototype.deleteCharAt = function (index) {
  * */
 
 String.prototype.deleteString = function (start, end) {
-  if (start == end) {
+  if (start === end) {
     return this.deleteCharAt(start)
   } else {
     if (start > end) {
-      var temp = start
+      const temp = start
       start = end
       end = temp
     }

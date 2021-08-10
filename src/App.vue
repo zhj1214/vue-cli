@@ -1,25 +1,27 @@
 <script>
-  import api from './utils/api'
+  import api from './api'
   import local from './utils/localStorage'
   import toast from './utils/toast'
   import statistics from './utils/sampling/statistics'
   import sampling from './utils/sampling/sampling'
   import util from './utils/util'
-  import date from './utils/base/date'
+  import './utils/base/string'
   import theme from './utils/theme'
   import eventEmitter from './utils/base/EventEmitter.js'
   import canvas from './utils/canvas'
   import scene from './utils/sceneManage'
-  import navigation from './utils/base/navrefactor'
+  import { STORAGE } from '@/utils/constant'
+  // import navigation from './utils/base/navrefactor'
 
-  var fundebug = require('fundebug-wxjs')
+  // "fundebug-wxjs": "^1.4.1",
+  // var fundebug = require('fundebug-wxjs')
 
   export default {
     globalData: {
-      fundebug: fundebug,
+      // fundebug: fundebug,
     },
     onShow: function (options) {
-      console.log(options, '____onShow')
+      // console.log(options, '____onShow')
       this.globalData.onShowOptions = options // 存储入口参
     },
     /**
@@ -31,8 +33,8 @@
      * 5.小程序逻辑处理
      * 6.是否需要 上报错误日志（默认不需要）
      * */
-    onLaunch: function (options) {
-      console.log(options, '____onLaunch') // 获取本地当前环境变量value
+    onLaunch: function () {
+      // console.log(options, '____onLaunch') // 获取本地当前环境变量value
       // this.initFundebug() // 初始化 fundebug
 
       // this.initCloud(); // 手动初始化 uniCloud
@@ -50,7 +52,11 @@
       uni.$canvas = canvas
       // 初始化 观察者
       eventEmitter.constructor()
-
+      // 余杭的组织ID
+      uni.$localStorage.setItem(STORAGE.ORG_ID, '58265426')
+      this.globalData.orgId = '58265426'
+      // 获取设备信息
+      this.getCurrentIphoneInfo()
       // #ifdef MP-WEIXIN
       this.getThirdpartyConfig() // 小程序 第三方平台，自定义配置
       // #endif
@@ -60,7 +66,7 @@
      * @author: zhj1214
      */
     onHide: function () {
-      console.log('App Hide')
+      // console.log('App Hide')
     },
     methods: {
       /**
@@ -68,7 +74,7 @@
        * @author: zhj1214
        */
       initFundebug() {
-        if (process.env.NODE_ENV != 'production') {
+        if (process.env.NODE_ENV !== 'production') {
           fundebug.init({
             apikey: 'bc54da06260628ce66655e75364fbc0085580b61ef0fc0d0a764555126d06bb2',
             httpTimeout: 6000,
@@ -94,7 +100,7 @@
        */
       getThirdpartyConfig() {
         if (uni.getExtConfig) {
-          var self = this
+          let self = this
           uni.getExtConfig({
             success(res) {
               // console.log(res.extConfig, 'getExtConfig')
@@ -124,8 +130,10 @@
        */
       getCurrentIphoneInfo() {
         let iphoneInfo = uni.getSystemInfoSync()
+        // #ifdef MP-WEIXIN
         const accountInfo = uni.getAccountInfoSync()
         iphoneInfo = { ...iphoneInfo, ...accountInfo }
+        // #endif
         this.globalData.iphoneInfo = iphoneInfo
         // #ifdef MP-WEIXIN
         //导航高度
@@ -162,7 +170,7 @@
                   code: res.code,
                 })
                 .then((res) => {
-                  if (res.code == 10000 && res.data.openid) {
+                  if (res.code === 10000 && res.data.openid) {
                     this.globalData.userOpenId = res.data
                     uni.$localStorage.setItem('userOpenId', res.data.openid)
                   } else {
@@ -179,7 +187,7 @@
       dynamicNetWorking: function () {
         return new Promise((resolve, reject) => {
           uni.onNetworkStatusChange(function (res) {
-            if (res.networkType == 'none' || res.networkType == 'unknown') {
+            if (res.networkType === 'none' || res.networkType === 'unknown') {
               reject(false)
             } else {
               resolve(true)
@@ -192,8 +200,8 @@
        */
       appIsUptate: function () {
         const updateManager = uni.getUpdateManager()
-        updateManager.onCheckForUpdate(function (res) {
-          console.log('版本信息 是否需要更新 ：' + res.hasUpdate) // 请求完新版本信息的回调
+        updateManager.onCheckForUpdate(function () {
+          // console.log('版本信息 是否需要更新 ：' + res.hasUpdate) // 请求完新版本信息的回调
         })
         updateManager.onUpdateReady(function () {
           uni.showModal({
@@ -215,14 +223,7 @@
   }
 </script>
 
-<style>
-  /*每个页面公共css */
-  @import './style/style.css';
-</style>
 <style lang="scss">
-  /* 注意要写在第一行，同时给style标签加入lang="scss"属性 */
   @import 'uview-ui/index.scss';
-</style>
-<style lang="less">
-  @import './style/custom.less';
+  @import '@/style/reset.scss';
 </style>

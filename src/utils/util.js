@@ -1,15 +1,9 @@
-/**
- * 所有模块公有方法文件
- * 1.先引入基本模块
- * 2.对模块方法加工调用
- * 3.暴露模块
- */
-import string from "./base/string";
+// import string from "./base/string";
 /**
  * 小程序重启（更新情况）
  */
 
-const reboot = function() {
+const reboot = function () {
   const updateManager = uni.getUpdateManager();
   updateManager.applyUpdate();
 };
@@ -40,9 +34,9 @@ const formatNumber = (n) => {
  * 例子： wx.$util.mutableCopy({k:'zhj'})
  */
 
-const mutableCopy = function(templateData) {
-  let a = {}
-  a = JSON.parse(JSON.stringify(templateData))
+const mutableCopy = function (templateData) {
+  let a = {};
+  a = JSON.parse(JSON.stringify(templateData));
   return a;
 };
 /**
@@ -76,23 +70,23 @@ const compareVersion = function compareVersion(v1, v2) {
 
   return 0;
 };
-//获取元素在数组的下标
-Array.prototype.indexOf = function(val) {
-  for (var i = 0; i < this.length; i++) {
-    if (this[i] == val) {
-      return i;
-    }
-  }
-  return -1;
-};
-//根据数组的下标，删除该下标的元素
-Array.prototype.remove = function(val) {
-  var index = this.indexOf(val);
+// 获取元素在数组的下标
+// Array.prototype.indexOf = function (val) {
+//   for (var i = 0; i < this.length; i++) {
+//     if (this[i] == val) {
+//       return i;
+//     }
+//   }
+//   return -1;
+// };
+// //根据数组的下标，删除该下标的元素
+// Array.prototype.remove = function (val) {
+//   var index = this.indexOf(val);
 
-  if (index < 0) {
-    this.splice(index, 1);
-  }
-};
+//   if (index < 0) {
+//     this.splice(index, 1);
+//   }
+// };
 /**
  * @description 判断一个变量是否是数组;
  *  -1 value是数组
@@ -100,7 +94,7 @@ Array.prototype.remove = function(val) {
  *  0 value不是数组也不是对象
  * */
 
-const isObjArr = function(val) {
+const isObjArr = function (val) {
   if (Object.prototype.toString.call(val) === "[object Array]") {
     return -1;
   } else if (Object.prototype.toString.call(val) === "[object Object]") {
@@ -116,9 +110,9 @@ const isObjArr = function(val) {
  * @example this.$Util.objectEquals(x, y) // false
  */
 
-const objectEquals = function(x, y) {
-  var f1 = x instanceof Object;
-  var f2 = y instanceof Object;
+const objectEquals = function (x, y) {
+  let f1 = x instanceof Object;
+  let f2 = y instanceof Object;
 
   if (!f1 || !f2) {
     return x === y;
@@ -128,12 +122,12 @@ const objectEquals = function(x, y) {
     return false;
   }
 
-  var newX = Object.keys(x);
+  let newX = Object.keys(x);
 
-  for (var p in newX) {
+  for (let p in newX) {
     p = newX[p];
-    var a = x[p] instanceof Object;
-    var b = y[p] instanceof Object;
+    let a = x[p] instanceof Object;
+    let b = y[p] instanceof Object;
 
     if (a && b) {
       let equal = objectEquals(x[p], y[p]);
@@ -141,7 +135,7 @@ const objectEquals = function(x, y) {
       if (!equal) {
         return equal;
       }
-    } else if (x[p] != y[p]) {
+    } else if (x[p] !== y[p]) {
       return false;
     }
   }
@@ -156,9 +150,9 @@ const objectEquals = function(x, y) {
 
 /*eslint no-extend-native: ["error", { "exceptions": ["Array,Date"] }]*/
 
-const arrayUnique = function(arr) {
+const arrayUnique = function (arr) {
   function unique(x, y) {
-    if (isObjArr(x) == -1) {
+    if (isObjArr(x) === -1) {
       let f = false;
       x.forEach((item) => {
         objectEquals(item, y) ? (f = true) : false;
@@ -168,30 +162,30 @@ const arrayUnique = function(arr) {
         return x;
       } else {
         let xx = x;
-        let yy = isObjArr(y) == -1 ? y : [y];
+        let yy = isObjArr(y) === -1 ? y : [y];
         return [...xx, ...yy];
       }
     } else {
       if (objectEquals(x, y)) {
-        return isObjArr(x) == -1 ? x : [x];
+        return isObjArr(x) === -1 ? x : [x];
       } else {
-        let xx = isObjArr(x) == -1 ? x : [x];
-        let yy = isObjArr(y) == -1 ? y : [y];
+        let xx = isObjArr(x) === -1 ? x : [x];
+        let yy = isObjArr(y) === -1 ? y : [y];
         return [...xx, ...yy];
       }
     }
   }
 
-  var a = [...new Set(arr)];
-  var c = [];
-  var b = a.filter((item) => {
-    if (typeof item != "object") {
+  let a = [...new Set(arr)];
+  let c = [];
+  let b = a.filter((item) => {
+    if (typeof item !== "object") {
       c.push(item);
     }
 
-    return item ? typeof item == "object" : false;
+    return item ? typeof item === "object" : false;
   });
-  var d = undefined;
+  let d = undefined;
 
   if (b.length > 0) {
     b.reduce(unique);
@@ -199,12 +193,12 @@ const arrayUnique = function(arr) {
 
   return !c ? d : !d ? c : [...c, ...d];
 };
+
 /**
  * @description 千分位
  */
-
 const numberFormat = function numberFormat(num) {
-  var reg = /\d{1,3}(?=(\d{3})+$)/g;
+  let reg = /\d{1,3}(?=(\d{3})+$)/g;
   return (num + "").replace(reg, "$&,");
 };
 /**
@@ -212,14 +206,14 @@ const numberFormat = function numberFormat(num) {
  * @description https://github.com/VincentSit/ChinaMobilePhoneNumberRegex/blob/master/README-CN.md
  */
 
-const validatePhone = function(num) {
+const validatePhone = function (num) {
   return /^1[3456789]\d{9}$/.test(num);
 };
 /**
  * 小程序禁用
  * */
 
-const appletDisable = function() {
+const appletDisable = function () {
   uni.reLaunch({
     url: "/pages/agreement/appletDisable",
     success: () => {
@@ -227,11 +221,11 @@ const appletDisable = function() {
     },
   });
 };
+
 /**
  * 必填字段 校验
  * */
-
-const requiredInfo = function() {
+const requiredInfo = function () {
   if (!uni.$localStorage.getItem("Token")) return;
   uni.$api
     .apiRequest("userRegistKey", {
@@ -239,13 +233,13 @@ const requiredInfo = function() {
       memberId: uni.$localStorage.getItem("memberId"),
     })
     .then((res) => {
-      if (res.code == 10000 && res.data) {
-        var isRequired = true;
+      if (res.code === 10000 && res.data) {
+        let isRequired = true;
         res.data.forEach((item) => {
           if (
-            item.requiredFields == 1 &&
-            item.value != 0 &&
-            (item.value == undefined || item.value == "")
+            item.requiredFields === 1 &&
+            item.value !== 0 &&
+            (item.value === undefined || item.value === "")
           ) {
             console.log(item);
             isRequired = false;
@@ -264,18 +258,18 @@ const requiredInfo = function() {
       }
     });
 };
+
 /**
  * 获取省市区
  * @description
  */
-
-const getAreaData = function(response) {
+const getAreaData = function (response) {
   uni.$api
     .apiRequest("getlocaltionSever", {
       isContainForeign: -1,
     })
     .then((res) => {
-      if (res.code == 10000 && res.data) {
+      if (res.code === 10000 && res.data) {
         response({
           province_list: res.data.provinceList,
           city_list: res.data.cityList,
@@ -288,11 +282,11 @@ const getAreaData = function(response) {
  * @description 获取用户信息
  */
 
-const getMemberInfo = function() {
-  return new Promise((resolve, reject) => {
+const getMemberInfo = function () {
+  return new Promise((resolve) => {
     if (uni.$localStorage.getItem("Token")) {
       uni.$api.apiRequest("getHomeMemberInfo").then((res) => {
-        if (res.code == 10000 && res.data) {
+        if (res.code === 10000 && res.data) {
           // 更新本地用户信息
           uni.$localStorage.setCurrentUser(res.data);
           resolve(res.data);
@@ -308,16 +302,17 @@ const getMemberInfo = function() {
 
 /**
  * 用户点亮
- * 场景：
- * 
- * */
-const currentClockin = function() {
+ * 场景
+ */
+const currentClockin = function () {
   const app = getApp().globalData;
   if (uni.$localStorage.getItem("memberId") && !app.isCurrentClockin)
     uni.$api.apiRequest("channelUpdate", {
       organizationId: uni.$localStorage.getItem("orgId"),
       id: uni.$localStorage.getItem("memberId"),
-      registrationSource: app.registrationSource || uni.$localStorage.getItem("currentMall").marketName,
+      registrationSource:
+        app.registrationSource ||
+        uni.$localStorage.getItem("currentMall").marketName,
       registrationOrg: uni.$localStorage.getItem("orgId"),
     });
 };
@@ -327,16 +322,16 @@ const currentClockin = function() {
  */
 const adJumpUrl = (linkAddress) => {
   let arr = linkAddress.split("appleht");
-  if (linkAddress.indexOf("http") != -1) {
+  if (linkAddress.indexOf("http") !== -1) {
     uni.navigateTo({
       url: "/pagesA/out/out?src=" + linkAddress,
     });
-  } else if (arr.length == 2) {
+  } else if (arr.length === 2) {
     if (
-      arr[1] == "/pages/all-goods/all-goods" ||
-      arr[1] == "/pages/index/index" ||
-      arr[1] == "/pages/cart/cart" ||
-      arr[1] == "/pages/my/myPage"
+      arr[1] === "/pages/all-goods/all-goods" ||
+      arr[1] === "/pages/index/index" ||
+      arr[1] === "/pages/cart/cart" ||
+      arr[1] === "/pages/my/myPage"
     ) {
       uni.switchTab({
         url: arr[1],
@@ -353,15 +348,14 @@ const adJumpUrl = (linkAddress) => {
  * @description 微信支付
  */
 
-const weChatPay = function(param) {
+const weChatPay = function (param) {
   uni.requestPayment({
     timeStamp: param.timeStamp,
     nonceStr: param.nonceStr,
     package: param.packageInfo,
     signType: param.signType,
     paySign: param.paySign,
-
-    success(response) {
+    success() {
       // 埋点 传入埋点类型  商品ids  页面路径 ADD_SHOPCART GOODS_EXCHANGE
       // const app = getApp().globalData;
       // uni.$sampling.sampling('GOODS_EXCHANGE', param.goodsIds, param.route);
@@ -374,7 +368,7 @@ const weChatPay = function(param) {
     },
 
     fail(err) {
-      // console.log(err);
+      console.log(err);
       uni.reLaunch({
         url: "./settlementSuccess",
       });
@@ -388,17 +382,17 @@ const weChatPay = function(param) {
  * RegExp 中 \ => \\
  * */
 
-const decimalTwo = function(param, isRounding = false, digit = 2) {
+const decimalTwo = function (param, isRounding = false, digit = 2) {
   if (isRounding) {
-    if (typeof param == "string") {
+    if (typeof param === "string") {
       param = Number(param);
     }
-    
+
     return param.toFixed(digit);
   } else {
-    var re = new RegExp("^\\d+(?:\\.\\d{0," + digit + "})?");
+    let re = new RegExp("^\\d+(?:\\.\\d{0," + digit + "})?");
 
-    if (typeof param == "number") {
+    if (typeof param === "number") {
       param = param.toString();
     }
 
@@ -410,8 +404,8 @@ const decimalTwo = function(param, isRounding = false, digit = 2) {
  * 只保留openid 和orgid
  * */
 
-const clearLocal = function(call = () => {}) {
-  var loacl = {
+const clearLocal = function () {
+  let loacl = {
     orgId: uni.$localStorage.getItem("orgId"),
     appletId: uni.$localStorage.getItem("appletId"),
     userOrgId: uni.$localStorage.getItem("userOrgId"),
@@ -419,8 +413,8 @@ const clearLocal = function(call = () => {}) {
     myAuthority: uni.$localStorage.getItem("myAuthority"),
     ENV_CURRENT: uni.$localStorage.getItem("ENV_CURRENT"),
   };
-  return new Promise((resolve, reject) => {
-    console.log(loacl, "————清楚缓存之前");
+  return new Promise((resolve) => {
+    // console.log(loacl, "————清楚缓存之前");
     let keys = Object.keys(loacl);
     uni.clearStorage({
       success: () => {
@@ -430,25 +424,25 @@ const clearLocal = function(call = () => {}) {
           }
         });
         resolve();
-        console.log("clearLocal———— 清楚缓存");
+        // console.log("clearLocal———— 清楚缓存");
       },
     });
   });
 };
+
 /**
  * 当前系统是不是iOS
  * */
-
-const getCurrentSystemiOS = function() {
+const getCurrentSystemiOS = function () {
   const app = getApp();
-  return app.globalData.iphoneInfo.platform == "ios";
+  return app.globalData.iphoneInfo.platform === "ios";
 };
 /**
  * 图片旋转
  * @param angle 角度
  * */
-const pictureRotation = function(angle) {
-  var animation = uni.createAnimation({
+const pictureRotation = function (angle) {
+  let animation = uni.createAnimation({
     duration: 1,
     timingFunction: "linear",
     // "linear","ease","ease-in","ease-in-out","ease-out","step-start","step-end"
@@ -465,10 +459,10 @@ const pictureRotation = function(angle) {
  * 后台获取的城市数据进行转换
  * 转换成可用的城市数据
  * */
-const serveToCityData = function(area) {
-  var ssqList = [];
+const serveToCityData = function (area) {
+  let ssqList = [];
   // 处理省份
-  for (var k in area.province_list) {
+  for (let k in area.province_list) {
     ssqList.push({
       value: k,
       label: area.province_list[k],
@@ -477,13 +471,13 @@ const serveToCityData = function(area) {
   }
   // 处理城市
   ssqList.forEach((sf, index) => {
-    var csList = [];
+    let csList = [];
     if (index + 1 <= ssqList.length) {
       let sf_next;
       if (index + 1 < ssqList.length) {
         sf_next = ssqList[index + 1];
       }
-      for (var k in area.city_list) {
+      for (let k in area.city_list) {
         if (k >= sf.value && k <= (sf_next ? sf_next.value : k + 10000)) {
           csList.push({
             value: k,
@@ -503,13 +497,13 @@ const serveToCityData = function(area) {
       sf_next = ssqList[sf_index + 1];
     }
     cs_list.forEach((cs, cs_index) => {
-      var dqList = [];
+      let dqList = [];
       if (cs_index + 1 <= cs_list.length) {
         let cs_next;
         if (cs_index + 1 < cs_list.length) {
           cs_next = cs_list[cs_index + 1];
         }
-        for (var k in area.county_list) {
+        for (let k in area.county_list) {
           if (
             k >= cs.value &&
             k < (cs_next ? cs_next.value : sf_next ? sf_next.value : k + 10000)
@@ -531,31 +525,31 @@ const serveToCityData = function(area) {
 /**
  * 创建单利
  * */
-function Proxy(func) {
-  let instance;
-  let handler = {
-    construct(target, args) {
-      if (!instance) {
-        instance = Reflect.construct(func, args);
-      }
-      return instance;
-    },
-  };
-  return new Proxy(func, handler);
-}
+// function Proxy(func) {
+//   let instance;
+//   let handler = {
+//     construct(target, args) {
+//       if (!instance) {
+//         instance = Reflect.construct(func, args);
+//       }
+//       return instance;
+//     },
+//   };
+//   return new Proxy(func, handler);
+// }
 
 /**
  * 优雅的处理 async/await
  * let [err,res] = await errorCaptured(asyncFunc)
  * */
-async function errorCaptured(asyncFunc) {
-  try {
-    let res = await asyncFunc();
-    return [null, res];
-  } catch (e) {
-    return [e, null];
-  }
-}
+// async function errorCaptured(asyncFunc) {
+//   try {
+//     let res = await asyncFunc();
+//     return [null, res];
+//   } catch (e) {
+//     return [e, null];
+//   }
+// }
 
 /**
  * @description 函数防抖
@@ -579,7 +573,7 @@ const debounce = (
   }
 ) => {
   let timer;
-  const _debounce = function(...args) {
+  const _debounce = function (...args) {
     if (timer) {
       clearTimeout(timer);
     }
@@ -597,7 +591,7 @@ const debounce = (
    * @description 取消函数
    * @see https://juejin.im/post/5931561fa22b9d0058c5b87d
    **/
-  _debounce.cancel = function() {
+  _debounce.cancel = function () {
     clearTimeout(timer);
     timer = null;
   };
@@ -610,14 +604,14 @@ const debounce = (
  * len 目标字节长度
  * 返回值： 处理结果字符串
  */
-const cutString = function(str, len) {
+const cutString = function (str, len) {
   //length属性读出来的汉字长度为1
   if (str.length * 2 <= len) {
     return str;
   }
-  var strlen = 0;
-  var s = "";
-  for (var i = 0; i < str.length; i++) {
+  let strlen = 0;
+  let s = "";
+  for (let i = 0; i < str.length; i++) {
     s = s + str.charAt(i);
     if (str.charCodeAt(i) > 128) {
       strlen = strlen + 2;
@@ -637,7 +631,7 @@ const cutString = function(str, len) {
 /**
  *  @description url 参数解析
  */
-const getUrlParams = function(names, urlSearch = location.href) {
+const getUrlParams = function (names, urlSearch = location.href) {
   let URL = require("url");
   let urlFormat = require("querystring");
   let urlParam = URL.parse(urlSearch);
@@ -646,9 +640,9 @@ const getUrlParams = function(names, urlSearch = location.href) {
     let hashObj = urlFormat.parse(urlParam.hash);
     for (let idx in Object.keys(hashObj)) {
       let key = Object.keys(hashObj)[idx];
-      if (typeof key == "string") {
+      if (typeof key === "string") {
         if (key.indexOf("?") !== -1) {
-          if (key.split("?")[1] == names) {
+          if (key.split("?")[1] === names) {
             return hashObj[key];
           }
         }
@@ -662,19 +656,19 @@ const getUrlParams = function(names, urlSearch = location.href) {
 /**
  * @description 手机号加密
  */
-const phoneEncryption = function(phone) {
+const phoneEncryption = function (phone) {
   return phone.replace(/(\d{3})\d*(\d{4})/, "$1****$2");
 };
 
 /**
  * @description 根据身份证号获取 生日
  */
-const getBirthdayFromIdCard = function(idCard) {
-  var birthday = "";
+const getBirthdayFromIdCard = function (idCard) {
+  let birthday = "";
   if (idCard !== null && idCard !== "") {
-    if (idCard.length == 15) {
+    if (idCard.length === 15) {
       birthday = "19" + idCard.substr(6, 6);
-    } else if (idCard.length == 18) {
+    } else if (idCard.length === 18) {
       birthday = idCard.substr(6, 8);
     }
     birthday = birthday.replace(/(.{4})(.{2})/, "$1-$2-");
@@ -684,10 +678,10 @@ const getBirthdayFromIdCard = function(idCard) {
 /**
  * @description 根据身份证号获取 性别
  */
-const getSexFromIdCard = function(idCard) {
+const getSexFromIdCard = function (idCard) {
   if (idCard !== undefined && idCard !== "") {
-    var sexIndex = idCard.substr(idCard.length - 2, 1);
-    if (Number(sexIndex) % 2 == 0) {
+    let sexIndex = idCard.substr(idCard.length - 2, 1);
+    if (Number(sexIndex) % 2 === 0) {
       return "女";
     } else {
       return "男";
@@ -697,8 +691,8 @@ const getSexFromIdCard = function(idCard) {
 /**
  * @description 根据 生日 获取 年龄
  */
-const getAgeFromBirthday = function(val) {
-  if (val == null || val == "" || val == undefined) {
+const getAgeFromBirthday = function (val) {
+  if (val === null || val === "" || val === undefined) {
     return "";
   }
   const cDate = new Date(val);
@@ -711,10 +705,43 @@ const getAgeFromBirthday = function(val) {
  * @param date   时间戳 默认当前时间
  * @example (new Date()).Format("YYYY-MM-DD HH:mm:ss.S")
  * */
-const getTimeFormat = function(format, date) {
+const getTimeFormat = function (format, date) {
   let time = date || new Date();
   return time.Format(format);
 };
+
+/**
+ * 下载文件-h5
+ * @param {fileName: string, fileLink: string} 
+ */
+const downLoadFile = ({ fileName, fileUrl } = {}) => {
+  const downloadEl = document.createElement('a')
+  downloadEl.download = fileName
+  downloadEl.href = fileUrl
+  document.body.appendChild(downloadEl)
+  downloadEl.click()
+  downloadEl.remove()
+}
+
+/**
+ * 是否是图片链接
+ * @param {string} imgUrl 
+ * @returns 
+ */
+const isImgUrl = (imgUrl) => {
+  const imgArr = ['png', 'jpg', 'jpeg', 'gif']
+  return imgArr.includes(imgUrl.slice(imgUrl.lastIndexOf('.') + 1).toLowerCase())
+};
+
+/**
+ * 是否是身份证
+ * @param {*} params 
+ * @returns 
+ */
+const isIDCard = (params) => {
+  return /^[1-9]\d{5}(?:18|19|20)\d{2}(?:0[1-9]|10|11|12)(?:0[1-9]|[1-2]\d|30|31)\d{3}[\dXx]$/.test(params)
+};
+
 
 module.exports = {
   currentClockin: currentClockin,
@@ -745,4 +772,7 @@ module.exports = {
   pictureRotation: pictureRotation,
   reboot: reboot,
   serveToCityData: serveToCityData,
+  downLoadFile,
+  isImgUrl,
+  isIDCard
 };

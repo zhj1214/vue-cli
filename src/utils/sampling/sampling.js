@@ -3,8 +3,8 @@
  * @Version: 0.0.1
  * @Autor: zhj1214
  * @Date: 2021-05-21 14:52:02
- * @LastEditors: zhj1214
- * @LastEditTime: 2021-05-21 15:52:17
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-07-19 11:37:09
  */
 const sampling = {
   browseCommodity: {
@@ -22,7 +22,6 @@ const sampling = {
       return 0;
     }
 
-    var self = this;
     return new Promise(function (resolve, rejected) {
       if (uni.$util.getCurrentSystemiOS()) {
         time2 = time2 ? time2 : new Date().Format("YYYY-MM-DD HH:mm:ss");
@@ -40,7 +39,7 @@ const sampling = {
         let d2 = new Date(time2);
         let difference = parseInt(d2 - d1);
 
-        if (difference != undefined && difference != null && !isNaN(difference)) {
+        if (difference !== undefined && difference !== null && !isNaN(difference)) {
           resolve(difference / 1000);
         } else {
           rejected(0);
@@ -54,7 +53,7 @@ const sampling = {
    * @param {*} options
    */
   sampling(type, goodsId, requestUrl) {
-    var self = this;
+    const self = this;
     var startTime = new Date();
     let userObj = uni.$localStorage.getCurrentUser() || {};
     let data = {
@@ -67,13 +66,13 @@ const sampling = {
       type: type
     };
 
-    if (type == 'LOGIN') {
+    if (type === 'LOGIN') {
       // 那个公众号进入了积分商城
       data.remark = '那个公众号进入了积分商城';
       data.platform = uni.$localStorage.getItem('userEntranceKey') || '';
-    } else if (type == 'BROWSER_GOODS') {
+    } else if (type === 'BROWSER_GOODS') {
       // 浏览什么商品，浏览多久
-      if (self.browseCommodity.goodId != goodsId) {
+      if (self.browseCommodity.goodId !== goodsId) {
         self.browseCommodity.goodId = goodsId;
         self.browseCommodity.startTime = startTime.Format('YYYY-MM-DD HH:mm:ss');
       } else {
@@ -84,7 +83,7 @@ const sampling = {
           data.browsingTime = res; // console.log(data)
           // 进行埋点请求
 
-          uni.$api.apiRequest('appLetSampling',data).then(res => {
+          uni.$api.apiRequest('appLetSampling', data).then(() => {
             // console.log(res);
             self.browseCommodity = {
               goodId: '',
@@ -95,7 +94,7 @@ const sampling = {
         });
       }
       return;
-    } else if (type == 'ADD_SHOPCART') {
+    } else if (type === 'ADD_SHOPCART') {
       // 添加什么商品到 -> 购物车
       data.remark = '添加什么商品到 -> 购物车';
 
@@ -104,12 +103,12 @@ const sampling = {
       } else {
         data.goodsId = goodsId;
       }
-    } else if (type == 'GOODS_EXCHANGE') {
+    } else if (type === 'GOODS_EXCHANGE') {
       // 购买了什么商品 只有购买的时候传入 数组id
       data.remark = '购买了什么商品';
       data.goodsIds = goodsId;
     }
-    uni.$api.apiRequest('appLetSampling',data)
+    uni.$api.apiRequest('appLetSampling', data)
   }
 };
 export default sampling;

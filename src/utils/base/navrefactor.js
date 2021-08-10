@@ -3,8 +3,8 @@
  * @Version: 0.0.1
  * @Autor: zhj1214
  * @Date: 2021-03-19 17:40:13
- * @LastEditors: zhj1214
- * @LastEditTime: 2021-05-21 15:02:28
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2021-07-19 11:25:39
  */
 import sence from '../sceneManage'
 
@@ -68,7 +68,7 @@ class Nav {
         orgId: this.senceObj[SCENE_PARSE_KEY].orgId,
       })
       .then((res) => {
-        if (res.code == 10000) {
+        if (res.code === 10000) {
           uni.$localStorage.setItem('currentMall', {
             marketName: res.data.name,
             orgId: this.senceObj[SCENE_PARSE_KEY].orgId,
@@ -86,11 +86,11 @@ class Nav {
    * @author: zhj1214
    */
   updataUserInfo() {
-    var self = this
+    // var self = this
     uni.$util.getMemberInfo().then((res) => {
       if (res) {
-        const u = { ...self.userInfo, ...res }
-        app.globalData.integral = res.integral
+        // const u = { ...self.userInfo, ...res }
+        // app.globalData.integral = res.integral
         uni.$localStorage.setCurrentUser(res)
         uni.$localStorage.setItem('memberId', res.memberId)
       }

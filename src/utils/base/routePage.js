@@ -1,5 +1,5 @@
 let data;
-let route_url = ['goodsDetail/goodsDetail'];
+// let route_url = ['goodsDetail/goodsDetail'];
 /**
  * 1.这里data从app.js中传入，为了获取data的一些参数
  * 2. 此处不能写成oldOnShow()，否则没有this，this.setData等方法为undefined。这里的this在Page构造函数实例化的时候才会指定
@@ -9,14 +9,15 @@ let route_url = ['goodsDetail/goodsDetail'];
 
 function init(_data) {
 	data = _data; // 重写page函数
+	console.log(data);
 	let oldPage = Page;
-	Page = function(obj) {
+	Page = function (obj) {
 		// 重写onShow方法，用一个变量保存旧的onShow函数
-		let oldOnShow = obj.onShow || function() {};
+		let oldOnShow = obj.onShow || function () { };
 
-		obj.onShow = function() {
+		obj.onShow = function () {
 			console.log(this.route, '____进来了'); // 商品 埋点
-			if (this.route.indexOf('goodsDetail/goodsDetail') != -1) {
+			if (this.route.indexOf('goodsDetail/goodsDetail') !== -1) {
 				uni.$sampling.sampling('BROWSER_GOODS', this.options.goodsid, this.route);
 			}
 			// 页面统计
@@ -25,9 +26,9 @@ function init(_data) {
 		}; // 重写onUnload方法，用一个变量保存旧的onUnload函数
 
 
-		let oldOnUnload = obj.onUnload || function() {};
+		let oldOnUnload = obj.onUnload || function () { };
 
-		obj.onUnload = function() {
+		obj.onUnload = function () {
 			console.log(this.route, '____leavePageLog'); // 商品 埋点
 
 			if (this.route.indexOf('goodsDetail/goodsDetail') != -1) {
@@ -40,9 +41,9 @@ function init(_data) {
 		}; // 重写onHide方法，用一个变量保存旧的onHide函数
 
 
-		let oldOnHide = obj.onHide || function() {};
+		let oldOnHide = obj.onHide || function () { };
 
-		obj.onHide = function() {
+		obj.onHide = function () {
 			console.log(this.route, '____leavePageLog'); // 商品 埋点
 
 			if (this.route.indexOf('goodsDetail/goodsDetail') != -1) {

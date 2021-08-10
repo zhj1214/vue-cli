@@ -2,19 +2,19 @@
 // 使用WeakMap判断是否形成了环，避免爆栈
 const hash = new WeakMap()
 
-function hasHash (value) {
+function hasHash(value) {
   return hash.has(value)
 }
 
-function setHash (value, result) {
+function setHash(value, result) {
   hash.set(value, result)
 }
 
-function getHash (value) {
+function getHash(value) {
   return hash.get(value)
 }
 
-function getSymbols (value) {
+function getSymbols(value) {
   let symKeys = []
   const propertyIsEnumerable = Object.prototype.propertyIsEnumerable
   const nativeGetSymbols = Object.getOwnPropertySymbols
@@ -24,7 +24,7 @@ function getSymbols (value) {
   return symKeys
 }
 
-function getAllKeys (value) {
+function getAllKeys(value) {
   let keys = Object.keys(value)
   keys = [...keys, ...getSymbols(value)]
   return keys
@@ -47,47 +47,47 @@ const types = {
   '[object Error]': false
 }
 
-function isObject (value) {
+function isObject(value) {
   const type = typeof value;
-  return value != null && (type === 'object' || type === 'function')
+  return value !== null && (type === 'object' || type === 'function')
 }
 
-function getType (value) {
+function getType(value) {
   return Object.prototype.toString.call(value);
 }
 
-function initCloneArray (value) {
+function initCloneArray(value) {
   const { length } = value
   return new value.constructor(length)
 }
 
-function initCloneArrayBuffer (value) {
+function initCloneArrayBuffer(value) {
   const result = new value.constructor(value.byteLength)
   new Uint8Array(result).set(new Uint8Array(value))
   return result
 }
 
-function initCloneObject (value) {
+function initCloneObject(value) {
   return Object.create(Object.getPrototypeOf(value))
 }
 
-function initCloneRegExp (value) {
+function initCloneRegExp(value) {
   return new RegExp(value.source,
-    (value.global     ? 'g' : '') +
+    (value.global ? 'g' : '') +
     (value.ignoreCase ? 'i' : '') +
-    (value.multiline  ? 'm' : '') +
-    (value.sticky     ? 'y' : '') +
-    (value.unicode    ? 'u' : '')
+    (value.multiline ? 'm' : '') +
+    (value.sticky ? 'y' : '') +
+    (value.unicode ? 'u' : '')
   )
 }
 
-function initCloneFunction (value) {
+function initCloneFunction(value) {
   return function (...args) {
     return value.apply(null, ...args)
   }
 }
 
-function initClone (value, type) {
+function initClone(value, type) {
   const Ctor = value.constructor
   switch (type) {
     case '[object ArrayBuffer]':
@@ -107,7 +107,7 @@ function initClone (value, type) {
   }
 }
 
-export default function deepClone (value) {
+export default function deepClone(value) {
 
   let result;
 
@@ -143,7 +143,7 @@ export default function deepClone (value) {
   }
 
   if (type === '[object Set]') {
-    value.forEach((val, key) => {
+    value.forEach((val) => {
       result.add(deepClone(val))
     })
     return result
