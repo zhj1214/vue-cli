@@ -1,7 +1,6 @@
-let isAndroid =
-  navigator.userAgent.indexOf("Android") > -1 ||
-  navigator.userAgent.indexOf("Adr") > -1;
-let isiOS = !!navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+const isAndroid =
+  navigator.userAgent.indexOf('Android') > -1 || navigator.userAgent.indexOf('Adr') > -1
+const isiOS = !!navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)
 
 /**
  * @description 初始化配置
@@ -11,39 +10,39 @@ function setupWebViewJavascriptBridge(callback) {
   //Android使用
   if (isAndroid) {
     if (window.WebViewJavascriptBridge) {
-      callback(WebViewJavascriptBridge);
+      callback(WebViewJavascriptBridge)
     } else {
       document.addEventListener(
-        "WebViewJavascriptBridgeReady",
-        function() {
-          callback(WebViewJavascriptBridge);
+        'WebViewJavascriptBridgeReady',
+        function () {
+          callback(WebViewJavascriptBridge)
           //如果发生ajax阻塞jsbrige的情况，尝试下方方式
           /*if(window.onWebViewJavascriptBridgeReady) window.onWebViewJavascriptBridgeReady(window.__bridge = WebViewJavascriptBridge);
 					callback(WebViewJavascriptBridge)*/
         },
         false
-      );
+      )
     }
-    sessionStorage.phoneType = "android";
+    sessionStorage.phoneType = 'android'
   }
 
   //iOS使用
   if (isiOS) {
     if (window.WebViewJavascriptBridge) {
-      return callback(WebViewJavascriptBridge);
+      return callback(WebViewJavascriptBridge)
     }
     if (window.WVJBCallbacks) {
-      return window.WVJBCallbacks.push(callback);
+      return window.WVJBCallbacks.push(callback)
     }
-    window.WVJBCallbacks = [callback];
-    var WVJBIframe = document.createElement("iframe");
-    WVJBIframe.style.display = "none";
-    WVJBIframe.src = "wvjbscheme://__BRIDGE_LOADED__";
-    document.documentElement.appendChild(WVJBIframe);
-    setTimeout(function() {
-      document.documentElement.removeChild(WVJBIframe);
-    }, 0);
-    sessionStorage.phoneType = "ios";
+    window.WVJBCallbacks = [callback]
+    var WVJBIframe = document.createElement('iframe')
+    WVJBIframe.style.display = 'none'
+    WVJBIframe.src = 'wvjbscheme://__BRIDGE_LOADED__'
+    document.documentElement.appendChild(WVJBIframe)
+    setTimeout(function () {
+      document.documentElement.removeChild(WVJBIframe)
+    }, 0)
+    sessionStorage.phoneType = 'ios'
   }
 }
 
@@ -51,18 +50,18 @@ function setupWebViewJavascriptBridge(callback) {
  * 注册回调函数
  * @description 第一次连接时调用 初始化函数(android需要初始化,ios不用)
  * */
-setupWebViewJavascriptBridge(function(bridge) {
+setupWebViewJavascriptBridge(function (bridge) {
   // console.log("11111111111111111111111111111");
   if (isAndroid) {
     //初始化
-    bridge.init(function(message, responseCallback) {
+    bridge.init(function (message, responseCallback) {
       var data = {
-        "Javascript Responds": "Wee!",
-      };
-      responseCallback(data);
-    });
+        'Javascript Responds': 'Wee!',
+      }
+      responseCallback(data)
+    })
   }
-});
+})
 
 export default {
   /**
@@ -72,9 +71,9 @@ export default {
    * @param {function} callback 回调函数
    * */
   callHandler(name, data, callback) {
-    setupWebViewJavascriptBridge(function(bridge) {
-      bridge.callHandler(name, data, callback);
-    });
+    setupWebViewJavascriptBridge(function (bridge) {
+      bridge.callHandler(name, data, callback)
+    })
   },
   /**
    * APP->js方法 可传递callback回调
@@ -84,15 +83,15 @@ export default {
    * */
   registerHandler(name, callback) {
     // console.log("22222222222222222222222222222_____", name);
-    setupWebViewJavascriptBridge(function(bridge) {
+    setupWebViewJavascriptBridge(function (bridge) {
       // console.log("333333333333333333333333333");
-      bridge.registerHandler(name, function(data, responseCallback) {
+      bridge.registerHandler(name, function (data, responseCallback) {
         // console.log("4444444444444444444444444444_____", name);
-        callback(data, responseCallback);
-      });
-    });
+        callback(data, responseCallback)
+      })
+    })
   },
-};
+}
 
 /****************************************  postMessage使用	*********************************/
 // 1.app -> js

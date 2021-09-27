@@ -1,49 +1,59 @@
+/*
+ * @Description:
+ * @Version: 0.0.1
+ * @Autor: zhj1214
+ * @Date: 2021-08-10 11:42:45
+ * @LastEditors: zhj1214
+ * @LastEditTime: 2021-09-04 09:25:11
+ */
 /**
- *  操作数据库 
+ *  操作数据库
  */
 // 插入错误日志
 const onSqlAdd = function (err) {
-  const app = getApp().globalData;
-  if (!app.globalData || !app.globalData.cloudAvailable) return;
-  const db = uni.cloud.database();
+  const app = getApp().globalData
+  if (!app.globalData || !app.globalData.cloudAvailable) return
+  const db = uni.cloud.database()
   db.collection('errorLog').add({
     data: {
       time: new Date().getTime(),
       time_s: new Date().Format('Y-M-D HH:mm:ss'),
       token: uni.$localStorage.getItem('Token'),
-      userName: uni.$localStorage.getCurrentUser() ? uni.$localStorage.getCurrentUser().memberName : undefined,
-      ...err
-    }
-  });
-}; // 查询
-
+      userName: uni.$localStorage.getCurrentUser()
+        ? uni.$localStorage.getCurrentUser().memberName
+        : undefined,
+      ...err,
+    },
+  })
+} // 查询
 
 const onQuery = function (collectionName, data = {}) {
-  const app = getApp().globalData;
-  if (!app.globalData || !app.globalData.cloudAvailable) return;
+  const app = getApp().globalData
+  if (!app.globalData || !app.globalData.cloudAvailable) return
 
   if (collectionName && collectionName.length < 1) {
-    return;
+    return
   }
 
-  const db = uni.cloud.database(); // 查询当前用户所有的 counters
+  const db = uni.cloud.database() // 查询当前用户所有的 counters
 
   return new Promise((resolve, reject) => {
-    db.collection(collectionName).where(data).get({
-      success: res => {
-        resolve(res);
-      },
-      fail: err => {
-        reject(err);
-      }
-    });
-  });
-}; // 实时数据推送 demo 即时
-
+    db.collection(collectionName)
+      .where(data)
+      .get({
+        success: (res) => {
+          resolve(res)
+        },
+        fail: (err) => {
+          reject(err)
+        },
+      })
+  })
+} // 实时数据推送 demo 即时
 
 const immediate = function () {
-  const app = getApp().globalData;
-  if (!app.globalData || !app.globalData.cloudAvailable) return;
+  const app = getApp().globalData
+  if (!app.globalData || !app.globalData.cloudAvailable) return
 
   if (uni.$util.compareVersion(uni.version.version, '2.8.2') >= 0) {
     // const db = uni.cloud.database();
@@ -65,7 +75,6 @@ const immediate = function () {
     //           msg = item.doc.userName + '~接口：' + (u.length > 1 ? u[1] : u[0]);
     //         }
     //       });
-
     //       if (msg) {
     //         uni.$alert.showToast(msg);
     //       }
@@ -77,12 +86,12 @@ const immediate = function () {
     //   }
     // });
     // // 等到需要关闭监听的时候调用 close() 方法
-    // watcher.close() 
+    // watcher.close()
   }
-};
+}
 
 module.exports = {
   onSqlAdd: onSqlAdd,
   onQuery: onQuery,
-  immediate: immediate
-};
+  immediate: immediate,
+}

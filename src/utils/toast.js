@@ -1,43 +1,55 @@
-/**********************************Toast 提示********************************/
-let showToast = text => uni.showToast({
-  title: text || "缺少入参",
-  icon: "none",
-  duration: 3000
-}); // 显示繁忙提示
+/*
+ * @Description: 全局提示
+ * @Version: 0.0.1
+ * @Autor: zhj1214
+ * @Date: 2021-08-10 11:42:45
+ * @LastEditors: zhj1214
+ * @LastEditTime: 2021-09-03 22:28:24
+ */
+const showToast = (text = '缺少提示内容', icon = 'none') =>
+  uni.showToast({
+    icon,
+    title: text,
+    duration: 3000,
+  })
 
+/**
+ * @description: Loading
+ * @author: zhj1214
+ */
+const showLoading = (text, mask = true) =>
+  uni.showLoading({
+    mask,
+    title: text,
+  })
 
-let showLoading = text => uni.showLoading({
-  mask: true,
-  title: text
-});
-// 显示成功提示
-let showSuccess = text => uni.showToast({
-  title: text,
-  icon: "success"
-}); // 自定义 toast提示
-
-
-let showModal = (title, content) => {
-  uni.hideToast();
-  return new Promise(function (resolve) {
-    uni.showModal({
-      title,
-      content: content,
-      success(res) {
-        if (res.confirm) {
-          resolve(true);
-        } else if (res.cancel) {
-          resolve(false);
-        }
-      },
-      showCancel: false
-    });
-  });
-};
+/**
+ * @description: 自定义提示
+ * @param {*} title
+ * @param {*} content
+ * @param {*} showCancel
+ * @return {*} Promise
+ * @example: uni.$toast.showModal('标题','内容')
+ * @author: zhj1214
+ */
+const showModal = async (title, content, showCancel = false) => {
+  uni.hideToast()
+  uni.showModal({
+    title,
+    content,
+    showCancel,
+    success(res) {
+      if (res.confirm) {
+        return true
+      } else if (res.cancel) {
+        return false
+      }
+    },
+  })
+}
 
 module.exports = {
   showLoading,
-  showSuccess,
   showToast,
-  showModal
-};
+  showModal,
+}

@@ -30,7 +30,7 @@
 	import {
 		log,
 		validatePhone
-	} from "../../../utils/util";
+	} from '../../../utils/tool/index';
 	const app = getApp();
 
 	export default {
@@ -42,7 +42,7 @@
 				loginClass: 'loginBtn',
 				countdown: false,
 				count: 0,
-				codeNumber: "",
+				codeNumber: '',
 				verificationCode: '',
 				isShowLoginInfo: false
 			};
@@ -75,8 +75,7 @@
 		 * 生命周期函数--监听页面卸载
 		 */
 		onUnload: function() {
-			if (this.countMark)
-				clearInterval(this.countMark);
+			if (this.countMark) { clearInterval(this.countMark); }
 		},
 
 		/**
@@ -95,14 +94,13 @@
 		onShareAppMessage: function() {},
 		methods: {
 			getPhoneNumber(e) {
-				let value = e.detail.value;
+				const value = e.detail.value;
 				this.setData({
 					phone: value
 				});
 			},
 
 			getCode(e) {
-				
 				this.codeNumber = e.detail.value;
 				if (e.detail.value.length > 3) {
 					this.loginClass = 'loginBtnOk';
@@ -113,17 +111,17 @@
 
 			sendValidateCode() {
 				log('in getValidateCode', this.phone);
-				let correctPhone = validatePhone(this.phone);
+				const correctPhone = validatePhone(this.phone);
 
 				if (!correctPhone) {
-					uni.$alert.showToast("手机号格式错误");
+					uni.$alert.showToast('手机号格式错误');
 					return;
 				}
 
 				this.setData({
 					count: 60
 				});
-				let countMark = setInterval(() => {
+				const countMark = setInterval(() => {
 					let count = this.count;
 					log('count', count);
 					count = count - 1;
@@ -142,9 +140,7 @@
 			 * 生命周期函数--监听页面隐藏
 			 */
 			onHide: function() {
-				if (this.countMark)
-					clearInterval(this.countMark);
-
+				if (this.countMark) { clearInterval(this.countMark); }
 			},
 			/**
 			 * 获取 验证码
@@ -171,15 +167,15 @@
 			loginOrRegister() {
 				if (this.loginClass === 'loginBtn') return;
 				const inviteSceneObj = app.inviteSceneObj || {}; // getApp里定义分销、邀请相关信息
-				let self = this;
-				let playload = {
+				const self = this;
+				const playload = {
 					phone: this.phone,
 					smsCode: this.codeNumber,
 					openId: uni.$localStorage.getItem('userOpenId'),
-					orgId: app.globalData.orgId || uni.$localStorage.getItem("orgId")
+					orgId: app.globalData.orgId || uni.$localStorage.getItem('orgId')
 				};
 				// 通过邀请、分销跳转到登录页时设置orgId
-				if(inviteSceneObj.sceneValue === "12") {
+				if(inviteSceneObj.sceneValue === '12') {
 					playload.orgId = inviteSceneObj.orgId // 设置orgId
 				}
 				uni.$api.apiRequest('userPhoneLogin', playload).then(response => {
@@ -198,12 +194,12 @@
 										organizationId: uni.$localStorage.getItem('orgId'),
 										id: res.data.memberId,
 										registrationSource: app.globalData.registrationSource || uni.$localStorage.getItem('currentMall').marketName,
-										registrationOrg: uni.$localStorage.getItem("orgId"),
+										registrationOrg: uni.$localStorage.getItem('orgId'),
 										channelId:app.globalData.registrationSourceChannelId
 									};
 
 									// 通过邀请、分销跳转到登录页时根据场景值设置商场点亮参数
-									if(inviteSceneObj.sceneValue === "12") {
+									if(inviteSceneObj.sceneValue === '12') {
 										requestArg = {
 											organizationId: inviteSceneObj.orgId || null,
 											id: response.data.memberId,

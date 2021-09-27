@@ -4,7 +4,7 @@
  * @Autor: zhj1214
  * @Date: 2020-12-22 03:55:53
  * @LastEditors: zhj1214
- * @LastEditTime: 2021-03-19 17:50:08
+ * @LastEditTime: 2021-09-03 23:01:38
  */
 
 /**
@@ -13,35 +13,36 @@
  * @author: zhj1214
  */
 export default {
-	constructor() {
-		this.subs = {}
-	},
+  constructor() {
+    this.subs = {}
+  },
 
-	on(event, cb) {
-		(this.subs[event] || (this.subs[event] = [])).push(cb)
-	},
+  on(event, cb) {
+    ;(this.subs[event] || (this.subs[event] = [])).push(cb)
+  },
 
-	trigger(event, ...args) {
-		this.subs[event] && this.subs[event].forEach(cb => {
-			cb(...args)
-		})
-	},
+  trigger(event, ...args) {
+    this.subs[event] &&
+      this.subs[event].forEach((cb) => {
+        cb(...args)
+      })
+  },
 
-	once(event, onceCb) {
-		const cb = (...args) => {
-			onceCb(...args)
-			this.off(event, onceCb)
-		}
-		this.on(event, cb)
-	},
+  once(event, onceCb) {
+    const cb = (...args) => {
+      onceCb(...args)
+      this.off(event, onceCb)
+    }
+    this.on(event, cb)
+  },
 
-	off(event, offCb) {
-		if (this.subs[event]) {
-			let index = this.subs[event].findIndex(cb => cb === offCb)
-			this.subs[event].splice(index, 1)
-			if (!this.subs[event].length) delete this.subs[event]
-		}
-	}
+  off(event, offCb) {
+    if (this.subs[event]) {
+      const index = this.subs[event].findIndex((cb) => cb === offCb)
+      this.subs[event].splice(index, 1)
+      if (!this.subs[event].length) delete this.subs[event]
+    }
+  },
 }
 
 // 此处是为了解决 第一次进入程序，获取token后，在获取用户信息

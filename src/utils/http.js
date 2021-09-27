@@ -4,7 +4,7 @@
  * @Autor: zhj1214
  * @Date: 2021-03-18 21:51:18
  * @LastEditors: zhj1214
- * @LastEditTime: 2021-07-27 11:01:33
+ * @LastEditTime: 2021-09-18 14:52:43
  */
 
 // import md5 from "md5";
@@ -26,7 +26,9 @@ const getBaseUrl = (env) => {
   }
   return base
   // #endif
+  // #ifdef H5
   return ''
+  // #endif
 }
 class NewAxios {
   /**
@@ -63,6 +65,11 @@ class NewAxios {
    * @description api请求封装
    * */
   request = (url, resolve, reject, data = {}, method, loading) => {
+    // 判断是否为外链,如果是外链则不需使用默认域名
+    if (!url.includes('http')) {
+      url = this.baseURL + url
+    }
+    // 是否加载loading
     if (loading) {
       uni.$alert.showLoading('请稍等')
       this.requestCount += 1
@@ -70,7 +77,7 @@ class NewAxios {
 
     if (!this.one_t) this.one_t = getApp()
     uni.request({
-      url: this.baseURL + url,
+      url: url,
       timeout: this.timeout,
       method: method,
       data: data,
@@ -127,9 +134,9 @@ class NewAxios {
   /**
    * 云函数
    * */
-  cloud = (apis, data) => {
+  cloud = (cloudBase, apis, data, loadingText) => {
     return new Promise((resolve, reject) => {
-      uni.$uniCloud.callFunction({
+      cloudBase.callFunction({
         name: apis[0],
         data: {
           ...data,
@@ -138,12 +145,13 @@ class NewAxios {
           },
         },
         success: (res) => {
-          const code = res.result.code
-          // const msg = res.result.msg
-          if (code === 10000 || code === 20000) {
+          const code = (res.result && res.result.code) || 200
+          const msg = (res.result && res.result.msg) || ''
+          console.log(code, msg, res)
+          if (code == 10000 || code == 20000) {
             resolve(res.result)
           } else {
-            resolve(res.data)
+            resolve(res)
           }
         },
         fail: (err) => {
