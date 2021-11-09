@@ -1,6 +1,6 @@
 <script>
   import './utils/base/string'
-  import api from './api'
+
   import local from './utils/localStorage'
   import toast from './utils/toast'
   import util from './utils/tool'
@@ -8,6 +8,7 @@
   import scene from './utils/sceneManage'
   import { STORAGE } from '@/utils/constant'
   import appMixin from './AppMixin'
+  import api from './utils/http'
   // import canvas from './utils/canvas'
   // import navigation from './utils/base/navrefactor'
   // import theme from './utils/theme' 弃用，后续使用store配置主题

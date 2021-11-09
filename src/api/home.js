@@ -6,23 +6,21 @@
  * @Description: home api
  * @FilePath: \yh_client\src\api\home.js
  */
-import api from './index';
+import api from '@/utils/http/apiRequest'
 // import { API_SERVICE } from '@/utils/constant';
 
 /**
  * demo get请求
- * @param {*} params 
+ * @param {*} params
  */
 export const demoGet = (params) => {
-    api.apiRequest(`/activity-server/api/mkt/getMarketingByEvent`, params)
-};
-
+  api.apiRequest(`/activity-server/api/mkt/getMarketingByEvent`, params)
+}
 
 /**
  * demo post请求
- * @param {*} params 
+ * @param {*} params
  */
 export const demoPost = (params) => {
-    api.apiRequest(`POST::/activity-server/api/mkt/getMarketingByEvent`, params)
-};
-
+  api.apiRequest(`POST::/activity-server/api/mkt/getMarketingByEvent`, params)
+}

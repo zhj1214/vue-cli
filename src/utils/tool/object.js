@@ -4,7 +4,7 @@
  * @Autor: zhj1214
  * @Date: 2021-08-10 11:42:45
  * @LastEditors: zhj1214
- * @LastEditTime: 2021-09-04 09:52:25
+ * @LastEditTime: 2021-11-09 14:58:57
  */
 export default {
   /**
@@ -101,6 +101,31 @@ export default {
       return 1
     } else {
       return 0
+    }
+  },
+  /**
+   * @description: 遍历所有类型
+   * @param {*} obj 数据
+   * @param {*} fn 遍历函数
+   * @author: zhj1214
+   */
+  forEach(obj, fn) {
+    if (obj === null || typeof obj === 'undefined') {
+      return
+    }
+    if (typeof obj !== 'object') {
+      obj = [obj]
+    }
+    if (this.isObjArr(obj) === 'array') {
+      for (var i = 0, l = obj.length; i < l; i++) {
+        fn.call(null, obj[i], i, obj)
+      }
+    } else {
+      for (var key in obj) {
+        if (Object.prototype.hasOwnProperty.call(obj, key)) {
+          fn.call(null, obj[key], key, obj)
+        }
+      }
     }
   },
 }
