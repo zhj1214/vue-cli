@@ -23,7 +23,7 @@
                 :src="userInfo.headImg"
                 mode="aspectFill"
               ></image>
-              <view class="usertxedit flex-center-row">
+              <view class="usertxedit items-center">
                 <image
                   style="width: 8px; height: 8px"
                   src="../../static/images/my/edit.png"
@@ -73,7 +73,7 @@
             >
           </view>
           <view
-            class="right flex-center-row"
+            class="right items-center"
             style="flex-direction: column; min-width: 64rpx"
           >
             <image
@@ -109,7 +109,7 @@
         data-type="全部订单"
       >
         <view class="title">我的订单</view>
-        <view class="flex-center-row">
+        <view class="items-center">
           <view style="font-size: 10px; font-weight: 400; color: #9a9a9a"
             >全部订单</view
           >

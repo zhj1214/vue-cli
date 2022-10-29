@@ -7,7 +7,7 @@
   import eventbus from './utils/observer/index.js'
   import scene from './utils/sceneManage'
   import { STORAGE } from '@/utils/constant'
-  import appMixin from './AppMixin'
+  import appMixin from './mixins/AppMixin'
   import api from './utils/http'
   // import canvas from './utils/canvas'
   // import navigation from './utils/base/navrefactor'
@@ -76,12 +76,12 @@
        * @author: zhj1214
        */
       initFundebug() {
-        // if (process.env.NODE_ENV !== 'production') {
-        //   fundebug.init({
-        //     apikey: 'bc54da06260628ce66655e75364fbc0085580b61ef0fc0d0a764555126d06bb2',
-        //     httpTimeout: 6000,
-        //   })
-        // }
+        if (process.env.NODE_ENV !== 'production') {
+          fundebug.init({
+            apikey: 'bc54da06260628ce66655e75364fbc0085580b61ef0fc0d0a764555126d06bb2',
+            httpTimeout: 6000,
+          })
+        }
       },
 
       /**

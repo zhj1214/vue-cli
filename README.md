@@ -1,14 +1,5 @@
-<!--
- * @Description: 
- * @Version: 0.0.1
- * @Autor: zhj1214
- * @Date: 2021-03-04 15:53:53
- * @LastEditors: zhj1214
- * @LastEditTime: 2021-05-21 17:04:38
--->
-
-#  ht-applet
-uni-app 项目框架
+#  applet小程序模板
+> uni-app 项目框架搭建: vue2.x + uview2.x + vuex
 ## 目录结构
 ```
 +-- dist/                                   ---打包之后的dist目录

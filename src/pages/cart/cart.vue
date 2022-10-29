@@ -57,7 +57,7 @@
         </view>
       </view>
       <!-- 发现更多 -->
-      <view class="fxMore flex-center-row">
+      <view class="fxMore items-center">
         <image
           class="mt22"
           v-show="!isShowMore"
@@ -143,7 +143,7 @@
       </view>
     </view>
     <view v-else>
-      <view v-if="goodsListArr.length" class="flex-center-row fxMore mt22">
+      <view v-if="goodsListArr.length" class="items-center fxMore mt22">
         <image
           style="width: 140px; height: 140px"
           src="../../static/images/car/carnot.png"
