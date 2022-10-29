@@ -1,103 +1,41 @@
-<!--
- * @Description: 
- * @Version: 0.0.1
- * @Autor: zhj1214
- * @Date: 2021-11-09 14:51:58
- * @LastEditors: zhj1214
- * @LastEditTime: 2022-01-19 09:39:10
--->
 <template>
-  <view class="pageHome">
-    <navBar title="首页" background="#fff"></navBar>
-    你好，
-    <!-- 提示信息弹框 -->
-    <alertView
-      v-if="alertShow && alertContent"
-      :showHeader="false"
-      :content="alertContent"
-      :showCancel="true"
-      @ok="okAlert(1)"
-      @cancel="okAlert(0)"
-    >
-    </alertView>
-
-    <alertView
-      v-if="mallAlertShow"
-      :showHeader="false"
-      content="您当前还未选择商场，请选择商场后再进行浏览"
-      @cancel="mallAlertShowOk"
-    >
-    </alertView>
+  <view class="content">
+    <image class="logo" src="/static/logo.png" />
+    <view class="text-area">
+      <text class="title">{{ title }}</text>
+    </view>
   </view>
 </template>
 
-<script>
-  import alertView from '../../pageComponents/alertView/alertView'
-
-  const SCENE_PARSE_KEY = '$_scene_parsed' // 场景析构
-  export default {
-    components: {
-      alertView,
-    },
-    /**
-     * 首页逻辑处理
-     * 1.是否需要选择商场
-     * 2.不同商场的场景模式，弹框切换商场
-     * 2.场景调用下一步
-     * 3.进入首页就获取用户信息，更新积分值
-     * */
-
-    data() {
-      return {
-        alertShow: false,
-        mallAlertShow: false,
-      }
-    },
-    /**
-     * 生命周期函数--监听页面显示
-     * 没有options可以拿到
-     */
-    onShow: function () {},
-    onLoad(options) {
-      if (options) this.options = options
-    },
-
-    async onReachBottom() {
-      // 如果还有数据
-      if (this.total > this.list.length) {
-        this.params.page = this.params.page + 1
-        this.fetchList()
-        return
-      }
-      // 已经是最后一页
-      uni.showToast({
-        title: '没有更多了',
-        icon: 'none',
-      })
-    },
-    async onPullDownRefresh() {
-      this.params.page = 1 // current page = 1
-      try {
-        await this.fetchList()
-      } catch (error) {
-        console.error(error)
-      } finally {
-        uni.stopPullDownRefresh()
-      }
-    },
-
-    onPageScroll(obj) {
-      this.opacity = obj.scrollTop / 100
-    },
-
-    methods: {},
-    filters: {
-      priceFormat(val) {
-        if (!val) return '--'
-        return `￥${uni.$util.decimalTwo(val, true, 2)}`
-      },
-    },
-  }
+<script setup lang="ts">
+import { ref } from 'vue'
+const title = ref('Hello')
 </script>
 
-<style lang="less"></style>
+<style>
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  height: 200rpx;
+  width: 200rpx;
+  margin-top: 200rpx;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 50rpx;
+}
+
+.text-area {
+  display: flex;
+  justify-content: center;
+}
+
+.title {
+  font-size: 36rpx;
+  color: #8f8f94;
+}
+</style>
