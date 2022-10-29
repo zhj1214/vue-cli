@@ -18,11 +18,7 @@
         <view class="top flex-between">
           <view class="left flex-row" v-if="userInfo.headImg">
             <view class="usertx" @click="jumpUpdateInfo">
-              <image
-                class="usertximg"
-                :src="userInfo.headImg"
-                mode="aspectFill"
-              ></image>
+              <image class="usertximg" :src="userInfo.headImg" mode="aspectFill"></image>
               <view class="usertxedit items-center">
                 <image
                   style="width: 8px; height: 8px"
@@ -32,17 +28,10 @@
               </view>
             </view>
             <view class="info" style="flex: 1">
-              <view class="name oneLine">{{
-                userInfo.memberName || userInfo.nickName
-              }}</view>
+              <view class="name oneLine">{{ userInfo.memberName || userInfo.nickName }}</view>
               <view
                 class="flex-row"
-                style="
-                  height: 16px;
-                  background: #ffefed;
-                  border-radius: 8px;
-                  max-width: 220rpx;
-                "
+                style="height: 16px; background: #ffefed; border-radius: 8px; max-width: 220rpx"
                 @click="jumpLevel"
               >
                 <view class="levelName">{{ userInfo.levelName }}</view>
@@ -62,20 +51,11 @@
               src="../../static/images/my/wdl.png"
               mode=""
             ></image>
-            <view
-              style="
-                font-size: 16px;
-                font-weight: 500;
-                color: #000000;
-                margin-left: 11px;
-              "
+            <view style="font-size: 16px; font-weight: 500; color: #000000; margin-left: 11px"
               >未登录</view
             >
           </view>
-          <view
-            class="right items-center"
-            style="flex-direction: column; min-width: 64rpx"
-          >
+          <view class="right items-center" style="flex-direction: column; min-width: 64rpx">
             <image
               style="width: 27px; height: 27px"
               src="../../static/images/my/userQrcode.png"
@@ -103,16 +83,10 @@
     </view>
     <!-- 我的订单 -->
     <view class="myOrder">
-      <view
-        class="myOrder-header flex-between"
-        @click="jumpOrder"
-        data-type="全部订单"
-      >
+      <view class="myOrder-header flex-between" @click="jumpOrder" data-type="全部订单">
         <view class="title">我的订单</view>
         <view class="items-center">
-          <view style="font-size: 10px; font-weight: 400; color: #9a9a9a"
-            >全部订单</view
-          >
+          <view style="font-size: 10px; font-weight: 400; color: #9a9a9a">全部订单</view>
           <image
             style="width: 5px; height: 7.5px; margin-left: 3px"
             src="../../static/images/car/left.png"
@@ -136,11 +110,7 @@
           @click="jumpOrder"
           :data-type="item.title"
         >
-          <u-badge
-            type="error"
-            :count="item.num || '0'"
-            :offset="[-10, -10]"
-          ></u-badge>
+          <u-badge type="error" :count="item.num || '0'" :offset="[-10, -10]"></u-badge>
           <u-icon size="48" :name="item.img"></u-icon>
           <view class="order-status-title">{{ item.title }}</view>
         </view>
@@ -163,13 +133,7 @@
             src="../../static/images/my/tksh.png"
             mode=""
           ></image>
-          <view
-            style="
-              font-size: 14px;
-              font-weight: 400;
-              color: #444444;
-              margin-left: 11px;
-            "
+          <view style="font-size: 14px; font-weight: 400; color: #444444; margin-left: 11px"
             >退款/售后</view
           >
         </view>
@@ -190,13 +154,7 @@
             src="../../static/images/my/dzgl.png"
             mode=""
           ></image>
-          <view
-            style="
-              font-size: 14px;
-              font-weight: 400;
-              color: #444444;
-              margin-left: 11px;
-            "
+          <view style="font-size: 14px; font-weight: 400; color: #444444; margin-left: 11px"
             >地址管理</view
           >
         </view>
@@ -217,13 +175,7 @@
             src="../../static/images/my/dzxp.png"
             mode=""
           ></image>
-          <view
-            style="
-              font-size: 14px;
-              font-weight: 400;
-              color: #444444;
-              margin-left: 11px;
-            "
+          <view style="font-size: 14px; font-weight: 400; color: #444444; margin-left: 11px"
             >电子小票</view
           >
         </view>
@@ -244,13 +196,7 @@
             src="../../static/images/my/wdhd.png"
             mode=""
           ></image>
-          <view
-            style="
-              font-size: 14px;
-              font-weight: 400;
-              color: #444444;
-              margin-left: 11px;
-            "
+          <view style="font-size: 14px; font-weight: 400; color: #444444; margin-left: 11px"
             >我的活动</view
           >
         </view>
@@ -267,13 +213,7 @@
             src="../../static/images/my/wtfk.png"
             mode=""
           ></image>
-          <view
-            style="
-              font-size: 14px;
-              font-weight: 400;
-              color: #444444;
-              margin-left: 11px;
-            "
+          <view style="font-size: 14px; font-weight: 400; color: #444444; margin-left: 11px"
             >问题反馈</view
           >
         </view>
@@ -283,398 +223,394 @@
           mode=""
         ></image>
       </view>
-
     </view>
   </view>
 </template>
 
 <script>
-
-export default {
-  data() {
-    return {
-      orderStatus: [
-        {
-          img: "/static/images/my/dzf.png",
-          title: "待支付",
-        },
-        {
-          img: "/static/images/my/dfx.png",
-          title: "待分享",
-        },
-        {
-          img: "/static/images/my/dfh.png",
-          title: "待发货",
-        },
-        {
-          img: "/static/images/my/dsh.png",
-          title: "待收货",
-        }
-      ],
-      ponitName: '',
-      userInfo: {},
-      couponNums: 0,
-      levelCardName: "", // 当前等级卡名称
-    };
-  },
-  /**
-   * 生命周期函数--监听页面显示
-   * 随时更新用户积分和成长值
-   */
-
-  onShow: function(options) {
-    if (!this.userInfo.headImg) {
-      this.userInfo = uni.$localStorage.getCurrentUser() || {};
-    }
-    this.getHomeMemberInfo();
-    this.getCouponNumsRequest();
-  },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function(options) {
-    this.userInfo = uni.$localStorage.getCurrentUser();
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {},
-  /**
-   * 私有方法
-   */
-  methods: {
+  export default {
+    data() {
+      return {
+        orderStatus: [
+          {
+            img: '/static/images/my/dzf.png',
+            title: '待支付',
+          },
+          {
+            img: '/static/images/my/dfx.png',
+            title: '待分享',
+          },
+          {
+            img: '/static/images/my/dfh.png',
+            title: '待发货',
+          },
+          {
+            img: '/static/images/my/dsh.png',
+            title: '待收货',
+          },
+        ],
+        ponitName: '',
+        userInfo: {},
+        couponNums: 0,
+        levelCardName: '', // 当前等级卡名称
+      }
+    },
     /**
-     * @description 获取用户信息
+     * 生命周期函数--监听页面显示
+     * 随时更新用户积分和成长值
      */
-    getHomeMemberInfo() {
-      if (uni.$localStorage.getItem("Token")) {
-        var self = this;
-        // 更新用户信息
+
+    onShow: function (options) {
+      if (!this.userInfo.headImg) {
+        this.userInfo = uni.$localStorage.getCurrentUser() || {}
+      }
+      // this.getHomeMemberInfo();
+      // this.getCouponNumsRequest();
+    },
+    /**
+     * 生命周期函数--监听页面加载
+     */
+    onLoad: function (options) {
+      this.userInfo = uni.$localStorage.getCurrentUser()
+    },
+
+    /**
+     * 生命周期函数--监听页面初次渲染完成
+     */
+    onReady: function () {},
+    /**
+     * 私有方法
+     */
+    methods: {
+      /**
+       * @description 获取用户信息
+       */
+      getHomeMemberInfo() {
+        if (uni.$localStorage.getItem('Token')) {
+          var self = this
+          // 更新用户信息
+          uni.$api
+            .apiRequest('getUserInfo', {
+              orgId: uni.$localStorage.getItem('orgId'),
+            })
+            .then((res) => {
+              if (res.code == 10000 && res.data) {
+                uni.$localStorage.setCurrentUser(res.data)
+                let u = { ...self.userInfo, ...res.data }
+                self.$nextTick(() => {
+                  self.userInfo = u
+                })
+                self.getLeveName()
+              }
+            })
+        }
+      },
+      getCouponNumsRequest() {
+        if (uni.$localStorage.getItem('memberId')) {
+          uni.$api
+            .apiRequest('getCouponNums', {
+              orgId: uni.$localStorage.getItem('orgId'),
+              memberId: uni.$localStorage.getItem('memberId'),
+            })
+            .then((res) => {
+              if (res.code == 10000) {
+                this.couponNums = res.data || 0
+              }
+            })
+        }
+      },
+      /**
+       * 获取等级卡名称
+       * */
+      getLeveName() {
         uni.$api
-          .apiRequest("getUserInfo", {
-            orgId: uni.$localStorage.getItem("orgId"),
+          .apiRequest('getLeveName', {
+            orgId: uni.$localStorage.getItem('orgId'),
+            levelId: this.userInfo.levelName,
           })
           .then((res) => {
             if (res.code == 10000 && res.data) {
-              uni.$localStorage.setCurrentUser(res.data);
-              let u = { ...self.userInfo, ...res.data };
-              self.$nextTick(() => {
-                self.userInfo = u;
-              });
-              self.getLeveName();
+              this.levelCardName = res.data.levelName
+              uni.$localStorage.setItem('userLeveId', res.data.id)
             }
-          });
-      }
-    },
-    getCouponNumsRequest() {
-      if (uni.$localStorage.getItem("memberId")) {
+          })
+      },
+      /**
+       * 跳转积分、成长值、优惠券
+       * */
+      jumpPage(val) {
+        if (!uni.$localStorage.getItem('Token')) {
+          uni.navigateTo({
+            url: '/pages/login/login',
+          })
+          return
+        }
+        let url = '/pages/my/growthList/growthList?value=' + this.userInfo.growthValue
+        if (val == 1) {
+          url =
+            '/pages/my/integral/integral?value=' +
+            this.userInfo.orgTotalScore +
+            `&allValue=${this.userInfo.integral || 0}`
+        } else if (val == 3) {
+          url = '/pages/myCardCoupon/myCoupon/myCoupon'
+        }
+        uni.navigateTo({
+          url: url,
+        })
+      },
+      jumpActivity() {
+        if (uni.$localStorage.getItem('Token')) {
+          uni.navigateTo({
+            url: '/pagesA/activity/activityList',
+          })
+        } else {
+          uni.navigateTo({
+            url: '/pages/login/login',
+          })
+        }
+      },
+      // 停车管理
+      goParking() {
+        if (uni.$localStorage.getItem('Token')) {
+          uni.navigateTo({
+            url: '/pagesParking/home/index',
+          })
+        } else {
+          uni.navigateTo({
+            url: '/pages/login/login',
+          })
+        }
+      },
+      // 跳转到会员二维码
+      jumpQrcode() {
+        if (!uni.$localStorage.getItem('Token')) {
+          uni.navigateTo({
+            url: '/pages/login/login',
+          })
+          return
+        }
+        uni.navigateTo({
+          url: '/pages/my/userQrcode/userQrcode',
+        })
+      },
+      jumpLogin() {
+        uni.navigateTo({
+          url: '/pages/login/login',
+        })
+      },
+      jumpUpdateInfo() {
+        uni.navigateTo({
+          url: '/pages/login/registered/registerednew?pageType=2',
+        })
+        // uni.navigateTo({
+        //   url: "/pages/login/registered/registered?pageType=2",
+        // });
+      },
+      jumpMoudle(val) {
+        if (!uni.$localStorage.getItem('Token')) {
+          uni.navigateTo({
+            url: '/pages/login/login',
+          })
+          return
+        }
+        if (val == 2) {
+          uni.navigateTo({
+            url: '/pages/my/receiptAdress/receiptAdress',
+          })
+        }
+        if (val === 'myReceipt') {
+          uni.navigateTo({
+            url: '/pagesA/myCenter/myReceipt/index',
+          })
+        }
+      },
+
+      jumpLevel() {
+        if (!uni.$localStorage.getItem('Token')) {
+          uni.navigateTo({
+            url: '/pages/login/login',
+          })
+          return
+        }
+        uni.navigateTo({
+          url: '/pages/my/memberLevel/personnalInfo',
+        })
+      },
+      /**
+       * @description: 跳转问题反馈
+       */
+      jumpProblem() {
         uni.$api
-          .apiRequest("getCouponNums", {
-            orgId: uni.$localStorage.getItem("orgId"),
-            memberId: uni.$localStorage.getItem("memberId"),
+          .apiRequest('getProblemId', {
+            mallId: uni.$localStorage.getItem('orgId'),
           })
           .then((res) => {
-            if (res.code == 10000) {
-              this.couponNums = res.data || 0;
+            if (res.code == 10000 && res.data) {
+              uni.navigateTo({
+                url: '/pages/landingPage/index?landId=' + res.data,
+              })
             }
-          });
-      }
+          })
+      },
+      /**
+       * 跳转 订单页面
+       */
+      jumpOrder(e) {
+        if (!uni.$localStorage.getItem('Token')) {
+          uni.navigateTo({
+            url: '/pages/login/login',
+          })
+          return
+        }
+        // console.log(e.currentTarget.dataset.type);
+        if (!uni.$localStorage.getItem('Token')) {
+          // this.gotoLogin();
+        } else {
+          uni.navigateTo({
+            url: '/pagesA/order/order?type=' + e.currentTarget.dataset.type,
+          })
+        }
+      },
     },
-    /**
-     * 获取等级卡名称
-     * */
-    getLeveName() {
-      uni.$api
-        .apiRequest("getLeveName", {
-          orgId: uni.$localStorage.getItem("orgId"),
-          levelId: this.userInfo.levelName,
-        })
-        .then((res) => {
-          if (res.code == 10000 && res.data) {
-            this.levelCardName = res.data.levelName;
-            uni.$localStorage.setItem("userLeveId",res.data.id)
-          }
-        });
-    },
-    /**
-     * 跳转积分、成长值、优惠券
-     * */
-    jumpPage(val) {
-      if (!uni.$localStorage.getItem("Token")) {
-        uni.navigateTo({
-          url: "/pages/login/login",
-        });
-        return;
-      }
-      let url = "/pages/my/growthList/growthList?value=" + this.userInfo.growthValue;
-      if (val == 1) {
-        url =
-          "/pages/my/integral/integral?value=" +
-          this.userInfo.orgTotalScore +
-          `&allValue=${this.userInfo.integral || 0}`;
-      } else if (val == 3) {
-        url = "/pages/myCardCoupon/myCoupon/myCoupon";
-      }
-      uni.navigateTo({
-        url: url,
-      });
-    },
-    jumpActivity() {
-      if (uni.$localStorage.getItem("Token")) {
-        uni.navigateTo({
-          url: "/pagesA/activity/activityList",
-        });
-      } else {
-        uni.navigateTo({
-          url: "/pages/login/login",
-        });
-      }
-    },
-    // 停车管理
-    goParking() {
-      if (uni.$localStorage.getItem("Token")) {
-        uni.navigateTo({
-          url: "/pagesParking/home/index",
-        });
-      } else {
-        uni.navigateTo({
-          url: "/pages/login/login",
-        });
-      }
-    },
-    // 跳转到会员二维码
-    jumpQrcode() {
-      if (!uni.$localStorage.getItem("Token")) {
-        uni.navigateTo({
-          url: "/pages/login/login",
-        });
-        return;
-      }
-      uni.navigateTo({
-        url: "/pages/my/userQrcode/userQrcode",
-      });
-    },
-    jumpLogin() {
-      uni.navigateTo({
-        url: "/pages/login/login",
-      });
-    },
-    jumpUpdateInfo() {
-      
-      uni.navigateTo({
-        url: "/pages/login/registered/registerednew?pageType=2",
-      });
-      // uni.navigateTo({
-      //   url: "/pages/login/registered/registered?pageType=2",
-      // });
-    },
-    jumpMoudle(val) {
-      if (!uni.$localStorage.getItem("Token")) {
-        uni.navigateTo({
-          url: "/pages/login/login",
-        });
-        return;
-      }
-      if (val == 2) {
-        uni.navigateTo({
-          url: "/pages/my/receiptAdress/receiptAdress",
-        });
-      }
-      if(val === 'myReceipt') {
-	      uni.navigateTo({
-		      url: "/pagesA/myCenter/myReceipt/index",
-	      });
-      }
-    },
-
-    jumpLevel() {
-      if (!uni.$localStorage.getItem("Token")) {
-        uni.navigateTo({
-          url: "/pages/login/login",
-        });
-        return;
-      }
-      uni.navigateTo({
-        url: "/pages/my/memberLevel/personnalInfo",
-      });
-    },
-    /**
-     * @description: 跳转问题反馈
-     */
-    jumpProblem(){
-      uni.$api
-        .apiRequest("getProblemId", {
-          mallId: uni.$localStorage.getItem("orgId"),
-        })
-        .then((res) => {
-          if (res.code == 10000 && res.data) {
-            uni.navigateTo({
-              url: "/pages/landingPage/index?landId=" + res.data,
-            });
-          }
-        });
-    },
-    /**
-     * 跳转 订单页面
-     */
-    jumpOrder(e) {
-      if (!uni.$localStorage.getItem("Token")) {
-        uni.navigateTo({
-          url: "/pages/login/login",
-        });
-        return;
-      }
-      // console.log(e.currentTarget.dataset.type);
-      if (!uni.$localStorage.getItem("Token")) {
-        // this.gotoLogin();
-      } else {
-        uni.navigateTo({
-          url: "/pagesA/order/order?type=" + e.currentTarget.dataset.type,
-        });
-      }
-    },
-  },
-};
+  }
 </script>
 <style lang="less" scoped>
-.view {
-  background-color: #f9f9f9;
-  min-height: 100vh;
+  .view {
+    background-color: #f9f9f9;
+    min-height: 100vh;
 
-  .header {
-    position: relative;
-    height: 275px;
-    background-color: ;
+    .header {
+      position: relative;
+      height: 275px;
 
-    .card {
-      padding: 18px;
-      position: absolute;
-      bottom: 10px;
-      background: #ffffff;
-      box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.05);
-      border-radius: 5px;
-      margin-left: 40rpx;
-      width: 670rpx;
-      height: 167px;
+      .card {
+        position: absolute;
+        bottom: 10px;
+        padding: 36rpx;
+        background: #ffffff;
+        box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.05);
+        border-radius: 5px;
+        margin-left: 40rpx;
+        width: calc(100vw - 72rpx - 80rpx);
+        height: 167px;
 
-      .top {
-        .left {
-          .usertx {
-            position: relative;
+        .top {
+          .left {
+            .usertx {
+              position: relative;
 
-            .usertximg {
+              .usertximg {
+                height: 65px;
+                width: 65px;
+              }
+
+              .usertxedit {
+                bottom: 0px;
+                position: absolute;
+                width: 65px;
+                height: 15px;
+                background: rgba(0, 0, 0, 0.63);
+              }
+
+              width: 65px;
               height: 65px;
-              width: 65px;
+              border-radius: 50%;
+              overflow: hidden;
             }
 
-            .usertxedit {
-              bottom: 0px;
-              position: absolute;
-              width: 65px;
-              height: 15px;
-              background: rgba(0, 0, 0, 0.63);
-            }
+            .info {
+              margin-left: 16px;
 
-            width: 65px;
-            height: 65px;
-            border-radius: 50%;
-            overflow: hidden;
-          }
+              .levelName {
+                font-size: 11px;
+                font-family: PingFangSC-Regular, PingFang SC;
+                font-weight: 400;
+                color: #ffffff;
+                text-align: center;
+                line-height: 12px;
+                height: 16px;
+                background: #fe5d4d;
+                border-radius: 8px;
+                padding: 4rpx 8rpx;
+              }
 
-          .info {
-            margin-left: 16px;
+              .levelCardName {
+                padding: 4rpx 8rpx;
+                font-size: 11px;
+                font-family: PingFangSC-Regular, PingFang SC;
+                font-weight: 400;
+                color: #fe5d4d;
+              }
 
-            .levelName {
-              font-size: 11px;
-              font-family: PingFangSC-Regular, PingFang SC;
-              font-weight: 400;
-              color: #ffffff;
-              text-align: center;
-              line-height: 12px;
-              height: 16px;
-              background: #fe5d4d;
-              border-radius: 8px;
-              padding: 4rpx 8rpx;
-            }
-
-            .levelCardName {
-              padding: 4rpx 8rpx;
-              font-size: 11px;
-              font-family: PingFangSC-Regular, PingFang SC;
-              font-weight: 400;
-              color: #fe5d4d;
-            }
-
-            .name {
-              font-size: 16px;
-              font-family: PingFangSC-Medium, PingFang SC;
-              font-weight: 500;
-              color: #000000;
-              margin-bottom: 8px;
+              .name {
+                font-size: 16px;
+                font-family: PingFangSC-Medium, PingFang SC;
+                font-weight: 500;
+                color: #000000;
+                margin-bottom: 8px;
+              }
             }
           }
         }
-      }
 
-      .bottom {
-        margin-top: 20px;
+        .bottom {
+          margin-top: 20px;
 
-        .item {
-          .title {
-            font-size: 10px;
-            font-family: PingFang-SC-Light, PingFang-SC;
-            font-weight: 300;
-            color: #8e8e8e;
-          }
+          .item {
+            .title {
+              font-size: 10px;
+              font-family: PingFang-SC-Light, PingFang-SC;
+              font-weight: 300;
+              color: #8e8e8e;
+            }
 
-          .value {
-            font-size: 20px;
-            font-family: DINPro-Bold, DINPro;
-            font-weight: bold;
-            color: #444444;
+            .value {
+              font-size: 20px;
+              font-family: DINPro-Bold, DINPro;
+              font-weight: bold;
+              color: #444444;
+            }
           }
         }
       }
     }
-  }
 
-  .myOrder {
-    padding: 20px;
-  }
+    .myOrder {
+      padding: 20px;
+    }
 
-  .content {
-    padding: 0px 20px 20px;
+    .content {
+      padding: 0px 20px 20px;
 
-    .funtionsItem {
-      height: 54px;
+      .funtionsItem {
+        height: 54px;
+        align-items: center;
+      }
+    }
+
+    .myOrder-header {
+      .title {
+        font-size: 16px;
+        font-family: PingFangSC-Medium, PingFang SC;
+        font-weight: 500;
+        color: #333333;
+      }
+    }
+
+    .order-status-item {
+      position: relative;
+      display: flex;
+      flex-direction: column;
       align-items: center;
+      justify-content: center;
+    }
+
+    .order-status-title {
+      margin-top: 8rpx;
+      font-size: 24rpx;
+      font-family: PingFangSC-Light, PingFang SC;
+      font-weight: 300;
+      color: rgba(59, 56, 59, 1);
     }
   }
-
-  .myOrder-header {
-    .title {
-      font-size: 16px;
-      font-family: PingFangSC-Medium, PingFang SC;
-      font-weight: 500;
-      color: #333333;
-    }
-  }
-
-  .order-status-item {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .order-status-title {
-    margin-top: 8rpx;
-    font-size: 24rpx;
-    font-family: PingFangSC-Light, PingFang SC;
-    font-weight: 300;
-    color: rgba(59, 56, 59, 1);
-  }
-}
 </style>
