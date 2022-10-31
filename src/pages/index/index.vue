@@ -4,12 +4,33 @@
     <view class="text-area">
       <text class="title">{{ title }}</text>
     </view>
+    <u-button @click="showView">月落</u-button>
+
+    <view>是大S大萨达所多按时</view>
+    <u-action-sheet :list="list" v-model="show"></u-action-sheet>
   </view>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-const title = ref('Hello')
+import { ref } from "vue";
+const title = ref("Hello");
+const list = [
+  {
+    text: "点赞",
+    color: "blue",
+    fontSize: 28,
+  },
+  {
+    text: "分享",
+  },
+  {
+    text: "评论",
+  },
+];
+const show = ref(false);
+const showView = () => {
+  show.value = true;
+};
 </script>
 
 <style>
