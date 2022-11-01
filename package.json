@@ -34,12 +34,13 @@
     "build:mp-weixin": "uni build -p mp-weixin",
     "build:quickapp-webview": "uni build -p quickapp-webview",
     "build:quickapp-webview-huawei": "uni build -p quickapp-webview-huawei",
-    "build:quickapp-webview-union": "uni build -p quickapp-webview-union"
-  },
-  "lint-staged": {
-    "*.{vue,js,ts}": "eslint --fix"
+    "build:quickapp-webview-union": "uni build -p quickapp-webview-union",
+    "preacp": "git add .",
+    "acp": "git commit -m",
+    "postacp": "git pull;git push;"
   },
   "dependencies": {
+    "@amap/amap-jsapi-loader": "^1.0.1",
     "@dcloudio/uni-app": "3.0.0-alpha-3060720221018006",
     "@dcloudio/uni-app-plus": "3.0.0-alpha-3060720221018006",
     "@dcloudio/uni-components": "3.0.0-alpha-3060720221018006",
@@ -52,6 +53,7 @@
     "@dcloudio/uni-mp-toutiao": "3.0.0-alpha-3060720221018006",
     "@dcloudio/uni-mp-weixin": "3.0.0-alpha-3060720221018006",
     "@dcloudio/uni-quickapp-webview": "3.0.0-alpha-3060720221018006",
+    "pinia": "^2.0.23",
     "sass-loader": "^13.1.0",
     "vue": "^3.2.41",
     "vue-i18n": "^9.1.9"

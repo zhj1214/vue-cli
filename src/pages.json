@@ -1,4 +1,3 @@
-//pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 {
   "easycom": {
     "autoscan": true,
@@ -10,14 +9,64 @@
     {
       "path": "pages/index/index",
       "style": {
-        "navigationBarTitleText": "uni-app"
+        "navigationBarTitleText": "首页"
       }
+    },
+    {
+      "path": "pages/mine/mine",
+      "style": {
+        "navigationBarTitleText": "我的"
+      }
+    }
+  ],
+  "subPackages": [
+    {
+      "root": "package-car/pages",
+      "pages": [
+        {
+          "path": "car/car",
+          "style": {
+            "navigationBarTitleText": "购物车",
+            "navigationBarTextStyle": "black",
+            "navigationBarBackgroundColor": "#ffffff",
+            "navigationStyle": "custom"
+          }
+        },
+        {
+          "path": "goods/goods",
+          "style": {
+            "navigationBarTitleText": "商品",
+            "navigationBarTextStyle": "black",
+            "navigationBarBackgroundColor": "#ffffff",
+            "navigationStyle": "custom"
+          }
+        }
+      ]
     }
   ],
   "globalStyle": {
     "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "uni-app",
+    "navigationBarTitleText": "移动端模板",
     "navigationBarBackgroundColor": "#F8F8F8",
     "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#4E6175",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "/static/tab/home.png",
+        "selectedIconPath": "/static/tab/home-active.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "/static/tab/home.png",
+        "selectedIconPath": "/static/tab/home-active.png"
+      }
+    ]
   }
 }

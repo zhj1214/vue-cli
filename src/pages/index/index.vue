@@ -12,25 +12,25 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-const title = ref("Hello");
+import { ref } from 'vue'
+const title = ref('Hello')
 const list = [
   {
-    text: "点赞",
-    color: "blue",
-    fontSize: 28,
+    text: '点赞',
+    color: 'blue',
+    fontSize: 28
   },
   {
-    text: "分享",
+    text: '分享'
   },
   {
-    text: "评论",
-  },
-];
-const show = ref(false);
+    text: '评论'
+  }
+]
+const show = ref(false)
 const showView = () => {
-  show.value = true;
-};
+  show.value = true
+}
 </script>
 
 <style>

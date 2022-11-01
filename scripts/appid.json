@@ -1,0 +1,14 @@
+{
+  "mp-weixin": {
+    "dev": "wx665654f4e8f33910",
+    "sit": "wx9e446ca45a978f7d",
+    "uat": "wx7e9d335f84f7007a",
+    "prod": "wxb9166feb639e35a2"
+  },
+  "map": {
+    "dev": "A7FBZ-SWIWJ-NPMFO-FKT4K-GRLFV-SWFRV",
+    "sit": "RGUBZ-V3I36-Z6KSB-MK3VX-6OJW6-KFFGC",
+    "uat": "PEQBZ-3EPK5-I5HIN-QJXQM-HLQVE-YFBVU",
+    "prod": "XZBBZ-2ZUK6-RR4SE-EDT4D-DVDPK-ZKFG5"
+  }
+}
