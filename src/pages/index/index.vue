@@ -34,8 +34,19 @@ const showView = () => {
 
 onMounted(() => {
   uni.$api.getDetil1({ sources: '1,2', fff: 111 }).then((res) => {
-    console.log('res:', res)
+    console.log('getDetil1:', res)
   })
+  uni.$api
+    .getDetil0({
+      id: 245183,
+      dms: 245183,
+      poiLocationId: '3686412523520720924',
+      longitude: 120.153576,
+      latitude: 30.287459
+    })
+    .then((res) => {
+      console.log('getDetil0:', res)
+    })
 })
 </script>
 

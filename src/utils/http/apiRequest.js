@@ -29,7 +29,6 @@ var api = {
     return new Promise((resolve, reject) => {
       // 1. options字段重组
       const params = dataReorganization(options)
-      console.log(options, '------', params);
       // 2. 获取请求 url
       const keyValue = this[key]
       // if()

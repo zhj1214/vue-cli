@@ -22,7 +22,7 @@ const pointApi = {
   /**
    * @description:  测试案例
    */
-  getDetil0: post('/web/point/organizations/payment/{id}/detail'), // 连接中包含参数
+  getDetil0: post('/api/map/poi/{id}'), // 连接中包含参数
   getDetil1: post('/api/map/poiTypeCount/list'), // 连接中包含参数
 
   /**

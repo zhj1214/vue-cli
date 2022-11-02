@@ -33,8 +33,8 @@ export default {
         timeout: 60000
       },
     }
-    const ddd = await defaultHeaderConfig(config, args)
-    return ddd
+
+    return await defaultHeaderConfig(config, args)
   },
   /**
    * @description: 请求完成后处理code业务逻辑

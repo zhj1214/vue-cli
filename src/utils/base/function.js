@@ -4,7 +4,7 @@
  * @Autor: zhj1214
  * @Date: 2021-09-04 09:51:15
  * @LastEditors: zhj1214
- * @LastEditTime: 2021-11-02 14:49:59
+ * @LastEditTime: 2022-11-02 15:59:49
  */
 
 Function.prototype.before = function (beforefn) {
@@ -12,9 +12,17 @@ Function.prototype.before = function (beforefn) {
   return function () {
     //返回包含了原函数和新函数的 '代理函数'
     const rtr = beforefn.apply(this, arguments) || {} //执行新函数，修正this
-    const args = Array.from(arguments)
-    args.push(rtr)
-    return self.apply(this, args) //执行原函数
+    if (Object.prototype.toString.call(rtr) === '[object Promise]') {
+      rtr.then((res) => {
+        const args = Array.from(arguments)
+        args.push(res)
+        self.apply(this, args) //执行原函数
+      })
+    } else {
+      const args = Array.from(arguments)
+      args.push(rtr)
+      return self.apply(this, args) //执行原函数
+    }
   }
 }
 

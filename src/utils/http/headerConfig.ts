@@ -17,7 +17,7 @@ import appStore from '@store/index'
  * @author: zhj1214
  */
 // 获取租户key
-let domainKey = uni.getStorageSync('currentTenant').tenantId || 'JETOUR'
+const domainKey = uni.getStorageSync('currentTenant').tenantId || 'JETOUR'
 
 const getBaseUrl = async (options: any) => {
   // 0. 获取请求参数

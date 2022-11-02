@@ -4,7 +4,7 @@
  * @Autor: zhj1214
  * @Date: 2021-03-18 21:51:18
  * @LastEditors: zhj1214
- * @LastEditTime: 2022-11-02 15:39:01
+ * @LastEditTime: 2022-11-02 16:05:08
  */
 
 // import md5 from "md5";
@@ -19,7 +19,6 @@ class NewAxios {
    * @description api请求封装
    * */
   request = async (url, resolve, reject, data = {}, config = {}) => {
-    console.log(url, 'urlurlurlurlurl', config.baseURL );
     let requestUrl = url
     // 判断是否为外链,如果是外链则不需使用默认域名
     if (!url.includes('http')) {
@@ -30,7 +29,7 @@ class NewAxios {
       uni.showLoading({ title: '请稍等' })
       this.requestCount += 1
     }
-    console.log('requestUrl', requestUrl);
+    // console.log('requestUrl', requestUrl);
 
     return uni.request({
       url: requestUrl,
