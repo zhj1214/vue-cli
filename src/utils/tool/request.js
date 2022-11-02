@@ -11,11 +11,11 @@ export default {
    * 必填字段 校验
    * */
   requiredInfo() {
-    if (!uni.$localStorage.getItem('Token')) return
+    if (!uni.$local.getItem('Token')) return
     uni.$api
       .apiRequest('userRegistKey', {
-        orgId: uni.$localStorage.getItem('userOrgId'),
-        memberId: uni.$localStorage.getItem('memberId'),
+        orgId: uni.$local.getItem('userOrgId'),
+        memberId: uni.$local.getItem('memberId'),
       })
       .then((res) => {
         if (res.code === 10000 && res.data) {
@@ -70,14 +70,14 @@ export default {
 
   getMemberInfo() {
     return new Promise((resolve) => {
-      if (uni.$localStorage.getItem('Token')) {
+      if (uni.$local.getItem('Token')) {
         uni.$api.apiRequest('getHomeMemberInfo').then((res) => {
           if (res.code === 10000 && res.data) {
             // 更新本地用户信息
-            uni.$localStorage.setCurrentUser(res.data)
+            uni.$local.setCurrentUser(res.data)
             resolve(res.data)
-          } else if (uni.$localStorage.getCurrentUser()) {
-            resolve(uni.$localStorage.getCurrentUser())
+          } else if (uni.$local.getCurrentUser()) {
+            resolve(uni.$local.getCurrentUser())
           }
         })
       } else {
@@ -92,13 +92,13 @@ export default {
    */
   currentClockin() {
     const app = getApp().globalData
-    if (uni.$localStorage.getItem('memberId') && !app.isCurrentClockin) {
+    if (uni.$local.getItem('memberId') && !app.isCurrentClockin) {
       uni.$api.apiRequest('channelUpdate', {
-        organizationId: uni.$localStorage.getItem('orgId'),
-        id: uni.$localStorage.getItem('memberId'),
+        organizationId: uni.$local.getItem('orgId'),
+        id: uni.$local.getItem('memberId'),
         registrationSource:
-          app.registrationSource || uni.$localStorage.getItem('currentMall').marketName,
-        registrationOrg: uni.$localStorage.getItem('orgId'),
+          app.registrationSource || uni.$local.getItem('currentMall').marketName,
+        registrationOrg: uni.$local.getItem('orgId'),
       })
     }
   },

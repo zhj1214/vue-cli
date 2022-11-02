@@ -18,9 +18,9 @@ const onSqlAdd = function (err) {
     data: {
       time: new Date().getTime(),
       time_s: new Date().Format('Y-M-D HH:mm:ss'),
-      token: uni.$localStorage.getItem('Token'),
-      userName: uni.$localStorage.getCurrentUser()
-        ? uni.$localStorage.getCurrentUser().memberName
+      token: uni.$local.getItem('Token'),
+      userName: uni.$local.getCurrentUser()
+        ? uni.$local.getCurrentUser().memberName
         : undefined,
       ...err,
     },
@@ -58,7 +58,7 @@ const immediate = function () {
   if (uni.$util.compareVersion(uni.version.version, '2.8.2') >= 0) {
     // const db = uni.cloud.database();
     // const watcher = db.collection('errorLog').limit(5).where({
-    //   _openid: db.command.neq(uni.$localStorage.getItem('userOpenId'))
+    //   _openid: db.command.neq(uni.$local.getItem('userOpenId'))
     // }).watch({
     //   onChange: function (snapshot) {
     //     // console.log('docs\'s changed events', snapshot.docChanges)

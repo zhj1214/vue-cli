@@ -4,7 +4,7 @@
  * @Autor: zhj1214
  * @Date: 2021-09-04 09:53:42
  * @LastEditors: zhj1214
- * @LastEditTime: 2021-09-05 13:24:59
+ * @LastEditTime: 2022-11-01 18:04:33
  */
 var tool = {
   /**
@@ -102,12 +102,12 @@ var tool = {
 
   clearLocal() {
     const loacl = {
-      orgId: uni.$localStorage.getItem('orgId'),
-      appletId: uni.$localStorage.getItem('appletId'),
-      userOrgId: uni.$localStorage.getItem('userOrgId'),
-      userOpenId: uni.$localStorage.getItem('userOpenId'),
-      myAuthority: uni.$localStorage.getItem('myAuthority'),
-      ENV_CURRENT: uni.$localStorage.getItem('ENV_CURRENT'),
+      orgId: uni.$local.getItem('orgId'),
+      appletId: uni.$local.getItem('appletId'),
+      userOrgId: uni.$local.getItem('userOrgId'),
+      userOpenId: uni.$local.getItem('userOpenId'),
+      myAuthority: uni.$local.getItem('myAuthority'),
+      ENV_CURRENT: uni.$local.getItem('ENV_CURRENT'),
     }
     return new Promise((resolve) => {
       // console.log(loacl, "————清楚缓存之前");
@@ -116,7 +116,7 @@ var tool = {
         success: () => {
           keys.forEach((item) => {
             if (loacl[item]) {
-              uni.$localStorage.setItem(item, loacl[item])
+              uni.$local.setItem(item, loacl[item])
             }
           })
           resolve()
@@ -242,13 +242,22 @@ var tool = {
   },
 }
 
-const requireTool = require.context('../tool', false, /\.js$/)
-// 遍历出每个组件的路径
-requireTool.keys().forEach((path) => {
-  const jsInstance = requireTool(path)
-  if (!path.includes('index')) {
-    tool = { ...tool, ...jsInstance.default }
+// ts 版本
+const files = import.meta.globEager('./*.js');
+Object.keys(files).forEach((fileName) => {
+  if (!fileName.includes('index')) {
+    tool = { ...tool, ...files[fileName].default }
   }
-})
+});
+
+// js 版本
+// const requireTool = require.context('../tool', false, /\.js$/)
+// // 遍历出每个组件的路径
+// requireTool.keys().forEach((path) => {
+//   const jsInstance = requireTool(path)
+//   if (!path.includes('index')) {
+//     tool = { ...tool, ...jsInstance.default }
+//   }
+// })
 
 export default tool

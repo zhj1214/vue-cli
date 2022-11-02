@@ -181,9 +181,9 @@ export async function changeMall(orgId) {
   if (!orgId) return false
   return new Promise((reslove, reject) => {
     const app = getApp()
-    if (!uni.$localStorage.getItem('orgId')) {
+    if (!uni.$local.getItem('orgId')) {
       app.globalData.orgId = orgId
-      uni.$localStorage.setItem('orgId', orgId)
+      uni.$local.setItem('orgId', orgId)
     }
     uni.$api
       .apiRequest('getMallInfoUserServer', {
@@ -191,7 +191,7 @@ export async function changeMall(orgId) {
       })
       .then((res) => {
         if (res.code == 10000) {
-          uni.$localStorage.setItem('currentMall', {
+          uni.$local.setItem('currentMall', {
             marketName: res.data.name,
             orgId: orgId,
             orgid: orgId,
@@ -207,8 +207,8 @@ export async function changeMall(orgId) {
       if (res) {
         const u = { ...self.userInfo, ...res }
         app.globalData.integral = res.integral
-        uni.$localStorage.setCurrentUser(res)
-        uni.$localStorage.setItem('memberId', res.memberId)
+        uni.$local.setCurrentUser(res)
+        uni.$local.setItem('memberId', res.memberId)
       }
     })
   })

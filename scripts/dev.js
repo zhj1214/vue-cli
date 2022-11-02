@@ -8,16 +8,25 @@ const PLATFORM_MAP = require('./platform.json')
 
 const SEPARATOR = ' ---> '
 
+// 1. 校验参数
 const argv = process.argv
 if (argv.length <= 2) {
   console.log(colors('red', 'Error') + SEPARATOR + '请指定运行环境')
   return
 }
 
+/**
+ * @description: 2. 获取环境参数字符串：例子如下
+ * "dev": "node scripts/dev dev:h5",
+ * "dev:weixin": "node scripts/dev dev:mp-weixin",
+ * "build:dev": "node scripts/build dev:h5",
+ * "build:dev:weixin": "node scripts/build dev:mp-weixin --upload",
+ */
+
 const envStr = argv[2]
-// 运行环境
+// 2.1 运行环境
 const env = envStr.split(':')[0] || 'dev'
-// 运行平台
+// 2.2 运行平台
 const platform = envStr.split(':')[1]
 
 console.log('当前运行环境：' + colors('green', env) + '\n')
@@ -28,8 +37,9 @@ if (!platform || !Object.keys(PLATFORM_MAP).includes(platform)) {
   return
 }
 
+// 3. 获取平台常量KEY
 const platformEnvVar = PLATFORM_MAP[platform]
-// 系统版本
+// 3.1 获取系统版本
 const sys = os.type()
 const isWindow = sys === 'Windows_NT'
 // 根据本地环境变量获取本地开发工具安装地址
@@ -43,12 +53,20 @@ const cliCmd = isWindow ? 'cli' : toolPath + '/Contents/MacOS/cli'
 let hasStartIde = false
 let firstCheck = true
 
-// 根据环境修改小程序 appId 配置
-platform === 'mp-weixin' && modifyManifest(platform, env)
+// 4. 如果是小程序，根据环境修改小程序 appId 配置
+if (platform === 'mp-weixin') {
+  modifyManifest(platform, env)
+}
+
 
 // 开始打包
 init()
 
+/**
+ * @description: 使用自定义命令进行打包运行
+ * @param {*} UNI_PLATFORM  支持的平台类型
+ * @param {*} VITE_APP_ENV  自定义环境变量
+ */
 function init() {
   const run = exec(`cross-env NODE_ENV=development UNI_PLATFORM=${platform} VITE_APP_ENV=${env} uni -p ${platform}`, {
     cwd: process.cwd()
@@ -130,10 +148,10 @@ function hasDevToolEnv() {
     firstCheck &&
       console.log(
         colors('green', 'Info') +
-          SEPARATOR +
-          '项目已编译成功！ 若配置系统环境变量 ' +
-          colors('green', platformEnvVar) +
-          '，地址为相关开发工具安装地址，则可以支持自动打开微信开发者工具'
+        SEPARATOR +
+        '项目已编译成功！ 若配置系统环境变量 ' +
+        colors('green', platformEnvVar) +
+        '，地址为相关开发工具安装地址，则可以支持自动打开微信开发者工具'
       )
     firstCheck = false
     return false
@@ -173,11 +191,11 @@ function runCli() {
     if (data.includes('Fail to open IDE')) {
       console.log(
         '微信开发者工具' +
-          colors('red', '项目自启动失败') +
-          '，请手动导入项目，或检查微信开发者工具' +
-          colors('blue', '服务端口是否开启') +
-          '或' +
-          colors('blue', '当前微信账号是否失效')
+        colors('red', '项目自启动失败') +
+        '，请手动导入项目，或检查微信开发者工具' +
+        colors('blue', '服务端口是否开启') +
+        '或' +
+        colors('blue', '当前微信账号是否失效')
       )
     }
   })

@@ -4,12 +4,12 @@
  * @Autor: zhj1214
  * @Date: 2021-03-18 21:51:18
  * @LastEditors: zhj1214
- * @LastEditTime: 2021-11-02 22:37:28
+ * @LastEditTime: 2022-11-02 15:39:01
  */
 
 // import md5 from "md5";
 import interceptors from './interceptors'
-import { urls } from './httpConfig'
+import { urls } from './headerConfig'
 class NewAxios {
   constructor() {
     this.requestCount = 0 // 请求连接数
@@ -18,27 +18,31 @@ class NewAxios {
   /**
    * @description api请求封装
    * */
-  request = (url, resolve, reject, data = {}, config = {}) => {
+  request = async (url, resolve, reject, data = {}, config = {}) => {
+    console.log(url, 'urlurlurlurlurl', config.baseURL );
+    let requestUrl = url
     // 判断是否为外链,如果是外链则不需使用默认域名
     if (!url.includes('http')) {
-      var requestUrl = config.baseURL + url
+      requestUrl = (config.baseURL || '') + url
     }
     // 是否加载loading
     if (config.loading) {
-      uni.$alert.showLoading('请稍等')
+      uni.showLoading({ title: '请稍等' })
       this.requestCount += 1
     }
+    console.log('requestUrl', requestUrl);
 
     return uni.request({
       url: requestUrl,
       timeout: config.timeout,
       method: urls[url],
-      data: data,
+      data: data.data,
       header: config.header,
       success: interceptors.reponse(resolve, requestUrl, data, config, this.show_error),
       fail: (err) => {
         interceptors.reportErrlog(requestUrl, data, '请求 TCP 建立失败')
-        reject(err)
+        console.error('err:', err);
+        // reject(err)
       },
       complete: (res) => {
         // 隐藏loading
@@ -49,7 +53,7 @@ class NewAxios {
           }
         }
         // 请求重试触发
-        // console.error(config.retryDelay, '请求重试', config.retry)
+        console.error(config.retryDelay, '请求重试', config.retry)
         if (res.data.code === 90000) {
           setTimeout(() => {
             reject(config)

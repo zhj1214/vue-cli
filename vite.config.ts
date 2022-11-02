@@ -38,6 +38,7 @@ export default defineConfig(({ command }: ConfigEnv) => {
       ]
     },
     build: {
+      sourcemap: true,
       rollupOptions: {
         output: {
           manualChunks(id) {

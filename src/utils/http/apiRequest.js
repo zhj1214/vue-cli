@@ -4,11 +4,17 @@
  * @Autor: zhj1214
  * @Date: 2021-04-15 14:34:58
  * @LastEditors: zhj1214
- * @LastEditTime: 2021-11-09 14:47:47
+ * @LastEditTime: 2022-11-02 15:25:09
  */
-import http from './index'
 
+import http from './index'
+import { generateUrl, dataReorganization } from './http-util'
+import { cacheHtttp } from "./http-plugin";
+import { get } from './headerConfig'
+import { DOMAINURL } from '@utils/glob'
 var api = {
+  /************** 网关接口 *************/
+  getFeConfig: get(`${DOMAINURL}/fe-hybrid-h5/fe-config.json`),
   /************** 外链 *************/
   mapSearch: 'https://apis.map.qq.com/ws/place/v1/search',
   /************** 云函数 错误日志上报 *************/
@@ -19,30 +25,37 @@ var api = {
    * @param {Strung} key 接口字段
    * @param {*} options  入参
    * */
-  apiRequest(key, options) {
+  apiRequest(key, options = {}) {
     return new Promise((resolve, reject) => {
-      // 校验书否有缓存数据
-      if (options.cache && uni.$localStorage.getItem(key)) {
-        resolve(uni.$localStorage.getItem(key))
-        return
-      }
-      // 获取请求 url
+      // 1. options字段重组
+      const params = dataReorganization(options)
+      console.log(options, '------', params);
+      // 2. 获取请求 url
       const keyValue = this[key]
-      var generatorUrl = typeof keyValue !== 'string' ? keyValue.url : keyValue
-      // 保存请求key
-      options['api_key'] = key
-      // 进入数据加工逻辑
+      // if()
+      params.domain_http = keyValue.domain || ''
+      var generatorUrl = keyValue.url
+      // 2.1 赋值动态地址 例如： web/point/organizations/payment/{id}/detail =>  web/point/organizations/payment/236492372338/detail
+      if (generatorUrl.includes('/{')) {
+        generatorUrl = generateUrl(generatorUrl, options)
+      }
+
+      // 3. 缓存功能
+      const { localValue, isHas } = cacheHtttp.getApply(params, key)
+      if (isHas) return resolve(localValue)
+
+      // 4. 进入数据加工逻辑
       var resolveGenerator = (response, config) => {
         // 是否有缓存逻辑
-        if (config.cache) uni.$localStorage.setItem(key, response, config.setExpireTime)
+        if (config.cache) uni.$local.setItem(key, response, config.setExpireTime)
         // 加工数据
-        if (typeof keyValue !== 'string') {
-          keyValue.callBack(response, options, resolve)
+        if (keyValue.callBack) {
+          keyValue.callBack(response, params.data, resolve)
         } else {
           resolve(response)
         }
       }
-      // 请求重试 逻辑
+      // 5. 请求重试 逻辑
       const reject_try = (config) => {
         if (config.retry === 0) {
           reject(90000)
@@ -51,8 +64,8 @@ var api = {
           http.request(generatorUrl, resolveGenerator, reject_try, options)
         }
       }
-      // 开始调用请求方法 console.log('url :>> ', generatorUrl )
-      http.request(generatorUrl, resolveGenerator, reject_try, options)
+      // 6. 开始调用请求方法 console.log('url :>> ', generatorUrl )
+      http.request(generatorUrl, resolveGenerator, reject_try, params)
     })
   },
   /**
@@ -75,25 +88,34 @@ var api = {
  * @description: 合并api文件下的所有接口，如有重名字段则会提示
  * @author: zhj1214
  */
-const apis = require.context('../../api', false, /\.js$/)
-const apis_arr = Object.keys(api)
-apis.keys().forEach((name) => {
-  const obj = apis(name).default
-  // 校验
-  Object.keys(obj).forEach((key) => {
-    let isHas = false
-    apis_arr.forEach((oldKey) => {
-      // console.log(oldKey, '==========', key)
-      if (oldKey === key) {
-        isHas = true
-        console.error(`接口api，发现重复字段：${oldKey} 请检查文件后修改。`)
-      }
-    })
-    if (!isHas) apis_arr.push(key)
-  })
 
-  api = { ...api, ...obj }
-})
+const initApi = () => {
+  const files = import.meta.globEager('../../api/*.ts');
+  const apiKeys = Object.keys(api)
+  Object.keys(files).forEach(fileName => {
+    var obj = files[fileName].default
+    // 1. 校验是否存在同名请求定义
+    Object.keys(obj).forEach(key => {
+      // 1.1 给每一个配置都增加 domain字段
+      if (key !== 'domain' && typeof obj[key] === 'object') {
+        obj[key]['domain'] = obj.domain
+      }
+      // 2. 检测是否有同名字段
+      let isHas = false
+      apiKeys.forEach(oldKey => {
+        if (oldKey === key) {
+          isHas = true
+          console.error(`接口api，发现重复字段：${oldKey} 请检查文件后修改。`)
+        }
+      })
+      if (!isHas) apiKeys.push(key)
+    })
+    api = { ...api, ...obj }
+  })
+}
+initApi()
+console.log('暴露出去的api对象:', api)
+
 
 /**
  * @description: 劫持当前类的get方法

@@ -18,6 +18,7 @@ declare global {
     $flutter: typeof Jsbridge
     _aMap: any
     spBridge: any
+    uni: any
     NoCaptcha: any
     [key: string]: any
   }

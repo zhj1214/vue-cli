@@ -35,6 +35,7 @@ export const STORAGE = {
   ROOT_ORG_ID: 'rootOrgId',
   ORG_ID: 'orgId',
   SEARCH_HISTORY: 'SEARCH_HISTORY', // 搜索历史
+  EXPIRETIMEKEY:'expireTimeKey_1214'
 }
 
 export const MUTATIONS_TYPE = {

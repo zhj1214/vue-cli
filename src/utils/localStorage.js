@@ -4,7 +4,7 @@
  * @Autor: zhj1214
  * @Date: 2021-08-10 11:42:45
  * @LastEditors: zhj1214
- * @LastEditTime: 2022-10-31 15:00:45
+ * @LastEditTime: 2022-11-01 17:49:40
  */
 /****************** 基本存储 操作 ******************/
 const EXPIRETIMEKEY = 'expireTimeKey_1214'
@@ -82,7 +82,7 @@ const removeCurrentUserKey = function (key) {
   this.setItem('wxUserInfo', user)
 }
 
-module.exports = {
+export default {
   setItem,
   getItem,
   remove,

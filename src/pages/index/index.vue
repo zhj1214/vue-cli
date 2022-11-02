@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 const title = ref('Hello')
 const list = [
   {
@@ -31,6 +31,12 @@ const show = ref(false)
 const showView = () => {
   show.value = true
 }
+
+onMounted(() => {
+  uni.$api.getDetil1({ sources: '1,2', fff: 111 }).then((res) => {
+    console.log('res:', res)
+  })
+})
 </script>
 
 <style>

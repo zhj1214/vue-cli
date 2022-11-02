@@ -1448,6 +1448,11 @@ colorette@^2.0.16, colorette@^2.0.17:
   resolved "https://registry.npmmirror.com/colorette/-/colorette-2.0.19.tgz#cdf044f47ad41a0f4b56b3a0d5b4e6e1a2d5a798"
   integrity sha512-3tlv/dIP7FWvj3BsbHrGLJ6l/oKh1O3TcgBqMn+yyCagOxc23fyzDS6HypQbgxWbkpDnf52p1LuR4eWDQ/K9WQ==
 
+colors-console@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.npmmirror.com/colors-console/-/colors-console-1.0.3.tgz#5e7a20b26e8ef2d2540768c8c9250c3f545b598b"
+  integrity sha512-Q31K32UwadWqAxs+Iu46gNm4HJqUwrTJT2zen5NnhkKE5w7uqeZQZiuODUOxM/zOtHfiUTkia0io6zbN/VcCUQ==
+
 commander@^2.20.0:
   version "2.20.3"
   resolved "https://registry.npmmirror.com/commander/-/commander-2.20.3.tgz#fd485e84c03eb4881c20722ba48035e8531aeb33"

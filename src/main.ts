@@ -1,8 +1,8 @@
 import { createSSRApp } from 'vue'
-import App from './App.vue'
 import uView from './uni_modules/vk-uview-ui'
 import { createPinia } from 'pinia'
-import { registerStore } from '@/store'
+import { registerStore } from '@store/index'
+import App from './App.vue'
 
 export function createApp() {
   const app = createSSRApp(App)
