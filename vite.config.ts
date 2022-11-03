@@ -11,7 +11,7 @@ export default defineConfig(({ command }: ConfigEnv) => {
     base: './',
     plugins: [
       uni(),
-      eruda(),
+      eruda(), // 默认生产环境不会显示
       visualizer(),
       legacy({
         targets: ['ie >= 11'],
@@ -67,6 +67,8 @@ export default defineConfig(({ command }: ConfigEnv) => {
     },
     build: {
       sourcemap: true,
+      minify: true,
+      reportCompressedSize: false,
       rollupOptions: {
         output: {
           manualChunks(id) {

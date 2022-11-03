@@ -14,7 +14,9 @@ export default defineComponent({
     itemType: Number
   },
   setup(props) {
-    onLoad(() => {})
+    onLoad(() => {
+      // this.a ='11'
+    })
     onShow(() => {})
     // 首个经销商信息
     // const dealerInfo = reactive({
