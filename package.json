@@ -81,6 +81,7 @@
     "@dcloudio/uni-cli-shared": "3.0.0-alpha-3060720221018006",
     "@dcloudio/uni-stacktracey": "3.0.0-alpha-3060720221018006",
     "@dcloudio/vite-plugin-uni": "3.0.0-alpha-3060720221018006",
+    "@types/node": "^18.11.9",
     "@typescript-eslint/eslint-plugin": "^5.41.0",
     "@typescript-eslint/parser": "^5.41.0",
     "colors-console": "^1.0.3",

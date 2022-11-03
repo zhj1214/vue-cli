@@ -18,9 +18,14 @@ declare global {
     $flutter: typeof Jsbridge
     _aMap: any
     spBridge: any
-    uni: any
     NoCaptcha: any
     [key: string]: any
+  }
+  // 类型融合,解决对uni的扩展
+  interface Uni {
+    $api: any
+    $util: any
+    $local: any
   }
 }
 

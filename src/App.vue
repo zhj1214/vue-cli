@@ -5,11 +5,12 @@ import api from './utils/http/apiRequest'
 import util from './utils/tool'
 
 import { onLaunch, onShow, onHide } from '@dcloudio/uni-app'
+import { ENV } from './utils/glob'
 onLaunch(() => {
   console.log('App Launch')
-  ;(uni as any)['$local'] = local
-  ;(uni as any).$api = api
-  ;(uni as any).$util = util
+  uni.$local = local
+  uni.$api = api
+  uni.$util = util
 })
 onShow(() => {
   console.log('App Show')
