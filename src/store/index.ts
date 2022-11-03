@@ -9,8 +9,6 @@ export interface AppStore {
 
 const appStore: AppStore = {} as AppStore;
 
-
-
 /**
  * 注册app状态库
  */

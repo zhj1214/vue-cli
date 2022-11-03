@@ -1,40 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <script>
+      var coverSupport =
+        'CSS' in window &&
+        typeof CSS.supports === 'function' &&
+        (CSS.supports('top: env(a)') || CSS.supports('top: constant(a)'))
+      document.write(
+        '<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0' +
+          (coverSupport ? ', viewport-fit=cover' : '') +
+          '" />'
+      )
+    </script>
+    <title>模板</title>
+    <!-- 地图 -->
+    <script>
+      window._AMapSecurityConfig = {
+        serviceHost: '/_AMapService'
+        // serviceHost: 'https://h5-app-uat.jetour.com.cn/_AMapService' // 开发代理
+        // 例如 ：serviceHost:'http://1.1.1.1:80/_AMapService',
+      }
+    </script>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <script>
-    var coverSupport =
-      "CSS" in window &&
-      typeof CSS.supports === "function" &&
-      (CSS.supports("top: env(a)") || CSS.supports("top: constant(a)"));
-    document.write(
-      '<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0' +
-      (coverSupport ? ", viewport-fit=cover" : "") +
-      '" />'
-    );
-  </script>
-  <title>模板</title>
-  <!-- VConsole -->
-  <script src="./public/vconsole.min.js"></script>
-  <script>
-    new window.VConsole()
-  </script>
-  <!-- 地图 -->
-  <script>
-    window._AMapSecurityConfig = {
-      serviceHost: '/_AMapService'
-      // serviceHost: 'https://h5-app-uat.jetour.com.cn/_AMapService' // 开发代理
-      // 例如 ：serviceHost:'http://1.1.1.1:80/_AMapService',
-    }
-  </script>
-</head>
-
-<body>
-  <div id="app">
-    <!--app-html-->
-  </div>
-  <script type="module" src="/src/main.ts"></script>
-</body>
-
+  <body>
+    <div id="app">
+      <!--app-html-->
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
 </html>

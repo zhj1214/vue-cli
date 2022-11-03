@@ -84,15 +84,19 @@
     "@types/node": "^18.11.9",
     "@typescript-eslint/eslint-plugin": "^5.41.0",
     "@typescript-eslint/parser": "^5.41.0",
+    "@vitejs/plugin-legacy": "^2.3.0",
     "colors-console": "^1.0.3",
     "eslint": "^8.26.0",
     "eslint-import-resolver-alias": "^1.1.2",
     "eslint-plugin-vue": "^9.6.0",
     "husky": "^8.0.0",
     "lint-staged": "^13.0.3",
+    "miniprogram-ci": "^1.8.35",
     "prettier": "^2.7.1",
+    "rollup-plugin-visualizer": "^5.8.3",
     "sass": "^1.55.0",
     "typescript": "^4.8.3",
-    "vite": "^3.1.8"
+    "vite": "^3.1.8",
+    "vite-plugin-eruda": "^1.0.1"
   }
 }
