@@ -12,7 +12,12 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, getCurrentInstance } from 'vue'
+
+const app = getCurrentInstance() //获取上下文实例，ctx=vue2的this
+
+
+
 const title = ref('Hello')
 const list = [
   {
@@ -29,24 +34,30 @@ const list = [
 ]
 const show = ref(false)
 const showView = () => {
+  // let a = b
+  let a = null
+  if (a.length > 1) {
+    // ...
+  }
   show.value = true
 }
 
 onMounted(() => {
-  uni.$api.getDetil1({ sources: '1,2', fff: 111 }).then((res) => {
-    console.log('getDetil1:', res)
-  })
-  uni.$api
-    .getDetil0({
-      id: 245183,
-      dms: 245183,
-      poiLocationId: '3686412523520720924',
-      longitude: 120.153576,
-      latitude: 30.287459
-    })
-    .then((res) => {
-      console.log('getDetil0:', res)
-    })
+  console.log(app, 'ctx')
+  // uni.$api.getDetil1({ sources: '1,2', fff: 111 }).then((res) => {
+  //   console.log('getDetil1:', res)
+  // })
+  // uni.$api
+  //   .getDetil0({
+  //     id: 245183,
+  //     dms: 245183,
+  //     poiLocationId: '3686412523520720924',
+  //     longitude: 120.153576,
+  //     latitude: 30.287459
+  //   })
+  //   .then((res) => {
+  //     console.log('getDetil0:', res)
+  //   })
 })
 </script>
 

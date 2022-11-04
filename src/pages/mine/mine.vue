@@ -17,6 +17,7 @@ export default defineComponent({
     onLoad(() => {
       // this.a ='11'
     })
+    this.a ='11'
     onShow(() => {})
     // 首个经销商信息
     // const dealerInfo = reactive({
