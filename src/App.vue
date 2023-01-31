@@ -3,14 +3,7 @@ import './utils/base/string'
 import local from './utils/localStorage'
 import api from './utils/http/apiRequest'
 import util from './utils/tool'
-import { onErrorCaptured } from 'vue';
-
 import { onLaunch, onShow, onHide } from '@dcloudio/uni-app'
-
-onErrorCaptured(function(err, instance, info){
-  console.log('后代组件的错误：[errorCaptured]', err, instance, info)
-})
-
 
 onLaunch(() => {
   console.log('App Launch')

@@ -14,17 +14,27 @@ export default defineComponent({
     itemType: Number
   },
   setup(props) {
+    /**
+     * @description: promise 错误
+     */
+    const getJSON = async () => {
+      throw new Error('inner error')
+    }
+
+    new Promise((resolve,reject) => {
+    JSON.parse('')
+    resolve();
+  })
+
+    // 通过try/catch处理
+    const makeRequest = async () => {
+        getJSON()
+    }
+
     onLoad(() => {
-      // this.a ='11'
+      makeRequest()
     })
-    this.a ='11'
     onShow(() => {})
-    // 首个经销商信息
-    // const dealerInfo = reactive({
-    //   name: '',
-    //   address: '',
-    //   image: ''
-    // }) as DealerInfo
     return {}
   }
 })

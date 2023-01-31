@@ -10,6 +10,4 @@ export const DOMAIN_URL = {
   prod: 'https://vr-jetour.jetour.com.cn'
 }
 
-console.log(process.env.NODE_ENV,'ENVENVENVENVENV',ENV);
-
 export const DOMAINURL = DOMAIN_URL[ENV as EnvInfo]

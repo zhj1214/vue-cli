@@ -16,8 +16,6 @@ import { onMounted, ref, getCurrentInstance } from 'vue'
 
 const app = getCurrentInstance() //获取上下文实例，ctx=vue2的this
 
-
-
 const title = ref('Hello')
 const list = [
   {
@@ -33,17 +31,21 @@ const list = [
   }
 ]
 const show = ref(false)
+// setup 中的代码错误
+// let aa = b
+// 事件中的代码错误
 const showView = () => {
-  // let a = b
-  let a = null
-  if (a.length > 1) {
-    // ...
-  }
+  setTimeout(() => {
+    let a = null
+    if (a.length > 1) {
+      // ...
+    }
+    return a
+  }, 1000)
   show.value = true
 }
 
 onMounted(() => {
-  console.log(app, 'ctx')
   // uni.$api.getDetil1({ sources: '1,2', fff: 111 }).then((res) => {
   //   console.log('getDetil1:', res)
   // })
