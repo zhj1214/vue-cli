@@ -1,20 +1,20 @@
 const { calculateHash, splicingUploadParams, startUpload } = require('./uploadMaxFile')
 const { http } = require('./request')
-
 const path = require('path')
 const fse = require('fs-extra')
 const fs = require('fs')
+
 // 切片大小
 const CHUNK_SIZE = 1 * 1024 * 1024
-
+// sourcemap 存放目录
 const SOURCEMAP_DIR = path.resolve(__dirname, '../../dist/build/h5/assets')
 console.log('sourcemap文件存放路径: ', SOURCEMAP_DIR)
-
+// 判断目录是否存在
 const isHas = fse.existsSync(SOURCEMAP_DIR)
 console.log('是否存在该目录：', isHas ? '存在' : '不存在')
-
-// sourcemap文件列表路径数组
+// sourcemap文件-路径数组
 let sourcemapFilePathList = []
+
 /**
  * @description: 获取目录下文件,过滤掉隐藏文件
  * @param {*} dirPath
@@ -45,6 +45,7 @@ const createFileChunk = (file, size = CHUNK_SIZE) => {
 // 3. 上传文件到服务器
 let fileHash = ''
 let fileChunks = []
+
 /**
  * @description: 开始切片上传
  */
